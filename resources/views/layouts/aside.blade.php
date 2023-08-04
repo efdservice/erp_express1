@@ -93,6 +93,24 @@ $reports=['vendor_invoice_report','rider_invoice_report'];
                         
                     {{-- </ul>
                 </li> --}}
+                 {{--  <li class="nav-item has-treeview <?php //if(in_array(Request::segment(2), $invoices)) echo 'menu-open';?>">
+                    <a href="#" class="nav-link">
+                        <i class='nav-icon fas fa-users-cog fa-xs'></i>
+                        <p>
+                            Invoices
+                            <i class="nav-icon fas fa-angle-left right"></i>
+                        </p>
+                    </a>
+                    <ul class="nav nav-treeview"> --}}
+                        <li class="nav-item">
+                            <a href="{{ route('rider_invoices.index') }}" class="nav-link {{ (request()->is('invoices/rider_invoices')) ? 'active' : '' }}">
+                                <i class="nav-icon fas fa-file fa-xs"></i>
+                                <p>Invoices</p>
+                            </a>
+                        </li>
+                       
+                  {{--   </ul>
+                </li> --}}
                 <li class="nav-item has-treeview <?php if(in_array(Request::segment(1), $rider)) echo 'menu-open';?>">
                     <a href="#" class="nav-link ">
                         <i class='nav-icon fas fa-user-secret fa-xs'></i>
@@ -123,24 +141,7 @@ $reports=['vendor_invoice_report','rider_invoice_report'];
                        
                     </ul>
                 </li>
-                <li class="nav-item has-treeview <?php if(in_array(Request::segment(2), $invoices)) echo 'menu-open';?>">
-                    <a href="#" class="nav-link">
-                        <i class='nav-icon fas fa-users-cog fa-xs'></i>
-                        <p>
-                            Invoices
-                            <i class="nav-icon fas fa-angle-left right"></i>
-                        </p>
-                    </a>
-                    <ul class="nav nav-treeview">
-                        <li class="nav-item">
-                            <a href="{{ route('rider_invoices.index') }}" class="nav-link {{ (request()->is('invoices/rider_invoices')) ? 'active' : '' }}">
-                                <i class="nav-icon fas fa-angle-double-right fa-xs"></i>
-                                <p>Rider & Vendor Invoices</p>
-                            </a>
-                        </li>
-                       
-                    </ul>
-                </li>
+              
                 <li class="nav-item has-treeview <?php if(in_array(Request::segment(1), $bikes)) echo 'menu-open'; ?>">
                     <a href="#" class="nav-link">
                         <i class='nav-icon fas fa-motorcycle fa-xs'></i>
