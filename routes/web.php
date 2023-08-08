@@ -66,6 +66,7 @@ Route::group(['middleware' => ['auth']], function() {
     Route::get('bike/get_bike_history/{id?}',[\App\Http\Controllers\BikeController::class,'get_bike_history']);
     Route::post('change_rider',[\App\Http\Controllers\BikeController::class,'change_rider'])->name('bike.change_rider');
     Route::post('rider/import_excel',[\App\Http\Controllers\RiderController::class,'import_excel'])->name('rider.import_excel');
+    Route::any('rider-document/{id}',[\App\Http\Controllers\RiderController::class,'document'])->name('rider.document');
     Route::resource('bike',BikeController::class);
     Route::get("bike/fetch_vendor_comp/{RID}",[\App\Http\Controllers\BikeController::class,'fetch_vendor_comp'])->name('bike.fetch_vendor_comp');
     Route::resource('sim',SimController::class);

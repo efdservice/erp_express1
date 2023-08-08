@@ -348,4 +348,27 @@ class CommonHelper{
         return $str;
     }
 
+    public static function file_types($id=null){
+
+        $types = [
+           
+            1 => 'Emirates ID',
+            2 => 'Passport',
+            3 => 'Visa',
+            4 => 'Rider Contract',
+            5 => 'Health Insurance',
+            7 => 'RTA Road Permit',
+            8 => 'CNIC (Pakistani)',
+            9 => 'Driving License',
+            10 => 'Labor Card',
+            11 => 'NOC (Employer)'
+        ];
+        if($id){
+            return $types[$id];
+        }else{
+            return $types;
+        }
+
+    }
+
 }

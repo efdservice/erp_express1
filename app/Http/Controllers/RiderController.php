@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Helpers\Account;
 use App\Imports\RiderImport;
 use App\Models\Accounts\TransactionAccount;
+use App\Models\Files;
 use App\Models\Rider;
 use Illuminate\Http\Request;
 use Maatwebsite\Excel\Facades\Excel;
@@ -25,7 +26,8 @@ class RiderController extends Controller
             return DataTables::of($data)
                 ->addIndexColumn()
                 ->addColumn('action', function($row){
-                    $btn = '<a href="#" data-toggle="tooltip" data-action="'.route('rider.edit',$row->id).'" class="edit btn btn-primary btn-xs editRec" data-modalID="modal-new"><i class="fas fa-edit"></i> Edit</a>';
+                    $btn = '<a href="'.route('rider.document',$row->id).'" data-toggle="tooltip" class="file btn btn-success btn-xs" data-modalID="modal-new"><i class="fas fa-file"></i> Documents</a>';
+                    $btn =  $btn.' <a href="#" data-toggle="tooltip" data-action="'.route('rider.edit',$row->id).'" class="edit btn btn-primary btn-xs editRec" data-modalID="modal-new"><i class="fas fa-edit"></i> Edit</a>';
                     $btn = $btn.' <a href="javascript:void(0)" data-toggle="tooltip"  data-action="'.route('rider.store').'/'.$row->id.'" data-original-title="Delete" class="btn btn-danger btn-xs deleteRecord"><i class="fas fa-trash"></i> Del</a>';
                     return $btn;
                 })
@@ -170,4 +172,41 @@ class RiderController extends Controller
     /*
      *
      */
+
+     public function document($rider_id){
+        if(request()->post()){
+           
+            foreach(request('documents') as $document){
+                
+                if($document['expiry_date']){
+                    $data = [];
+                    if(isset($document['file_name'])){
+                        
+                        $extension = $document['file_name']->extension();
+                        $name = $document['type'].'-'.$rider_id.'-'.time().'.'.$extension;
+                        $document['file_name']->storeAs('rider',$name);
+                        
+                        $data['file_name'] = $name;
+                        $data['file_type'] = $extension;
+                    }
+                    
+                    $data['type_id'] = $rider_id;
+                    $data['type'] = $document['type'];
+                    $data['expiry_date'] = $document['expiry_date'];
+
+                    $condition=[
+                        'type' => $document['type'],
+                        'type_id' => $rider_id
+                        ];
+
+                    Files::updateOrCreate($condition,$data);
+                }
+            }
+            
+        }
+
+        $files = Files::where('type_id',$rider_id)->get();
+
+        return view('riders.document',compact('files'));
+     }
 }

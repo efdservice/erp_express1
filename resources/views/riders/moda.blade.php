@@ -10,6 +10,7 @@
                 </button>
             </div>
             <div class="modal-body">
+               
                 <div class="row">
                     <div class="col-md-3 form-group">
                         <label>Rider ID*</label>
@@ -33,7 +34,7 @@
                     </div>
                     <!--col-->
                     <div class="col-md-3 form-group">
-                        <label>Persoan Gmail ID *</label>
+                        <label>Personal Gmail ID *</label>
                         <input type="text" class="form-control form-control-sm" name="personal_email" placeholder="Vendor Email">
                     </div>
                     <!--col-->
@@ -48,6 +49,18 @@
                             <option value="">Select</option>
                             {!! \App\Models\Country::dropdown() !!}
                         </select>
+                    </div>
+                    <div class="col-md-3 form-group">
+                        <label>Visa Sponsor</label>
+                        <input type="text" class="form-control form-control-sm" name="visa_sponsor" placeholder="Visa Sponsor">
+                    </div>
+                    <div class="col-md-3 form-group">
+                        <label>Occupation on Visa</label>
+                        <input type="text" class="form-control form-control-sm" name="visa_occupation" placeholder="Occupation on Visa" >
+                    </div>
+                    <div class="col-md-6 form-group">
+                        <label>Visa Status</label>
+                        <input type="text" class="form-control form-control-sm" name="visa_status" placeholder="Visa Status">
                     </div>
                     <!--col-->
                     <div class="col-md-3 form-group">
@@ -70,36 +83,13 @@
                         <input type="text" class="form-control form-control-sm date" name="doj" placeholder="Date of Joining">
                     </div>
                     <!--col-->
-                    <div class="col-md-3 form-group">
-                        <label>Emirate (Hub)</label>
-                        <input type="text" class="form-control form-control-sm" name="emirate_hub" placeholder="Emirate (Hub)">
-                    </div>
-                    <!--col-->
-                    <div class="col-md-3 form-group">
-                        <label>Emirate ID</label>
-                        <input type="text" class="form-control form-control-sm" name="emirate_id" placeholder="Emirate ID">
-                    </div>
-                    <!--col-->
-                    <div class="col-md-3 form-group">
-                        <label>EID EXP Date</label>
-                        <input type="text" class="form-control form-control-sm date" name="emirate_exp" placeholder="EID EXP Date">
-                    </div>
-                    <!--col-->
-                    <div class="col-md-3 form-group">
-                        <label>Passport *</label>
-                        <input type="text" class="form-control form-control-sm" name="passport" placeholder="Passport">
-                    </div>
-                    <!--col-->
-                    <div class="col-md-3 form-group">
-                        <label>Passport Expiry *</label>
-                        <input type="text" class="form-control form-control-sm date" name="passport_expiry" placeholder="Passport Expiry">
-                    </div>
+                   
                     <!--col-->
                     <div class="col-md-3 form-group">
                         <label>Project</label>
                         <select class="form-control form-control-sm" name="PID">
                             <option value="">Select Project</option>
-                            {!! \App\Models\projects::dropdown() !!}
+                            {!! \App\Models\Projects::dropdown() !!}
                         </select>
                     </div>
                     <!--col-->
@@ -112,27 +102,14 @@
                         <label>Ethnicity</label>
                         <select type="text" class="form-control form-control-sm" name="ethnicity">
                             <option value="">Select</option>
+                            <option value="Muslim">Muslim</option>
+                            <option value="non-Muslim">non-Muslim</option>
                         </select>
                     </div>
                     <!--col-->
                     <div class="col-md-3 form-group">
                         <label>DOB</label>
                         <input type="text" class="form-control form-control-sm date" name="dob" placeholder="Date of Birth">
-                    </div>
-                    <!--col-->
-                    <div class="col-md-3 form-group">
-                        <label>Licence No</label>
-                        <input type="text" class="form-control form-control-sm" name="license_no" placeholder="License No">
-                    </div>
-                    <!--col-->
-                    <div class="col-md-3 form-group">
-                        <label>Licence Expiry</label>
-                        <input type="text" class="form-control form-control-sm date" name="license_expiry" placeholder="License Expiry">
-                    </div>
-                    <!--col-->
-                    <div class="col-md-6 form-group">
-                        <label>Visa Status</label>
-                        <input type="text" class="form-control form-control-sm" name="visa_status" placeholder="Visa Status">
                     </div>
                     <!--col-->
                     <div class="col-md-3 form-group">
@@ -147,11 +124,67 @@
                             <option value="1">Done</option>
                         </select>
                     </div>
+                </div>
+                {{-- <div class="row bg-light mb-1">
+                    <div class="col-md-3 form-group">
+                        <label>Emirate (Hub)</label>
+                        <input type="text" class="form-control form-control-sm" name="emirate_hub" placeholder="Emirate (Hub)">
+                    </div>
                     <!--col-->
+                    <div class="col-md-3 form-group">
+                        <label>Emirate ID</label>
+                        <input type="text" class="form-control form-control-sm" name="emirate_id" placeholder="Emirate ID">
+                    </div>
+                    <!--col-->
+                    <div class="col-md-3 form-group">
+                        <label>EID EXP Date</label>
+                        <input type="text" class="form-control form-control-sm date" name="emirate_exp" placeholder="EID EXP Date">
+                    </div>
+                    <div class="col-md-3 form-group">
+                        <label>Attach Document</label>
+                        <input type="file"  class="form-control form-control-sm" name="attach_eid">
+                    </div>
+                </div>
+                <div class="row bg-light mb-1">
+                    <!--col-->
+                    <div class="col-md-3 form-group">
+                        <label>Passport *</label>
+                        <input type="text" class="form-control form-control-sm" name="passport" placeholder="Passport">
+                    </div>
+                    <!--col-->
+                    <div class="col-md-3 form-group">
+                        <label>Passport Expiry *</label>
+                        <input type="text" class="form-control form-control-sm date" name="passport_expiry" placeholder="Passport Expiry">
+                    </div>
                     <div class="col-md-3 form-group">
                         <label>Attach Documents</label>
                         <input type="file" multiple class="form-control form-control-sm" name="attach_documents[]">
                     </div>
+                </div>
+                <div class="row bg-light mb-1">
+                    <!--col-->
+                    <div class="col-md-3 form-group">
+                        <label>Licence No</label>
+                        <input type="text" class="form-control form-control-sm" name="license_no" placeholder="License No">
+                    </div>
+                    <!--col-->
+                    <div class="col-md-3 form-group">
+                        <label>Licence Expiry</label>
+                        <input type="text" class="form-control form-control-sm date" name="license_expiry" placeholder="License Expiry">
+                    </div>
+                    <div class="col-md-3 form-group">
+                        <label>Attach Documents</label>
+                        <input type="file" multiple class="form-control form-control-sm" name="attach_documents[]">
+                    </div>
+                    <!--col-->
+                </div> --}}
+                <div class="row">
+                    
+                    <!--col-->
+                    {{-- <div class="col-md-3 form-group">
+                        <label>Attach Documents</label>
+                        <input type="file" multiple class="form-control form-control-sm" name="attach_documents[]">
+                    </div> --}}
                  
                     <!--col-->
                     <div class="col-md-12 form-group">

@@ -12,7 +12,7 @@ $hr=['designation', 'department', 'employee'];
 $bus_setup=['company_setup', 'branches'];
 $sale=['Sale'];
 $vendor=['vendors'];
-$rider=['rider','assign_rider','assign_price'];
+$rider=['rider','assign_rider','assign_price','rider-document'];
 $item=['item','item_assign_rv','assign_price_edit'];
 $invoices=['vendor_invoices','rider_invoices'];
 $bikes=['bike','rta_fine','lease_company','bike_rent'];
@@ -121,7 +121,7 @@ $reports=['vendor_invoice_report','rider_invoice_report'];
                     </a>
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
-                            <a href="{{ route('rider.index') }}" class="nav-link {{ (request()->is('rider')) ? 'active' : '' }}">
+                            <a href="{{ route('rider.index') }}" class="nav-link {{ (request()->is('rider')) ? 'active' : '' }} {{ (request()->is('rider-document')) ? 'active' : '' }}">
                                 <i class="nav-icon fas fa-angle-double-right fa-xs"></i>
                                 <p>Rider List</p>
                             </a>
