@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,6 +15,8 @@ use Illuminate\Support\Facades\Route;
 */
 //Route::get('/home', [HomeController::class, 'index'])->name('home');
 //Route::post('notify','LeadController@notify');
+Route::get('expiry_checker',[HomeController::class,'expiry_checker']);
+Route::get('redirect_url',[HomeController::class,'redirect_url']);
 Auth::routes();
 Route::get('/', function () {
     return Redirect::to('home');

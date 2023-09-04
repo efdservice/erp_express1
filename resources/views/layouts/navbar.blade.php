@@ -98,7 +98,7 @@
                 <span class="dropdown-item dropdown-header">{{ auth()->user()->unreadNotifications()->count() }} Notifications</span>
                 <div class="dropdown-divider"></div>
                 @foreach(auth()->user()->unreadNotifications as $notification)
-                <a href="#" class="dropdown-item">
+                <a href="{{url('redirect_url?id='.$notification->id.'&url='.$notification->data['url'])}}" class="dropdown-item">
                     <i class="fas fa-envelope mr-2"></i> {{ $notification->data['name'] }}
                     <span class="float-right text-muted text-sm">{{ \App\Helpers\CommonHelper::count_minutes($notification->created_at) }}</span>
                 </a>

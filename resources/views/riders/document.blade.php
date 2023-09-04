@@ -1,5 +1,5 @@
 @extends('layouts.app')
-@section('title', 'Rider Documents')
+@section('title', $rider->name.' Documents')
 @section('content')
 
 <div class="content-wrapper">
@@ -10,7 +10,7 @@
                 <div class="col-sm-6">
                     <ol class="breadcrumb">
                         <li class="breadcrumb-item"><a href="#">Home</a></li>
-                        <li class="breadcrumb-item active">Rider Documents</li>
+                        <li class="breadcrumb-item active">{{$rider->name}} Documents</li>
                     </ol>
                 </div>
             </div>
@@ -24,7 +24,14 @@
             <div class="card card-default rounded-0">
                 
                 <div class="card-body">
-                    <div class="card-title">Rider Documents</div>
+                    <div class="card-title"><b>{{$rider->name}}</b> Documents
+                        <br>
+                        <p><b>Email:</b> {{$rider->email}}
+                            <b>Phone:</b> {{$rider->phone}}
+                        </p>
+                    </div>
+                    
+                    
 <br style="clear: both;" />
 <br style="clear: both;" />
                     <form action="" method="post" enctype="multipart/form-data">

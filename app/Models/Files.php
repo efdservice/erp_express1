@@ -2,12 +2,15 @@
 
 namespace App\Models;
 
+use App\Models\Rider;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Notifications\Notifiable;
 
 class Files extends Model
 {
     use HasFactory;
+    use Notifiable;
     protected $guarded=[];
 
 
@@ -19,5 +22,9 @@ class Files extends Model
             $list.='<option '.($id==$file->id?'selected':'').' value="'.$file->id.'">'.$file->file_name.'</option>';
         }
         return $list;
+    }
+
+    public function rider(){
+        return $this->hasOne(Rider::class,'id','type_id');
     }
 }

@@ -60,15 +60,15 @@ class RiderController extends Controller
             'rider_id'=>'required',
             'name'=>'required',
             'personal_email'=>'required',
-            'passport'=>'required',
-            'passport_expiry'=>'required',
+           /*  'passport'=>'required',
+            'passport_expiry'=>'required', */
         ];
         $message=[
             'rider_id.required'=>'Rider ID Required',
             'name.required'=>'Rider Name Required',
             'personal_email.required'=>'Rider Email Required',
-            'passport.required'=>'Passport Required',
-            'passport_expiry.required'=>'Passport Expiry Required',
+            /* 'passport.required'=>'Passport Required',
+            'passport_expiry.required'=>'Passport Expiry Required', */
         ];
         $this->validate($request,$rules,$message);
         $data=$request->except(['code']);
@@ -206,7 +206,8 @@ class RiderController extends Controller
         }
 
         $files = Files::where('type_id',$rider_id)->get();
+        $rider = Rider::find($rider_id);
 
-        return view('riders.document',compact('files'));
+        return view('riders.document',compact('files','rider'));
      }
 }
