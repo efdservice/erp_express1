@@ -111,6 +111,7 @@ $reports=['vendor_invoice_report','rider_invoice_report'];
                        
                   {{--   </ul>
                 </li> --}}
+                
                 <li class="nav-item has-treeview <?php if(in_array(Request::segment(1), $rider)) echo 'menu-open';?>">
                     <a href="#" class="nav-link ">
                         <i class='nav-icon fas fa-user-secret fa-xs'></i>
@@ -126,7 +127,7 @@ $reports=['vendor_invoice_report','rider_invoice_report'];
                                 <p>Rider List</p>
                             </a>
                         </li>
-                        <li class="nav-item">
+                       {{--  <li class="nav-item">
                             <a href="{{ route('vendor.assign_rider') }}" class="nav-link {{ (request()->is('assign_rider')) ? 'active' : '' }}">
                                 <i class="nav-icon fas fa-angle-double-right fa-xs"></i>
                                 <p>Assign Vendor</p>
@@ -137,7 +138,7 @@ $reports=['vendor_invoice_report','rider_invoice_report'];
                                 <i class="nav-icon fas fa-angle-double-right fa-xs"></i>
                                 <p>Assign Price</p>
                             </a>
-                        </li>
+                        </li> --}}
                        
                     </ul>
                 </li>

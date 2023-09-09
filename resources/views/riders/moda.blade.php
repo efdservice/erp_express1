@@ -2,6 +2,7 @@
     <div class="modal-dialog modal-xl">
         <div class="modal-content rounded-0">
             <form id="form">
+                
                 <input type="hidden" name="id" value="0">
             <div class="modal-header bg-gradient-gray rounded-0">
                 <h4 class="modal-title">Rider Details:</h4>
@@ -26,7 +27,13 @@
                         <label>Rider Contact</label>
                         <input type="text" class="form-control form-control-sm" name="personal_contact" placeholder="Vendor Contact">
                     </div>
-                   
+                    <div class="col-md-3 form-group">
+                        <label>Vendor</label>
+                        <select class="form-control form-control-sm" name="VID">
+                            <option value="">Select</option>
+                            {!! \App\Models\Vendor::dropdown() !!}
+                        </select>
+                    </div>
                     <!--col-->
                     <div class="col-md-3 form-group">
                         <label>Company Contact</label>
@@ -124,6 +131,13 @@
                             <option value="1">Done</option>
                         </select>
                     </div>
+                    <div class="col-md-3 form-group">
+                        <label>Status</label>
+                        <select class="form-control form-control-sm" name="status">
+                            <option value="0">Deactive</option>
+                            <option value="1">Active</option>
+                        </select>
+                    </div>
                 </div>
                 {{-- <div class="row bg-light mb-1">
                     <div class="col-md-3 form-group">
@@ -193,6 +207,27 @@
                     </div>
                     <!--col-->
                 </div>
+                <h3>Assign Price</h3>
+                <div class="row">
+                    
+                
+                        @php
+                            $items = \App\Models\Item::all();
+                           
+                        @endphp
+                        @foreach ($items as $item)
+                        @php
+                             /* $rider_item = \App\Models\RiderItemPrice::where('item_id',$item->id)
+                             ->where('RID',$); */
+                        @endphp
+                        
+                            <div class="col-3 form-group">
+                                <label>{{$item->item_name}}(Price: {{$item->pirce}})</label>                                
+                            <input type="number" name="items[{{$item->id}}]" id="item-{{$item->id}}" step="any" class="form-control form-control-sm" />
+                            </div>
+                        @endforeach
+                        </div>
+                
             </div>
             <div class="modal-footer">
                 <button type="submit" class="btn btn-primary pull-right save_rec btn-sm">Save</button>

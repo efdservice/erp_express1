@@ -3,6 +3,14 @@
 <script type="text/javascript">
     function add_new(){
         $("#modal-new").modal();
+         
+           this.form.reset();
+       
+
+      
+        
+     
+       
     }
 
     $("#form").submit(function (e) {
@@ -64,6 +72,7 @@
                 {data: 'personal_email', name: 'personal_email'},
                 {data: 'passport', name: 'passport'},
                 {data: 'license_no', name: 'license_no'},
+                {data: 'status', name: 'status'},
                 {data: 'action', name: 'action',
                     orderable: false, searchable: false
                 },
@@ -114,5 +123,28 @@
        
     });
 
-
+    $('body').on('click', '.doAction', function () {
+        var  url= $(this).data("action");
+        x=confirm("Are you sure want to perform this action !");
+        if(!x){
+            return false;
+        }
+        let g=$(this);
+        $.ajax({
+            type: "POST",
+            url: url,
+            success: function (data) {
+                if(data==1) {
+                    g.closest('tr').remove();
+                    $('.data-table').DataTable().ajax.reload();
+                    toastr.success('Action Performed Successfully..');
+                }else{
+                    toastr.error('Could not performed....!');
+                }
+            },
+            error: function (data) {
+                console.log('Error:', data);
+            }
+        });
+    });
 </script>

@@ -36,6 +36,7 @@
                                         <th>Email</th>
                                         <th>Passport</th>
                                         <th>License Number</th>
+                                        <th>Status</th>
                                         <th>Action</th>
                                     </tr>
                                     </thead>

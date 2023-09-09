@@ -99,7 +99,7 @@ class HomeController extends Controller
 
     public function expiry_checker(){
 
-        $expired = Files::whereDate('expiry_date', Carbon::today())->get();
+        $expired = Files::whereDate('expiry_date', Carbon::parse('+10 days'))->get();
         $user = User::find(1);
         foreach($expired as $item){
             $notify = 

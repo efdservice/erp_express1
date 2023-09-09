@@ -6,7 +6,9 @@ use App\Helpers\Account;
 use App\Imports\RiderImport;
 use App\Models\Accounts\TransactionAccount;
 use App\Models\Files;
+use App\Models\Item;
 use App\Models\Rider;
+use App\Models\RiderItemPrice;
 use Illuminate\Http\Request;
 use Maatwebsite\Excel\Facades\Excel;
 use Yajra\DataTables\Facades\DataTables;
@@ -25,13 +27,20 @@ class RiderController extends Controller
             $data=Rider::latest()->get();
             return DataTables::of($data)
                 ->addIndexColumn()
+                ->addColumn('status', function($row){
+                    if($row->status){
+                        return '<a href="javascript:void(0)" data-toggle="tooltip"  data-action="'.url('rider-status/'.$row->id).'" data-original-title="Action" class="doAction" ><span class="badge badge-primary" >Active</span></a>';
+                     }else{
+                        return '<a href="javascript:void(0)" data-toggle="tooltip"  data-action="'.url('rider-status/'.$row->id).'" data-original-title="Action" class="doAction" ><span class="badge badge-danger">Deactive</span></a>';
+                    }
+                     })
                 ->addColumn('action', function($row){
                     $btn = '<a href="'.route('rider.document',$row->id).'" data-toggle="tooltip" class="file btn btn-success btn-xs" data-modalID="modal-new"><i class="fas fa-file"></i> Documents</a>';
                     $btn =  $btn.' <a href="#" data-toggle="tooltip" data-action="'.route('rider.edit',$row->id).'" class="edit btn btn-primary btn-xs editRec" data-modalID="modal-new"><i class="fas fa-edit"></i> Edit</a>';
                     $btn = $btn.' <a href="javascript:void(0)" data-toggle="tooltip"  data-action="'.route('rider.store').'/'.$row->id.'" data-original-title="Delete" class="btn btn-danger btn-xs deleteRecord"><i class="fas fa-trash"></i> Del</a>';
                     return $btn;
                 })
-                ->rawColumns(['action'])
+                ->rawColumns(['action','status'])
                 ->make(true);
 
         }
@@ -56,6 +65,7 @@ class RiderController extends Controller
      */
     public function store(Request $request)
     {
+        
         $rules=[
             'rider_id'=>'required',
             'name'=>'required',
@@ -72,6 +82,7 @@ class RiderController extends Controller
         ];
         $this->validate($request,$rules,$message);
         $data=$request->except(['code']);
+        $data=$request->except(['items']);
         $arrayFiles=[];
         if(isset($request->attach_documents)) {
             foreach ($request->attach_documents as $files) {
@@ -93,9 +104,45 @@ class RiderController extends Controller
                 $tData['Parent_Type']=$ret->id;
                 $tData['code']=$code;
                 TransactionAccount::create($tData);
+                foreach($request->post('items') as $key=>$value){
+                    
+                    $p_data = [
+                        'item_id' => $key,
+                        'price' =>  $value,
+                        'RID'   => $ret->id,
+                        'VID'   => $request->post('VID')
+                    ];
+                    $condition = [
+                        'item_id' => $key,
+                        'RID'   => $ret->id,
+                        'VID'   => $request->post('VID')
+                    ];
+
+                    RiderItemPrice::updateOrCreate($condition,$p_data);
+
+                }
+                
+
             }else{
                 $ret=Rider::where('id',$id)->update($data);
                 TransactionAccount::where('Parent_Type',$id)->where('PID',9)->update($tData);
+                foreach($request->post('items') as $key=>$value){
+                    
+                    $p_data = [
+                        'item_id' => $key,
+                        'price' =>  $value,
+                        'RID'   => $id,
+                        'VID'   => $request->post('VID')
+                    ];
+                    $condition = [
+                        'item_id' => $key,
+                        'RID'   => $id,
+                        'VID'   => $request->post('VID')
+                    ];
+
+                    RiderItemPrice::updateOrCreate($condition,$p_data);
+
+                }
             }
             DB::commit();
             return $ret;
@@ -139,8 +186,22 @@ class RiderController extends Controller
      */
     public function edit($id)
     {
-        $res=Rider::find($id);
-        return $res;
+        $res=Rider::find($id)->toArray();
+        $result = $res;
+
+        $items = Item::all();
+    
+        foreach($items as $item){
+            $r_item = RiderItemPrice::where('RID',$id)->where('VID',$res['VID'])->where('item_id',$item->id)->first();
+            if($r_item){
+                $result['item-'.$item->id] = $r_item->price;
+            }else{
+                $result['item-'.$item->id] = 0;
+            }
+           
+        }
+        
+        return $result;
     }
 
     /**
@@ -165,6 +226,23 @@ class RiderController extends Controller
     {
         $ret=Rider::destroy($id);
         TransactionAccount::where('Parent_Type',$id)->where('PID',9)->delete();
+        if($ret){
+            return 1;
+        }
+    }
+
+    public function status($id)
+    {
+        $ret=Rider::find($id);
+        if( $ret->status == 0){
+            $ret->status = 1;
+        }else{
+            $ret->status = 0;
+        }
+        $ret->save();
+       
+
+        //TransactionAccount::where('Parent_Type',$id)->where('PID',9)->delete();
         if($ret){
             return 1;
         }
