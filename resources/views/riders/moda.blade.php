@@ -208,10 +208,46 @@
                     <!--col-->
                 </div>
                 <h3>Assign Price</h3>
-                <div class="row">
-                    
+                <div class="row pr-5 pl-5" >
+                    <table  class="table" style="border-radius:10px;">
+    <thead>
+        <tr class=" bg-light">
+            <td>Select Item</td>
+            <td>Enter Price</td>
+            <td>Action</td>
+        </tr>
+    </thead>
+    <tbody>
+       
+        <tr class=" bg-light">
+            <td class="col-sm-4">
+               
+                <select name="item_id" class="form-control form-control-sm" id="item_id"><option value="0">Select Item</option>
+                    @php
+                        $items = \App\Models\Item::all();
+                    @endphp
+                  @foreach($items as $item)
+                        <option value="{{$item->id}}">{{$item->item_name.' - '.$item->pirce}}</option>
+                   @endforeach
+               </select>
+            </td>
+            <td class="col-sm-4">
+                <label>Price: </label>
+                    <input type="number" step="any" name="item_price" id="item_price" />
+            </td>
+            <td >
+                <input type="button" class="btn btn-lg btn-dark btn-sm btn-block " style="width: 200px;background:#000;" id="addrow" value="Add Item" />
+            </td>
+           
+            {{-- <td class="col-sm-2"><input type="button" class="ibtnDel btn btn-md btn-danger btn-xs"  value="Delete"></td> --}}
+        </tr>
+    </tbody>
+   
+</table>
+<table id="myTable" class="table order-list">
+</table>
                 
-                        @php
+                      {{--   @php
                             $items = \App\Models\Item::all();
                            
                         @endphp
@@ -226,7 +262,7 @@
                             <input type="number" name="items[{{$item->id}}]" id="item-{{$item->id}}" step="any" class="form-control form-control-sm" />
                             </div>
                         @endforeach
-                        </div>
+                        </div> --}}
                 
             </div>
             <div class="modal-footer">

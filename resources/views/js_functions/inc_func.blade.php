@@ -3,6 +3,7 @@
         $("#form input[name~='id']").val(0);
         $('.select2').select2();
         this.form.reset();
+        $("table.order-list").html('');
         
     })
     // function save_rec(formUrl,formID){
@@ -66,6 +67,19 @@
                         $("#"+frmId+" input[id~='"+Object.keys(data)[i]+"']").val(Object.values(data)[i]);
                     }
                     $(".select2").select2();
+                    $("table.order-list").html('');
+                   if(data.items){
+                   
+                    /* data.items.forEach(item =>{
+                        RiderItems(item['item_id'],item['item_price']);
+                    }); */
+                    Object.entries(data.items).forEach(([key, value]) => {
+  
+                        RiderItems(key,value.item_price);
+                        });
+                        
+                    
+                   }
                 }
             })
         });

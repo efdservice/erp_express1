@@ -41,6 +41,7 @@
 	<link rel="stylesheet" href="{{ URL::asset('public/plugins/summernote/summernote-bs4.css') }}">
 </head>
 <body class="hold-transition sidebar-mini layout-navbar-fixed text-sm">
+	<input type="hidden" name="base_url" id='base_url' value="{{url('/')}}" />
         {{--<div class="loader-bg">--}}
 				{{--<div class="loader-bar">--}}
 				{{--</div>--}}

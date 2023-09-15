@@ -10,6 +10,7 @@ use App\Models\Accounts\Transaction;
 use App\Models\Accounts\TransactionAccount;
 use App\Models\AssignVendorRider;
 use App\Models\Item;
+use App\Models\Rider;
 use App\Models\RiderInvoice;
 use App\Models\RiderInvoiceItem;
 use App\Models\RiderItemPrice;
@@ -102,7 +103,8 @@ class RiderInvoiceController extends Controller
         $count=count($request->qty);
         try{
             //add vendor invoice item
-            $VID=AssignVendorRider::where('RID',$request->RID)->value('VID');
+            //$VID=AssignVendorRider::where('RID',$request->RID)->value('VID');
+            $VID = Rider::where('id',$request->RID)->value('VID');
             $data['VID']=$VID;
                 if($id==0 || $id=='') {
                     $inv = RiderInvoice::create($data);
@@ -148,7 +150,8 @@ class RiderInvoiceController extends Controller
                                 'inv_id' => $id,
                             ];
                             //add vendor invoice item
-                            $VID=AssignVendorRider::where('RID',$request->RID)->value('VID');
+                            //$VID=AssignVendorRider::where('RID',$request->RID)->value('VID');
+                            $VID = Rider::where('id',$request->RID)->value('VID');
                             $vArray[]=[
                                 'item_id' => $request['item_id'][$i],
                                 'qty' => $request['qty'][$i],

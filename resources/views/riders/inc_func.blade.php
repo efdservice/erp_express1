@@ -5,6 +5,7 @@
         $("#modal-new").modal();
          
            this.form.reset();
+           $("table.order-list").html('');
        
 
       
@@ -82,6 +83,33 @@
 
     //upload excelfile
     $(document).ready(function (e) {
+
+        //$("table.order-list").html('');
+       
+        var base_url = $('#base_url').val();
+
+        var counter = 0;
+
+    $("#addrow").on("click", function () {
+        var item_id = $('#item_id').val();
+            var item_price = $('#item_price').val();
+            RiderItems(item_id,item_price);
+            $('#item_id').val(0);
+        $('#item_price').val('');
+        counter++;
+    });
+
+
+
+    $("table.order-list").on("click", ".ibtnDel", function (event) {
+        $(this).closest("tr").remove();       
+        counter -= 1
+    });
+
+
+
+
+
         $("#upload-excel").on("submit",function (e){
             e.preventDefault();
             $.ajax({
@@ -147,4 +175,31 @@
             }
         });
     });
+
+
+function RiderItems(item_id,item_price){
+    var base_url = $('#base_url').val();
+
+    var newRow = $('<tr>');
+           
+            $.get(base_url+'/item-list?item_id='+item_id+'&item_price='+item_price).done(function(data){
+            newRow.append(data);
+        });
+      
+      /*   alert(cols);
+
+        cols += '<td><input type="button" class="ibtnDel btn btn-md btn-danger "  value="Delete"></td>'; */
+        //newRow.append(cols);
+        $("table.order-list").append(newRow);
+       
+}
+
+
+
+function addItemWithPrice(){
+    $('#item_id').val();
+    $('#ktem_price').val();
+
+
+}
 </script>

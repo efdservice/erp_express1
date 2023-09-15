@@ -65,7 +65,10 @@ class RiderController extends Controller
      */
     public function store(Request $request)
     {
-        
+       unset($request['item_id']);
+       unset($request['item_price']);
+      
+
         $rules=[
             'rider_id'=>'required',
             'name'=>'required',
@@ -104,6 +107,7 @@ class RiderController extends Controller
                 $tData['Parent_Type']=$ret->id;
                 $tData['code']=$code;
                 TransactionAccount::create($tData);
+                //RiderItemPrice::where('RID',$ret->id)->where('VID',$request->post('VID'))->delete();
                 foreach($request->post('items') as $key=>$value){
                     
                     $p_data = [
@@ -112,13 +116,8 @@ class RiderController extends Controller
                         'RID'   => $ret->id,
                         'VID'   => $request->post('VID')
                     ];
-                    $condition = [
-                        'item_id' => $key,
-                        'RID'   => $ret->id,
-                        'VID'   => $request->post('VID')
-                    ];
 
-                    RiderItemPrice::updateOrCreate($condition,$p_data);
+                    RiderItemPrice::create($p_data);
 
                 }
                 
@@ -126,6 +125,7 @@ class RiderController extends Controller
             }else{
                 $ret=Rider::where('id',$id)->update($data);
                 TransactionAccount::where('Parent_Type',$id)->where('PID',9)->update($tData);
+                RiderItemPrice::where('RID',$id)->delete();
                 foreach($request->post('items') as $key=>$value){
                     
                     $p_data = [
@@ -134,13 +134,8 @@ class RiderController extends Controller
                         'RID'   => $id,
                         'VID'   => $request->post('VID')
                     ];
-                    $condition = [
-                        'item_id' => $key,
-                        'RID'   => $id,
-                        'VID'   => $request->post('VID')
-                    ];
 
-                    RiderItemPrice::updateOrCreate($condition,$p_data);
+                    RiderItemPrice::create($p_data);
 
                 }
             }
@@ -194,11 +189,10 @@ class RiderController extends Controller
         foreach($items as $item){
             $r_item = RiderItemPrice::where('RID',$id)->where('VID',$res['VID'])->where('item_id',$item->id)->first();
             if($r_item){
-                $result['item-'.$item->id] = $r_item->price;
-            }else{
-                $result['item-'.$item->id] = 0;
+                $result['items'][$r_item->item_id]['item_id'] = $r_item->item_id;
+                $result['items'][$r_item->item_id]['item_price'] = $r_item->price;
+               
             }
-           
         }
         
         return $result;
@@ -246,6 +240,29 @@ class RiderController extends Controller
         if($ret){
             return 1;
         }
+    }
+
+
+    public function getItems(Request $request){
+        /* $random = rand(0,999);
+        $row = '<td>';
+        $row .= '<select name="items['.$random.'][item_id]" class="form-control form-control-sm""><option value="0">Select Item</option>';
+            $items = Item::all();
+            foreach($items as $item){
+                $row .='<option value="'.$item->id.'">'.$item->item_name.' - '.$item->pirce.'</option>';
+            }
+        $row .='</select></td>';
+        $row .='<td><label>Price: &nbsp;</label>';
+        $row .='<input type="number" step="any" name="items['.$random.'][price]" /></td>';
+        
+        $row .='<td><input type="button" class="ibtnDel btn btn-md btn-xs btn-danger "  value="Delete"></td>'; */
+
+       $item = Item::find($request->item_id);
+        $row = '<td width="250"><label>'.$item->item_name.'(Price: '.$item->pirce.')</label></td>                                
+        <td width="130"><input type="number" name="items['.$item->id.']" id="item-'.$item->id.'" value="'.$request->item_price.'" step="any" class="form-control form-control-sm" /></td>';
+        
+        $row .='<td width="300"><input type="button" class="ibtnDel btn btn-md btn-xs btn-danger "  value="Delete"></td>';
+      return $row;
     }
     /*
      *
