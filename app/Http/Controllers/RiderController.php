@@ -9,10 +9,12 @@ use App\Models\Files;
 use App\Models\Item;
 use App\Models\Rider;
 use App\Models\RiderItemPrice;
+use Form;
 use Illuminate\Http\Request;
 use Maatwebsite\Excel\Facades\Excel;
 use Yajra\DataTables\Facades\DataTables;
 use DB;
+use App\Helpers\CommonHelper;
 
 class RiderController extends Controller
 {
@@ -27,12 +29,23 @@ class RiderController extends Controller
             $data=Rider::latest()->get();
             return DataTables::of($data)
                 ->addIndexColumn()
-                ->addColumn('status', function($row){
-                    if($row->status){
-                        return '<a href="javascript:void(0)" data-toggle="tooltip"  data-action="'.url('rider-status/'.$row->id).'" data-original-title="Action" class="doAction" ><span class="badge badge-primary" >Active</span></a>';
-                     }else{
-                        return '<a href="javascript:void(0)" data-toggle="tooltip"  data-action="'.url('rider-status/'.$row->id).'" data-original-title="Action" class="doAction" ><span class="badge badge-danger">Deactive</span></a>';
+                ->addColumn('VID', function($row){
+                    return $row->vendor->name??'';
+                })
+                ->addColumn('license_no', function($row){
+                    $plate = '';
+                    foreach($row->bikes as $bike){
+                        $plate .= $bike->plate.', '??'';
                     }
+                    return $plate;
+                })
+                ->addColumn('status', function($row){
+                   
+                        return CommonHelper::RiderStatus($row->status);
+                        //return  Form::select('category_id', CommonHelper::RiderStatus(), $row->status, ['class' => 'statuschange','onchange' => 'changeStatus('.$row->id.',this)']);
+                        
+                        //return '<a href="javascript:void(0)" data-toggle="tooltip"  data-action="'.url('rider-status/'.$row->id).'" data-original-title="Action" class="doAction" ><span class="badge badge-primary" >Active</span></a>';
+                    
                      })
                 ->addColumn('action', function($row){
                     $btn = '<a href="'.route('rider.document',$row->id).'" data-toggle="tooltip" class="file btn btn-success btn-xs" data-modalID="modal-new"><i class="fas fa-file"></i> Documents</a>';
@@ -108,6 +121,7 @@ class RiderController extends Controller
                 $tData['code']=$code;
                 TransactionAccount::create($tData);
                 //RiderItemPrice::where('RID',$ret->id)->where('VID',$request->post('VID'))->delete();
+                if($request->post('items')){
                 foreach($request->post('items') as $key=>$value){
                     
                     $p_data = [
@@ -120,11 +134,13 @@ class RiderController extends Controller
                     RiderItemPrice::create($p_data);
 
                 }
+            }
                 
 
             }else{
                 $ret=Rider::where('id',$id)->update($data);
                 TransactionAccount::where('Parent_Type',$id)->where('PID',9)->update($tData);
+                if($request->post('items')){
                 RiderItemPrice::where('RID',$id)->delete();
                 foreach($request->post('items') as $key=>$value){
                     
@@ -138,6 +154,7 @@ class RiderController extends Controller
                     RiderItemPrice::create($p_data);
 
                 }
+            }
             }
             DB::commit();
             return $ret;
@@ -225,14 +242,12 @@ class RiderController extends Controller
         }
     }
 
-    public function status($id)
+    public function status(Request $request)
     {
+        $id = $request->post('id');
+        $status = $request->post('status');
         $ret=Rider::find($id);
-        if( $ret->status == 0){
-            $ret->status = 1;
-        }else{
-            $ret->status = 0;
-        }
+        $ret->status = $status;
         $ret->save();
        
 

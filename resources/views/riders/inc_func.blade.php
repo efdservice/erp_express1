@@ -70,8 +70,8 @@
                 {data: 'rider_id', name: 'rider_id'},
                 {data: 'name', name: 'name'},
                 {data: 'personal_contact', name: 'personal_contact'},
-                {data: 'personal_email', name: 'personal_email'},
-                {data: 'passport', name: 'passport'},
+               
+                {data: 'VID', name: 'VID'},
                 {data: 'license_no', name: 'license_no'},
                 {data: 'status', name: 'status'},
                 {data: 'action', name: 'action',
@@ -175,6 +175,35 @@
             }
         });
     });
+
+    function changeStatus(RID,ob){
+        var base_url = $('#base_url').val();
+        var url = base_url+'/rider-status';
+        x=confirm("Are you sure want to perform this action !");
+        if(!x){
+            return false;
+        }
+        let g=$(this);
+        var value = ob.value;
+       
+        $.ajax({
+            type: "POST",
+            url: url,
+            data:{id:RID,status:value},
+            success: function (data) {
+                if(data==1) {
+                    g.closest('tr').remove();
+                    $('.data-table').DataTable().ajax.reload();
+                    toastr.success('Action Performed Successfully..');
+                }else{
+                    toastr.error('Could not performed....!');
+                }
+            },
+            error: function (data) {
+                console.log('Error:', data);
+            }
+        });
+    }
 
 
 function RiderItems(item_id,item_price){

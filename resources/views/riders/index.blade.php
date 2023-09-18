@@ -33,9 +33,8 @@
                                         <th>ID</th>
                                         <th>Rider Name</th>
                                         <th>Contact</th>
-                                        <th>Email</th>
-                                        <th>Passport</th>
-                                        <th>License Number</th>
+                                        <th>Vendor</th>
+                                        <th>Bike Plate #</th>
                                         <th>Status</th>
                                         <th>Action</th>
                                     </tr>

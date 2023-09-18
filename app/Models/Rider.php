@@ -18,4 +18,12 @@ class Rider extends Model
         }
         return $list;
     }
+
+    public function vendor(){
+        return $this->hasOne(Vendor::class,'id','VID');
+    }
+
+    public function bikes(){
+        return $this->hasMany(Bike::class,'RID','id');
+    }
 }

@@ -134,8 +134,11 @@
                     <div class="col-md-3 form-group">
                         <label>Status</label>
                         <select class="form-control form-control-sm" name="status">
-                            <option value="0">Deactive</option>
-                            <option value="1">Active</option>
+                            @foreach(App\Helpers\CommonHelper::RiderStatus() as $key=>$value)
+                            <option value="{{$key}}">{{$value}}</option>
+                            @endforeach
+                            
+                          
                         </select>
                     </div>
                 </div>

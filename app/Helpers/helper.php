@@ -371,4 +371,19 @@ class CommonHelper{
 
     }
 
+    public static function RiderStatus($status= null){
+        $result =  [
+            1 => 'Active',
+            2 => 'Vacation',
+            3 => 'Terminate'
+        ];
+
+        if($status != null)
+        {
+            return $result[$status];
+        }else{
+            return $result;
+        }
+    }
+
 }
