@@ -45,6 +45,7 @@ class JournalVoucherController extends Controller
      */
     public function store(Request $request)
     {
+      
         $rules=[
             'trans_date'=>'required',
             'payment_type'=>'required',
@@ -57,11 +58,16 @@ class JournalVoucherController extends Controller
         $data=$request->except(['_token','narration','dr_amount','cr_amount','trans_acc_id']);
         $id=$request->id;
         //account entry
+        /* $data['trans_date']=date('Y-m-d',strtotime($request->trans_date));
+        $data['posting_date']=date('Y-m-d',strtotime($request->posting_date));
+        $tData['trans_date']=date('Y-m-d',strtotime($request->trans_date));
+        $tData['posting_date']=date('Y-m-d',strtotime($request->posting_date)); */
         $tData['trans_date']=$request->trans_date;
         $tData['posting_date']=$request->posting_date;
         $tData['status']=1;
         $tData['vt']=3;
         $tData['trans_code']=Account::trans_code();
+        
         DB::beginTransaction();
         try {
             $data['created_by']=Auth::user()->id;
@@ -124,7 +130,7 @@ class JournalVoucherController extends Controller
     }
         //@listing data
         public function get_data(Request $request){
-        return JournalVoucher::paginate(15);
+        return JournalVoucher::orderBy('id','DESC')->paginate(15);
     }
 
     /**

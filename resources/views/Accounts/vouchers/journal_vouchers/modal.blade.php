@@ -12,11 +12,11 @@
                     <div class="row">
                         <div class="form-group col-md-3">
                             <label for="exampleInputEmail1">Transaction Date</label>
-                            <input name="trans_date" class="form-control form-control-sm date" placeholder="Transaction Date" value="{{ date('Y-m-d') }}">
+                            <input type="month" name="trans_date" class="form-control form-control-sm " placeholder="Transaction Date" value="{{ date('Y-m-1') }}">
                         </div>
                         <div class="form-group col-md-3">
                             <label for="exampleInputEmail1">Posting Date</label>
-                            <input name="posting_date" class="form-control form-control-sm date" placeholder="Posting Date" value="{{ date('Y-m-d') }}">
+                            <input type="month" name="posting_date" class="form-control form-control-sm" placeholder="Posting Date" value="{{ date('Y-m-1') }}">
                         </div>
                         <div class="form-group col-md-3">
                             <label for="exampleInputEmail1">Payment Type</label>

@@ -1,13 +1,13 @@
 // JavaScript Document
 $(document).ready(function(){
-  $("input, select").focusin(function(){
+ /*  $("input, select").focusin(function(){
     $(this).css("background-color", "black");
 	$(this).css("color", "white");
   });
   $("input, select").focusout(function(){
     $(this).css("background-color", "#FFFFFF");
 	 $(this).css("color", "black");
-  });
+  }); */
 });
 $(document).on('focus', '.select2-selection.select2-selection--single', function (e) {
   $(this).closest(".select2-container").siblings('select:enabled').select2('open');

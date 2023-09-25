@@ -55,7 +55,7 @@
     </table>
     <table width="100%" style="font-family: sans-serif; margin-top: 20px;font-size: 12px">
         <tr>
-            <td style="padding: 3px;width: 65%;text-align: left;"><strong>Rider Name:</strong>:{{ \Illuminate\Support\Facades\DB::table("riders")->selectRaw('CONCAT(name," (",rider_id,")") AS rider_name')->value('rider_name') }}</td>
+            <td style="padding: 3px;width: 65%;text-align: left;"><strong>Rider Name:</strong>:{{ \Illuminate\Support\Facades\DB::table("riders")->selectRaw('CONCAT(name," (",rider_id,")") AS rider_name')->where('id',$res[0]->RID)->value('rider_name') }}</td>
             <th style="padding: 3px;width: 15%;text-align: left;">Invoice Date:</th>
             <td style="padding: 3px;width: 20%;text-align: left;">{{ date('Y-m-d h:i:s') }}</td>
         </tr>
