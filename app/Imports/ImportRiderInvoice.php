@@ -38,8 +38,10 @@ class ImportRiderInvoice implements ToCollection
             try {
                 DB::beginTransaction();
                 if ($row[0] != 'ID') {
-                    $RID = Rider::where('rider_id', $row[0])->value('id');
-                    $VID = AssignVendorRider::where('RID', $RID)->value('VID');
+                    $rider = Rider::where('rider_id', $row[0])->first();
+                    $RID = $rider->id;
+                    $VID = $rider->VID;
+                    //$VID = AssignVendorRider::where('RID', $RID)->value('VID');
                     $ret = RiderInvoice::create([
                         'inv_date' => date('Y-m-d'),
                         'RID' => $RID,
