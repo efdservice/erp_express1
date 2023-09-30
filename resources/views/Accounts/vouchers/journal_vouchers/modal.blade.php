@@ -25,14 +25,14 @@
                                 {!! App\Helpers\Account::payment_type() !!}
                             </select>
                         </div>
-                        <div class="col-md-2 form-group">
+                       {{--  <div class="col-md-2 form-group">
                             <label>Month of Invoice</label>
                             <select class="form-control form-control-sm" name="month">
                                 @for($i=1; $i<=12; $i++)
                                     <option value="{{ $i }}">{{ date('F',mktime(0, 0, 0, $i, 10)) }}</option>
                                 @endfor
                             </select>
-                        </div>
+                        </div> --}}
                         <!--col-->
                     </div>
                     <div class="row hide_row">

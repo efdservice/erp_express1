@@ -2,7 +2,7 @@
 <script>
     function add_new() {
         $(".select2").select2();
-        $("#new").modal();
+        $("#new").modal({backdrop: 'static', keyboard: false},'show');
         document.getElementById("form").reset();
         $("#form input[name~='id']").val(0);
         $("#new").find('.btn-success').text('Submit');

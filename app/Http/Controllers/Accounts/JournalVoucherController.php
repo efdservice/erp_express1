@@ -55,7 +55,7 @@ class JournalVoucherController extends Controller
             'payment_type.required'=>'Payment Type Required',
         ];
         $this->validate($request, $rules, $message);
-        $data=$request->except(['_token','narration','dr_amount','cr_amount','trans_acc_id']);
+        $data=$request->except(['_token','narration','dr_amount','cr_amount','trans_acc_id','id']);
         $id=$request->id;
         //account entry
         /* $data['trans_date']=date('Y-m-d',strtotime($request->trans_date));

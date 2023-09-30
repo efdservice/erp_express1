@@ -3,7 +3,7 @@
 <script type="text/javascript">
     function add_new(){
         $(".item:first-child").show();
-        $("#modal-new").modal();
+        $("#modal-new").modal({backdrop: 'static', keyboard: false},'show');
         $(".append-line").html('');
        document.getElementById("form").reset();
        $("#form input[name~='id']").val(0);

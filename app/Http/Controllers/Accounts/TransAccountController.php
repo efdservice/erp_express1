@@ -67,7 +67,7 @@ class TransAccountController extends Controller
             if ($id == '' || $id == 0) {
                 TransactionAccount::create($data);
             } else {
-                dd($data);
+                
                 TransactionAccount::where('id', $id)->update($data);
             }
             DB::commit();
@@ -132,5 +132,6 @@ class TransAccountController extends Controller
     public function destroy($id)
     {
         //
+        TransactionAccount::where('id', $id)->delete();
     }
 }

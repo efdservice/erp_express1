@@ -2,7 +2,7 @@
 <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.25/js/jquery.dataTables.js" defer></script>
 <script type="text/javascript">
     function add_new(){
-        $("#modal-new").modal();
+        $("#modal-new").modal({backdrop: 'static', keyboard: false},'show');
     }
     $("#form").submit(function (e) {
         let formID='form';
