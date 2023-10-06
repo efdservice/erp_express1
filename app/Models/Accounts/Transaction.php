@@ -26,4 +26,6 @@ class Transaction extends Model
     public function trans_acc(){
         return $this->belongsTo(TransactionAccount::class,'trans_acc_id','id');
     }
+
+    
 }

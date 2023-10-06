@@ -139,7 +139,7 @@ class RiderController extends Controller
 
             }else{
                 $ret=Rider::where('id',$id)->update($data);
-                TransactionAccount::where('Parent_Type',$id)->where('PID',9)->update($tData);
+                TransactionAccount::where('Parent_Type',$id)->where('PID',21)->update($tData);
                 if($request->post('items')){
                 RiderItemPrice::where('RID',$id)->delete();
                 foreach($request->post('items') as $key=>$value){

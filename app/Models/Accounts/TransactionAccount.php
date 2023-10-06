@@ -60,4 +60,18 @@ class TransactionAccount extends Model
     public function rider(){
         return $this->belongsTo(Rider::class,'Parent_Type','id');
     }
+
+    public static function getSubAccounts($id){
+        $TA = self::find($id);
+        if($TA->PID == 9){
+            $ids =self::selectRaw('transaction_accounts.id')->join('riders','riders.id','transaction_accounts.Parent_Type')
+            ->where('VID',$TA->Parent_Type)->where('transaction_accounts.PID',21)->pluck('transaction_accounts.id')->toArray();
+            return $ids;
+        }else{
+            return array();
+        }      
+
+    }
+
+    
 }

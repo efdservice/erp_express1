@@ -25,3 +25,27 @@ MODIFY COLUMN `posting_date`  varchar(50) NULL DEFAULT '' AFTER `trans_date`;
 ALTER TABLE `receipt_vouchers`
 MODIFY COLUMN `trans_date`  varchar(50) NOT NULL AFTER `id`,
 MODIFY COLUMN `posting_date`  varchar(50) NULL DEFAULT '' AFTER `trans_date`;
+
+---------------------------------
+
+ALTER TABLE `transactions`
+MODIFY COLUMN `trans_date`  date NOT NULL AFTER `trans_acc_id`,
+MODIFY COLUMN `posting_date`  date NULL AFTER `trans_date`;
+
+ALTER TABLE `journal_vouchers`
+MODIFY COLUMN `trans_date`  date NOT NULL AFTER `id`,
+MODIFY COLUMN `posting_date`  date NULL  AFTER `trans_date`;
+
+ALTER TABLE `transactions`
+MODIFY COLUMN `trans_date`  date NOT NULL AFTER `trans_acc_id`,
+MODIFY COLUMN `posting_date`  date NOT NULL AFTER `trans_date`;
+
+ALTER TABLE `payment_vouchers`
+MODIFY COLUMN `trans_date`  date NOT NULL AFTER `id`,
+MODIFY COLUMN `posting_date`  date NULL AFTER `trans_date`;
+
+--------------
+
+ALTER TABLE `riders`
+ADD COLUMN `TAID`  bigint(20) NULL AFTER `status`;
+

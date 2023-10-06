@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Accounts\Reports;
 
 use App\Helpers\CommonHelper;
 use App\Http\Controllers\Controller;
+use App\Models\Accounts\TransactionAccount;
 use Illuminate\Http\Request;
 use App\Models\Accounts\Transaction;
 use App\Helpers\Account;
@@ -22,12 +23,22 @@ class LedgerController extends Controller
     //fetch data on click search button
     public function get_ledger(Request $request){
         $tdr=0; $tcr=0; $cb=0;
-        $res=Transaction::whereBetween('trans_date', [$request->df, $request->dt])
+
+        $ids = TransactionAccount::getSubAccounts($request->ledger_id);
+       
+        if(count($ids) > 1){
+            $res=Transaction::whereBetween('trans_date', ["$request->df", "$request->dt"])
+            ->whereIn('trans_acc_id',$ids)->where('status',1)->get();
+        }else{
+            $res=Transaction::whereBetween('trans_date', ["$request->df", "$request->dt"])
             ->where(['trans_acc_id'=>$request->ledger_id, 'status'=>1])->get();
+        }
+       
 
         $ob=Account::ob($request->df, $request->ledger_id);
+
         $data='';
-        $ob=Account::ob($request->df, $request->ledger_id);
+        //$ob=Account::ob($request->df, $request->ledger_id);
         $data.='<tr>';
             $data.='<td colspan="7" align="right">Opening Balance As At '.$request->df.'</td>';
             $data.='<td align="right">'.Account::show_bal($ob).'</td>';
