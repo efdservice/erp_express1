@@ -70,7 +70,7 @@
 
         </tr>
     </table>
-    <table style="width: 100%; font-family: sans-serif;text-align: center;border: 1px solid #000; border-collapse: collapse; margin-top: 20px;font-size: 12px;">
+    <table style="width: 100%; font-family: sans-serif;text-align: left;border: 1px solid #000; border-collapse: collapse; margin-top: 20px;font-size: 12px;">
         <thead>
         <tr style="border: 1px solid #000;">
             <th style="border: 1px solid #000; padding: 10px;width: 20px;">Sr</th>
@@ -81,8 +81,13 @@
         </tr>
         </thead>
         <tbody>
-        @php $td=0; $tc=0; @endphp
+        @php $td=0; $tc=0; 
+        $code ='';
+        @endphp
         @foreach($data as $key=>$val)
+        @php
+            $code ='';
+        @endphp
             @php
                 if($val->dr_cr==1)
                 {
@@ -92,11 +97,20 @@
                 {
                     $tc+=$val->amount;
                 }
+
+                if($val->trans_acc->PID == 21){
+                $rider = app\Helpers\Account::getRider($val->trans_acc->Parent_Type);
+                $code = $rider->rider_id.' - ';
+
+            }
             @endphp
+
+          
             <tr>
                 <td style="padding: 5px;border:1px solid">{{ $key+1 }}</td>
                 <td style="padding: 5px;border:1px solid">
-                    {{ \App\Models\Accounts\TransactionAccount::where('id',$val->trans_acc_id)->value('trans_acc_name') }}
+                    {{ $code.$val->trans_acc->Trans_Acc_Name}}
+                    {{-- {{ \App\Models\Accounts\TransactionAccount::where('id',$val->trans_acc_id)->value('trans_acc_name') }} --}}
                 </td>
                 <td style="padding: 5px;border:1px solid;text-align: left">{{ $val->narration }}</td>
                 <td style="padding:5px;border:1px solid">@if($val->dr_cr==1) {{ $val->amount }} @else 0.00 @endif</td>

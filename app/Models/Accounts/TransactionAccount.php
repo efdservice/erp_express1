@@ -22,9 +22,9 @@ class TransactionAccount extends Model
             $rider_id='';
             if($re->PID==21) {
                 $rider_id = Rider::where('id', $re->Parent_Type)->value('rider_id');
-                $rider_id='('.$rider_id.')';
+                $rider_id=$rider_id.'-';
             }
-            $list.='<option '.($id==$re->id?'selected':'').' value="'.$re->id.'">'.$re->Trans_Acc_Name.' '.$rider_id.'</option>';
+            $list.='<option '.($id==$re->id?'selected':'').' value="'.$re->id.'">'.$rider_id.$re->Trans_Acc_Name.'</option>';
         }
         return $list;
     }
