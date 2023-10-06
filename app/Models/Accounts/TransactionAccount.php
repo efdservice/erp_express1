@@ -58,7 +58,7 @@ class TransactionAccount extends Model
 
     //relation with rider
     public function rider(){
-        return $this->belongsTo(Rider::class,'Parent_Type','id');
+        return $this->belongsTo(Rider::class,'Parent_Type','id')->where('PID',21);
     }
 
     public static function getSubAccounts($id){

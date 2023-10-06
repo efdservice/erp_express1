@@ -65,7 +65,7 @@ class ReceiptVoucherController extends Controller
         //account entry
         $tData['trans_date']=$request->trans_date;
         $tData['payment_type']=$request->payment_type;
-        $tData['posting_date']=$request->posting_date;
+        $tData['posting_date']=$request->trans_date;
         $tData['payment_to']=$request->payment_to;
         $tData['payment_from']=$request->payment_from;
         $tData['narration']=$request->narration;

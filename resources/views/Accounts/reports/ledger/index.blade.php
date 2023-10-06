@@ -49,6 +49,7 @@
                                 <tr>
                                     <th>#</th>
                                     <th>Date</th>
+                                    <th>Account</th>
                                     <th>VT</th>
                                     <th>Voucher</th>
                                     <th>Description</th>

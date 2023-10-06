@@ -55,13 +55,13 @@ class RiderPvController extends Controller
         ];
         $this->validate($request, $rules, $message);
         $data['trans_date']=$request->trans_date;
-        $data['posting_date']=$request->posting_date;
+        $data['posting_date']=$request->trans_date;
         $data['payment_from']=$request->payment_from;
         $data['payment_type']=$request->payment_from;
         $id=$request->id;
         //account entry
         $tData['trans_date']=$request->trans_date;
-        $tData['posting_date']=$request->posting_date;
+        $tData['posting_date']=$request->trans_date;
 //        $tData['payment_to']=$request->payment_to;
         $tData['payment_from']=$request->payment_from;
         $tData['status']=1;

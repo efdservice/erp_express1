@@ -43,6 +43,7 @@ class LedgerController extends Controller
             $data.='<td colspan="7" align="right">Opening Balance As At '.$request->df.'</td>';
             $data.='<td align="right">'.Account::show_bal($ob).'</td>';
         $data.='</tr>';
+        $code = '';
         foreach ($res as $item){
             if($item->dr_cr==1){
                 $tdr+=$item->amount;
@@ -50,10 +51,16 @@ class LedgerController extends Controller
             if($item->dr_cr==2){
                 $tcr+=$item->amount;
             }
+            if($item->trans_acc->PID == 21){
+                $rider = Account::getRider($item->trans_acc->Parent_Type);
+                $code = '('.$rider->rider_id.')';
+
+            }
             $cb=$ob+($tdr-$tcr);
             $data.='<tr>';
                 $data.='<td></td>';
                 $data.='<td>'.$item->trans_date.'</td>';
+                $data.='<td>'.$item->trans_acc->Trans_Acc_Name.$code.'</td>';
                 $data.='<td>'.Account::vt($item->vt).'</td>';
                 $data.='<td>'.CommonHelper::dsn($item->trans_code).'</td>';
                 $data.='<td>'.$item->narration.'</td>';

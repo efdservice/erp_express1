@@ -11,13 +11,13 @@
                 <div class="modal-body">
                     <div class="row">
                         <div class="form-group col-md-2">
-                            <label for="exampleInputEmail1">Transaction Date</label>
-                            <input name="trans_date" class="form-control form-control-sm date" placeholder="Transaction Date">
+                            <label for="exampleInputEmail1">Date</label>
+                            <input name="trans_date" class="form-control form-control-sm date" placeholder="Transaction Date" value="{{ date('Y-m-d') }}">
                         </div>
-                        <div class="form-group col-md-2">
+                       {{--  <div class="form-group col-md-2">
                             <label for="exampleInputEmail1">Posting Date</label>
                             <input  name="posting_date" class="form-control form-control-sm date" placeholder="Posting Date">
-                        </div>
+                        </div> --}}
                         <div class="form-group col-md-3">
                             <label for="exampleInputEmail1">Bank/Cash A/C</label>
                             <select name="payment_from" class="form-control form-control-sm select2">

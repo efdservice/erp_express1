@@ -63,7 +63,7 @@ class JournalVoucherController extends Controller
         $tData['trans_date']=date('Y-m-d',strtotime($request->trans_date));
         $tData['posting_date']=date('Y-m-d',strtotime($request->posting_date)); */
         $tData['trans_date']=$request->trans_date;
-        $tData['posting_date']=$request->posting_date;
+        $tData['posting_date']=$request->trans_date;
         $tData['status']=1;
         $tData['vt']=3;
         $tData['trans_code']=Account::trans_code();

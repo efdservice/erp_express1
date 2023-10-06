@@ -2,6 +2,7 @@
 namespace App\Helpers;
 use App\Models\Accounts\Transaction;
 use App\Models\Accounts\TransactionAccount;
+use App\Models\Rider;
 use DB;
 use Session;
 
@@ -176,5 +177,9 @@ class Account{
     public static function current_code($str, $id){
         $code=date('my');
         return $str.'-'.$code.$id;
+    }
+
+    public static function getRider($id){
+        return Rider::find($id);
     }
 }
