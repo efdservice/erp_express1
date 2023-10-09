@@ -27,6 +27,9 @@ class LedgerController extends Controller
         $ids = TransactionAccount::getSubAccounts($request->ledger_id);
        
         if(count($ids) > 1){
+            
+            array_push($ids,$request->ledger_id);
+           
             $res=Transaction::whereBetween('trans_date', ["$request->df", "$request->dt"])
             ->whereIn('trans_acc_id',$ids)->where('status',1)->get();
         }else{
@@ -38,9 +41,9 @@ class LedgerController extends Controller
         $ob=Account::ob($request->df, $request->ledger_id);
 
         $data='';
-        //$ob=Account::ob($request->df, $request->ledger_id);
+        $ob=Account::ob($request->df, $request->ledger_id);
         $data.='<tr>';
-            $data.='<td colspan="7" align="right">Opening Balance As At '.$request->df.'</td>';
+            $data.='<td colspan="8" align="right">Opening Balance As At '.$request->df.'</td>';
             $data.='<td align="right">'.Account::show_bal($ob).'</td>';
         $data.='</tr>';
        
@@ -71,7 +74,7 @@ class LedgerController extends Controller
             $data.='</tr>';
         }
         $data.='<tr>';
-        $data.='<td colspan="5"></td>';
+        $data.='<td colspan="6"></td>';
         $data.='<th> '.number_format($tdr,2).'</th>';
         $data.='<th> '.number_format($tcr,2).'</th>';
         $data.='<th style="text-align: right">'.Account::show_bal($cb).'</th>';
