@@ -112,7 +112,11 @@
     }
     $(document).on("click",".get-bike-id",function () {
             var id=$(this).attr("data-id");
+            var rider=$(this).attr("data-rider");
             $("#rider-form input[name~='BID']").val(id);
+            $("#rider-form select[name~='RID']").val(rider);
+           
+
             $.ajax({
                url:'{{ url('bike/get_bike_history') }}/'+id,
                type:"GET",
@@ -121,7 +125,8 @@
                     for(i in data){
                         htmlData+='<tr>';
                             htmlData+='<td>'+data[i].rider.name+'</td>';
-                            htmlData+='<td>'+data[i].created_at+'</td>';
+                            htmlData+='<td>'+data[i].note_date+'</td>';
+                            htmlData+='<td>'+data[i].notes+'</td>';
                         htmlData+='</tr>';
                     }
                     $("#rider_history").html(htmlData);

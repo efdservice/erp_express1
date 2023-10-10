@@ -48,4 +48,10 @@ MODIFY COLUMN `posting_date`  date NULL AFTER `trans_date`;
 
 ALTER TABLE `riders`
 ADD COLUMN `TAID`  bigint(20) NULL AFTER `status`;
+-----------------
 
+ALTER TABLE `bike_histories`
+ADD COLUMN `note_date`  datetime NULL AFTER `updated_at`;
+
+ALTER TABLE `bike_histories`
+MODIFY COLUMN `note_date`  date NULL DEFAULT NULL AFTER `updated_at`;

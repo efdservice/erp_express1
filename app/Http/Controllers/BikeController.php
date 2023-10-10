@@ -37,7 +37,7 @@ class BikeController extends Controller
                         <div class="dropdown-divider"></div>
                         <a href="javascript:void(0)" data-toggle="tooltip"  data-action="'.route('bike.store').'/'.$row->id.'" data-original-title="Delete" class="dropdown-item deleteRecord"><i class="fas fa-trash"></i> Del</a>
                         <div class="dropdown-divider"></div>
-                        <a href="javascript:void(0)" data-toggle="modal" data-target="#change-rider" data-id="'.$row->id.'" class="dropdown-item get-bike-id"><i class="fas fa-user-edit"></i> Change Rider</a>
+                        <a href="javascript:void(0)" data-toggle="modal" data-target="#change-rider" data-id="'.$row->id.'" data-rider="'.$row->rider->rider_id.'" class="dropdown-item get-bike-id"><i class="fas fa-user-edit"></i> Change Status</a>
                       </div>
                     </div>';
                     return $btn;
@@ -188,7 +188,7 @@ class BikeController extends Controller
      * get_bike_history
      */
     public function get_bike_history($id){
-        $res=BikeHistory::with('rider')->where('BID',$id)->get();
+        $res=BikeHistory::with('rider')->where('BID',$id)->orderBy('note_date','DESC')->limit(10)->get();
         return $res;
     }
 
