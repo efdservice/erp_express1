@@ -125,10 +125,10 @@
                     </div>
                     <!--col-->
                     <div class="col-md-3 form-group">
-                        <label>Vaccine Status</label>
-                        <select class="form-control form-control-sm" name="vaccine_status">
-                            <option value="0">Pending</option>
-                            <option value="1">Done</option>
+                        <label>Fleet Supervisor</label>
+                        <select class="form-control form-control-sm" name="fleet_supervisor">
+                            <option value="Rusbeel Yousaf">Rusbeel Yousaf</option>
+                            <option value="Kaleem Ullah">Kaleem Ullah</option>
                         </select>
                     </div>
                     <div class="col-md-3 form-group">
