@@ -28,6 +28,13 @@
                             {!! \App\Models\Rider::dropdown() !!}
                         </select>
                     </div>
+                    <div class="col-md-6 form-group">
+                        <label>Fleet Supervisor</label>
+                        <select class="form-control form-control-sm" name="fleet_supervisor">
+                            <option value="Rusbeel Yousaf">Rusbeel Yousaf</option>
+                            <option value="Kaleem Ullah">Kaleem Ullah</option>
+                        </select>
+                    </div>
                     <!--col-->
 {{--                    <div class="col-md-4 form-group">--}}
 {{--                        <label>Attach Documents</label>--}}

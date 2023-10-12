@@ -59,3 +59,11 @@ MODIFY COLUMN `note_date`  date NULL DEFAULT NULL AFTER `updated_at`;
 
 ALTER TABLE `riders`
 ADD COLUMN `fleet_supervisor`  varchar(50) NULL AFTER `TAID`;
+
+ALTER TABLE `bikes`
+ADD COLUMN `fleet_supervisor`  varchar(50) NULL AFTER `updated_at`;
+
+ALTER TABLE `sims`
+ADD COLUMN `fleet_supervisor`  varchar(50) NULL AFTER `updated_at`;
+
+----------------------------------
