@@ -130,7 +130,16 @@ class JournalVoucherController extends Controller
     }
         //@listing data
         public function get_data(Request $request){
-        return JournalVoucher::orderBy('id','DESC')->paginate(15);
+            $res = JournalVoucher::select('*');
+            if($request->post()){
+                if($request->df){
+                    $res = $res->whereBetween('trans_date', ["$request->df", "$request->dt"]);
+                }
+                if($request->voucher){
+                    $res = $res->where('trans_code', $request->voucher);
+                }
+            }
+        return $res->orderBy('trans_code','DESC')->paginate(15);
     }
 
     /**

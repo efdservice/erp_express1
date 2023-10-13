@@ -26,19 +26,21 @@
                     <div class="card rounded-0">
                         <!-- /.card-header -->
                         <div class="card-body">
+                            <form id="form">
                             <div class="row">
                                 <div class="col-md-2">
-                                    <input type="text" class="form-control form-control-sm" placeholder="From Date">
+                                    <input type="text" name="df" class="form-control form-control-sm date" placeholder="From Date">
                                 </div>
                                 <div class="col-md-2">
-                                    <input type="text" class="form-control form-control-sm" placeholder="To Date">
+                                    <input type="text" name="dt" class="form-control form-control-sm date" placeholder="To Date">
                                 </div>
                                 <div class="col-md-2">
-                                    <input type="text" class="form-control form-control-sm" placeholder="Searh With Voucher#">
+                                    <input type="text" name="voucher" class="form-control form-control-sm" placeholder="Searh With Voucher#">
                                 </div>
                                 <div class="col-md-2">
-                                    <button type="text" class="btn btn-flat btn-xs btn-dark"><i class="fas fa-search"></i> </button>
+                                    <button type="button" class="btn btn-xs btn-primary" onclick="get_data()"><i class="fa fa-search"></i> </button>
                                 </div>
+                            </form>
                             </div>
                             <button class="btn btn-xs btn-dark float-right" onclick="add_new()">Add New</button>
                             <table id="example2" class="table table-bordered table-hover">
@@ -82,6 +84,7 @@
             $(".append-line").html('');
         }
         $(document).ready(function () {
+            get_data();
             $(".client_inv").on("change",function () {
                 var pt=$(this).closest('form').find('.pt').val();
                 if(pt==1){
@@ -128,13 +131,14 @@
                 }
             })
         }
-        get_data();
+        //get_data();
         function get_data(page){
             $("#loader").show();
             $.ajax({
                 url:"{{ url('Accounts/vouchers/get_journal_vouchers') }}?page="+page,
                 headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
                 type:"POST",
+                data:$("#form").serialize(),
                 dataType:"JSON",
                 success:function (data) {
                     htmlData='';
