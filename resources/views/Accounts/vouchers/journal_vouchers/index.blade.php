@@ -26,7 +26,7 @@
                     <div class="card rounded-0">
                         <!-- /.card-header -->
                         <div class="card-body">
-                            <form id="form">
+                            <form id="form2">
                             <div class="row">
                                 <div class="col-md-2">
                                     <input type="text" name="df" class="form-control form-control-sm date" placeholder="From Date">
@@ -138,7 +138,7 @@
                 url:"{{ url('Accounts/vouchers/get_journal_vouchers') }}?page="+page,
                 headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
                 type:"POST",
-                data:$("#form").serialize(),
+                data:$("#form2").serialize(),
                 dataType:"JSON",
                 success:function (data) {
                     htmlData='';
