@@ -32,10 +32,18 @@ class RiderController extends Controller
                 ->addColumn('VID', function($row){
                     return $row->vendor->name??'';
                 })
+                ->addColumn('id', function($row){
+                    //return $row->sim->sim_number??'';
+                    $sim = '';
+                    foreach($row->sims as $item){
+                        $sim .= $item->sim_number.' '??'';
+                    }
+                    return $sim;
+                })
                 ->addColumn('license_no', function($row){
                     $plate = '';
                     foreach($row->bikes as $bike){
-                        $plate .= $bike->plate.', '??'';
+                        $plate .= $bike->plate.' '??'';
                     }
                     return $plate;
                 })

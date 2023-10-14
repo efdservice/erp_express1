@@ -26,4 +26,8 @@ class Rider extends Model
     public function bikes(){
         return $this->hasMany(Bike::class,'RID','id');
     }
+
+    public function sims(){
+        return $this->hasMany(Sim::class,'assign_sim','id');
+    }
 }

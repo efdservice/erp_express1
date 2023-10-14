@@ -32,8 +32,9 @@
                                     <tr>
                                         <th>ID</th>
                                         <th>Rider Name</th>
-                                        <th>Contact</th>
+                                        <th>Supervisor</th>
                                         <th>Vendor</th>
+                                        <th>Sim</th>
                                         <th>Bike Plate #</th>
                                         <th>Status</th>
                                         <th>Action</th>

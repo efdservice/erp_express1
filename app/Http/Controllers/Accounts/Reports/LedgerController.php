@@ -31,10 +31,10 @@ class LedgerController extends Controller
             array_push($ids,$request->ledger_id);
            
             $res=Transaction::whereBetween('trans_date', ["$request->df", "$request->dt"])
-            ->whereIn('trans_acc_id',$ids)->where('status',1)->get();
+            ->whereIn('trans_acc_id',$ids)->where('status',1)->orderBy('trans_date','ASC')->get();
         }else{
             $res=Transaction::whereBetween('trans_date', ["$request->df", "$request->dt"])
-            ->where(['trans_acc_id'=>$request->ledger_id, 'status'=>1])->get();
+            ->where(['trans_acc_id'=>$request->ledger_id, 'status'=>1])->orderBy('trans_date','ASC')->get();
         }
        
 
