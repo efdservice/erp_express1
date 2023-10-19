@@ -3,6 +3,7 @@
 <script type="text/javascript">
     function add_new(){
         $("#modal-new").modal({backdrop: 'static', keyboard: false},'show');
+        $("#rider_select1").show("fast");
     }
 
     $("#form").submit(function (e) {
@@ -75,6 +76,16 @@
     /*
     change rider
      */
+
+   function bike_status() {
+       var status = $('.warehouse').find(":selected").val();
+       if(status == 'Active'){
+        $("#rider_select").show("fast");
+       }else{
+        $("#rider_select").hide("fast");
+       }
+    }
+
     function change_rider() {
         var formID='rider-form';
         $.ajax({
@@ -124,7 +135,8 @@
                     var htmlData='';
                     for(i in data){
                         htmlData+='<tr>';
-                            htmlData+='<td>'+data[i].rider.name+'</td>';
+                            htmlData+='<td>'+data[i].rider?.name+'</td>';
+                            htmlData+='<td>'+data[i].warehouse+'</td>';
                             htmlData+='<td>'+data[i].note_date+'</td>';
                             htmlData+='<td>'+data[i].notes+'</td>';
                         htmlData+='</tr>';
@@ -133,4 +145,12 @@
                }
             });
     });
+
+    $("body").on("click", ".editRec",function (){
+        $("#rider_select1").hide("fast");
+
+    });
+    
+
+
 </script>

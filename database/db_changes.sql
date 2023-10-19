@@ -66,4 +66,18 @@ ADD COLUMN `fleet_supervisor`  varchar(50) NULL AFTER `updated_at`;
 ALTER TABLE `sims`
 ADD COLUMN `fleet_supervisor`  varchar(50) NULL AFTER `updated_at`;
 
-----------------------------------
+----------------------------------\
+
+ALTER TABLE `bike_histories`
+ADD COLUMN `warehouse`  varchar(50) NULL AFTER `note_date`;
+
+ALTER TABLE `bike_histories`
+MODIFY COLUMN `RID`  bigint(20) UNSIGNED NULL AFTER `BID`;
+
+ALTER TABLE `bikes`
+MODIFY COLUMN `RID`  bigint(20) UNSIGNED NULL AFTER `company`;
+
+
+
+
+

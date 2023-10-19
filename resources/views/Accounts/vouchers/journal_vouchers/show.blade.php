@@ -58,7 +58,7 @@
         <tr>
             <td style="padding: 3px;width: 65%;text-align: left;"><strong>Voucher No</strong>: {{ $result->trans_code }}</td>
             <th style="padding: 3px;width: 15%;text-align: left;">Voucher Date:</th>
-            <td style="padding: 3px;width: 20%;text-align: left;">{{ date('Y-m-d') }}</td>
+            <td style="padding: 3px;width: 20%;text-align: left;">{{ $result->trans_date }}</td>
         </tr>
         <tr>
             <td style="padding: 3px;width: 65%;text-align: left;"><strong>Voucher Type</strong>: Payment Voucher</td>

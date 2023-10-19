@@ -23,6 +23,10 @@ class Rider extends Model
         return $this->hasOne(Vendor::class,'id','VID');
     }
 
+    public function project(){
+        return $this->hasOne(Projects::class,'id','PID');
+    }
+
     public function bikes(){
         return $this->hasMany(Bike::class,'RID','id');
     }

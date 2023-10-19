@@ -32,6 +32,9 @@ class RiderController extends Controller
                 ->addColumn('VID', function($row){
                     return $row->vendor->name??'';
                 })
+                ->addColumn('PID', function($row){
+                    return $row->project->name??'';
+                })
                 ->addColumn('id', function($row){
                     //return $row->sim->sim_number??'';
                     $sim = '';

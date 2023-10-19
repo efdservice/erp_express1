@@ -176,6 +176,17 @@ class CommonHelper{
         }
         return $list;
     }
+
+    public static function get_warehouse($id=0){
+        $array=['Active'=>'Active','Impound'=>'Impound', 'City Garage'=>'City Garage', 'Clutch Garage'=>'Clutch Garage', 'Express Garage'=>'Express Garage',
+        'Al Sama Garage'=>'Al Sama Garage', 'Easy Lease Garage'=>'Easy Lease Garage'];
+        $list='';
+        foreach ($array as $key => $value){
+            $list.='<option '.($id==$key?'selected':'').' value="'.$key.'">'.$value.'</option>';
+        }
+        return $list;
+        
+    }
     //@dropdown hotel start
     public static function hotel_star($id=0){
         $list='';

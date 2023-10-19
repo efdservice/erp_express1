@@ -11,8 +11,15 @@
                 </div>
                 <div class="modal-body">
                     <div class="row">
+                        
                         <div class="col-md-4 form-group">
-                            <label>Select Rider</label>
+                            <label>Change Status</label>
+                            <select class="form-control form-control-sm warehouse select2" name="warehouse" id="warehouse" onchange="bike_status()">
+                                {!! App\Helpers\CommonHelper::get_warehouse() !!}
+                            </select>
+                        </div>
+                        <div class="col-md-4 form-group" id="rider_select">
+                            <label>Change Rider</label>
                             <select class="form-control form-control-sm select2" name="RID" id="rider_change">
                                 <option value="">--Select--</option>
                                 {!! \App\Models\Rider::dropdown() !!}
@@ -45,6 +52,7 @@
                         <table class="table">
                             <tr>
                                 <th>Rider</th>
+                                <th>Status</th>
                                 <th>Date</th>
                                 <th>Note</th>
                             </tr>

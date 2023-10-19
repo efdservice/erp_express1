@@ -46,7 +46,7 @@
                         <input type="text" class="form-control form-control-sm" name="company" placeholder="Company">
                     </div>
                     <!--col-->
-                    <div class="col-md-4 form-group">
+                    <div class="col-md-4 form-group" id="rider_select1">
                         <label>Assign to Rider</label>
                         <select class="form-control form-control-sm select2" name="RID">
                             <option value="">Select Rider</option>

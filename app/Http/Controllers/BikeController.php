@@ -24,7 +24,11 @@ class BikeController extends Controller
             return DataTables::of($data)
                 ->addIndexColumn()
                 ->addColumn('rider_name', function($row){
-                    return $row->rider->name.'('.$row->rider->rider_id.')';
+                    if($row->rider){
+                        return $row->rider->name.'('.$row->rider->rider_id.')';
+                    }else{
+                        return '';
+                    }
                 })
                 ->addColumn('action', function($row){
                     $btn = '';
@@ -37,7 +41,7 @@ class BikeController extends Controller
                         <div class="dropdown-divider"></div>
                         <a href="javascript:void(0)" data-toggle="tooltip"  data-action="'.route('bike.store').'/'.$row->id.'" data-original-title="Delete" class="dropdown-item deleteRecord"><i class="fas fa-trash"></i> Del</a>
                         <div class="dropdown-divider"></div>
-                        <a href="javascript:void(0)" data-toggle="modal" data-target="#change-rider" data-id="'.$row->id.'" data-rider="'.$row->rider->rider_id.'" class="dropdown-item get-bike-id"><i class="fas fa-user-edit"></i> Change Status</a>
+                        <a href="javascript:void(0)" data-toggle="modal" data-target="#change-rider" data-id="'.$row->id.'"  class="dropdown-item get-bike-id"><i class="fas fa-user-edit"></i> Change Status</a>
                       </div>
                     </div>';
                     return $btn;
@@ -72,7 +76,7 @@ class BikeController extends Controller
             'chassis_number'=>'required',
             'engine'=>'required',
             'company'=>'required',
-            'RID'=>'required',
+            'RID'=>'unique:bike',
         ];
         $message=[
             'plate.required'=>'Plate Required',
@@ -162,11 +166,11 @@ class BikeController extends Controller
     public function change_rider(Request $request){
         $rules=[
             'BID'=>'required',
-            'RID'=>'required',
+            'RID'=>'unique:bikes',
         ];
         $message=[
             'BID.required'=>'ID Required',
-            'RID.required'=>'Rider Required',
+            'RID.required'=>'Rider has already taken.',
         ];
         $this->validate($request,$rules,$message);
         $data=$request->all();
