@@ -83,7 +83,7 @@ class BikeController extends Controller
             'chassis_number.required'=>'Chassis number Required',
             'engine.required'=>'Engine number Required',
             'company.required'=>'Company Required',
-            'RID.required'=>'Assigned To Rider Required',
+            'RID.unique'=>'Rider has already assigned.',
         ];
         $this->validate($request,$rules,$message);
         $data=$request->except(['code']);
@@ -170,7 +170,7 @@ class BikeController extends Controller
         ];
         $message=[
             'BID.required'=>'ID Required',
-            'RID.required'=>'Rider has already taken.',
+            'RID.unique'=>'Rider has already assigned.',
         ];
         $this->validate($request,$rules,$message);
         $data=$request->all();
