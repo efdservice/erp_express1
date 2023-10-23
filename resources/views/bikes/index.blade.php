@@ -31,11 +31,12 @@
                                     <tr>
                                         <th>ID</th>
                                         <th>Current Rider</th>
-                                        <th>Plate</th>
-                                        <th>Chassis Number</th>
-                                        <th>Color</th>
-                                        <th>Model</th>
-                                        <th>Engine</th>
+                                        <th>Vendor</th>
+                                        <th>Sim</th>
+                                        <th>Bike Plate #</th>
+                                        <th>Supervisor</th>                                        
+                                        <th>Project</th>    
+                                        
                                         <th>Company</th>
                                         <th>Action</th>
                                     </tr>

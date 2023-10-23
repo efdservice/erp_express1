@@ -61,11 +61,11 @@
             columns: [
                 {data: 'DT_RowIndex', name: 'DT_RowIndex'},
                 {data: 'rider_name', name: 'rider_name'},
+                {data: 'vendor_name', name: 'vendor_name'},
+                {data: 'sim_number', name: 'sim_number'},
                 {data: 'plate', name: 'plate'},
-                {data: 'chassis_number', name: 'chassis_number'},
-                {data: 'color', name: 'color'},
-                {data: 'model', name: 'model'},
-                {data: 'model', name: 'model'},
+                {data: 'fleet_supervisor', name: 'fleet_supervisor'},
+                {data: 'project_name', name: 'project_name'},
                 {data: 'company', name: 'company'},
                 {data: 'action', name: 'action',
                     orderable: false, searchable: false
@@ -146,10 +146,7 @@
             });
     });
 
-    $("body").on("click", ".editRec",function (){
-        $("#rider_select1").hide("fast");
-
-    });
+    
     
 
 

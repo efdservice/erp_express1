@@ -28,10 +28,10 @@ class Rider extends Model
     }
 
     public function bikes(){
-        return $this->hasMany(Bike::class,'RID','id');
+        return $this->hasOne(Bike::class,'RID','id');
     }
 
     public function sims(){
-        return $this->hasMany(Sim::class,'assign_sim','id');
+        return $this->hasOne(Sim::class,'assign_sim','id');
     }
 }

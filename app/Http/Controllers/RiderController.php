@@ -36,19 +36,20 @@ class RiderController extends Controller
                     return $row->project->name??'';
                 })
                 ->addColumn('id', function($row){
-                    //return $row->sim->sim_number??'';
-                    $sim = '';
+                    return $row->sims->sim_number??'';
+                    /* $sim = '';
                     foreach($row->sims as $item){
                         $sim .= $item->sim_number.' '??'';
                     }
-                    return $sim;
+                    return $sim; */
                 })
                 ->addColumn('license_no', function($row){
-                    $plate = '';
+                    return $row->bikes->plate??'';
+                   /*  $plate = '';
                     foreach($row->bikes as $bike){
                         $plate .= $bike->plate.' '??'';
                     }
-                    return $plate;
+                    return $plate; */
                 })
                 ->addColumn('status', function($row){
                    

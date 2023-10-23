@@ -52,10 +52,13 @@ class SimController extends Controller
         $rules=[
             'sim_number'=>'required',
             'sim_company'=>'required',
+            'assign_sim'=>'required|unique:sims',
         ];
         $message=[
             'sim_number.required'=>'Sim Number Required',
             'sim_company.required'=>'Sim Company Required',
+            'assign_sim.required'=>'Sim must be assign to rider',
+            'assign_sim.unique'=>'Sim already assigned to this rider.',
         ];
         $this->validate($request,$rules,$message);
         $data=$request->except(['code']);

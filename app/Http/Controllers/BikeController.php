@@ -30,6 +30,33 @@ class BikeController extends Controller
                         return '';
                     }
                 })
+                ->addColumn('vendor_name', function($row){
+                    if($row->rider->vendor){
+                        return $row->rider->vendor->name;
+                    }else{
+                        return '';
+                    }
+                })
+                ->addColumn('sim_number', function($row){
+                    if($row->rider->sims){
+                        /* $sim_number = '';
+                        foreach($row->rider->sims as $sim){
+                            $sim_number .= $sim->sim_mnumber;
+                        } */
+                        return $row->rider->sims->sim_number;
+                        
+                        
+                    }else{
+                        return '';
+                    }
+                })
+                ->addColumn('project_name', function($row){
+                    if($row->rider->project){
+                        return $row->rider->project->name;
+                    }else{
+                        return '';
+                    }
+                })
                 ->addColumn('action', function($row){
                     $btn = '';
                     $btn=$btn.'<div class="dropdown">
@@ -76,13 +103,14 @@ class BikeController extends Controller
             'chassis_number'=>'required',
             'engine'=>'required',
             'company'=>'required',
-            'RID'=>'unique:bike',
+            'RID'=>'required|unique:bikes,RID,'.$request->input('id'),
         ];
         $message=[
             'plate.required'=>'Plate Required',
             'chassis_number.required'=>'Chassis number Required',
             'engine.required'=>'Engine number Required',
             'company.required'=>'Company Required',
+            'RID.required'=>'Rider must be assign.',
             'RID.unique'=>'Rider has already assigned.',
         ];
         $this->validate($request,$rules,$message);
@@ -166,7 +194,7 @@ class BikeController extends Controller
     public function change_rider(Request $request){
         $rules=[
             'BID'=>'required',
-            'RID'=>'unique:bikes',
+            'RID'=>'nullable|unique:bikes',
         ];
         $message=[
             'BID.required'=>'ID Required',
