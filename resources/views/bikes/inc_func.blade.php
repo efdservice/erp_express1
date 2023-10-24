@@ -66,6 +66,7 @@
                 {data: 'plate', name: 'plate'},
                 {data: 'fleet_supervisor', name: 'fleet_supervisor'},
                 {data: 'project_name', name: 'project_name'},
+                {data: 'bike_status', name: 'bike_status'},
                 {data: 'company', name: 'company'},
                 {data: 'action', name: 'action',
                     orderable: false, searchable: false

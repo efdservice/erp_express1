@@ -61,7 +61,8 @@
                 {data: 'DT_RowIndex', name: 'DT_RowIndex'},
                 {data: 'sim_number', name: 'sim_number'},
                 {data: 'sim_company', name: 'sim_company'},
-                {data: 'riderr.name', name: 'riderr.name'},
+                {data: 'rider_name', name: 'rider_name'},
+                {data: 'rider_number', name: 'rider_number'},
                 {data: 'action', name: 'action',
                     orderable: false, searchable: false
                 },

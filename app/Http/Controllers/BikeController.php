@@ -31,19 +31,19 @@ class BikeController extends Controller
                     }
                 })
                 ->addColumn('vendor_name', function($row){
-                    if($row->rider->vendor){
-                        return $row->rider->vendor->name;
+                    if($row->rider){
+                        return $row->rider->vendor->name ?? '';
                     }else{
                         return '';
                     }
                 })
                 ->addColumn('sim_number', function($row){
-                    if($row->rider->sims){
+                    if($row->rider){
                         /* $sim_number = '';
                         foreach($row->rider->sims as $sim){
                             $sim_number .= $sim->sim_mnumber;
                         } */
-                        return $row->rider->sims->sim_number;
+                        return $row->rider->sims->sim_number ?? '';
                         
                         
                     }else{
@@ -51,11 +51,16 @@ class BikeController extends Controller
                     }
                 })
                 ->addColumn('project_name', function($row){
-                    if($row->rider->project){
-                        return $row->rider->project->name;
+                    if($row->rider){
+                        return $row->rider->project->name ?? '';
                     }else{
                         return '';
                     }
+                })
+                ->addColumn('bike_status', function($row){
+                  
+                       $stats = BikeHistory::where('BID',$row->id)->orderBy('id','desc')->first();
+                       return $stats->warehouse ?? '';
                 })
                 ->addColumn('action', function($row){
                     $btn = '';
@@ -128,10 +133,10 @@ class BikeController extends Controller
         try {
             if($id==0 || $id==''){
                 $ret=Bike::create($data);
-                BikeHistory::create(['RID'=>$request->RID, 'BID'=>$id,'notes'=>$request->notes]);
+                BikeHistory::create(['RID'=>$request->RID, 'BID'=>$id,'notes'=>$request->notes,'warehouse'=> 'Active']);
             }else{
                 $ret=Bike::where('id',$id)->update($data);
-               BikeHistory::create(['RID'=>$request->RID, 'BID'=>$id,'notes'=>$request->notes]);
+               BikeHistory::create(['RID'=>$request->RID, 'BID'=>$id,'notes'=>$request->notes,'warehouse'=> 'Active']);
             }
             DB::commit();
             return $ret;

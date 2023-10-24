@@ -36,6 +36,7 @@
                                         <th>Bike Plate #</th>
                                         <th>Supervisor</th>                                        
                                         <th>Project</th>    
+                                        <th>Status</th>    
                                         
                                         <th>Company</th>
                                         <th>Action</th>

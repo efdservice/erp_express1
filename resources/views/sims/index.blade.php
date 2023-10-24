@@ -33,6 +33,7 @@
                                         <th>Sim Number</th>
                                         <th>Sim Company</th>
                                         <th>Sim Assign To</th>
+                                        <th>Sim Assign To ID</th>
                                         <th>Action</th>
                                     </tr>
                                     </thead>

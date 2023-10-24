@@ -20,6 +20,20 @@ class SimController extends Controller
             $data=Sim::with('riderr')->latest()->get();
             return DataTables::of($data)
                 ->addIndexColumn()
+                ->addColumn('rider_name', function($row){
+                    if($row->riderr){
+                        return $row->riderr->name;
+                    }else{
+                        return '';
+                    }
+                })
+                ->addColumn('rider_number', function($row){
+                    if($row->riderr){
+                        return $row->riderr->rider_id;
+                    }else{
+                        return '';
+                    }
+                })
                 ->addColumn('action', function($row){
                     $btn = '<a href="#" data-toggle="tooltip" data-action="'.route('sim.edit',$row->id).'" class="edit btn btn-primary btn-xs editRec" data-modalID="modal-new"><i class="fas fa-edit"></i> Edit</a>';
                     $btn = $btn.' <a href="javascript:void(0)" data-toggle="tooltip"  data-action="'.route('sim.store').'/'.$row->id.'" data-original-title="Delete" class="btn btn-danger btn-xs deleteRecord"><i class="fas fa-trash"></i> Del</a>';
