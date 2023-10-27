@@ -77,6 +77,19 @@ MODIFY COLUMN `RID`  bigint(20) UNSIGNED NULL AFTER `BID`;
 ALTER TABLE `bikes`
 MODIFY COLUMN `RID`  bigint(20) UNSIGNED NULL AFTER `company`;
 
+--------------
+
+ALTER TABLE `bikes`
+ADD COLUMN `warehouse`  varchar(50) NULL AFTER `fleet_supervisor`;
+
+update `bikes` set `warehouse` = 'Active'
+
+ALTER TABLE `sims`
+ADD COLUMN `status`  varchar(50) NULL AFTER `fleet_supervisor`;
+
+update `sims` set `status` = 'Active'
+
+
 
 
 

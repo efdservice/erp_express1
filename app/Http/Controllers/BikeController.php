@@ -82,7 +82,10 @@ class BikeController extends Controller
                 ->make(true);
 
         }
-        return  view('bikes.index');
+
+        $warehouse_count = Bike::groupBy('warehouse')->selectRaw('*,count(*) as total')->get();
+
+        return  view('bikes.index',compact('warehouse_count'));
     }
 
     /**
@@ -210,7 +213,7 @@ class BikeController extends Controller
         DB::beginTransaction();
         try {
             $ret=BikeHistory::create($data);
-            Bike::where('id',$request->BID)->update(['RID'=>$request->RID]);
+            Bike::where('id',$request->BID)->update(['RID'=>$request->RID,'warehouse' => $request->warehouse]);
             DB::commit();
             return $ret;
         }catch (QueryException $e){

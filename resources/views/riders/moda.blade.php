@@ -128,8 +128,7 @@
                         <label>Fleet Supervisor</label>
                         <select class="form-control form-control-sm" name="fleet_supervisor">
                             <option value=""></option>
-                            <option value="Rusbeel Yousaf">Rusbeel Yousaf</option>
-                            <option value="Kaleem Ullah">Kaleem Ullah</option>
+                            {!! App\Helpers\CommonHelper::get_supervisor() !!}
                         </select>
                     </div>
                     <div class="col-md-3 form-group">

@@ -53,5 +53,7 @@
     </div>
     @include('sims.moda')
     @include('sims.inc_func')
+    @include('sims.change-rider-modal')
+
 @endsection
 

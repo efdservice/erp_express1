@@ -69,4 +69,72 @@
             ]
         });
     });
+
+
+    function bike_status() {
+       var status = $('.warehouse').find(":selected").val();
+       if(status == 'Active'){
+        $("#rider_select").show("fast");
+       }else{
+        $("#rider_select").hide("fast");
+       }
+    }
+
+    function change_rider() {
+        var formID='rider-form';
+        $.ajax({
+            url:"{{ route('sim.change_status') }}",
+            headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
+            type:"POST",
+            data: $("#rider-form").serialize(),
+            beforeSend: function() {
+                $("#"+formID).find('.save_rec').hide();
+                $("#"+formID).find('.loader').show();
+            },
+            success:function (data) {
+                $("#"+formID+ " input[name~='BID']").val(0);
+                toastr.success('Operation Successfully..');
+                document.getElementById(formID).reset();
+                $("#change-rider").modal('hide');
+                $('.data-table').DataTable().ajax.reload();
+            },error:function(ajaxcontent) {
+                if(ajaxcontent.responseJSON.success=='false'){
+                    toastr.error(ajaxcontent.responseJSON.errors);
+                    return false;
+                }
+                vali=ajaxcontent.responseJSON.errors;
+                $.each(vali, function( index, value ) {
+                    $("#"+formID+ " input[name~='" + index + "']").css('border', '1px solid red');
+                    $("#"+formID+ " select[name~='" + index + "']").parent().find('.select2-container--default .select2-selection--single').css('border','1px solid red');
+                    toastr.error(value);
+                });
+            },
+            complete: function() {
+                $("#"+formID).find('.save_rec').show();
+                $("#"+formID).find('.loader').hide();
+            },
+        })
+    }
+    $(document).on("click",".get-sim-id",function () {
+            var id=$(this).attr("data-id");
+            $("#rider-form input[name~='sim_id']").val(id);
+           
+
+            $.ajax({
+               url:'{{ url('sim/get_sim_history') }}/'+id,
+               type:"GET",
+               success:function (data) {
+                    var htmlData='';
+                    for(i in data){
+                        htmlData+='<tr>';
+                            htmlData+='<td>'+data[i].rider?.name+'</td>';
+                            htmlData+='<td>'+data[i].status+'</td>';
+                            htmlData+='<td>'+data[i].note_date+'</td>';
+                            htmlData+='<td>'+data[i].notes+'</td>';
+                        htmlData+='</tr>';
+                    }
+                    $("#rider_history").html(htmlData);
+               }
+            });
+    });
 </script>

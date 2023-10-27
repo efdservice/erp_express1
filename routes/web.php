@@ -68,6 +68,9 @@ Route::group(['middleware' => ['auth']], function() {
     Route::resource('rider',RiderController::class);
     Route::get('bike/get_bike_history/{id?}',[\App\Http\Controllers\BikeController::class,'get_bike_history']);
     Route::post('change_rider',[\App\Http\Controllers\BikeController::class,'change_rider'])->name('bike.change_rider');
+
+    Route::get('sim/get_sim_history/{id?}',[\App\Http\Controllers\SimController::class,'get_sim_history']);
+    Route::post('change_status',[\App\Http\Controllers\SimController::class,'change_rider'])->name('sim.change_status');
     Route::post('rider/import_excel',[\App\Http\Controllers\RiderController::class,'import_excel'])->name('rider.import_excel');
     Route::any('rider-document/{id}',[\App\Http\Controllers\RiderController::class,'document'])->name('rider.document');
     Route::any('rider-status',[\App\Http\Controllers\RiderController::class,'status'])->name('rider.status');

@@ -24,6 +24,25 @@
                 <div class="card card-default rounded-0">
                     <div class="card-body">
                         <div class="row">
+                            @foreach($warehouse_count as $wh)
+                                <div class="col-lg-2 col-6">
+                                    <!-- small box -->
+                                    <div class="small-box bg-light">
+                                        <div class="inner">
+                                            <h3>{{$wh->total}}</h3>
+            
+                                            <p>{{$wh->warehouse}}</p>
+                                        </div>
+                                        <div class="icon">
+                                            <i class="fas fa-motorcycle fa-xs"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                                @endforeach
+                              
+                            
+                        </div>
+                        <div class="row">
                             <div class="col-md-12">
                                 <button type="button" class="text-white btn btn-primary btn-sm btn-flat float-right" onclick="add_new()">Add New</button>
                                 <table class="table table-hover text-nowrap data-table">

@@ -179,7 +179,28 @@ class CommonHelper{
 
     public static function get_warehouse($id=0){
         $array=['Active'=>'Active','Impound'=>'Impound', 'City Garage'=>'City Garage', 'Clutch Garage'=>'Clutch Garage', 'Express Garage'=>'Express Garage',
-        'Al Sama Garage'=>'Al Sama Garage', 'Easy Lease Garage'=>'Easy Lease Garage'];
+        'Al Sama Garage'=>'Al Sama Garage', 'Easy Lease Garage'=>'Easy Lease Garage','Theft' => 'Theft', 'Return' => 'Return'];
+        $list='';
+        foreach ($array as $key => $value){
+            $list.='<option '.($id==$key?'selected':'').' value="'.$key.'">'.$value.'</option>';
+        }
+        return $list;
+        
+    }
+
+    public static function get_sim_status($id=0){
+        $array=['Active'=>'Active','Office'=>'Office'];
+        $list='';
+        foreach ($array as $key => $value){
+            $list.='<option '.($id==$key?'selected':'').' value="'.$key.'">'.$value.'</option>';
+        }
+        return $list;
+        
+    }
+
+    public static function get_supervisor($id=0){
+        $array=['Rusbeel Yousaf'=>'Rusbeel Yousaf','Kaleem Ullah'=>'Kaleem Ullah','Muhammad Awais'=>'Muhammad Awais'];
+       
         $list='';
         foreach ($array as $key => $value){
             $list.='<option '.($id==$key?'selected':'').' value="'.$key.'">'.$value.'</option>';
