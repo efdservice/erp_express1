@@ -33,8 +33,8 @@
                                         <input type="text" class="form-control form-control-sm" placeholder="Role Name" name="name">
                                     </div>
                                 </div>
-                                <button class="btn btn-sm btn-primary btn-flat float-right" onclick="add_new()" type="button">Add New Permission</button>
-                                <table class="table table-striped">
+{{--                                 <button class="btn btn-sm btn-primary btn-flat float-right" onclick="add_new()" type="button">Add New Permission</button>
+ --}}                                <table class="table table-striped">
                                     <tr>
                                         <th>#</th>
                                         <th>Menu Name</th>
