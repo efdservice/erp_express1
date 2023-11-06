@@ -15,10 +15,10 @@ class RoleController extends Controller
      */
     function __construct()
     {
-        $this->middleware('permission:role_view|role_create|role_edit|role_delete', ['only' => ['index','store']]);
+       /*  $this->middleware('permission:role_view|role_create|role_edit|role_delete', ['only' => ['index','store']]);
         $this->middleware('permission:role_create', ['only' => ['create','store']]);
         $this->middleware('permission:role_edit', ['only' => ['edit','update']]);
-        $this->middleware('permission:role_delete', ['only' => ['destroy']]);
+        $this->middleware('permission:role_delete', ['only' => ['destroy']]); */
     }
     /**
      * Display a listing of the resource.
@@ -167,16 +167,18 @@ class RoleController extends Controller
             $htmlData .= '<td>'.$item->name.'</td>';
             $permission=Permission::where('parent_id', $item->id)->get();
             foreach ($permission as $per) {
-                $htmlData .= '<td><input type="checkbox" name="permission[]" value="'.$per->id.'"> </td>';
+                $name = explode('_',$per->name,2);
+                $name = ucwords(str_replace("_"," ",$name[1]));
+                $htmlData .= '<td><input type="checkbox" name="permission[]" id="'.$per->id.'" value="'.$per->id.'"><label for="'.$per->id.'">&nbsp;'.$name.'</label> </td>';
             }
-            if($item->form==0){
+           /*  if($item->form==0){
                 $htmlData .= '<td><input type="checkbox" name="permission[]" disabled value=""> </td>';
                 $htmlData .= '<td><input type="checkbox" name="permission[]" disabled value=""> </td>';
                 $htmlData .= '<td><input type="checkbox" name="permission[]" disabled value=""> </td>';
                 $htmlData .= '<td><input type="checkbox" name="permission[]" disabled value=""> </td>';
                 $htmlData .= '<td><input type="checkbox" name="permission[]" disabled value=""> </td>';
                 $htmlData .= '<td><input type="checkbox" name="permission[]" disabled value=""> </td>';
-            }
+            } */
         }
         return compact('htmlData');
     }

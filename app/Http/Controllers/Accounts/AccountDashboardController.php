@@ -8,7 +8,7 @@ class AccountDashboardController extends Controller
 {
     function __construct()
     {
-        $this->middleware('permission:accounts_dashboard_view', ['only' => ['index']]);
+        $this->middleware('permission:account_dashboard_view', ['only' => ['index']]);
     }
     /**
      * Display a listing of the resource.

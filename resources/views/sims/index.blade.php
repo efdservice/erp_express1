@@ -10,7 +10,7 @@
                     <div class="col-sm-6">
                         <ol class="breadcrumb">
                             <li class="breadcrumb-item"><a href="#">Home</a></li>
-                            <li class="breadcrumb-item active">Bike List</li>
+                            <li class="breadcrumb-item active">Sim List</li>
                         </ol>
                     </div>
                 </div>
@@ -25,7 +25,9 @@
                     <div class="card-body">
                         <div class="row">
                             <div class="col-md-12">
+                                @can('sims_create')
                                 <button type="button" class="text-white btn btn-primary btn-sm btn-flat float-right" onclick="add_new()">Add New</button>
+                                @endcan
                                 <table class="table table-hover text-nowrap data-table">
                                     <thead>
                                     <tr>

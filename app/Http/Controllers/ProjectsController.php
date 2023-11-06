@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Projects;
 use Illuminate\Http\Request;
 use DB;
+use Spatie\Permission\Models\Permission;
 use Yajra\DataTables\Facades\DataTables;
 
 class ProjectsController extends Controller
@@ -14,6 +15,10 @@ class ProjectsController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    function __construct(){
+        $this->middleware('permission:projects_view', ['only' => ['index']]); 
+
+    }
     public function index(Request $request)
     {
         if($request->ajax()){
@@ -21,8 +26,14 @@ class ProjectsController extends Controller
             return DataTables::of($data)
                 ->addIndexColumn()
                 ->addColumn('action', function($row){
-                    $btn = '<a href="#" data-toggle="tooltip" data-action="'.route('projects.edit',$row->id).'" class="edit btn btn-primary btn-xs editRec" data-modalID="modal-new"><i class="fas fa-edit"></i> Edit</a>';
-                    $btn = $btn.' <a href="javascript:void(0)" data-toggle="tooltip"  data-action="'.route('projects.store').'/'.$row->id.'" data-original-title="Delete" class="btn btn-danger btn-xs deleteRecord"><i class="fas fa-trash"></i> Del</a>';
+                    $btn = '';
+                    if(\Auth::user()->can('projects_edit')){
+                        $btn = $btn.'<a href="#" data-toggle="tooltip" data-action="'.route('projects.edit',$row->id).'" class="edit btn btn-primary btn-xs editRec" data-modalID="modal-new"><i class="fas fa-edit"></i> Edit</a>';
+
+                    }
+                    if(\Auth::user()->can('projects_delete')){
+                        $btn = $btn.' <a href="javascript:void(0)" data-toggle="tooltip"  data-action="'.route('projects.store').'/'.$row->id.'" data-original-title="Delete" class="btn btn-danger btn-xs deleteRecord"><i class="fas fa-trash"></i> Del</a>';
+                    }
                     return $btn;
                 })
                 ->rawColumns(['action'])

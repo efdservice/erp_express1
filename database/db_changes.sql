@@ -88,6 +88,14 @@ ALTER TABLE `sims`
 ADD COLUMN `status`  varchar(50) NULL AFTER `fleet_supervisor`;
 
 update `sims` set `status` = 'Active'
+-----------------
+DELETE FROM `permissions` WHERE (`id`='17');
+
+UPDATE `permissions` SET `name`='riders_document' WHERE (`id`='112');
+
+UPDATE `permissions` SET `name`='bikes_status' WHERE (`id`='120');
+UPDATE `permissions` SET `name`='sims_status' WHERE (`id`='136');
+
 
 
 

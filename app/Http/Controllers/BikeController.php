@@ -17,6 +17,9 @@ class BikeController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    function __construct(){
+        $this->middleware("permission:bikes_view",['only'=>['index']]);
+    }
     public function index(Request $request)
     {
         if($request->ajax()){
@@ -68,12 +71,24 @@ class BikeController extends Controller
                       <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
                         Action
                       </button>
-                      <div class="dropdown-menu">
-                        <a href="#" data-toggle="tooltip" data-action="'.route('bike.edit',$row->id).'" class="edit editRec dropdown-item" data-modalID="modal-new"><i class="fas fa-edit"></i> Edit</a>
+                      <div class="dropdown-menu">';
+                      if(\Auth::user()->can('bikes_edit')){
+                      $btn=$btn.'
+                        <a href="#" data-toggle="tooltip" data-action="'.route('bike.edit',$row->id).'" class="edit editRec dropdown-item" data-modalID="modal-new"><i class="fas fa-edit"></i> Edit</a>';
+                      }
+                      if(\Auth::user()->can('bikes_delete')){
+
+                        $btn=$btn.'
                         <div class="dropdown-divider"></div>
-                        <a href="javascript:void(0)" data-toggle="tooltip"  data-action="'.route('bike.store').'/'.$row->id.'" data-original-title="Delete" class="dropdown-item deleteRecord"><i class="fas fa-trash"></i> Del</a>
+                        <a href="javascript:void(0)" data-toggle="tooltip"  data-action="'.route('bike.store').'/'.$row->id.'" data-original-title="Delete" class="dropdown-item deleteRecord"><i class="fas fa-trash"></i> Del</a>';
+                      }
+                      if(\Auth::user()->can('bikes_status')){
+
+                        $btn=$btn.'
                         <div class="dropdown-divider"></div>
-                        <a href="javascript:void(0)" data-toggle="modal" data-target="#change-rider" data-id="'.$row->id.'"  class="dropdown-item get-bike-id"><i class="fas fa-user-edit"></i> Change Status</a>
+                        <a href="javascript:void(0)" data-toggle="modal" data-target="#change-rider" data-id="'.$row->id.'"  class="dropdown-item get-bike-id"><i class="fas fa-user-edit"></i> Change Status</a>';
+                      }
+                        $btn=$btn.'
                       </div>
                     </div>';
                     return $btn;

@@ -23,6 +23,9 @@ class RiderController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    function __construct(){
+        $this->middleware("permission:riders_view",["only"=>["index"]]);
+    }
     public function index(Request $request)
     {
         if($request->ajax()){
@@ -60,9 +63,16 @@ class RiderController extends Controller
                     
                      })
                 ->addColumn('action', function($row){
-                    $btn = '<a href="'.route('rider.document',$row->id).'" data-toggle="tooltip" class="file btn btn-success btn-xs" data-modalID="modal-new"><i class="fas fa-file"></i> Documents</a>';
+                    $btn = '';
+                    if(\Auth::user()->can('riders_document')){
+                    $btn = $btn.'<a href="'.route('rider.document',$row->id).'" data-toggle="tooltip" class="file btn btn-success btn-xs" data-modalID="modal-new"><i class="fas fa-file"></i> Documents</a>';
+                    }
+                    if(\Auth::user()->can('riders_edit')){
                     $btn =  $btn.' <a href="#" data-toggle="tooltip" data-action="'.route('rider.edit',$row->id).'" class="edit btn btn-primary btn-xs editRec" data-modalID="modal-new"><i class="fas fa-edit"></i> Edit</a>';
+                    }
+                    if(\Auth::user()->can('riders_delete')){
                     $btn = $btn.' <a href="javascript:void(0)" data-toggle="tooltip"  data-action="'.route('rider.store').'/'.$row->id.'" data-original-title="Delete" class="btn btn-danger btn-xs deleteRecord"><i class="fas fa-trash"></i> Del</a>';
+                    }
                     return $btn;
                 })
                 ->rawColumns(['action','status'])

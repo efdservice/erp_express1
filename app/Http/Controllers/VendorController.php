@@ -18,6 +18,9 @@ class VendorController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    function __construct(){
+        $this->middleware('permission:vendors_view',['only'=>['index']]);
+    }
     public function index(Request $request)
     {
         if($request->ajax()){
@@ -25,8 +28,15 @@ class VendorController extends Controller
             return DataTables::of($data)
                 ->addIndexColumn()
                 ->addColumn('action', function($row){
-                    $btn = '<a href="#" data-toggle="tooltip" data-action="'.route('vendors.edit',$row->id).'" class="edit btn btn-primary btn-xs editRec" data-modalID="modal-new"><i class="fas fa-edit"></i> Edit</a>';
-                    $btn = $btn.' <a href="javascript:void(0)" data-toggle="tooltip"  data-action="'.route('vendors.store').'/'.$row->id.'" data-original-title="Delete" class="btn btn-danger btn-xs deleteRecord"><i class="fas fa-trash"></i> Del</a>';
+                    $btn = '';
+                    if(\Auth::user()->can('vendors_edit')){
+                        $btn = '<a href="#" data-toggle="tooltip" data-action="'.route('vendors.edit',$row->id).'" class="edit btn btn-primary btn-xs editRec" data-modalID="modal-new"><i class="fas fa-edit"></i> Edit</a>';
+
+                    }
+                    if(\Auth::user()->can('vendors_delete')){
+                        $btn = $btn.' <a href="javascript:void(0)" data-toggle="tooltip"  data-action="'.route('vendors.store').'/'.$row->id.'" data-original-title="Delete" class="btn btn-danger btn-xs deleteRecord"><i class="fas fa-trash"></i> Del</a>';
+ 
+                    }
                     return $btn;
                 })
                 ->rawColumns(['action'])

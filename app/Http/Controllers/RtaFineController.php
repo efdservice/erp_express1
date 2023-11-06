@@ -20,6 +20,9 @@ class RtaFineController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    function __construct(){
+        $this->middleware("permission:rtafinevoucher_view",['only'=>['index']]);
+    }
     public function index()
     {
         return view('rta_fines.index');

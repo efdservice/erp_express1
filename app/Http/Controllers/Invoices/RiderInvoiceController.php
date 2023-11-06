@@ -30,6 +30,9 @@ class RiderInvoiceController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    function __construct(){
+        $this->middleware('permission:invoices_view',['only',['index']]);
+    }
     public function index(Request $request)
     {
         if($request->ajax()){
@@ -39,20 +42,31 @@ class RiderInvoiceController extends Controller
                 ->addColumn('action', function($row){
                     $btn = '';
                     $btn = $btn.' ';
-                    $btn=$btn.'<div class="dropdown">
+                    $btn=$btn.'<div class="dropdown">';
+                    $btn=$btn.'
                       <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
                         Action
-                      </button>
-                      <div class="dropdown-menu">
-                        <a href="#" data-toggle="tooltip" data-action="'.route('rider_invoices.edit',$row->id).'" class="edit editRiderInvRec dropdown-item" data-modalID="modal-new"><i class="fas fa-edit"></i> Edit</a>
+                      </button>';
+                      $btn=$btn.'
+                      <div class="dropdown-menu">';
+                      if(\Auth::user()->can('invoices_edit')){
+                      $btn=$btn.'
+                        <a href="#" data-toggle="tooltip" data-action="'.route('rider_invoices.edit',$row->id).'" class="edit editRiderInvRec dropdown-item" data-modalID="modal-new"><i class="fas fa-edit"></i> Edit</a>';
+                      }
+                      if(\Auth::user()->can('invoices_delete')){
+                        $btn=$btn.'
                         <div class="dropdown-divider"></div>
-                        <a href="javascript:void(0)" data-toggle="tooltip"  data-action="'.route('rider_invoices.store').'/'.$row->id.'" data-original-title="Delete" class=" deleteRecord dropdown-item"><i class="fas fa-trash"></i> Del</a>
+                        <a href="javascript:void(0)" data-toggle="tooltip"  data-action="'.route('rider_invoices.store').'/'.$row->id.'" data-original-title="Delete" class=" deleteRecord dropdown-item"><i class="fas fa-trash"></i> Del</a>';
+                      }
+                     
+                        $btn=$btn.'
                         <div class="dropdown-divider"></div>
                         <a href="'.route('rider_invoices.show',$row->id).'" target="_blank" class="dropdown-item"><i class="fas fa-eye"></i> Rider Invoice</a>
                         <div class="dropdown-divider"></div>
                         <a href="'.route('vendor_invoices.show',$row->id).'" target="_blank"  class="dropdown-item"><i class="fas fa-eye"></i> Vendor Invoice</a>
                       </div>
                     </div>';
+                      
                     return $btn;
                 })->addColumn('vendor_total', function($row){
                     return VendorInvoiceItem::where('inv_id',$row->id)->sum('amount');

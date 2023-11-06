@@ -41,8 +41,10 @@
                                     <button type="text" class="btn btn-flat btn-xs btn-dark"><i class="fas fa-search"></i> </button>
                                 </div>
                             </div>
+                            @can('rtafinevoucher_create')
                             <button class="btn btn-xs btn-dark float-right btn-flat" onclick="add_new()">Add New</button>
                             <button type="button" class="text-white btn btn-success btn-xs btn-flat float-right" data-toggle="modal" data-target="#excel-modal"><i class="fa fa-file-excel"></i> Import Excel</button>
+                            @endcan
                             <table id="example2" class="table table-bordered table-hover">
                                 <thead>
                                 <tr>

@@ -15,6 +15,9 @@ class SimController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    function __construct(){
+        $this->middleware("permission:sims_view",['only'=>['index']]);
+    }
     public function index(Request $request)
     {
         if($request->ajax()){
@@ -36,9 +39,18 @@ class SimController extends Controller
                     }
                 })
                 ->addColumn('action', function($row){
-                    $btn = '<a href="#" data-toggle="tooltip" data-action="'.route('sim.edit',$row->id).'" class="edit btn btn-primary btn-xs editRec" data-modalID="modal-new"><i class="fas fa-edit"></i> Edit</a>';
+                    $btn = '';
+                    if(\Auth::user()->can('sims_edit')){
+                    $btn = $btn.'<a href="#" data-toggle="tooltip" data-action="'.route('sim.edit',$row->id).'" class="edit btn btn-primary btn-xs editRec" data-modalID="modal-new"><i class="fas fa-edit"></i> Edit</a>';
+                    }
+                    if(\Auth::user()->can('sims_status')){
+
                     $btn = $btn.' <a href="javascript:void(0)" data-toggle="modal" data-target="#change-rider" data-id="'.$row->id.'"  class="btn btn-warning btn-xs get-sim-id"><i class="fas fa-user-edit"></i> Change Status</a> ';
+                    }
+                    if(\Auth::user()->can('sims_delete')){
+
                     $btn = $btn.' <a href="javascript:void(0)" data-toggle="tooltip"  data-action="'.route('sim.store').'/'.$row->id.'" data-original-title="Delete" class="btn btn-danger btn-xs deleteRecord"><i class="fas fa-trash"></i> Del</a>';
+                    }
                     return $btn;
                 })
                 ->rawColumns(['action'])

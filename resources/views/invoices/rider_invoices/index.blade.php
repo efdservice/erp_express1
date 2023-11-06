@@ -25,8 +25,10 @@
                     <div class="card-body">
                         <div class="row">
                             <div class="col-md-12">
+                                @can('invoices_create')
                                 <button type="button" class="text-white btn btn-primary btn-sm btn-flat float-right" onclick="add_new()">Add New</button>
                                 <button type="button" class="text-white btn btn-success btn-sm btn-flat float-right" data-toggle="modal" data-target="#excel-modal"><i class="fa fa-file-excel"></i> Import Excel</button>
+                                @endcan
                                 <table class="table table-hover data-table text-nowrap">
                                     <thead>
                                     <tr>
