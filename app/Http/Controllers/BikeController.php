@@ -140,9 +140,10 @@ class BikeController extends Controller
         $data=$request->except(['code']);
         $arrayFiles=[];
         if(isset($request->attach_documents)) {
-            foreach ($request->attach_documents as $files) {
+            foreach ($request->attach_documents as $key=>$files) {
                 $path=$files->storeAs('bikes',$files->getClientOriginalName());
-                $arrayFiles[] = url('storage/app/'.$path);
+
+                $arrayFiles[$key] =$path;
             }
         }
         $data['attach_documents']=json_encode($arrayFiles);

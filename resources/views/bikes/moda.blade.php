@@ -61,9 +61,19 @@
                         </select>
                     </div>
                     <!--col-->
-                    <div class="col-md-4 form-group">
-                        <label>Attach Documents</label>
-                        <input type="file" multiple class="form-control form-control-sm" name="attach_documents[]">
+                    <div class="col-md-6 form-group">
+                        <label>Bike Mulkiya Document</label>
+                        <input type="file"  class="form-control form-control-sm" name="attach_documents[bike_mulkiya]">
+                    </div>
+                    <div class="col-md-6 form-group">
+                        <span id="bike_mulkiya"></span>
+                    </div>
+                    <div class="col-md-6 form-group">
+                        <label> RTA Advertising Permit Document</label>
+                        <input type="file"  class="form-control form-control-sm" name="attach_documents[rta_advertising_permit]">
+                    </div>
+                    <div class="col-md-6 form-group">
+                        <span id="rta_advertising_permit"></span>
                     </div>
                     <!--col-->
                     <div class="col-md-12 form-group">

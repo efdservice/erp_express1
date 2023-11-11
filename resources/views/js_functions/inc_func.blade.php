@@ -57,6 +57,7 @@
             $("#"+mdl).modal();
             frmId=$("#"+mdl).find('form').attr('id');
             let formUrl=$(this).attr('data-action');
+            let data = null;
             $.ajax({
                 url:formUrl,
                 headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
@@ -65,21 +66,36 @@
                         $("#"+frmId+" input[name~='"+Object.keys(data)[i]+"']").val(Object.values(data)[i]);
                         $("#"+frmId+" select[name~='"+Object.keys(data)[i]+"']").val(Object.values(data)[i]);
                         $("#"+frmId+" input[id~='"+Object.keys(data)[i]+"']").val(Object.values(data)[i]);
+                        
+                        
                     }
                     $(".select2").select2();
                     $("table.order-list").html('');
                    if(data.items){
-                   
-                    /* data.items.forEach(item =>{
-                        RiderItems(item['item_id'],item['item_price']);
-                    }); */
-                    Object.entries(data.items).forEach(([key, value]) => {
+                    
+                        Object.entries(data.items).forEach(([key, value]) => {
   
                         RiderItems(key,value.item_price);
                         });
-                        
-                    
+                                     
                    }
+                    
+                    $("#bike_mulkiya").html('');
+                    $("#rta_advertising_permit").html('');
+
+                    if(data.attach_documents){
+                            let files = JSON.parse(data.attach_documents);
+                         
+                                if(files.bike_mulkiya != null){
+                                    $("#bike_mulkiya").html("<a href='{{ Storage::url('app/')}}"+files.bike_mulkiya+"' target='_blank'>View Document</a>");
+                                }
+                                if(files.rta_advertising_permit != null){
+                                    $("#rta_advertising_permit").html("<a href='{{ Storage::url('app/')}}"+files.rta_advertising_permit+"' target='_blank'>View Document</a>");
+                                }
+                           
+                                
+                        } 
+                       
                 }
             })
         });
