@@ -50,7 +50,9 @@
         <div class="wrapper">
            @include('layouts.navbar')
            @include('layouts.aside')
-            @yield('content')
+
+		  
+		   @yield('content')
 			<footer class="main-footer">
 				<strong>Copyright &copy; 2021 <a href="#">Express-Fast</a>.</strong>
 				All rights reserved.
@@ -104,5 +106,18 @@
 		<script src="{{ URL::asset('public/dist/js/toastr.min.js') }}"></script>
 		<script src="{{ URL::asset('public/plugins/summernote/summernote-bs4.min.js') }}"></script>
 		@include('js_functions.inc_func')
+		
+	 @if(session()->get('success'))
+	 <script>
+		 toastr.success("{{session()->get('success')}}");
+	 </script>
+	{{ session()->forget('success')}}
+	 @endif
+	 @if(session()->get('error'))
+	 <script>
+		 toastr.error("{{session()->get('error')}}");
+	 </script>
+	 {{ session()->forget('error')}}
+	 @endif
 </body>
 </html>

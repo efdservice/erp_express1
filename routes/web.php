@@ -106,6 +106,7 @@ Route::group(['middleware' => ['auth']], function() {
     Route::get('fetch_cities', 'CityController@fetch_cities');
     Route::get('menu_notification','HomeController@menu_notification');
     Route::get('seen_notification/{tbl_name}','HomeController@seen_notification');
+    Route::any('settings',[\App\Http\Controllers\HomeController::class,'settings'])->name('settings');
 });
 
 

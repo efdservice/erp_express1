@@ -14,6 +14,7 @@ use App\Models\Currency;
 use App\Models\Files;
 use App\Models\Item;
 use App\Models\Rider;
+use App\Models\Settings;
 use App\Models\Sim;
 use App\Models\Umrah\GroupDetail;
 use App\Models\User;
@@ -123,4 +124,20 @@ class HomeController extends Controller
             }
         }
     }
+
+    public function settings(Request $request){
+
+          if($request->post('settings')){
+            
+           foreach($request->post('settings') as $key => $value) {
+            //echo $key.'-'.$value;
+            Settings::updateOrCreate(['name'=>$key],['name'=>$key,'value'=>$value]);
+            session()->flash('success','Settings updated successfully.');
+
+            }
+        }
+        $settings = Settings::pluck('value','name');
+        return view('settings',compact('settings'));
+    }
+
 }
