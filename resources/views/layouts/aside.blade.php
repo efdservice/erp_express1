@@ -459,12 +459,12 @@ $reports=['vendor_invoice_report','rider_invoice_report'];
                                 </li>
                                 @endcan
                             </ul>
-                            <li class="nav-item">
+                           {{--  <li class="nav-item">
                                 <a href="{{ route('settings') }}" class="nav-link {{ (request()->is('settings')) ? 'active' : '' }}">
                                     <i class="nav-icon fas fa-cog fa-xs"></i>
                                     <p>Settings</p>
                                 </a>
-                            </li>
+                            </li> --}}
                         </li>
                         @endcan
                         @can('business_setup_view')

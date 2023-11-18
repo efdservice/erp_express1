@@ -60,13 +60,14 @@ class PaymentVoucherController extends Controller
         //account entry
         $tData['trans_date']=$request->trans_date;
         $tData['posting_date']=$request->trans_date;
-        $tData['payment_to']=$request->payment_to;
-        $tData['payment_from']=$request->payment_from;
+        $tData['payment_type']=$request->payment_type;
+        $tData['conversion_rate']=$request->conversion_rate;
+        $tData['currency']=$request->currency;
         $tData['narration']=$request->narration;
         $tData['amount']=$request->amount;
         $tData['status']=1;
         $tData['vt']=2;
-        $tData['trans_code']=Account::trans_code();
+        //$tData['trans_code']=Account::trans_code();
         if(isset($request->attach_file)) {
             $photo=$request->attach_file;
             $docFile=url('/storage/app/'.$photo->store('public/vouchers/payment_voucher'));
@@ -89,10 +90,19 @@ class PaymentVoucherController extends Controller
                 $tData['dr_cr']=2;
                 Transaction::create($tData);
             } else {
-                $PID=Agent::where('id', $id)->value('PID');
-                Agent::where('id', $id)->update($data);
-                $tData['updated_by']=Auth::user()->id;
-                TransactionAccount::where(['Parent_Type'=>$id,'PID'=>$PID])->update($tData);
+                $trans_code=PaymentVoucher::where('id', $id)->value('trans_code');
+                PaymentVoucher::where('trans_code', $trans_code)->update($data);
+
+                $tData['Updated_By']=Auth::user()->id;
+
+                $tData['trans_acc_id']=$request->payment_to;
+                $tData['dr_cr']=1;
+                Transaction::where('trans_code',$trans_code)->where('dr_cr',1)->update($tData);
+                //cr to client
+                $tData['trans_acc_id']=$request->payment_from;
+                $tData['dr_cr']=2;
+                Transaction::where('trans_code',$trans_code)->where('dr_cr',2)->update($tData);
+                //TransactionAccount::where(['Parent_Type'=>$id,'PID'=>$PID])->update($tData);
             }
             DB::commit();
         }catch (\Illuminate\Database\QueryException $e){
@@ -118,7 +128,7 @@ class PaymentVoucherController extends Controller
      */
     public function show($id)
     {
-        //
+        return PaymentVoucher::find($id);
     }
 
     /**
@@ -129,7 +139,7 @@ class PaymentVoucherController extends Controller
      */
     public function edit($id)
     {
-        //
+        return PaymentVoucher::where('trans_code',$id)->first();
     }
 
     /**

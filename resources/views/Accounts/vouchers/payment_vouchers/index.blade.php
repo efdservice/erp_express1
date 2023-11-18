@@ -149,6 +149,7 @@
                             htmlData += '<td><a  class="btn btn-success btn-xs" href="' + data.data[i].attach_file + '" download><i class="fa fa-download"></i> Attached Document</a></td>';
                         }
                         htmlData+='<td>';
+                        htmlData+=' <a  class="btn btn-info btn-xs" href="javascript:void(0)" onclick="edit(\''+data.data[i].trans_code+'\')"><i class="fa fa-edit"></i> </a>';
                         htmlData+=' <a  class="btn btn-danger btn-xs" href="javascript:void(0)" onclick="del_rec(\''+data.data[i].trans_code+'\', \'{{ url('Accounts/vouchers/payment_vouchers/') }}/'+data.data[i].trans_code+'\')"><i class="fa fa-trash"></i> </a>';
                         htmlData+='</td>';
                         htmlData+='</tr>';
@@ -162,9 +163,10 @@
         function edit(id) {
             $("#new").modal({backdrop: 'static', keyboard: false},'show');
             $.ajax({
-                url: "{{ url('Accounts/trans_accounts') }}/" + id + "/edit",
+                url: "{{ url('Accounts/vouchers/payment_vouchers') }}/" + id + "/edit",
                 headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
                 success: function (data) {
+                    
                     for (i=0; i<Object.keys(data).length; i++){
                         $("#form input[name~='"+Object.keys(data)[i]+"']").val(Object.values(data)[i]);
                         $("#form select[name~='"+Object.keys(data)[i]+"']").val(Object.values(data)[i]);

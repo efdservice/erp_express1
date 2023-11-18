@@ -65,7 +65,7 @@
             columns: [
                 {data: 'inv_no', name: 'inv_no'},
                 {data: 'inv_date', name: 'inv_date'},
-                {data: 'rider.name', name: 'rider.name'},
+                {data: 'rider_name', name: 'rider_name'},
                 {data: 'total_amount', name: 'total_amount'},
                 {data: 'vendor_total', name: 'vendor_total'},
                 {data: 'total_qty', name: 'total_qty'},

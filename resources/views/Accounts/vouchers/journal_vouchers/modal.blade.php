@@ -12,10 +12,8 @@
                     <div class="row">
                         <div class="form-group col-md-3">
                             <label for="exampleInputEmail1">Date</label>
-                            @php
-                                $month = App\Models\Settings::where('name','working_month')->first()->value;
-                            @endphp
-                            <input  name="trans_date" class="form-control form-control-sm date" placeholder="Transaction Date" value="{{ date('Y-'.$month.'-d') }}">
+                            
+                            <input  name="trans_date" class="form-control form-control-sm date" placeholder="Transaction Date" value="{{ date('Y-m-d') }}">
                         </div>
                        {{--  <div class="form-group col-md-3">
                             <label for="exampleInputEmail1">Posting Date</label>

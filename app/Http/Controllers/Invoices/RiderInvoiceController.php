@@ -68,6 +68,8 @@ class RiderInvoiceController extends Controller
                     </div>';
                       
                     return $btn;
+                })->addColumn('rider_name', function($row){
+                    return $row->rider->rider_id.'-'.$row->rider->name;
                 })->addColumn('vendor_total', function($row){
                     return VendorInvoiceItem::where('inv_id',$row->id)->sum('amount');
                 })->addColumn('total_qty', function($row){
