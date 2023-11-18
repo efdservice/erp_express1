@@ -16,6 +16,7 @@ use App\Models\VendorInvoiceItem;
 use App\Models\VendorItemPrice;
 use Illuminate\Database\QueryException;
 use Illuminate\Support\Collection;
+use Illuminate\Validation\ValidationException;
 use Maatwebsite\Excel\Concerns\ToCollection;
 use Maatwebsite\Excel\Concerns\ToModel;
 use DB;
@@ -34,11 +35,17 @@ class ImportRiderInvoice implements ToCollection
             $rows[0][2],$rows[0][3],$rows[0][4],$rows[0][5],$rows[0][6],$rows[0][7],$rows[0][8],$rows[0][9],$rows[0][10],
             $rows[0][11],$rows[0][12],$rows[0][13],$rows[0][14],$rows[0][15],$rows[0][16]
         ];
+        $i=1;
         foreach ($rows as $row) {
+            $i++;
             try {
                 DB::beginTransaction();
                 if ($row[0] != 'ID') {
+                    if($row[0] != ''){
                     $rider = Rider::where('rider_id', $row[0])->first();
+                    if(!$rider){
+                        throw ValidationException::withMessages(['file' =>'Row('.$i.') - Rider ID '.$row[0].' do not match.']);
+                    }
                     $RID = $rider->id;
                     $VID = $rider->VID;
                     //$VID = AssignVendorRider::where('RID', $RID)->value('VID');
@@ -108,6 +115,7 @@ class ImportRiderInvoice implements ToCollection
                         $data['amount']=$profit;
                         Transaction::create($data);
                     }
+                }
                 }
                 DB::commit();
             }catch (QueryException $e){
