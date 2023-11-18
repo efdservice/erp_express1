@@ -36,7 +36,6 @@
                                         <th>Date</th>
                                         <th>Rider</th>
                                         <th>Rider amount</th>
-                                        <th>Vendor amount</th>
                                         <th>Total Qty</th>
                                         <th>Descriptions</th>
                                         <th>Action</th>

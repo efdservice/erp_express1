@@ -62,22 +62,23 @@ class RiderInvoiceController extends Controller
                         $btn=$btn.'
                         <div class="dropdown-divider"></div>
                         <a href="'.route('rider_invoices.show',$row->id).'" target="_blank" class="dropdown-item"><i class="fas fa-eye"></i> Rider Invoice</a>
-                        <div class="dropdown-divider"></div>
-                        <a href="'.route('vendor_invoices.show',$row->id).'" target="_blank"  class="dropdown-item"><i class="fas fa-eye"></i> Vendor Invoice</a>
+                        
                       </div>
                     </div>';
-                      
+                    /* <div class="dropdown-divider"></div>
+                        <a href="'.route('vendor_invoices.show',$row->id).'" target="_blank"  class="dropdown-item"><i class="fas fa-eye"></i> Vendor Invoice</a>
+                       */
                     return $btn;
                 })->addColumn('rider_name', function($row){
                     return $row->rider->rider_id.'-'.$row->rider->name;
-                })->addColumn('vendor_total', function($row){
-                    return VendorInvoiceItem::where('inv_id',$row->id)->sum('amount');
+                /* })->addColumn('vendor_total', function($row){
+                    return VendorInvoiceItem::where('inv_id',$row->id)->sum('amount'); */
                 })->addColumn('total_qty', function($row){
                     return RiderInvoiceItem::where('inv_id',$row->id)->sum('qty');
                 })->addColumn('inv_no', function($row){
                     return CommonHelper::inv_sch($row->id,$row->created_at);
                 })
-                ->rawColumns(['action','vendor_total','total_qty','inv_no'])
+                ->rawColumns(['action','total_qty','inv_no'])
                 ->make(true);
 
         }
@@ -125,7 +126,7 @@ class RiderInvoiceController extends Controller
                 if($id==0 || $id=='') {
                     $inv = RiderInvoice::create($data);
                     $arra = [];
-                    $vArray=[];
+                    //$vArray=[];
                     for ($i = 0; $i < $count; $i++) {
                         $arra[] = [
                             'item_id' => $request['item_id'][$i],
@@ -136,7 +137,7 @@ class RiderInvoiceController extends Controller
                             'amount' => $request['amount'][$i],
                             'inv_id' => $inv->id,
                         ];
-                        $vArray[]=[
+                        /* $vArray[]=[
                             'item_id' => $request['item_id'][$i],
                             'qty' => $request['qty'][$i],
                             'rate' => CommonHelper::vendorItemPrice($VID,$request['item_id'][$i]),
@@ -144,16 +145,16 @@ class RiderInvoiceController extends Controller
                             'tax' => $request['tax'][$i],
                             'amount' => (CommonHelper::vendorItemPrice($VID,$request['item_id'][$i]))*($request['qty'][$i]),
                             'inv_id' => $inv->id,
-                        ];
+                        ]; */
                     }
                     RiderInvoiceItem::insert($arra);
-                    VendorInvoiceItem::insert($vArray);
+                    //VendorInvoiceItem::insert($vArray);
                 }else{
                     RiderInvoiceItem::where('inv_id',$id)->delete();
-                    VendorInvoiceItem::where('inv_id',$id)->delete();
+                    //VendorInvoiceItem::where('inv_id',$id)->delete();
                     RiderInvoice::where('id',$id)->update($data);
                     $arra = [];
-                    $vArray=[];
+                    //$vArray=[];
                     for ($i = 0; $i < $count; $i++) {
                         if(!empty($request['item_id'][$i])) {
                             $arra[] = [
@@ -167,7 +168,7 @@ class RiderInvoiceController extends Controller
                             ];
                             //add vendor invoice item
                             //$VID=AssignVendorRider::where('RID',$request->RID)->value('VID');
-                            $VID = Rider::where('id',$request->RID)->value('VID');
+                           /*  $VID = Rider::where('id',$request->RID)->value('VID');
                             $vArray[]=[
                                 'item_id' => $request['item_id'][$i],
                                 'qty' => $request['qty'][$i],
@@ -176,11 +177,11 @@ class RiderInvoiceController extends Controller
                                 'tax' => $request['tax'][$i],
                                 'amount' => (CommonHelper::vendorItemPrice($VID,$request['item_id'][$i]))*($request['qty'][$i]),
                                 'inv_id' => $id,
-                            ];
+                            ]; */
                         }
                     }
                     RiderInvoiceItem::insert($arra);
-                    VendorInvoiceItem::insert($vArray);
+                    //VendorInvoiceItem::insert($vArray);
                 }
                 //accounts entries
             if($id==0 || $id==''){
@@ -190,8 +191,8 @@ class RiderInvoiceController extends Controller
                 $invID=$id;
             }
                 $rider_amount=RiderInvoiceItem::where('inv_id',$invID)->sum('amount');
-                $vendor_amount=VendorInvoiceItem::where('inv_id',$invID)->sum('amount');
-                $profit=$vendor_amount-$rider_amount;
+                //$vendor_amount=VendorInvoiceItem::where('inv_id',$invID)->sum('amount');
+                //$profit=$vendor_amount-$rider_amount;
                 $tData['trans_acc_id']=TransactionAccount::where(['PID'=>21,'Parent_Type'=>$request->RID])->value('id');
                 $tData['vt']=4;
                 $tData['amount']=$rider_amount;
@@ -205,9 +206,9 @@ class RiderInvoiceController extends Controller
                 $tData['posting_date']=date('Y-m-d');
                 Transaction::create($tData);
                 //cr to vendor
-                $tData['trans_acc_id']=TransactionAccount::where(['PID'=>9,'Parent_Type'=>$VID])->value('id');
+                /* $tData['trans_acc_id']=TransactionAccount::where(['PID'=>9,'Parent_Type'=>$VID])->value('id');
                 $tData['amount']=$profit;
-                Transaction::create($data);
+                Transaction::create($data); */
                 DB::commit();
                 return response()->json(['message'=>'Operation Successfull']);
         }catch (QueryException $e){

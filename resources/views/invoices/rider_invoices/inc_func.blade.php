@@ -67,8 +67,8 @@
                 {data: 'inv_date', name: 'inv_date'},
                 {data: 'rider_name', name: 'rider_name'},
                 {data: 'total_amount', name: 'total_amount'},
-                {data: 'vendor_total', name: 'vendor_total'},
-                {data: 'total_qty', name: 'total_qty'},
+/*                 {data: 'vendor_total', name: 'vendor_total'},
+ */                {data: 'total_qty', name: 'total_qty'},
                 {data: 'descriptions', name: 'descriptions'},
                 {data: 'action', name: 'action',
                     orderable: false, searchable: false

@@ -60,7 +60,7 @@
             <td style="padding: 3px;width: 20%;text-align: left;">{{ date('Y-m-d h:i:s') }}</td>
         </tr>
         <tr>
-            <td style="padding: 3px;width: 65%;text-align: left;"><strong>Invoice Type</strong>: Rieder Invoice</td>
+            <td style="padding: 3px;width: 65%;text-align: left;"><strong>Invoice Type</strong>: Rider Invoice</td>
             <th style="padding: 3px;width: 15%;text-align: left;">#inv No:</th>
             <td style="padding: 3px;width: 15%;text-align: left;">{{ \App\Helpers\CommonHelper::inv_sch($res[0]->id,$res[0]->created_at) }}</td>
         </tr>

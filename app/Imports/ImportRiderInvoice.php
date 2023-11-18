@@ -78,7 +78,7 @@ class ImportRiderInvoice implements ToCollection
                             }
                             $j++;
                         }
-                        $k = 2;
+                        /* $k = 2;
                         foreach ($items as $itemm) {
                             $itemIdd = Item::where('item_name', $itemm)->value('id');
                             if($itemIdd) {
@@ -91,13 +91,13 @@ class ImportRiderInvoice implements ToCollection
                                 VendorInvoiceItem::create($dtaa);
                             }
                             $k++;
-                        }
+                        } */
                         $total=RiderInvoiceItem::where('inv_id',$ret->id)->sum('amount');
                         RiderInvoice::where('id',$ret->id)->update(['total_amount'=>$total]);
                         //accounts entries
                         $rider_amount=RiderInvoiceItem::where('inv_id',$ret->id)->sum('amount');
-                        $vendor_amount=VendorInvoiceItem::where('inv_id',$ret->id)->sum('amount');
-                        $profit=$vendor_amount-$rider_amount;
+                        //$vendor_amount=VendorInvoiceItem::where('inv_id',$ret->id)->sum('amount');
+                        //$profit=$vendor_amount-$rider_amount;
                         $data['trans_acc_id']=TransactionAccount::where(['PID'=>21,'Parent_Type'=>$RID])->value('id');
                         $data['vt']=4;
                         $data['amount']=$rider_amount;
@@ -111,9 +111,9 @@ class ImportRiderInvoice implements ToCollection
                         $data['posting_date']=date('Y-m-d');
                         Transaction::create($data);
                         //cr to vendor
-                        $data['trans_acc_id']=TransactionAccount::where(['PID'=>9,'Parent_Type'=>$VID])->value('id');
+                        /* $data['trans_acc_id']=TransactionAccount::where(['PID'=>9,'Parent_Type'=>$VID])->value('id');
                         $data['amount']=$profit;
-                        Transaction::create($data);
+                        Transaction::create($data); */
                     }
                 }
                 }
