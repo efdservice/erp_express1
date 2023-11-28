@@ -56,13 +56,14 @@ class RiderPvController extends Controller
         $this->validate($request, $rules, $message);
         $data['trans_date']=$request->trans_date;
         $data['posting_date']=$request->trans_date;
+        ///$data['payment_to']=$request->RID??$request->VID;
         $data['payment_from']=$request->payment_from;
         $data['payment_type']=$request->payment_from;
         $id=$request->id;
         //account entry
         $tData['trans_date']=$request->trans_date;
         $tData['posting_date']=$request->trans_date;
-//        $tData['payment_to']=$request->payment_to;
+        $tData['payment_to']=$request->RID??$request->VID;
         $tData['payment_from']=$request->payment_from;
         $tData['status']=1;
         $tData['vt']=2;
@@ -77,7 +78,7 @@ class RiderPvController extends Controller
             if ($request->voucher_type == 5) {
                 $VID = TransactionAccount::where(['PID' => 21, 'parent_type' => $request->RID])->value('id');
                 $data['trans_code'] = Account::trans_code();
-                $data['created_by'] = Auth::user()->id;
+                $data['Created_By'] = Auth::user()->id;
                 $data['remarks'] = 'Payment to Rider direct....';
                 $data['amount'] = array_sum($request->amount);
                 $ret = PaymentVoucher::create($data);
@@ -109,7 +110,7 @@ class RiderPvController extends Controller
                 $VID = TransactionAccount::where(['PID' => 9, 'parent_type' => $request->VID])->value('id');
                 if ($id == '' || $id == 0) {
                     $data['trans_code'] = Account::trans_code();
-                    $data['created_by'] = Auth::user()->id;
+                    $data['Created_By'] = Auth::user()->id;
                     $data['remarks'] = 'Payment to Vendor of Riders etc....';
                     $data['amount'] = array_sum($request->amount);
                     $ret = PaymentVoucher::create($data);
@@ -170,7 +171,9 @@ class RiderPvController extends Controller
      */
     public function show($id)
     {
-        //
+        $result=PaymentVoucher::where('trans_code',$id)->first();
+        $data=Transaction::where('trans_code',$id)->get();
+        return view('Accounts.vouchers.rider_pv.show',compact('data','result'));
     }
 
     /**

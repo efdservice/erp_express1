@@ -149,6 +149,7 @@
                             htmlData += '<td><a  class="btn btn-success btn-xs" href="' + data.data[i].attach_file + '" download><i class="fa fa-download"></i> Attached Document</a></td>';
                         }
                         htmlData+='<td>';
+                        htmlData+=' <a  class="btn btn-default btn-xs" target="_blank" href="{{ url('Accounts/vouchers/rider_pv') }}/'+data.data[i].trans_code+'"><i class="fa fa-eye"></i> </a>';
                         htmlData+=' <a  class="btn btn-danger btn-xs" href="javascript:void(0)" onclick="del_rec(\''+data.data[i].trans_code+'\', \'{{ url('Accounts/vouchers/payment_vouchers/') }}/'+data.data[i].trans_code+'\')"><i class="fa fa-trash"></i> </a>';
                         htmlData+='</td>';
                         htmlData+='</tr>';

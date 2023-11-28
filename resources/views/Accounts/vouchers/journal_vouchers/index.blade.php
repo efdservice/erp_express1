@@ -150,9 +150,9 @@
                         htmlData+='<td>'+data.data[i].remarks+'</td>';
                         htmlData+='<td>'+data.data[i].amount+'</td>';
                         htmlData+='<td>';
-                        htmlData+=' <a  class="btn btn-danger btn-xs" href="javascript:void(0)" onclick="del_rec(\''+data.data[i].trans_code+'\', \'{{ url('Accounts/vouchers/journal_vouchers') }}/'+data.data[i].trans_code+'\')"><i class="fa fa-trash"></i> </a>';
-                        htmlData+=' <a  class="btn btn-info btn-xs" href="javascript:void(0)" onclick="edit(\''+data.data[i].trans_code+'\')"><i class="fa fa-edit"></i> </a>';
                         htmlData+=' <a  class="btn btn-default btn-xs" target="_blank" href="{{ url('Accounts/vouchers/journal_vouchers') }}/'+data.data[i].trans_code+'"><i class="fa fa-eye"></i> </a>';
+                        htmlData+=' <a  class="btn btn-info btn-xs" href="javascript:void(0)" onclick="edit(\''+data.data[i].trans_code+'\')"><i class="fa fa-edit"></i> </a>';
+                        htmlData+=' <a  class="btn btn-danger btn-xs" href="javascript:void(0)" onclick="del_rec(\''+data.data[i].trans_code+'\', \'{{ url('Accounts/vouchers/journal_vouchers') }}/'+data.data[i].trans_code+'\')"><i class="fa fa-trash"></i> </a>';
                         htmlData+='</td>';
                         htmlData+='</tr>';
                     }
