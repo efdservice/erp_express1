@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Models\Accounts\TransactionAccount;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
@@ -33,5 +34,9 @@ class Rider extends Model
 
     public function sims(){
         return $this->hasOne(Sim::class,'assign_sim','id');
+    }
+
+    public function account(){
+        return $this->belongsTo(TransactionAccount::class,'id','Parent_Type')->where('PID',21);
     }
 }

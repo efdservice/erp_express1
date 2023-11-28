@@ -74,6 +74,7 @@
                 {data: 'license_no', name: 'license_no'},
                 {data: 'fleet_supervisor', name: 'fleet_supervisor'},
                 {data: 'PID', name: 'PID'},
+                {data: 'Balance', name: 'Balance'},
                 {data: 'status', name: 'status'},
                 {data: 'action', name: 'action',
                     orderable: false, searchable: false

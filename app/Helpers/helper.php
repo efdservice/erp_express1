@@ -1,10 +1,10 @@
 <?php
 namespace App\Helpers;
 use App\Models\Accounts\ServiceProvidor;
+use App\Models\Accounts\Transaction;
 use App\Models\Item;
 use App\Models\RiderItemPrice;
 use App\Models\RoomType;
-use App\Models\Transaction;
 use App\Models\TransactionAccount;
 use App\Models\VendorItemPrice;
 use Carbon\Carbon;
@@ -416,6 +416,12 @@ class CommonHelper{
         }else{
             return $result;
         }
+    }
+
+    public static function getBalance($trans_acc_id){
+        $dr = Transaction::where('trans_acc_id', $trans_acc_id)->where('dr_cr', 1)->sum('amount');
+        $cr = Transaction::where('trans_acc_id', $trans_acc_id)->where('dr_cr', 2)->sum('amount');
+        return number_format($cr-$dr,2);
     }
 
 }

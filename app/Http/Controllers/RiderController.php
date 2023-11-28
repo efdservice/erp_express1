@@ -38,6 +38,15 @@ class RiderController extends Controller
                 ->addColumn('PID', function($row){
                     return $row->project->name??'';
                 })
+                ->addColumn('Balance', function($row){
+                    $trans_acc_id = $row->account->id??0;
+                    if($trans_acc_id != 0){
+                        return CommonHelper::getBalance($trans_acc_id);
+
+                    }else{
+                        return 0;
+                    }
+                })
                 ->addColumn('id', function($row){
                     return $row->sims->sim_number??'';
                     /* $sim = '';
