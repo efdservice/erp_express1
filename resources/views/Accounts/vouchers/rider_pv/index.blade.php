@@ -187,6 +187,7 @@
                 success: function (data) {
                     $("#fetchRiderInv").html(data.htmlData);
                     $("#riderBalance").val(data.rider_balance);
+                    $("#vendor_balance").val(data.vendor_balance);
                 }
             });
         }

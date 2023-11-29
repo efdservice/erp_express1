@@ -248,6 +248,7 @@ class RiderPvController extends Controller
         }else {
             $res = RiderInvoice::where('VID', $id)->get();
             $htmlData = '';
+            $vendor_balance=0;
             foreach ($res as $item) {
                 $total = Transaction::where('SID', $item->id)->where('vt', 4)->sum('amount');
                 $paid = Transaction::where('SID', $item->id)->where('vt', 2)->sum('amount');
@@ -284,10 +285,12 @@ class RiderPvController extends Controller
                     </div>
                     <!--row-->
             ';
+           
                 }
+                $vendor_balance += $rider_balance;
             }
             //SELECT SUM(t.amount) FROM rider_invoices rv INNER JOIN transactions AS t ON rv.id=t.SID WHERE vt='4' and rv.VID=1
-            return compact('htmlData');
+            return compact('htmlData','vendor_balance');
         }
     }
 }

@@ -49,6 +49,11 @@
                                 {!! \App\Models\Vendor::dropdown() !!}
                             </select>
                         </div>
+                        <div class="form-group col-md-2">
+                            <label>Balance</label>
+                            <input type="text" name="" class="form-control form-control-sm" id="vendor_balance" readonly placeholder="Balance Amount">
+                        </div>
+                        <div id="rider_invoices"></div>
                     </div>
                     <!--row-->
                     <div class="row" id="rider_section">
