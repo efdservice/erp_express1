@@ -124,4 +124,95 @@
         });
     });
    
+$('body').on('click', '.show-modal', function () {
+  var action = $(this).data('action');
+  var title = $(this).data('title');
+  var size = $(this).data('size');
+  if (size) {
+    $('.modal-dialog').addClass('modal-' + size);
+  }
+  $('#modalTopbody').load(action, function () {
+    $("#loader").hide(); 
+ });
+
+  $('#modalTopTitle').text(title);
+
+  $('#modalTop').modal('show');
+  $("#loader").show(); 
+
+});
+
+$(document).on('submit', '#formajax', function (e) {
+  e.preventDefault();
+  $("#loader").show(); 
+
+  let formID = 'formajax';
+  var action = $(this).attr('action');
+
+  var formData = new FormData(this);
+  $.ajax({
+    url: action,
+    headers: { 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content') },
+    type: 'POST',
+    data: formData,
+    contentType: false,
+    cache: false,
+    processData: false,
+    beforeSend: function () {
+      $('#' + formID)
+        .find('.save_rec')
+        .hide();
+      $('#' + formID)
+        .find('.loader')
+        .show();
+    },
+    success: function (data) {
+        $("#loader").hide(); 
+      toastr.success('Action performed successfully.');
+      $('#modalTop').modal('hide');
+
+      if ($('#reload_page').val() == 1) {
+        location.reload();
+      }
+      get_data();
+      $('.data-table').DataTable().ajax.reload(null, false);
+    },
+    error: function (ajaxcontent) {
+        $("#loader").hide(); 
+      if (ajaxcontent.responseJSON.success == 'false') {
+        //toastr.error(ajaxcontent.responseJSON.errors);
+        return false;
+      }
+      vali = ajaxcontent.responseJSON.errors;
+      $('#' + formID + ' input').css('border', '1px solid #dfdfdf');
+      $('#' + formID + ' input')
+        .next('span')
+        .remove();
+
+      $.each(vali, function (index, value) {
+        $('#' + formID + " input[name~='" + index + "']").css('border', '1px solid red');
+        //$('#' + formID + " input[name~='" + index + "']").after('<span style="color:red;">' + value + '</span>');
+        $('#' + formID + " select[name~='" + index + "']")
+          //.parent()
+          //.find('.select2-container--default .select2-selection--single')
+          .css('border', '1px solid red');
+        toastr.error(value);
+      });
+
+      $('#dataTableBuilder').DataTable().ajax.reload();
+    },
+    complete: function () {
+      $('#' + formID)
+        .find('.save_rec')
+        .show();
+      $('#' + formID)
+        .find('.loader')
+        .hide();
+    }
+  });
+});
+
+
+
+
 </script>

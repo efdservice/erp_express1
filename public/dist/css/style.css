@@ -38,13 +38,14 @@
     display: none !important;
 }
 .form-control-sm{
-    border-radius:0 !important;;
+    border-radius:2 !important;
+   
 }
 textarea{
     border-radius: 0px !important;
 }
 label{
-    margin-bottom:0rem !important;;
+    margin-bottom:0rem !important;
 }
 .modal-body{
     padding: .5rem !important;
@@ -129,4 +130,7 @@ input[type="file"]::file-selector-button {
   }
   input[type="file"]{
     border:0px !important;
+  }
+  .form-group{
+    margin-bottom: 10px !important;
   }

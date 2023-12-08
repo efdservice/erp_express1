@@ -199,7 +199,27 @@ class CommonHelper{
     }
 
     public static function get_supervisor($id=0){
-        $array=['Rusbeel Yousaf'=>'Rusbeel Yousaf','Kaleem Ullah'=>'Kaleem Ullah','Muhammad Awais'=>'Muhammad Awais'];
+        $array=[           
+            'Rusbeel Yousaf'=>'Rusbeel Yousaf',
+            'Kaleem Ullah'=>'Kaleem Ullah',
+            'Muhammad Awais'=>'Muhammad Awais'
+        ];
+       
+        $list='';
+        foreach ($array as $key => $value){
+            $list.='<option '.($id==$key?'selected':'').' value="'.$key.'">'.$value.'</option>';
+        }
+        return $list;
+        
+    }
+
+    public static function get_PaymentReason($id=0){
+        $array=[          
+            'Monthly Salary'=>'Monthly Salary', 
+            'Advance Salary'=>'Advance Salary'
+            
+            
+        ];
        
         $list='';
         foreach ($array as $key => $value){

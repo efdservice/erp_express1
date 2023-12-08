@@ -41,7 +41,7 @@
                                     <button type="text" class="btn btn-flat btn-xs btn-dark"><i class="fas fa-search"></i> </button>
                                 </div>
                             </div>
-                            <button class="btn btn-xs btn-dark float-right" onclick="add_new()">Add New</button>
+                            <a href="javascript:void(0);" data-title="Rider Payment Voucher" data-size="xl" data-action="{{ url('Accounts/vouchers/rider_pv/create')}}" class="btn btn-xs btn-dark float-right show-modal" {{-- onclick="add_new()" --}}>Add New</a>
                             <table id="example2" class="table table-bordered table-hover">
                                 <thead>
                                 <tr>
@@ -71,7 +71,8 @@
         <!-- /.content -->
     </div>
     <!-- /.content-wrapper -->
-    @include('Accounts.vouchers.rider_pv.modal')
+    @include('partials.modal')
+   {{--  @include('Accounts.vouchers.rider_pv.modal') --}}
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script>
         function add_new() {
@@ -138,7 +139,7 @@
                     htmlData='';
                     for(i in data.data){
                         htmlData+='<tr id="'+data.data[i].trans_code+'">';
-                        htmlData+='<td>'+(Number(i)+1)+'</td>';
+                        htmlData+='<td>'+data.data[i].id+'</td>';
                         htmlData+='<td>'+data.data[i].trans_code+'</td>';
                         htmlData+='<td>'+data.data[i].trans_date+'</td>';
                         htmlData+='<td>'+data.data[i].remarks+'</td>';
@@ -146,10 +147,12 @@
                         if(data.data[i].attach_file==null){
                             htmlData += '<td>N/A</td>';
                         }else {
-                            htmlData += '<td><a  class="btn btn-success btn-xs" href="' + data.data[i].attach_file + '" download><i class="fa fa-download"></i> Attached Document</a></td>';
+                            var doc_url = "{{ Storage::url('app/voucher/')}}"+data.data[i].attach_file;
+                            htmlData += '<td><a  class="btn btn-success btn-xs" href="'+doc_url+'" download><i class="fa fa-download"></i> Attached Document</a></td>';
                         }
                         htmlData+='<td>';
                         htmlData+=' <a  class="btn btn-default btn-xs" target="_blank" href="{{ url('Accounts/vouchers/rider_pv') }}/'+data.data[i].trans_code+'"><i class="fa fa-eye"></i> </a>';
+                        htmlData+=' <a  class="btn btn-primary btn-xs show-modal" href="javascript:void(0);" data-size="xl" data-title="Edit Payment Voucher" data-action="{{ url('Accounts/vouchers/rider_pv/') }}/'+data.data[i].trans_code+'/edit"><i class="fa fa-edit"></i> </a>';
                         htmlData+=' <a  class="btn btn-danger btn-xs" href="javascript:void(0)" onclick="del_rec(\''+data.data[i].trans_code+'\', \'{{ url('Accounts/vouchers/payment_vouchers/') }}/'+data.data[i].trans_code+'\')"><i class="fa fa-trash"></i> </a>';
                         htmlData+='</td>';
                         htmlData+='</tr>';

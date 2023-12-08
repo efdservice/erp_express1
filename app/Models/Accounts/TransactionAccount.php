@@ -56,9 +56,19 @@ class TransactionAccount extends Model
         return $list;
     }
 
+    public static function bank_cash_list(){
+        $list = self::where('PID', 1)->pluck('Trans_Acc_Name','id');
+        return $list->prepend('Select',0);
+       
+    }
+
     //relation with rider
     public function rider(){
         return $this->belongsTo(Rider::class,'Parent_Type','id')->where('PID',21);
+    }
+
+    public function riderDetail(){
+        return $this->hasOne(Rider::class,'id','Parent_Type');
     }
 
     public static function getSubAccounts($id){

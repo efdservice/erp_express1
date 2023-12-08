@@ -32,7 +32,7 @@ class RiderPvController extends Controller
      */
     public function create()
     {
-        //
+        return view('Accounts.vouchers.rider_pv.create');
     }
 
     /**
@@ -43,6 +43,7 @@ class RiderPvController extends Controller
      */
     public function store(Request $request)
     {
+       
         $rules=[
             'trans_date'=>'required',
             'payment_from'=>'required',
@@ -56,22 +57,34 @@ class RiderPvController extends Controller
         $this->validate($request, $rules, $message);
         $data['trans_date']=$request->trans_date;
         $data['posting_date']=$request->trans_date;
-        ///$data['payment_to']=$request->RID??$request->VID;
+
+        if($request->voucher_type == 5){
+            $data['payment_to']=$request->RID;
+        }else{
+            $data['payment_to']=$request->VID;
+        }
+        
+        $data['payment_reason']=$request->payment_reason;
         $data['payment_from']=$request->payment_from;
-        $data['payment_type']=$request->payment_from;
+        $data['payment_type']=$request->payment_type;
+        $data['voucher_type']=$request->voucher_type;
+        $data['ref']=$request->ref;
         $id=$request->id;
         //account entry
         $tData['trans_date']=$request->trans_date;
         $tData['posting_date']=$request->trans_date;
-        $tData['payment_to']=$request->RID??$request->VID;
+        //$tData['payment_to']=$request->RID??$request->VID;
         $tData['payment_from']=$request->payment_from;
         $tData['status']=1;
         $tData['vt']=2;
         $tData['trans_code']=Account::trans_code();
+      
         if(isset($request->attach_file)) {
-            $photo=$request->attach_file;
-            $docFile=url('/storage/app/'.$photo->store('public/vouchers/payment_voucher'));
-            $data['attach_file']=$docFile;
+            $doc = $request->attach_file;
+            $extension =  $doc->extension();
+            $name = time().'.'.$extension;
+            $doc->storeAs('voucher',$name);
+            $data['attach_file']=$name;
         }
         DB::beginTransaction();
         try {
@@ -81,6 +94,7 @@ class RiderPvController extends Controller
                 $data['Created_By'] = Auth::user()->id;
                 $data['remarks'] = 'Payment to Rider direct....';
                 $data['amount'] = array_sum($request->amount);
+                
                 $ret = PaymentVoucher::create($data);
                 $count = count($request->amount);
                 for ($i = 0; $i < $count; $i++) {
@@ -113,6 +127,7 @@ class RiderPvController extends Controller
                     $data['Created_By'] = Auth::user()->id;
                     $data['remarks'] = 'Payment to Vendor of Riders etc....';
                     $data['amount'] = array_sum($request->amount);
+                  
                     $ret = PaymentVoucher::create($data);
                     for ($i = 0; $i < $count; $i++) {
                         if ($request['amount'][$i] > 0 && $request['RID'][$i] != null) {
@@ -184,7 +199,10 @@ class RiderPvController extends Controller
      */
     public function edit($id)
     {
-        //
+        $result=PaymentVoucher::where('trans_code',$id)->first();
+        $data=Transaction::where('trans_code',$id)->get();
+        return view('Accounts.vouchers.rider_pv.edit',compact('result','data'));
+
     }
 
     /**
@@ -196,7 +214,41 @@ class RiderPvController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        if($request->post()){
+           
+            $totalAmount = 0;
+            foreach($request->trans as $trans){
+               
+               $transaction = Transaction::find($trans['id']);
+               $transaction->narration = $trans['narration'];
+               $transaction->amount = $trans['amount'];
+               if($trans['dr_cr'] == 2){
+                $transaction->trans_acc_id = $request->payment_from;
+                $totalAmount += $trans['amount'];
+                //$transaction->payment_type = $request->payment_type;
+               }
+               $transaction->save();               
+            }
+
+            
+            $payment = PaymentVoucher::find($id);
+            
+            if(isset($request->attach_file)) {
+                $doc = $request->attach_file;
+                $extension =  $doc->extension();
+                $name = time().'.'.$extension;
+                $doc->storeAs('voucher',$name);
+                $payment->attach_file=$name;
+            }
+            $payment->ref =$request->ref;
+            $payment->trans_date = $request->trans_date;
+            $payment->payment_reason = $request->payment_reason;
+            $payment->payment_from = $request->payment_from;
+            $payment->payment_type = $request->payment_type;
+            $payment->amount = $totalAmount;
+            $payment->save();
+           
+        }
     }
 
     /**

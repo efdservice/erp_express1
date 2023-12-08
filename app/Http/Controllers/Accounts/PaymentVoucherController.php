@@ -118,7 +118,7 @@ class PaymentVoucherController extends Controller
     }
     //@listing data
     public function get_data(Request $request){
-        return PaymentVoucher::paginate(15);
+        return PaymentVoucher::orderBy('id','DESC')->paginate(15);
     }
     /**
      * Display the specified resource.

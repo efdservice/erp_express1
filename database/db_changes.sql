@@ -95,6 +95,13 @@ UPDATE `permissions` SET `name`='riders_document' WHERE (`id`='112');
 
 UPDATE `permissions` SET `name`='bikes_status' WHERE (`id`='120');
 UPDATE `permissions` SET `name`='sims_status' WHERE (`id`='136');
+--------08-12-2023--------------
+
+ALTER TABLE `payment_vouchers`
+ADD COLUMN `voucher_type`  tinyint(2) NULL DEFAULT 5 AFTER `updated_at`;
+
+ALTER TABLE `payment_vouchers`
+ADD COLUMN `payment_reason`  varchar(100) NULL AFTER `voucher_type`;
 
 
 

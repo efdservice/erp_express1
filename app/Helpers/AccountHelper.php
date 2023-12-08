@@ -8,6 +8,11 @@ use Session;
 
 class Account{
     //payment types
+    public static function payment_type_list(){
+        $list= [0=>'Select',1=>'Cash', 2=>'Cheque', 3=>'Online', 4=>'Credit'];
+       
+        return $list;
+    }
     public static function payment_type(){
         $list='';
         $array=[1=>'Cash', 2=>'Cheque', 3=>'Online', 4=>'Credit'];
