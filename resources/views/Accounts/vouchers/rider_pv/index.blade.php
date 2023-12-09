@@ -8,7 +8,7 @@
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-sm-6">
-                        <h5>Rider Payment Vouchers</h5>
+                        <h5>Invoice Payment Vouchers</h5>
                     </div>
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
@@ -41,7 +41,7 @@
                                     <button type="text" class="btn btn-flat btn-xs btn-dark"><i class="fas fa-search"></i> </button>
                                 </div>
                             </div>
-                            <a href="javascript:void(0);" data-title="Rider Payment Voucher" data-size="xl" data-action="{{ url('Accounts/vouchers/rider_pv/create')}}" class="btn btn-xs btn-dark float-right show-modal" {{-- onclick="add_new()" --}}>Add New</a>
+                            <a href="javascript:void(0);" data-title="Invoice Payment Voucher" data-size="xl" data-action="{{ url('Accounts/vouchers/rider_pv/create')}}" class="btn btn-xs btn-dark float-right show-modal" {{-- onclick="add_new()" --}}>Add New</a>
                             <table id="example2" class="table table-bordered table-hover">
                                 <thead>
                                 <tr>

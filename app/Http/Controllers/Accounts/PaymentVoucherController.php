@@ -56,6 +56,10 @@ class PaymentVoucherController extends Controller
         ];
         $this->validate($request, $rules, $message);
         $data=$request->except(['_token','narration','OB']);
+        $data['status']=1;
+        $data['payment_reason']=$request->payment_reason;
+
+
         $id=$request->id;
         //account entry
         $tData['trans_date']=$request->trans_date;
@@ -67,11 +71,12 @@ class PaymentVoucherController extends Controller
         $tData['amount']=$request->amount;
         $tData['status']=1;
         $tData['vt']=2;
-        //$tData['trans_code']=Account::trans_code();
         if(isset($request->attach_file)) {
-            $photo=$request->attach_file;
-            $docFile=url('/storage/app/'.$photo->store('public/vouchers/payment_voucher'));
-            $data['attach_file']=$docFile;
+            $doc = $request->attach_file;
+            $extension =  $doc->extension();
+            $name = time().'.'.$extension;
+            $doc->storeAs('voucher',$name);
+            $data['attach_file']=$name;
         }
         DB::beginTransaction();
         try {
@@ -82,6 +87,7 @@ class PaymentVoucherController extends Controller
                 $ret=PaymentVoucher::create($data);
                 $tData['Created_By']=Auth::user()->id;
                 //dr to cash bank
+                $tData['trans_code']=Account::trans_code();
                 $tData['trans_acc_id']=$request->payment_to;
                 $tData['dr_cr']=1;
                 Transaction::create($tData);
@@ -118,7 +124,13 @@ class PaymentVoucherController extends Controller
     }
     //@listing data
     public function get_data(Request $request){
-        return PaymentVoucher::orderBy('id','DESC')->paginate(15);
+        if($request->get('s')){
+            return PaymentVoucher::where('status',1)->orderBy('id','DESC')->paginate(15);
+
+        }else{
+            return PaymentVoucher::where('status',0)->orderBy('id','DESC')->paginate(15);
+
+        }
     }
     /**
      * Display the specified resource.

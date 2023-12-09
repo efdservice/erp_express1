@@ -3,7 +3,7 @@
             <div class="row">
                 <div class="form-group col-md-2">
                     <label for="exampleInputEmail1">Date</label>
-                    <input  name="trans_date" class="form-control form-control-sm date" placeholder="Transaction Date" value="{{ date('Y-m-d') }}" >
+                    <input  name="trans_date" class="form-control form-control-sm date" placeholder="Transaction Date" value="{{$result->trans_date??''}}" required >
                 </div>
                 {{-- <div class="form-group col-md-2">
                     <label for="exampleInputEmail1">Posting Date</label>
@@ -38,7 +38,7 @@
                 </div>
             </div>
             <div class="row" id="vendor_section" style="display: none">
-                <div class="form-group col-md-3">
+                <div class="form-group col-md-4">
                     <label for="exampleInputEmail1">Select Vendor</label>
                     <select name="VID" class="form-control form-control-sm select2" onchange="fetch_invoices(this.value)" @isset($result) disabled @endisset>
                         <option value="">Select</option>
@@ -53,7 +53,7 @@
             </div>
             <!--row-->
             <div class="row" id="rider_section">
-                <div class="form-group col-md-2">
+                <div class="form-group col-md-4">
                     <label for="exampleInputEmail1">Select Rider</label>
                     <select name="RID" class="form-control form-control-sm select2" onchange="fetch_invoices(this.value)" @isset($result) disabled @endisset>
                         <option value="">Select</option>

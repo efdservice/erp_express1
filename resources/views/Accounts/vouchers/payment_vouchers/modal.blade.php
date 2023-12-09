@@ -40,6 +40,13 @@
                                 <option value="7">Vendor PV</option>
                             </select>
                         </div>
+                        <div class="form-group col-md-2">
+                            <label for="exampleInputEmail1">Select Reason</label>
+                            <select name="payment_reason" class="form-control form-control-sm select2" >
+                                <option value="">Select</option>
+                                {!! App\Helpers\CommonHelper::get_PaymentReason(@$result->payment_reason) !!}
+                            </select>
+                        </div>
                     </div>
                     <div class="row">
                         <div class="form-group col-md-3">
