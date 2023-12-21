@@ -102,6 +102,11 @@ ADD COLUMN `voucher_type`  tinyint(2) NULL DEFAULT 5 AFTER `updated_at`;
 
 ALTER TABLE `payment_vouchers`
 ADD COLUMN `payment_reason`  varchar(100) NULL AFTER `voucher_type`;
+------------------
+ALTER TABLE `transactions`
+MODIFY COLUMN `narration`  text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL AFTER `rec_date`;
+
+
 
 
 

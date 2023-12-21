@@ -23,7 +23,7 @@
                 </div>
                 <div class="form-group col-md-2">
                     <label for="exampleInputEmail1">Voucher Type</label>
-                    <select name="voucher_type" class="form-control form-control-sm pt" id="voucher_type" @isset($result) disabled @endisset>
+                    <select name="voucher_type[]" class="form-control form-control-sm pt" id="voucher_type" @isset($result) disabled @endisset>
                         <option value="">Select</option>
                         <option value="5" @if(@$result->voucher_type == 5) selected @endif>Rider PV</option>
                         <option value="7" @if(@$result->voucher_type == 7) selected @endif>Vendor PV</option>
@@ -51,47 +51,21 @@
                 </div>
                 <div id="rider_invoices"></div>
             </div>
-            
             <!--row-->
-            <div class="row bg-light" id="rider_section" style="display: none">
-                <div class="form-group col-md-3">
+            <div class="row" id="rider_section">
+                <div class="form-group col-md-4">
                     <label for="exampleInputEmail1">Select Rider</label>
-                    <select name="RID" class="form-control form-control-sm select2"id="RID" >
+                    <select name="RID" class="form-control form-control-sm select2"  onchange="fetch_invoices(this.value)" @isset($result) disabled @endisset>
                         <option value="">Select</option>
                         {!! \App\Models\Rider::dropdown(@$result->payment_to) !!}
                     </select>
                 </div>
                 <div class="form-group col-md-2">
                     <label>Rider Balance</label>
-                    <input type="text" name="riderBalance" class="form-control form-control-sm" id="riderBalance" readonly placeholder="Balance Amount">
-                </div>
-                <div class="form-group col-md-2">
-                    <label>Invoice Balance</label>
-                    <input type="hidden" name="inv_id" id="inv_id" value="" />
-                    <input type="text" name="riderInvoiceBalance" class="form-control form-control-sm" id="riderInvoiceBalance" readonly placeholder="Invoice Amount">
-                </div>
-                <div class="form-group col-md-2">
-                    <label>Narration</label>
-                    <textarea name="narration" id="narration" class="form-control form-control-sm narration" rows="10" placeholder="Narration" style="height: 40px !important;"></textarea>
-                </div>
-                <div class="form-group col-md-2">
-                    <label>Amount</label>
-                    <input type="text" name="amount" class="form-control form-control-sm" id="riderAmount" placeholder="Amount">
-                </div>
-                <div class="form-group col-md-1" style="padding-top: 21px;float:right;">
-                    <button type="button" class="btn btn-dark btn-sm" id="addRiderRow" >Add</button> 
+                    <input type="text" name="" class="form-control form-control-sm" id="riderBalance" readonly placeholder="Balance Amount">
                 </div>
                 <div id="rider_invoices"></div>
-                
             </div>
-            <table id="myTable" class="table order-list">
-            </table>
-            <table id="sumTable" class="table sum-row">
-                <tr>
-                    <td width="750">&nbsp;</td>
-                    <td id="TotalAmount"></td>
-                </tr>
-            </table>
             <!--row-->
             <div id="fetchRiderInv">
                 @isset($data)
@@ -123,10 +97,12 @@
                                 @endif
                             </div>
                             <div class="form-group col-md-4">
+                                <label>Narration</label>
                                 <textarea name="trans[{{$entry->id}}][narration]" class="form-control form-control-sm narration" rows="10" placeholder="Narration" style="height: 40px !important;">{{$entry->narration}}</textarea>
                             </div>
                            @if($entry->dr_cr == 1)
                             <div class="form-group col-md-2">
+                                <label>Amount</label>
                                 <input type="number" name="trans[{{$entry->id}}][amount]" value="{{$entry->amount}}" class="form-control form-control-sm" placeholder="Paid Amount">
                             </div>
                             @endif
@@ -134,6 +110,7 @@
                             <div class="form-group col-md-2">
                             </div>
                             <div class="form-group col-md-2">
+                                <label>Amount</label>
                                 <input type="number" name="trans[{{$entry->id}}][amount]" value="{{$entry->amount}}" class="form-control form-control-sm" placeholder="Paid Amount">
                             </div>
                             @endif
@@ -158,72 +135,3 @@
             <button type="submit" class="btn btn-success btn-sm">Submit</button>
             <button type="button" class="btn btn-danger btn-sm" data-dismiss="modal">Close</button>  
         </div>
-<script>
-
-$(document).ready(function (e) {
-
-//$("table.order-list").html('');
-
-var base_url = $('#base_url').val();
-
-var counter = 0;
-$("#RID").on("change", function () {
-    var id = $('#RID').val();
-    var type = 5;
-    
-        $.get(base_url+'/Accounts/vouchers/get_invoice_balance?id='+id+'&type='+type).done(function(data){
-            $("#riderInvoiceBalance").val(data.invoice_balance);
-            $("#riderBalance").val(data.balance);
-            $("#inv_id").val(data.inv_id);
-        });
-});
-
-        $("#addRiderRow").on("click", function () {
-                var item_id = $('#RID').val();
-                var item_name = $('#RID option:selected').text();
-                var item_price = $('#riderAmount').val();
-                var narration = $('#narration').val();
-                var inv_id = $('#inv_id').val();
-                var invoice = '';
-            if(item_price !='' && item_id != ''){
-               
-                var newRow ='<tr><td width="200"><label>'+item_name+'</label><input type="hidden" name="id[]" value="'+item_id+'" /><input type="hidden" name="inv_id[]" value="'+inv_id+'" /></td>';
-                    newRow +='<td width="200"><input type="text" name="narration[]"  value="'+narration+'" class="form-control form-control-sm" /></td>';
-                    newRow +='<td width="100"><input type="number" name="amount[]"  value="'+item_price+'" step="any" class="form-control form-control-sm amount" /></td>';
-                    newRow +='<td width="100"><input type="button" class="ibtnDel btn btn-md btn-xs btn-danger "  value="Delete"></td></tr>';
-
-                    $("table.order-list").append(newRow);               
-                    $('#riderAmount').val('');
-                    $('#narration').val('');
-                    $('#RID option:selected').text('select');
-                    $('#RID').val(0);
-                    $('#riderBalance').val('');
-                    counter++;
-               
-                }else{
-                    alert("Select Rider and Amount");
-                }
-                getTotal();
-            });
-                
-            
-            $("table.order-list").on("click", ".ibtnDel", function (event) {
-            $(this).closest("tr").remove();       
-            counter -= 1;
-            getTotal();
-            }); 
-        });
-
-        function getTotal(){
-            var sum = 0;
-			//iterate through each textboxes and add the values
-			$(".amount").each(function() {
-				//add only if the value is number
-				if(!isNaN(this.value) && this.value.length!=0) {
-					sum += parseFloat(this.value);
-				}
-			});
-			//.toFixed() method will roundoff the final sum to 2 decimal places
-			$("#TotalAmount").html("<b>Total Amount: "+sum.toFixed(2)+"</b>");
-        } 
-</script>

@@ -98,10 +98,10 @@ class Account{
     //@dr or cr
     public static function show_bal($bal){
         if ($bal>0) {
-            return number_format(abs($bal), 2)." Dr";
+            return number_format(abs($bal), 2)." DR";
         }
         elseif($bal<0) {
-            return '('.number_format(abs($bal), 2).") Cr";
+            return '('.number_format(abs($bal), 2).") CR";
         }
         elseif($bal==0) {
             return "Nil";

@@ -37,6 +37,8 @@ Route::group(['middleware' => ['auth']], function() {
             Route::post('get_journal_vouchers', 'Accounts\JournalVoucherController@get_data');
             Route::resource('rider_pv',Accounts\RiderPvController::class);
             Route::get('fetch_invoices/{id}/{vt}','Accounts\RiderPvController@fetch_invoices');
+            Route::get('get_balance','Accounts\RiderPvController@GetBalance')->name('get_balance');
+            Route::get('get_invoice_balance','Accounts\RiderPvController@GetInvoiceBalance')->name('get_invoice_balance');
 
         });
         Route::get('ledger', 'Accounts\Reports\LedgerController@index');

@@ -27,11 +27,11 @@
                             @foreach($warehouse_count as $wh)
                                 <div class="col-lg-2 col-6">
                                     <!-- small box -->
-                                    <div class="small-box bg-light">
-                                        <div class="inner">
-                                            <h3>{{$wh->total}}</h3>
+                                    <div class="small-box bg-light" >
+                                        <div class="inner" >
+                                            <h4>{{$wh->total}}</h4>
             
-                                            <p>{{$wh->warehouse}}</p>
+                                            <span>{{$wh->warehouse}}</span>
                                         </div>
                                         <div class="icon">
                                             <i class="fas fa-motorcycle fa-xs"></i>

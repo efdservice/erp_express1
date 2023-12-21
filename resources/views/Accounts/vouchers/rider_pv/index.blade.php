@@ -83,6 +83,11 @@
             $("#new").find('.btn-success').text('Submit');
         }
         $(document).ready(function () {
+
+            var base_url = $('#base_url').val();
+            var counter = 0;
+
+           
             $(".client_inv").on("change",function () {
                 var pt=$(this).closest('form').find('.pt').val();
                 if(pt==1){
@@ -188,22 +193,29 @@
                 url: "{{ url('Accounts/vouchers/fetch_invoices') }}/"+id+'/'+vt,
                 headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
                 success: function (data) {
-                    $("#fetchRiderInv").html(data.htmlData);
+                    $("table.order-list").html(data.htmlData);
                     $("#riderBalance").val(data.rider_balance);
                     $("#vendor_balance").val(data.vendor_balance);
+                    
                 }
             });
         }
         $(document).on("change","#voucher_type",function () {
             let thisVal=$(this).val();
+            
             if(thisVal==5){
                 $("#vendor_section").hide();
                 $("#rider_section").show();
-                $("#fetchRiderInv").html('');
+                $("table.order-list").html('');
             }else{
                 $("#vendor_section").show();
                 $("#rider_section").hide();
+                $("table.order-list").html('');
             }
-        });
+            $("#TotalAmount").html('<b>Total Amount:0.00</b>');
+        });   
+        
+       
+        
     </script>
 @endsection<!-- jQuery -->
