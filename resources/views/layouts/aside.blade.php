@@ -333,12 +333,12 @@ $reports=['vendor_invoice_report','rider_invoice_report'];
                                     </li>
                                 @endcan
                                 @can('pv_view')
-                                    <li class="nav-item">
+                                    {{-- <li class="nav-item">
                                         <a href="{{ route('payment_vouchers.index') }}" class="nav-link {{ (request()->is('Accounts/vouchers/payment_vouchers')) ? 'active' : '' }}">
                                             <i class="nav-icon fas fa-angle-double-right fa-xs"></i>
                                             <p>Payment Voucher</p>
                                         </a>
-                                    </li>
+                                    </li> --}}
                                     <li class="nav-item">
                                         <a href="{{ route('rider_pv.index') }}" class="nav-link {{ (request()->is('Accounts/vouchers/rider_pv')) ? 'active' : '' }}">
                                             <i class="nav-icon fas fa-angle-double-right fa-xs"></i>
