@@ -312,7 +312,7 @@ class RiderPvController extends Controller
                         </div>
                         <div class="form-group col-md-2">
                             <label>Amount</label>
-                            <input type="number" name="amount[]" class="form-control form-control-sm amount" placeholder="Paid Amount">
+                            <input type="number" name="amount[]" step="any" class="form-control form-control-sm amount" placeholder="Paid Amount">
                         </div>
                     </div>
                     <!--row-->
@@ -356,7 +356,7 @@ class RiderPvController extends Controller
                         </div>
                         <div class="form-group col-md-2">
                             <label>Amount</label>
-                            <input type="number" name="amount[]" class="form-control form-control-sm amount" onkeyup="getTotal();" placeholder="Paid Amount">
+                            <input type="number" name="amount[]" class="form-control form-control-sm amount" step="any" onkeyup="getTotal();" placeholder="Paid Amount">
                         </div>
                     </div>
                     </td>

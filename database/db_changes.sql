@@ -105,6 +105,10 @@ ADD COLUMN `payment_reason`  varchar(100) NULL AFTER `voucher_type`;
 ------------------
 ALTER TABLE `transactions`
 MODIFY COLUMN `narration`  text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL AFTER `rec_date`;
+---------------------
+ALTER TABLE `sims`
+ADD COLUMN `sim_emi`  varchar(100) NULL AFTER `status`,
+ADD COLUMN `sim_vendor`  bigint(20) NULL AFTER `sim_emi`;
 
 
 

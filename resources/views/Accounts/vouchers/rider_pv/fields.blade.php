@@ -76,7 +76,7 @@
                 </div>
                 <div class="form-group col-md-2">
                     <label>Amount</label>
-                    <input type="text" name="amount" class="form-control form-control-sm" id="riderAmount" placeholder="Amount">
+                    <input type="text" name="amount" class="form-control form-control-sm" id="riderAmount" placeholder="Amount" step="any">
                 </div>
                 <div class="form-group col-md-1" style="padding-top: 21px;float:right;">
                     <button type="button" class="btn btn-dark btn-sm" id="addRiderRow" >Add</button> 

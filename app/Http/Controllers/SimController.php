@@ -88,6 +88,7 @@ class SimController extends Controller
             'assign_sim.required'=>'Sim must be assign to rider',
             'assign_sim.unique'=>'Sim already assigned to this rider.',
         ];
+       
         $this->validate($request,$rules,$message);
         $data=$request->except(['code']);
         $id=$request->input('id');

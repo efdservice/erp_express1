@@ -20,9 +20,20 @@
                         <label>Sim Company</label>
                         <input type="text" class="form-control form-control-sm" name="sim_company" placeholder="Sim Company">
                     </div>
+                    <div class="col-md-6 form-group">
+                        <label>EMI</label>
+                        <input type="text" class="form-control form-control-sm" name="sim_emi" placeholder="Sim EMI">
+                    </div>
+                   {{--  <div class="col-md-6 form-group">
+                        <label>Select Vendor</label>
+                        <select class="form-control form-control-sm select2" name="sim_vendor">
+                            <option value="">Select Vendor</option>
+                            {!! \App\Models\Vendor::dropdown() !!}
+                        </select>
+                    </div> --}}
                     <!--col-->
                     <div class="col-md-6 form-group">
-                        <label>Assign to Rider</label>
+                        <label>Select Rider</label>
                         <select class="form-control form-control-sm select2" name="assign_sim">
                             <option value="">Select Rider</option>
                             {!! \App\Models\Rider::dropdown() !!}
