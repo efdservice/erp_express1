@@ -54,7 +54,9 @@
             <td colspan="3"><h4 style="margin-bottom: 15px;margin-top: 25px;font-size: 14px;border-bottom: 1px solid #000;border-top: 1px solid #000;padding: 7px 0px;">Payment Voucher</h4></td>
         </tr>
     </table>
+    @isset($result->trans_code)
     <table width="100%" style="font-family: sans-serif; margin-top: 20px;font-size: 12px">
+       
         <tr>
             <td style="padding: 3px;width: 65%;text-align: left;"><strong>Voucher No</strong>: {{ $result->trans_code }}</td>
             <th style="padding: 3px;width: 15%;text-align: left;">Voucher Date:</th>
@@ -130,6 +132,9 @@
     <div id="btns" style="margin-top: 50px">
         <button class="btn btn-sm btn-outline-danger" type="button" onClick="window.print()"><i class="fa fa-file-pdf-o"></i> Print</button>
     </div>
+    @else
+    <div class="text-danger">No Voucher found</div>
+    @endisset
 </div>
 </body>
 </html>

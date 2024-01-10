@@ -109,6 +109,14 @@ MODIFY COLUMN `narration`  text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci
 ALTER TABLE `sims`
 ADD COLUMN `sim_emi`  varchar(100) NULL AFTER `status`,
 ADD COLUMN `sim_vendor`  bigint(20) NULL AFTER `sim_emi`;
+--------------
+ALTER TABLE `journal_vouchers`
+MODIFY COLUMN `amount`  decimal(20,2) NULL AFTER `payment_type`;
+ALTER TABLE `payment_vouchers`
+MODIFY COLUMN `amount`  decimal(20,2) NULL AFTER `payment_type`;
+
+ALTER TABLE `rider_invoices`
+MODIFY COLUMN `total_amount`  double(20,2) NULL DEFAULT 0.00 AFTER `descriptions`;
 
 
 
