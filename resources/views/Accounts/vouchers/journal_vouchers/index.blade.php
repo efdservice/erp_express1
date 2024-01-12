@@ -174,6 +174,7 @@
                         $("#form input[name~='posting_date']").val(data.result.posting_date);
                         $("#form select[name~='payment_type']").val(data.result.payment_type);
                         $("#form select[name~='month']").val(data.result.month);
+                        $("#form select[name~='billing_month']").val(data.result.billing_month);
                     $("#form input[name~='id']").val(data.result.trans_code);
                     $(".append-line").html(data.htmlData);
                     $(".total_dr").val(data.result.amount);

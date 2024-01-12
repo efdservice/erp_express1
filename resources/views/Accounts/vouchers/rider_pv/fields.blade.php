@@ -22,6 +22,10 @@
                 
                 </div>
                 <div class="form-group col-md-2">
+                    <label for="exampleInputEmail1">Billing Month</label>
+                    {!! Form::select('billing_month',App\Helpers\CommonHelper::BillingMonth(),null ,['class' => 'form-control form-control-sm select2 ','id'=>'billing_month']) !!}                
+                </div>
+                <div class="form-group col-md-2">
                     <label for="exampleInputEmail1">Voucher Type</label>
                     <select name="voucher_type" class="form-control form-control-sm pt" id="voucher_type" @isset($result) disabled @endisset>
                         <option value="">Select</option>

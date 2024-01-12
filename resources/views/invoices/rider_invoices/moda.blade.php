@@ -59,13 +59,17 @@
                         <input type="text" class="form-control form-control-sm" name="off" placeholder="Performance">
                     </div>
                     <!--col-->
-                    <div class="col-md-2 form-group">
+                   {{--  <div class="col-md-2 form-group">
                         <label>Month of Invoice</label>
                         <select class="form-control form-control-sm" name="month_invoice">
                             @for($i=1; $i<=12; $i++)
                                 <option value="{{ $i }}">{{ date('F',mktime(0, 0, 0, $i, 10)) }}</option>
                             @endfor
                         </select>
+                    </div> --}}
+                    <div class="form-group col-md-2">
+                        <label for="exampleInputEmail1">Billing Month</label>
+                        {!! Form::select('billing_month',App\Helpers\CommonHelper::BillingMonth(),null ,['class' => 'form-control form-control-sm select2 ','id'=>'billing_month']) !!}                
                     </div>
                     <!--col-->
                     <div class="col-md-12 form-group">

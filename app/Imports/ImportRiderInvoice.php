@@ -73,7 +73,7 @@ class ImportRiderInvoice implements ToCollection
                                 'perfect_attendance' => $row[23],
                                 'rejection' => $row[19],
                                 'performance' => $row[26],
-                                'month_invoice' => $row[25],
+                                'billing_month' => date("Y-m-01", strtotime($row[25])),
                                 'off' => $row[24],
                                 'descriptions' => $row[27],
                             ]);
@@ -121,6 +121,7 @@ class ImportRiderInvoice implements ToCollection
                             $data['dr_cr'] = 2;
                             $data['trans_code'] = Account::trans_code();
                             $data['trans_date'] = date('Y-m-d');
+                            $data['billing_month'] = date("Y-m-01", strtotime($row[25]));
                             $data['posting_date'] = date('Y-m-d');
                             Transaction::create($data);
                             //cr to vendor

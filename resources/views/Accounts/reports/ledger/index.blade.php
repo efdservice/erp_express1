@@ -26,18 +26,30 @@
                             <form id="form">
                                 <div class="row">
                                     <div class="col-md-2">
+                                        <label>Date From</label>
                                         <input name="df" class="form-control form-control-sm date" placeholder="Date From">
                                     </div>
                                     <div class="col-md-2">
+                                        <label>Date To</label>
                                         <input name="dt" class="form-control form-control-sm date" placeholder="Date To">
                                     </div>
                                     <div class="col-md-2">
+                                        <label>Account</label>
                                         <select class="form-control form-control-sm select2" name="ledger_id">
                                             {!! App\Models\Accounts\TransactionAccount::dropdown() !!}
                                         </select>
                                     </div>
-                                    <div class="col-sm-1">
-                                        <button type="button" class="btn btn-xs btn-primary" onclick="get_data()"><i class="fa fa-search"></i> </button>
+                                    <div class="col-md-2">
+                                        <label>Biling Month</label>
+                                        <select name="billing_month" class="form-control form-control-sm select2">
+                                            <option value="">Select</option>
+                                           @foreach(App\Helpers\CommonHelper::BillingMonth() as $key=>$value)
+                                           <option value="{{$key}}">{{$value}}</option>
+                                           @endforeach
+                                        </select>
+                                    </div>
+                                    <div class="col-md-1" style="margin-top: 20px;">
+                                        <button type="button" class="btn btn-sm btn-primary" onclick="get_data()"><i class="fa fa-search"></i> Search </button>
                                     </div>
                                 </div>
                                 <!--row-->

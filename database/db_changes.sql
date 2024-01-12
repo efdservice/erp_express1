@@ -119,7 +119,19 @@ ALTER TABLE `rider_invoices`
 MODIFY COLUMN `total_amount`  double(20,2) NULL DEFAULT 0.00 AFTER `descriptions`;
 
 
+ALTER TABLE `payment_vouchers`
+ADD COLUMN `billing_month`  date NULL AFTER `payment_reason`;
 
+ALTER TABLE `transactions`
+ADD COLUMN `billing_month`  date NULL AFTER `updated_at`;
+
+ALTER TABLE `journal_vouchers`
+ADD COLUMN `billing_month`  date NULL AFTER `month`;
+
+ALTER TABLE `rider_invoices`
+ADD COLUMN `billing_month`  date NULL AFTER `updated_at`;
+
+-----------------
 
 
 

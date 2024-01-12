@@ -62,8 +62,10 @@
         </tr>
         <tr>
             <td style="padding: 3px;width: 65%;text-align: left;"><strong>Voucher Type</strong>: Payment Voucher</td>
-            <th style="padding: 3px;width: 15%;text-align: left;">Ref No:</th>
-            <td style="padding: 3px;width: 20%;text-align: left;"></td>
+            @isset($result->billing_month)
+            <th style="padding: 3px;width: 15%;text-align: left;"> Billing Month: </th>
+            <td style="padding: 3px;width: 20%;text-align: left;">{{date('M-Y',strtotime($result->billing_month))}}</td>
+            @endisset
         </tr>
         <tr>
             <td style="padding: 3px;width: 65%;text-align: left;">&nbsp;</td>
