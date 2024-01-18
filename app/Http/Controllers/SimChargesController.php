@@ -42,69 +42,72 @@ class SimChargesController extends Controller
      */
     public function store(Request $request)
     {
-        $rules=[
-            'trans_date'=>'required',
-            'sim_id'=>'required',
-            'CID'=>'required',
-            'amount'=>'required',
+        $rules = [
+            'trans_date' => 'required',
+            'sim_id' => 'required',
+            /*             'CID' => 'required',
+             */    'amount' => 'required',
         ];
-        $message=[
-            'trans_date.required'=>'Transaction Date Required',
-            'sim_id.required'=>'Please Select Sim',
-            'amount.required'=>'Amount should be greater than 0',
-            'CID.required'=>' Company required',
-        ];
+        $message = [
+            'trans_date.required' => 'Transaction Date Required',
+            'sim_id.required' => 'Please Select Sim',
+            'amount.required' => 'Amount should be greater than 0',
+            /*             'CID.required'=>' Company required',
+             */];
         $this->validate($request, $rules, $message);
-        $data=$request->except(['payment_type','payment_from']);
-        $id=$request->id;
-        if(isset($request->attach_file)) {
-            $photo=$request->attach_file;
-            $docFile=url('/storage/app/'.$photo->store('public/vouchers/payment_voucher'));
-            $data['attach_file']=$docFile;
+        $data = $request->except(['payment_type', 'payment_from']);
+        $data['post_date'] = $request->trans_date;
+        $id = $request->id;
+        if (isset($request->attach_file)) {
+            $photo = $request->attach_file;
+            $docFile = url('/storage/app/' . $photo->store('public/vouchers/payment_voucher'));
+            $data['attach_file'] = $docFile;
         }
         DB::beginTransaction();
         try {
             if ($id == '' || $id == 0) {
                 $data['trans_code'] = Account::trans_code();
                 $data['created_by'] = Auth::user()->id;
-                $data['other_details'] ='pay sim charges' .'(' .$request->other_detailse.')';
+                $data['other_details'] = 'Sim Charges ' . '(' . $request->other_details . ')';
                 $ret = SimCharge::create($data);
             } else {
-                SimCharge::where('id',$id)->update($data);
+                SimCharge::where('id', $id)->update($data);
             }
-            $transcode=SimCharge::where('id',$id)->value('trans_code');
-            Transaction::where(['trans_code'=>$transcode,'vt'=>8])->delete();
-            $tData['trans_date']=$request->trans_date;
-            $tData['posting_date']=$request->post_date;
+            $transcode = SimCharge::where('id', $id)->value('trans_code');
+            Transaction::where(['trans_code' => $transcode, 'vt' => 8])->delete();
+            $tData['trans_date'] = $request->trans_date;
+            $tData['posting_date'] = $request->trans_date;
             $tData['trans_code'] = Account::trans_code();
-            $tData['status']=1;
-            $tData['vt']=9;
+            $tData['status'] = 1;
+            $tData['vt'] = 9;
             $tData['Created_By'] = Auth::user()->id;
             //dr to rider
-            $rider=Sim::where('assign_sim',$request->sim_id)->value('assign_sim');
-            $tData['trans_acc_id'] = TransactionAccount::where(['PID'=>21,'parent_type'=>$rider])->value('id');
+            $rider = Sim::find($request->sim_id)->value('assign_sim');
+            $tData['trans_acc_id'] = TransactionAccount::where(['PID' => 21, 'parent_type' => $rider])->value('id');
             $tData['dr_cr'] = 1;
-            $tData['amount']=$request->amount;
-            $tData['narration']='pay sim charges';
+            $tData['amount'] = $request->amount;
+            $tData['narration'] = 'pay sim charges';
+            $tData['billing_month'] = $request->billing_month;
             Transaction::create($tData);
             //cr to compnay
             $tData['trans_acc_id'] = $request->CID;
             $tData['dr_cr'] = 2;
             Transaction::create($tData);
             DB::commit();
-        }catch (\Illuminate\Database\QueryException $e){
+        } catch (\Illuminate\Database\QueryException $e) {
             $code = $e->errorInfo[1];
             return response()->json([
                 'success' => 'false',
-                'errors'  => $e->errorInfo,
-                'code'  => $e->errorInfo,
+                'errors' => $e->errorInfo,
+                'code' => $e->errorInfo,
             ], 400);
             DB::rollback();
         }
         return response()->json(['success' => 'Added new record Successfully.']);
     }
     //@listing data
-    public function get_data(Request $request){
+    public function get_data(Request $request)
+    {
         return SimCharge::paginate(15);
     }
     /**
@@ -149,7 +152,7 @@ class SimChargesController extends Controller
      */
     public function destroy($id)
     {
-        Transaction::where('trans_code',$id)->delete();
-        return SimCharge::where('trans_code',$id)->delete();
+        Transaction::where('trans_code', $id)->delete();
+        return SimCharge::where('trans_code', $id)->delete();
     }
 }

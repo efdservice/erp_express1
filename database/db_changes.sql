@@ -133,6 +133,9 @@ ADD COLUMN `billing_month`  date NULL AFTER `updated_at`;
 
 -----------------
 
+ALTER TABLE `sim_charges`
+ADD COLUMN `billing_month`  date NULL AFTER `updated_at`;
+
 
 
 

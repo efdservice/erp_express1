@@ -39,23 +39,28 @@ class LedgerController extends Controller
         } else {
             $res = Transaction::where('trans_acc_id', $request->ledger_id);
         }
-        if ($request->df) {
-            $res = $res->whereBetween('trans_date', ["$request->df", "$request->dt"]);
-        }
-        if ($request->dt) {
-            $res = $res->whereBetween('trans_date', ["$request->df", "$request->dt"]);
-        }
+
         if ($request->billing_month) {
             $res = $res->where('billing_month', $request->billing_month);
+            $request->df = $request->billing_month;
+            $ob = Account::Monthly_ob($request->billing_month, $request->ledger_id);
+
+        } else {
+            if ($request->df) {
+                $res = $res->whereBetween('trans_date', ["$request->df", "$request->dt"]);
+
+
+            }
+            $ob = Account::ob($request->df, $request->ledger_id);
         }
 
         $res = $res->where('status', 1)->orderBy('trans_date', 'ASC')->get();
 
 
-        $ob = Account::ob($request->df, $request->ledger_id);
+        //$ob = Account::ob($request->df, $request->ledger_id);
 
         $data = '';
-        $ob = Account::ob($request->df, $request->ledger_id);
+        //$ob = Account::ob($request->df, $request->ledger_id);
         $data .= '<tr>';
         $data .= '<td colspan="8" align="right">Opening Balance As At ' . $request->df . '</td>';
         $data .= '<td align="right">' . Account::show_bal($ob) . '</td>';

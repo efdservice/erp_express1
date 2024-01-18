@@ -42,7 +42,9 @@
                                 </div>
                             </form>
                             </div>
+                            @can('jv_create')
                             <button class="btn btn-xs btn-dark float-right" onclick="add_new()">Add New</button>
+                            @endcan
                             <table id="example2" class="table table-bordered table-hover">
                                 <thead>
                                 <tr>
@@ -151,8 +153,12 @@
                         htmlData+='<td>'+data.data[i].amount+'</td>';
                         htmlData+='<td>';
                         htmlData+=' <a  class="btn btn-default btn-xs" target="_blank" href="{{ url('Accounts/vouchers/journal_vouchers') }}/'+data.data[i].trans_code+'"><i class="fa fa-eye"></i> </a>';
+                        @can('jv_edit')
                         htmlData+=' <a  class="btn btn-info btn-xs" href="javascript:void(0)" onclick="edit(\''+data.data[i].trans_code+'\')"><i class="fa fa-edit"></i> </a>';
+                        @endcan
+                        @can('jv_delete')
                         htmlData+=' <a  class="btn btn-danger btn-xs" href="javascript:void(0)" onclick="del_rec(\''+data.data[i].trans_code+'\', \'{{ url('Accounts/vouchers/journal_vouchers') }}/'+data.data[i].trans_code+'\')"><i class="fa fa-trash"></i> </a>';
+                        @endcan
                         htmlData+='</td>';
                         htmlData+='</tr>';
                     }

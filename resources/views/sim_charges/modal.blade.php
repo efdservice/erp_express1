@@ -12,17 +12,21 @@
                     <div class="row">
                         <div class="form-group col-md-4">
                             <label for="exampleInputEmail1">Transaction Date</label>
-                            <input name="trans_date" class="form-control form-control-sm date" placeholder="Transaction Date">
+                            <input name="trans_date" class="form-control form-control-sm date" placeholder="Transaction Date" value="{{date('Y-m-d')}}">
                         </div>
-                        <div class="form-group col-md-4">
+                        {{-- <div class="form-group col-md-4">
                             <label for="exampleInputEmail1">Posting Date</label>
                             <input name="post_date" class="form-control form-control-sm date" placeholder="Posting Date">
-                        </div>
+                        </div> --}}
                         <div class="form-group col-md-4">
                             <label for="exampleInputEmail1">Payment Type</label>
                             <select name="payment_type" class="form-control form-control-sm pt">
                                 {!! App\Helpers\Account::payment_type() !!}
                             </select>
+                        </div>
+                        <div class="form-group col-md-4">
+                            <label for="exampleInputEmail1">Billing Month</label>
+                            {!! Form::select('billing_month',App\Helpers\CommonHelper::BillingMonth(),null ,['class' => 'form-control form-control-sm select2 ','id'=>'billing_month']) !!}                
                         </div>
                     </div>
                     <div class="row">
@@ -33,25 +37,26 @@
 {{--                                {!! App\Models\Accounts\TransactionAccount::bank_cash() !!}--}}
 {{--                            </select>--}}
 {{--                        </div>--}}
-                        <div class="form-group col-md-4">
+                        <input type="hidden" name="CID" value="426" /><!--SIm Charges Account ID-->
+                        <div class="form-group col-md-6">
                             <label for="exampleInputEmail1">Select Sim</label>
                             <select name="sim_id" class="form-control form-control-sm select2">
                                 <option value="">Select</option>
                                 {!! \App\Models\Sim::dropdown() !!}
                             </select>
                         </div>
-                        <div class="form-group col-md-4">
+                       {{--  <div class="form-group col-md-4">
                             <label for="exampleInputEmail1">Company</label>
                             <select name="CID" class="form-control form-control-sm select2" onchange="fetch_invoices(this.value)">
                                 <option value="19">Etislat </option>
                                 <option value="20">Duo </option>
                             </select>
-                        </div>
-                        <div class="form-group col-md-4">
+                        </div> --}}
+                        <div class="form-group col-md-6">
                             <label>Charges Amount</label>
                             <input type="text" name="amount" placeholder="0.00" class="form-control form-control-sm">
                         </div>
-                        <div class="form-group col-md-4">
+                        <div class="form-group col-md-12">
                             <label>Attach File</label>
                             <input type="file" name="attach_file" class="form-control form-control-sm" placeholder="Refrence #">
                         </div>
@@ -59,7 +64,7 @@
                     <!--row-->
                     <div class="row">
                         <div class="form-group col-md-12">
-                            <label>Other Details</label>
+                            <label>Description</label>
                             <textarea type="text" name="other_details" class="form-control" placeholder="Enter...."></textarea>
                         </div>
                     </div>

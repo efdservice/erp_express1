@@ -197,15 +197,15 @@ class RiderInvoiceController extends Controller
             $tData['trans_acc_id'] = TransactionAccount::where(['PID' => 21, 'Parent_Type' => $request->RID])->value('id');
             $tData['vt'] = 4;
             $tData['amount'] = $rider_amount;
-            $tData['narration'] = 'Rider Invoice Against #' . $invID;
+            $tData['narration'] = 'Rider Invoice Against #' . $invID . ' - ' . $request->descriptions;
             $tData['status'] = 1;
             $tData['SID'] = $invID;
             $tData['created_by'] = Auth::user()->id;
             $tData['dr_cr'] = 2;
             $tData['trans_code'] = Account::trans_code();
-            $tData['trans_date'] = date('Y-m-d');
+            $tData['trans_date'] = $request->inv_date;
             $tData['billing_month'] = $request->billing_month;
-            $tData['posting_date'] = date('Y-m-d');
+            $tData['posting_date'] = $request->inv_date;
             Transaction::create($tData);
             //cr to vendor
             /* $tData['trans_acc_id']=TransactionAccount::where(['PID'=>9,'Parent_Type'=>$VID])->value('id');

@@ -27,21 +27,26 @@
                     <div class="card rounded-0">
                         <!-- /.card-header -->
                         <div class="card-body">
+                            <form id="form2">
+
                             <div class="row">
                                 <div class="col-md-2">
-                                    <input type="text" class="form-control form-control-sm" placeholder="From Date">
+                                    <input type="text" name="df" class="form-control form-control-sm date"  placeholder="From Date">
                                 </div>
                                 <div class="col-md-2">
-                                    <input type="text" class="form-control form-control-sm" placeholder="To Date">
+                                    <input type="text" name="dt" class="form-control form-control-sm date"  placeholder="To Date">
                                 </div>
                                 <div class="col-md-2">
-                                    <input type="text" class="form-control form-control-sm" placeholder="Searh With Voucher#">
+                                    <input type="text" name="voucher" class="form-control form-control-sm"  placeholder="Searh With Voucher#">
                                 </div>
                                 <div class="col-md-2">
-                                    <button type="text" class="btn btn-flat btn-xs btn-dark"><i class="fas fa-search"></i> </button>
+                                    <button type="button" class="btn btn-flat btn-xs btn-dark" onclick="get_data()"><i class="fas fa-search"></i> </button>
                                 </div>
                             </div>
+                            </form>
+                            @can('pv_create')
                             <a href="javascript:void(0);" data-title="Invoice Payment Voucher" data-size="xl" data-action="{{ url('Accounts/vouchers/rider_pv/create')}}" class="btn btn-xs btn-dark float-right show-modal" {{-- onclick="add_new()" --}}>Add New</a>
+                            @endcan
                             <table id="example2" class="table table-bordered table-hover">
                                 <thead>
                                 <tr>
@@ -83,7 +88,7 @@
             $("#new").find('.btn-success').text('Submit');
         }
         $(document).ready(function () {
-
+            get_data();
             var base_url = $('#base_url').val();
             var counter = 0;
 
@@ -132,13 +137,14 @@
                 }
             })
         });
-        get_data();
+       // get_data();
         function get_data(page){
             $("#loader").show();
             $.ajax({
                 url:"{{ url('Accounts/vouchers/get_payment_vouchers') }}?page="+page,
                 headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
                 type:"POST",
+                data:$("#form2").serialize(),
                 dataType:"JSON",
                 success:function (data) {
                     htmlData='';
@@ -157,8 +163,12 @@
                         }
                         htmlData+='<td>';
                         htmlData+=' <a  class="btn btn-default btn-xs" target="_blank" href="{{ url('Accounts/vouchers/rider_pv') }}/'+data.data[i].trans_code+'"><i class="fa fa-eye"></i> </a>';
+                        @can('pv_edit')
                         htmlData+=' <a  class="btn btn-primary btn-xs show-modal" href="javascript:void(0);" data-size="xl" data-title="Edit Payment Voucher" data-action="{{ url('Accounts/vouchers/rider_pv/') }}/'+data.data[i].trans_code+'/edit"><i class="fa fa-edit"></i> </a>';
+                        @endcan
+                        @can('pv_delete')
                         htmlData+=' <a  class="btn btn-danger btn-xs" href="javascript:void(0)" onclick="del_rec(\''+data.data[i].trans_code+'\', \'{{ url('Accounts/vouchers/payment_vouchers/') }}/'+data.data[i].trans_code+'\')"><i class="fa fa-trash"></i> </a>';
+                        @endcan
                         htmlData+='</td>';
                         htmlData+='</tr>';
                     }
