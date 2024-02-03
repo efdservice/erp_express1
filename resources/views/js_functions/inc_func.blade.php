@@ -2,7 +2,7 @@
     $(function (){
         $("#form input[name~='id']").val(0);
         $('.select2').select2();
-        this.form.reset();
+        //this.form.reset();
         $("table.order-list").html('');
         
     })
@@ -174,8 +174,9 @@ $(document).on('submit', '#formajax', function (e) {
       if ($('#reload_page').val() == 1) {
         location.reload();
       }
-      get_data();
+      
       $('.data-table').DataTable().ajax.reload(null, false);
+      get_data();
     },
     error: function (ajaxcontent) {
         $("#loader").hide(); 

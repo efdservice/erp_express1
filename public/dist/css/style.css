@@ -57,10 +57,10 @@ label{
     font-size: .7rem !important;
 }
 .form-control-sm{
-    height: calc(1.5125rem + 2px) !important;
+    height: calc(1.8rem + 2px) !important;
 }
 .text-sm .btn{
-    font-size: .675rem !important
+    font-size: 13px !important
 }
 .filter{
     position: absolute;
@@ -133,4 +133,26 @@ input[type="file"]::file-selector-button {
   }
   .form-group{
     margin-bottom: 10px !important;
+  }
+  .sidebar-dark-primary .nav-sidebar>.nav-item>.nav-link.active, .sidebar-light-primary .nav-sidebar>.nav-item>.nav-link.active{
+    background:var(--purple);
+  }
+  .btn-primary{
+    background:var(--purple) !important;
+    border:var(--purple) !important;
+  }
+  .bg-primary{
+    background:var(--purple) !important;
+    border:var(--purple) !important;
+  }
+  .modal-header{
+    background:var(--purple) !important;
+    color:#ffffff !important;
+  }
+  .select2-container .select2-selection--single{
+    height: calc(1.8rem + 2px) !important;
+padding: 5px !important;
+  }
+  .modal-content{
+    border-radius: 10px !important;
   }

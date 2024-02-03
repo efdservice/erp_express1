@@ -20,14 +20,14 @@ $sims=['sim','sim_charges'];
 $reports=['vendor_invoice_report','rider_invoice_report'];
 ?>
 <!-- Main Sidebar Container -->
-<aside class="main-sidebar sidebar-dark-primary elevation-4">
+<aside class="main-sidebar sidebar-dark-primary elevation-4 bg-navy">
     <!-- Brand Logo -->
-    <a href="{{ url('home') }}" class="brand-link elevation-4 navbar-info" style="padding: 12px !important;">
+    <a href="{{ url('home') }}" class="brand-link elevation-4 navbar-purple" style="padding: 12px !important;">
                 <img src="{{ URL::asset('public/dist/img/logo.png') }}" alt="AdminLTE Logo" class="brand-image">
 {{--        <span class="brand-text font-weight-light">Express-Fast</span>--}}
     </a>
     <!-- Sidebar -->
-    <div class="sidebar">
+    <div class="sidebar bg-navy">
         <!-- Sidebar user panel (optional) -->
         <div class="user-panel mt-3 pb-3 mb-3 d-flex">
             <div class="image">
@@ -354,6 +354,14 @@ $reports=['vendor_invoice_report','rider_invoice_report'];
                                         </a>
                                     </li>
                                 @endcan
+                                @can('jv_view')
+                                <li class="nav-item">
+                                    <a href="{{ route('vouchers.index') }}" class="nav-link {{ (request()->is('vouchers'))? 'active':'' }}">
+                                        <i class="nav-icon fas fa-angle-double-right fa-xs"></i>
+                                        <p>All Vouchers</p>
+                                    </a>
+                                </li>
+                            @endcan
                             </ul>
                         </li>
                          
@@ -451,12 +459,12 @@ $reports=['vendor_invoice_report','rider_invoice_report'];
                                     </a>
                                 </li>
                                
-                                <li class="nav-item">
+                                {{-- <li class="nav-item">
                                     <a href="{{ route('permission.index') }}" class="nav-link {{ (request()->is('Application_Setup/user_management/permission')) ? 'active' : '' }}">
                                         <i class="nav-icon fas fa-angle-double-right fa-xs"></i>
                                         <p>Permissions</p>
                                     </a>
-                                </li>
+                                </li> --}}
                                 @endcan
                             </ul>
                            {{--  <li class="nav-item">

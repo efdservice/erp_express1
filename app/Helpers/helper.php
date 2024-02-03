@@ -585,4 +585,22 @@ class CommonHelper
         }
     }
 
+    public static function VoucherType($type = null)
+    {
+        $result = [
+            1 => 'Journal Voucher',
+            2 => 'Invoice Voucher',
+            3 => 'Sim Voucher',
+            4 => 'Bike Rent Voucher',
+            5 => 'RTA Fine Voucher',
+        ];
+
+        if ($type) {
+            return $result[$type];
+        } else {
+            return $result;
+
+        }
+    }
+
 }

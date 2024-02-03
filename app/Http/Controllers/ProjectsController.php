@@ -15,31 +15,32 @@ class ProjectsController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    function __construct(){
-        $this->middleware('permission:projects_view', ['only' => ['index']]); 
+    function __construct()
+    {
+        $this->middleware('permission:projects_view', ['only' => ['index']]);
 
     }
     public function index(Request $request)
     {
-        if($request->ajax()){
-            $data=Projects::with('riderr')->latest()->get();
+        if ($request->ajax()) {
+            $data = Projects::with('riderr')->latest()->get();
             return DataTables::of($data)
                 ->addIndexColumn()
-                ->addColumn('action', function($row){
+                ->addColumn('action', function ($row) {
                     $btn = '';
-                    if(\Auth::user()->can('projects_edit')){
-                        $btn = $btn.'<a href="#" data-toggle="tooltip" data-action="'.route('projects.edit',$row->id).'" class="edit btn btn-primary btn-xs editRec" data-modalID="modal-new"><i class="fas fa-edit"></i> Edit</a>';
+                    if (\Auth::user()->can('projects_edit')) {
+                        $btn = $btn . '<a href="#" data-toggle="tooltip" data-action="' . route('projects.edit', $row->id) . '" class="edit btn btn-primary btn-xs editRec" data-modalID="modal-new"><i class="fas fa-edit"></i> Edit</a>';
 
                     }
-                    if(\Auth::user()->can('projects_delete')){
-                        $btn = $btn.' <a href="javascript:void(0)" data-toggle="tooltip"  data-action="'.route('projects.store').'/'.$row->id.'" data-original-title="Delete" class="btn btn-danger btn-xs deleteRecord"><i class="fas fa-trash"></i> Del</a>';
+                    if (\Auth::user()->can('projects_delete')) {
+                        $btn = $btn . ' <a href="javascript:void(0)" data-toggle="tooltip"  data-action="' . route('projects.store') . '/' . $row->id . '" data-original-title="Delete" class="btn btn-danger btn-xs deleteRecord"><i class="fas fa-trash"></i> Del</a>';
                     }
                     return $btn;
                 })
                 ->rawColumns(['action'])
                 ->make(true);
         }
-        return  view('projects.index');
+        return view('projects.index');
     }
 
     /**
@@ -60,31 +61,31 @@ class ProjectsController extends Controller
      */
     public function store(Request $request)
     {
-        $rules=[
-            'name'=>'required',
-            'company_name'=>'required',
+        $rules = [
+            'name' => 'required',
+            'company_name' => 'required',
         ];
-        $message=[
-            'name.required'=>'Name is Required',
-            'company_name.required'=>'Company Name is Required',
+        $message = [
+            'name.required' => 'Name is Required',
+            'company_name.required' => 'Company Name is Required',
         ];
-        $this->validate($request,$rules,$message);
-        $data=$request->except(['code']);
-        $id=$request->input('id');
+        $this->validate($request, $rules, $message);
+        $data = $request->except(['code']);
+        $id = $request->input('id');
         DB::beginTransaction();
         try {
-            if($id==0 || $id==''){
-                $ret=Projects::create($data);
-            }else{
-                $ret=Projects::where('id',$id)->update($data);
+            if ($id == 0 || $id == '') {
+                $ret = Projects::create($data);
+            } else {
+                $ret = Projects::where('id', $id)->update($data);
             }
             DB::commit();
             return $ret;
-        }catch (QueryException $e){
+        } catch (QueryException $e) {
             DB::rollback();
             return response()->json([
                 'success' => 'false',
-                'errors'  => $e->getMessage(),
+                'errors' => $e->getMessage(),
             ], 400);
         }
     }
