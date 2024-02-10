@@ -47,10 +47,13 @@
         <label>Cr Amount</label>
         <input type="number" name="cr_amount[]" class="form-control form-control-sm cr_amount" placeholder="Paid Amount">
     </div>
-    <div class="form-group col-md-1">
-        <label style="visibility: hidden">plus</label>
-        <button type="button" class="btn btn-primary btn-xs new_line"><i class="fa fa-plus"></i> </button>
-    </div>
+   
 </div>
 @endisset
 <div class="append-line"></div>
+<div class="row" style="margin-top:-20px;">
+    <div class="form-group col-md-1">
+        <label style="visibility: hidden">plus</label>
+        <button type="button" class="btn btn-success btn-xs new_line"><i class="fa fa-plus"></i> Add Row</button>
+    </div>
+</div>
