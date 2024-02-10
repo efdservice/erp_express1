@@ -31,7 +31,7 @@
                 toastr.success('Operation Successfully..');
                 document.getElementById(formID).reset();
                 $("#modal-new").modal('hide');
-                $('.data-table').DataTable().ajax.reload();
+                $('.data-table').DataTable().ajax.reload(null,false);
             },error:function(ajaxcontent) {
                 if(ajaxcontent.responseJSON.success=='false'){
                     toastr.error(ajaxcontent.responseJSON.errors);

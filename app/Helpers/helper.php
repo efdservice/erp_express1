@@ -265,8 +265,23 @@ class CommonHelper
     {
         $array = [
             'Rusbeel Yousaf' => 'Rusbeel Yousaf',
-            'Kaleem Ullah' => 'Kaleem Ullah',
-            'Muhammad Awais' => 'Muhammad Awais'
+            'Kaleem' => 'Kaleem',
+            'Shakeel' => 'Shakeel'
+        ];
+
+        $list = '';
+        foreach ($array as $key => $value) {
+            $list .= '<option ' . ($id == $key ? 'selected' : '') . ' value="' . $key . '">' . $value . '</option>';
+        }
+        return $list;
+
+    }
+
+    public static function get_passport_handover($id = 0)
+    {
+        $array = [
+            'NON' => 'NON',
+            'EFDS' => 'EFDS'
         ];
 
         $list = '';

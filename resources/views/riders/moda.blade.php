@@ -130,6 +130,13 @@
                             <option value=""></option>
                             {!! App\Helpers\CommonHelper::get_supervisor() !!}
                         </select>
+                    </div> 
+                    <div class="col-md-3 form-group">
+                        <label>Passport Handover</label>
+                        <select class="form-control form-control-sm" name="passport_handover">
+                            <option value=""></option>
+                            {!! App\Helpers\CommonHelper::get_passport_handover() !!}
+                        </select>
                     </div>
                     <div class="col-md-3 form-group">
                         <label>Status</label>
