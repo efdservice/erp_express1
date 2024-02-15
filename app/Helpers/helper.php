@@ -603,11 +603,11 @@ class CommonHelper
     public static function VoucherType($type = null)
     {
         $result = [
-            1 => 'Journal Voucher',
-            2 => 'Invoice Voucher',
-            3 => 'Sim Voucher',
-            4 => 'Bike Rent Voucher',
-            5 => 'RTA Fine Voucher',
+            3 => 'Journal Voucher',
+            5 => 'Invoice Voucher',
+            9 => 'Sim Voucher',
+            10 => 'Bike Rent Voucher',
+            8 => 'RTA Fine Voucher',
         ];
 
         if ($type) {

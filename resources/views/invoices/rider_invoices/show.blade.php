@@ -100,8 +100,32 @@
         </tr>
         <tr style="border-top: 1px solid #000;">
             <td colspan="3" style="padding: 10px;text-align: left;"></td>
+            <th style="padding: 10px;text-align: right;">Advance Payment:</th>
+            <th style="padding: 10px;text-align: right;">{{ $advance = \App\Helpers\Account::getVouchers($res[0]->RID,$res[0]->billing_month,3)}}</th>
+        </tr>
+        <tr style="border-top: 1px solid #000;">
+            <td colspan="3" style="padding: 10px;text-align: left;"></td>
+            <th style="padding: 10px;text-align: right;">Sim Charges:</th>
+            <th style="padding: 10px;text-align: right;">{{ $sim =\App\Helpers\Account::getVouchers($res[0]->RID,$res[0]->billing_month,9)}}</th>
+        </tr>
+        <tr style="border-top: 1px solid #000;">
+            <td colspan="3" style="padding: 10px;text-align: left;"></td>
+            <th style="padding: 10px;text-align: right;">Bike Rent Charges:</th>
+            <th style="padding: 10px;text-align: right;">{{ $rent =\App\Helpers\Account::getVouchers($res[0]->RID,$res[0]->billing_month,10)}}</th>
+        </tr>
+        <tr style="border-top: 1px solid #000;">
+            <td colspan="3" style="padding: 10px;text-align: left;"></td>
+            <th style="padding: 10px;text-align: right;">RTA Charges:</th>
+            <th style="padding: 10px;text-align: right;">{{ $rta =\App\Helpers\Account::getVouchers($res[0]->RID,$res[0]->billing_month,8)}}</th>
+        </tr>
+        <tr style="border-top: 1px solid #000;">
+            <td colspan="3" style="padding: 10px;text-align: left;"></td>
             <th style="padding: 10px;text-align: right;">Total:</th>
-            <th style="padding: 10px;text-align: right;">AED {{ \App\Helpers\Account::show_bal_format($total) }}</th>
+            @php
+            $credit = $advance+$sim+$rent+$rta;
+            $balance = $total-$credit;
+            @endphp
+            <th style="padding: 10px;text-align: right;">AED {{ \App\Helpers\Account::show_bal_format($balance) }}</th>
         </tr>
         </tfoot>
     </table>

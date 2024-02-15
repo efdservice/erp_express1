@@ -42,7 +42,7 @@ class VouchersController extends Controller
                 ->make(true);
         }
         return view('vouchers.index') /* 
-->with('vouchers', $vouchers) */;
+->with('vouchers', $vouchers) */ ;
     }
 
     /**
@@ -67,14 +67,21 @@ class VouchersController extends Controller
         //$request->all();
 
         /** @var Vouchers $vouchers */
-        if ($request->voucher_type == 1) {
+        if ($request->voucher_type == 3) {
             $result = $voucherService->JournalVoucher($request);
         }
-        if ($request->voucher_type == 2) {
+        if ($request->voucher_type == 5) {
             $result = $voucherService->InvoiceVoucher($request);
         }
-        if ($request->voucher_type == 3) {
+        if ($request->voucher_type == 9) {
             $result = $voucherService->SimVoucher($request);
+        }
+        if ($request->voucher_type == 10) {
+            $result = $voucherService->RentVoucher($request);
+        }
+        if ($request->voucher_type == 8) {
+            $result = $voucherService->RtaVoucher($request);
+
         }
 
         //$vouchers = Vouchers::create($input);
@@ -120,10 +127,12 @@ class VouchersController extends Controller
     {
         /** @var Vouchers $vouchers */
         $vouchers = Vouchers::where('trans_code', $id)->first();
-        if ($vouchers->voucher_type == 2 || $vouchers->voucher_type == 3) {
-            $data = Transaction::where('trans_code', $id)->where('dr_cr', 1)->get();
-        } else {
+
+        if ($vouchers->voucher_type == 1) {
             $data = Transaction::where('trans_code', $id)->get();
+        } else {
+            $data = Transaction::where('trans_code', $id)->where('dr_cr', 1)->get();
+
 
         }
 
@@ -154,14 +163,20 @@ class VouchersController extends Controller
 
             return redirect(route('vouchers.index'));
         }
-        if ($request->voucher_type == 1) {
+        if ($request->voucher_type == 3) {
             $voucherService->JournalVoucher($request);
         }
-        if ($request->voucher_type == 2) {
+        if ($request->voucher_type == 5) {
             $voucherService->InvoiceVoucher($request);
         }
-        if ($request->voucher_type == 3) {
+        if ($request->voucher_type == 9) {
             $result = $voucherService->SimVoucher($request);
+        }
+        if ($request->voucher_type == 10) {
+            $result = $voucherService->RentVoucher($request);
+        }
+        if ($request->voucher_type == 8) {
+            $result = $voucherService->RtaVoucher($request);
         }
         /*  $vouchers->fill($request->all());
          $vouchers->save();

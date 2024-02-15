@@ -254,7 +254,7 @@ $reports=['vendor_invoice_report','rider_invoice_report'];
                 
                 <li class="nav-item has-treeview <?php if(in_array(Request::segment(2), $accounts)) echo 'menu-open';
                 elseif(in_array(Request::segment(3), $accounts)) echo 'menu-open'; elseif(in_array(Request::segment(1), $sale)) echo 'menu-open';
-                elseif(in_array(Request::segment(3), $account_reports)) echo 'menu-open';?>">
+                elseif(in_array(Request::segment(3), $account_reports)) echo 'menu-open'; elseif(Request::is("vouchers")) echo 'menu-open';?>">
                     <a href="#" class="nav-link">
                         <i class="nav-icon fas fa-key fa-xs"></i>
                         <p>{{ __('accounts.account') }}
@@ -315,6 +315,14 @@ $reports=['vendor_invoice_report','rider_invoice_report'];
                         </li>
                         @endcan
                         @endcan
+                        @can('jv_view')
+                                <li class="nav-item">
+                                    <a href="{{ route('vouchers.index') }}" class="nav-link {{ (request()->is('vouchers'))? 'active':'' }}">
+                                        <i class="nav-icon fas fa-angle-double-right fa-xs"></i>
+                                        <p>All Vouchers</p>
+                                    </a>
+                                </li>
+                            @endcan
                         <li class="nav-item has-treeview <?php if(in_array(Request::segment(3), $accounts)) echo 'menu-open'; ?>">
                             <a href="#" class="nav-link">
                                 <i class="nav-icon fas fa-dollar-sign"></i>
@@ -354,14 +362,7 @@ $reports=['vendor_invoice_report','rider_invoice_report'];
                                         </a>
                                     </li>
                                 @endcan
-                                @can('jv_view')
-                                <li class="nav-item">
-                                    <a href="{{ route('vouchers.index') }}" class="nav-link {{ (request()->is('vouchers'))? 'active':'' }}">
-                                        <i class="nav-icon fas fa-angle-double-right fa-xs"></i>
-                                        <p>All Vouchers</p>
-                                    </a>
-                                </li>
-                            @endcan
+                                
                             </ul>
                         </li>
                          

@@ -42,17 +42,25 @@
           
         </div>
         
-            @if($voucherType == 1)
+            @if($voucherType == 3)
             <h5>Journal Voucher</h5>
             @include("vouchers.journal_fields")
             @endif
-            @if($voucherType == 2)
+            @if($voucherType == 5)
             <h5>Invoice Voucher</h5>
             @include("vouchers.invoice_fields")
             @endif
-            @if($voucherType == 3)
+            @if($voucherType == 9)
             <h5>Sim Charges Voucher</h5>
             @include("vouchers.sim_fields")
+            @endif
+            @if($voucherType == 10)
+            <h5>Bike Rent Voucher</h5>
+            @include("vouchers.rent_fields")
+            @endif
+            @if($voucherType == 8)           
+            <h5>RTA Fine Voucher</h5>
+            @include("vouchers.rta_fields")
             @endif
 
 

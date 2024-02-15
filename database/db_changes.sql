@@ -136,6 +136,18 @@ ADD COLUMN `billing_month`  date NULL AFTER `updated_at`;
 ALTER TABLE `sim_charges`
 ADD COLUMN `billing_month`  date NULL AFTER `updated_at`;
 
+ALTER TABLE `riders`
+ADD COLUMN `passport_handover`  varchar(50) NULL AFTER `fleet_supervisor`;
+
+
+ALTER TABLE `vouchers`
+ADD COLUMN `toll_gate`  varchar(50) NULL AFTER `Created_By`,
+ADD COLUMN `trip_date`  datetime NULL AFTER `toll_gate`,
+ADD COLUMN `direction`  varchar(255) NULL AFTER `trip_date`;
+
+ALTER TABLE `vouchers`
+ADD COLUMN `lease_company`  bigint(20) NULL AFTER `direction`;
+
 
 
 

@@ -4,6 +4,7 @@ namespace App\Helpers;
 use App\Models\Accounts\Transaction;
 use App\Models\Accounts\TransactionAccount;
 use App\Models\Rider;
+use App\Models\Vouchers;
 use DB;
 use Session;
 
@@ -257,5 +258,16 @@ class Account
     public static function getRider($id)
     {
         return Rider::find($id);
+    }
+
+    public static function getVouchers($rider_id, $billing_month, $vt)
+    {
+        $RTAID = TransactionAccount::where(['PID' => 21, 'Parent_Type' => $rider_id])->value('id');
+
+        $result = Transaction::select(\DB::raw('SUM(amount) as charges'))
+            ->where('trans_acc_id', $RTAID)
+            ->where('vt', $vt)->where('billing_month', $billing_month)->first();
+        return $result->charges ?? 0;
+
     }
 }

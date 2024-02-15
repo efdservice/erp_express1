@@ -57,6 +57,10 @@ class Vouchers extends Model
         'ref_id',
         'rider_id',
         'vendor_id',
+        'toll_gate',
+        'trip_date',
+        'direction',
+        'lease_company',
         'status'
     ];
 
