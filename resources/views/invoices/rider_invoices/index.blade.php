@@ -34,6 +34,7 @@
                                     <tr>
                                         <th>#inv</th>
                                         <th>Date</th>
+                                        <th>Billing Month</th>
                                         <th>Rider</th>
                                         <th>Rider amount</th>
                                         <th>Total Qty</th>

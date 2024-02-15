@@ -58,12 +58,19 @@
             <td style="padding: 3px;width: 65%;text-align: left;"><strong>Rider Name:</strong>:{{ \Illuminate\Support\Facades\DB::table("riders")->selectRaw('CONCAT(name," (",rider_id,")") AS rider_name')->where('id',$res[0]->RID)->value('rider_name') }}</td>
             <th style="padding: 3px;width: 15%;text-align: left;">Invoice Date:</th>
             <td style="padding: 3px;width: 20%;text-align: left;">{{ date('Y-m-d h:i:s') }}</td>
+            
         </tr>
         <tr>
             <td style="padding: 3px;width: 65%;text-align: left;"><strong>Invoice Type</strong>: Rider Invoice</td>
             <th style="padding: 3px;width: 15%;text-align: left;">#inv No:</th>
             <td style="padding: 3px;width: 15%;text-align: left;">{{ \App\Helpers\CommonHelper::inv_sch($res[0]->id,$res[0]->created_at) }}</td>
+           
         </tr>
+        @isset($res[0]->billing_month)
+        <tr>
+        <th style="padding: 3px;width: 15%;text-align: left;"> Billing Month: {{date('M-Y',strtotime($res[0]->billing_month))}}</th>
+    </tr>
+        @endisset
 
     </table>
     <table style="width: 100%; font-family: sans-serif;text-align: center;border: 1px solid #000; border-collapse: collapse; margin-top: 20px;font-size: 12px;">

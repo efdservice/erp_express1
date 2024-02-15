@@ -76,6 +76,12 @@ class RiderInvoiceController extends Controller
                         return VendorInvoiceItem::where('inv_id',$row->id)->sum('amount'); */
                 })->addColumn('total_qty', function ($row) {
                     return RiderInvoiceItem::where('inv_id', $row->id)->sum('qty');
+                })->addColumn('billing_month', function ($row) {
+                    if ($row->billing_month) {
+                        return date('M-Y', strtotime($row->billing_month));
+                    } else {
+                        return '';
+                    }
                 })->addColumn('inv_no', function ($row) {
                     return CommonHelper::inv_sch($row->id, $row->created_at);
                 })
