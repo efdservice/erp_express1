@@ -78,14 +78,14 @@
                 </div>
                @if($entry->dr_cr == 1)
                 <div class="form-group col-md-2">
-                    <input type="number" name="amount[]" value="{{$entry->amount}}" class="form-control form-control-sm" placeholder="Paid Amount">
+                    <input type="number" step="any" name="amount[]" value="{{$entry->amount}}" class="form-control form-control-sm" placeholder="Paid Amount">
                 </div>
                 @endif
                 @if($entry->dr_cr == 2)
                 <div class="form-group col-md-2">
                 </div>
                 <div class="form-group col-md-2">
-                    <input type="number" name="amount[]" value="{{$entry->amount}}" class="form-control form-control-sm" placeholder="Paid Amount">
+                    <input type="number" step="any" name="amount[]" value="{{$entry->amount}}" class="form-control form-control-sm" placeholder="Paid Amount">
                 </div>
                 @endif
             </div>

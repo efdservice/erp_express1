@@ -125,10 +125,10 @@
                     <textarea name="narration[]" class="form-control form-control-sm" rows="10" placeholder="Narration" style="height: 40px !important;"></textarea>
                 </div>
                 <div class="form-group col-md-2">
-                    <input type="number" name="dr_amount[]" class="form-control form-control-sm dr_amount" placeholder="Paid Amount">
+                    <input type="number" step="any" name="dr_amount[]" class="form-control form-control-sm dr_amount" placeholder="Paid Amount">
                 </div>
                 <div class="form-group col-md-2">
-                    <input type="number" name="cr_amount[]" class="form-control form-control-sm cr_amount" placeholder="Paid Amount">
+                    <input type="number" step="any" name="cr_amount[]" class="form-control form-control-sm cr_amount" placeholder="Paid Amount">
                 </div>
                 <div class="form-group col-md-1">
                     <button type="button" class="btn btn-danger btn-xs remove"><i class="fa fa-trash"></i> </button>

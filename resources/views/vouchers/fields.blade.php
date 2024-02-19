@@ -20,13 +20,13 @@
                 <label for="exampleInputEmail1">Posting Date</label>
                 <input  name="posting_date" class="form-control form-control-sm date" placeholder="Posting Date" value="{{ date('Y-m-d') }}">
             </div> --}}
-            @if($voucherType==2)
+            @if($voucherType==5)
             <div class="form-group col-md-3">
                 <label for="exampleInputEmail1">Bank/Cash A/C</label>
                 {!! Form::select('payment_from',App\Models\Accounts\TransactionAccount::bank_cash_list(),null ,['class' => 'form-control form-control-sm select2 ','id'=>'payment_from']) !!}
             </div>
             @endif
-            @if($voucherType==3)
+            @if($voucherType==9)
             <input type="hidden" name="payment_from" value="426" /><!--SIm Charges Account ID-->
             @endif
             <div class="form-group col-md-2">
@@ -103,7 +103,7 @@ $("#RID").on("change", function () {
                
                 var newRow ='<tr style="padding:5px;"><td width="200"><label>'+item_name+'</label><input type="hidden" name="id[]" value="'+item_id+'" /><input type="hidden" name="inv_id[]" value="'+inv_id+'" /></td>';
                     newRow +='<td width="200"><input type="text" name="narration[]"  value="'+narration+'" class="form-control form-control-sm" /></td>';
-                    newRow +='<td width="100"><input type="number" name="amount[]"  value="'+item_price+'" step="any" class="form-control form-control-sm amount" /></td>';
+                    newRow +='<td width="100"><input type="number" step="any" name="amount[]"  value="'+item_price+'" step="any" class="form-control form-control-sm amount" /></td>';
                     newRow +='<td width="100"><input type="button" class="ibtnDel btn btn-md btn-xs btn-danger "  value="Delete"></td></tr>';
 
                     $("table.order-list").append(newRow);               

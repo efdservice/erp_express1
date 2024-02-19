@@ -14,7 +14,7 @@
         </div>
         <div class="form-group col-md-2">
             <label>Dr Amount</label>
-            <input type="number" name="dr_amount[]" value="@if($entry->dr_cr == 1){{$entry->amount}}@endif" class="form-control form-control-sm dr_amount" placeholder="Paid Amount">
+            <input type="number" step="any" name="dr_amount[]" value="@if($entry->dr_cr == 1){{$entry->amount}}@endif" class="form-control form-control-sm dr_amount" placeholder="Paid Amount">
         </div>
         <div class="form-group col-md-2">
             <label>Cr Amount</label>
@@ -41,11 +41,11 @@
     </div>
     <div class="form-group col-md-2">
         <label>Dr Amount</label>
-        <input type="number" name="dr_amount[]" class="form-control form-control-sm dr_amount" placeholder="Paid Amount">
+        <input type="number" step="any" name="dr_amount[]" class="form-control form-control-sm dr_amount" placeholder="Paid Amount">
     </div>
     <div class="form-group col-md-2">
         <label>Cr Amount</label>
-        <input type="number" name="cr_amount[]" class="form-control form-control-sm cr_amount" placeholder="Paid Amount">
+        <input type="number" step="any" name="cr_amount[]" class="form-control form-control-sm cr_amount" placeholder="Paid Amount">
     </div>
    
 </div>

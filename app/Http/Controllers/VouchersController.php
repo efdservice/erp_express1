@@ -302,11 +302,11 @@ class VouchersController extends Controller
                         </div>
                         <div class="form-group col-md-2">
                             <label>Invoice Balance</label>
-                            <input type="number" name="" class="form-control form-control-sm" value="' . $balance . '" readonly placeholder="Balance Amount">
+                            <input type="number" step="any" name="" class="form-control form-control-sm" value="' . $balance . '" readonly placeholder="Balance Amount">
                         </div>
                         <div class="form-group col-md-2">
                             <label>Amount</label>
-                            <input type="number" name="amount[]" class="form-control form-control-sm amount" step="any" onkeyup="getTotal();" placeholder="Paid Amount">
+                            <input type="number" step="any" name="amount[]" class="form-control form-control-sm amount" step="any" onkeyup="getTotal();" placeholder="Paid Amount">
                         </div>
                     </div>
                     </td>
