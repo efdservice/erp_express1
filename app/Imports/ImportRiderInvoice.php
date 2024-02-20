@@ -21,6 +21,8 @@ use Maatwebsite\Excel\Concerns\ToCollection;
 use Maatwebsite\Excel\Concerns\ToModel;
 use DB;
 use Auth;
+use PhpOffice\PhpSpreadsheet\Shared\Date;
+use Carbon\Carbon;
 
 class ImportRiderInvoice implements ToCollection
 {
@@ -31,8 +33,8 @@ class ImportRiderInvoice implements ToCollection
      */
     public function collection(Collection $rows)
     {
+
         $items = [
-            $rows[0][2],
             $rows[0][3],
             $rows[0][4],
             $rows[0][5],
@@ -46,38 +48,49 @@ class ImportRiderInvoice implements ToCollection
             $rows[0][13],
             $rows[0][14],
             $rows[0][15],
-            $rows[0][16]
+            $rows[0][16],
+            $rows[0][17],
+            $rows[0][18],
+            $rows[0][19],
+            $rows[0][20]
         ];
         $i = 1;
         foreach ($rows as $row) {
             $i++;
             try {
                 DB::beginTransaction();
-                if ($row[0] != 'ID') {
-                    if ($row[0] != '') {
-                        $rider = Rider::where('rider_id', $row[0])->first();
+                if ($row[1] != 'ID') {
+                    if ($row[1] != '') {
+
+                        $dateTimeObject = Date::excelToDateTimeObject($row[0]);
+                        $invoice_date = Carbon::instance($dateTimeObject)->format('Y-m-d');
+
+                        $Billingdate = Date::excelToDateTimeObject($row[28]);
+                        $billing_month = Carbon::instance($Billingdate)->format('Y-m-01');
+
+                        $rider = Rider::where('rider_id', $row[1])->first();
                         if (!$rider) {
-                            throw ValidationException::withMessages(['file' => 'Row(' . $i . ') - Rider ID ' . $row[0] . ' do not match.']);
+                            throw ValidationException::withMessages(['file' => 'Row(' . $i . ') - Rider ID ' . $row[1] . ' do not match.']);
                         }
                         $RID = $rider->id;
                         $VID = $rider->VID;
                         //$VID = AssignVendorRider::where('RID', $RID)->value('VID');
                         if (isset($row[21])) {
                             $ret = RiderInvoice::create([
-                                'inv_date' => date('Y-m-d'),
+                                'inv_date' => $invoice_date,
                                 'RID' => $RID,
                                 'VID' => $VID,
-                                'zone' => $row[21],
-                                'login_hours' => $row[20],
-                                'working_days' => $row[22],
-                                'perfect_attendance' => $row[23],
-                                'rejection' => $row[19],
-                                'performance' => $row[26],
-                                'billing_month' => date("Y-m-01", strtotime($row[25])),
-                                'off' => $row[24],
-                                'descriptions' => $row[27],
+                                'zone' => $row[23],
+                                'login_hours' => $row[22],
+                                'working_days' => $row[24],
+                                'perfect_attendance' => $row[25],
+                                'rejection' => $row[21],
+                                'performance' => $row[27],
+                                'billing_month' => $billing_month,
+                                'off' => $row[26],
+                                'descriptions' => $row[29],
                             ]);
-                            $j = 2;
+                            $j = 3;
                             foreach ($items as $item) {
                                 $itemId = Item::where('item_name', $item)->value('id');
                                 if ($itemId) {
@@ -114,14 +127,14 @@ class ImportRiderInvoice implements ToCollection
                             $data['trans_acc_id'] = TransactionAccount::where(['PID' => 21, 'Parent_Type' => $RID])->value('id');
                             $data['vt'] = 4;
                             $data['amount'] = $rider_amount;
-                            $data['narration'] = 'Rider Invoice Against #' . $ret->id . ' - ' . $row[27];
+                            $data['narration'] = 'Rider Invoice Against #' . $ret->id . ' - ' . $row[29];
                             $data['status'] = 1;
                             $data['SID'] = $ret->id;
                             $data['created_by'] = Auth::user()->id;
                             $data['dr_cr'] = 2;
                             $data['trans_code'] = Account::trans_code();
                             $data['trans_date'] = date('Y-m-d');
-                            $data['billing_month'] = date("Y-m-01", strtotime($row[25]));
+                            $data['billing_month'] = date("Y-m-01", strtotime($row[28]));
                             $data['posting_date'] = date('Y-m-d');
                             Transaction::create($data);
                             //cr to vendor

@@ -53,24 +53,93 @@
             <td colspan="3"><h4 style="margin-bottom: 15px;margin-top: 25px;font-size: 14px;border-bottom: 1px solid #000;border-top: 1px solid #000;padding: 7px 0px;">Rider Invoice</h4></td>
         </tr>
     </table>
-    <table width="100%" style="font-family: sans-serif; margin-top: 20px;font-size: 12px">
+
+  
+    <table width="100%" style="font-family: sans-serif; margin-top: 0px;font-size: 12px;">
         <tr>
-            <td style="padding: 3px;width: 65%;text-align: left;"><strong>Rider Name:</strong>:{{ \Illuminate\Support\Facades\DB::table("riders")->selectRaw('CONCAT(name," (",rider_id,")") AS rider_name')->where('id',$res[0]->RID)->value('rider_name') }}</td>
-            <th style="padding: 3px;width: 15%;text-align: left;">Invoice Date:</th>
-            <td style="padding: 3px;width: 20%;text-align: left;">{{ date('Y-m-d h:i:s') }}</td>
-            
+            <td>
+                <table style="text-align: left;">
+                    <tr>
+                        <th>Invoice Type:</th>
+                        <td>Rider Invoice</td>
+                    </tr>
+                        <tr>
+                        <th>Invoice #:</th>
+                        <td>{{ \App\Helpers\CommonHelper::inv_sch($res[0]->id,$res[0]->created_at) }}</td>
+                    </tr>
+                    <tr>
+                        <th>Invoice Date:</th>
+                        <td>{{ $res[0]->created_at->format("Y-m-d h:i A") }}</td>
+                    </tr>
+                    <tr>
+                        <th>Billing Month:</th>
+                        <td>{{date('M-Y',strtotime($res[0]->billing_month))}}</td>
+                    </tr>
+                </table>
+            </td>
+            <td>
+                <table style="text-align: left;">
+                    <tr>
+                        <th>Joining Date:</th>
+                        <td>{{$res[0]->rider->doj}}</td>
+                    </tr>
+                        <tr>
+                        <th>Zone:</th>
+                        <td>{{$res[0]->zone}}</td>
+                    </tr>
+                    <tr>
+                        <th>Bike #:</th>
+                        <td>{{@$res[0]->bike->plate}}</td>
+                    </tr>
+                </table>
+            </td>
         </tr>
         <tr>
-            <td style="padding: 3px;width: 65%;text-align: left;"><strong>Invoice Type</strong>: Rider Invoice</td>
-            <th style="padding: 3px;width: 15%;text-align: left;">#inv No:</th>
-            <td style="padding: 3px;width: 15%;text-align: left;">{{ \App\Helpers\CommonHelper::inv_sch($res[0]->id,$res[0]->created_at) }}</td>
-           
+            <td colspan="2" style="text-align: center;border-top: 1px solid #000; border-collapse: collapse;">
+                <b>Rider Detail</b>
+            </td>
         </tr>
-        @isset($res[0]->billing_month)
+
         <tr>
-        <th style="padding: 3px;width: 15%;text-align: left;"> Billing Month: {{date('M-Y',strtotime($res[0]->billing_month))}}</th>
-    </tr>
-        @endisset
+            <td>
+                <table style="text-align: left;">
+                    <tr>
+                        <th>Rider Name:</th>
+                        <td>{{ \Illuminate\Support\Facades\DB::table("riders")->selectRaw('CONCAT(name," (",rider_id,")") AS rider_name')->where('id',$res[0]->RID)->value('rider_name') }}</td>
+                    </tr>
+                        <tr>
+                        <th>Rider ID:</th>
+                        <td>{{$res[0]->rider->id }}</td>
+                    </tr>
+                    
+                </table>
+            </td>
+            <td>
+                <table style="text-align: left;">
+                    <tr>
+                        <th>Working Days:</th>
+                        <td>{{$res[0]->working_days}}</td>
+                    </tr>
+                        <tr>
+                        <th>Perfect Attendance:</th>
+                        <td>{{$res[0]->perfect_attendance}}</td>
+                    </tr>
+                    <tr>
+                        <th>Off:</th>
+                        <td>{{@$res[0]->off}}</td>
+                    </tr>
+                    <tr>
+                        <th>Rejection:</th>
+                        <td>{{@$res[0]->rejection}}</td>
+                    </tr>
+                    <tr>
+                        <th>Performance:</th>
+                        <td>{{@$res[0]->performance}}</td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+        
 
     </table>
     <table style="width: 100%; font-family: sans-serif;text-align: center;border: 1px solid #000; border-collapse: collapse; margin-top: 20px;font-size: 12px;">
