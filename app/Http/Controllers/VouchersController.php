@@ -31,7 +31,7 @@ class VouchersController extends Controller
     {
         /** @var Vouchers $vouchers */
         if ($request->ajax()) {
-            $data = Vouchers::query()->orderBy('id', 'DESC')->get();
+            $data = Vouchers::query()->orderBy('trans_code', 'DESC');
             return DataTables::of($data)
                 ->addIndexColumn()
                 ->addColumn('action', 'vouchers.datatables_actions')
@@ -128,7 +128,7 @@ class VouchersController extends Controller
         /** @var Vouchers $vouchers */
         $vouchers = Vouchers::where('trans_code', $id)->first();
 
-        if ($vouchers->voucher_type == 1) {
+        if ($vouchers->voucher_type == 3) {
             $data = Transaction::where('trans_code', $id)->get();
         } else {
             $data = Transaction::where('trans_code', $id)->where('dr_cr', 1)->get();
@@ -201,7 +201,7 @@ class VouchersController extends Controller
         Vouchers::where('trans_code', $id)->delete();
         Transaction::where('trans_code', $id)->delete();
 
-        Flash::success('Vouchers deleted successfully.');
+        //Flash::success('Vouchers deleted successfully.');
 
         return redirect(route('vouchers.index'));
     }

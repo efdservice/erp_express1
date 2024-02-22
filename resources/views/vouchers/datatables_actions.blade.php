@@ -1,4 +1,4 @@
-{!! Form::open(['route' => ['vouchers.destroy', $trans_code], 'method' => 'delete']) !!}
+{!! Form::open(['route' => ['vouchers.destroy', $trans_code], 'method' => 'delete','id'=>'formajax']) !!}
 <div class='btn-group'>
     <a href="{{ route('vouchers.show', $trans_code) }}" class='btn btn-default btn-xs'>
         <i class="fa fa-eye"></i>
