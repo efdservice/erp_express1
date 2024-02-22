@@ -103,7 +103,7 @@ $("#RID").on("change", function () {
                
                 var newRow ='<tr style="padding:5px;"><td width="200"><label>'+item_name+'</label><input type="hidden" name="id[]" value="'+item_id+'" /><input type="hidden" name="inv_id[]" value="'+inv_id+'" /></td>';
                     newRow +='<td width="200"><input type="text" name="narration[]"  value="'+narration+'" class="form-control form-control-sm" /></td>';
-                    newRow +='<td width="100"><input type="number" step="any" name="amount[]"  value="'+item_price+'" step="any" class="form-control form-control-sm amount" /></td>';
+                    newRow +='<td width="100"><input type="number" step="any" name="amount[]"  value="'+item_price+'" step="any" class="form-control form-control-sm amount" onchange="getTotal();" /></td>';
                     newRow +='<td width="100"><input type="button" class="ibtnDel btn btn-md btn-xs btn-danger "  value="Delete"></td></tr>';
 
                     $("table.order-list").append(newRow);               

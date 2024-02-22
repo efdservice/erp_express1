@@ -108,7 +108,7 @@
     </div>
     <div class="form-group col-md-2">
         <label>Amount</label>
-        <input type="text" name="amount" class="form-control form-control-sm" id="riderAmount" placeholder="Amount" step="any">
+        <input type="text" name="amount" class="form-control form-control-sm" id="riderAmount" placeholder="Amount" step="any" onchange="getTotal();">
     </div>
     <div class="form-group col-md-2" style="padding-top: 21px;float:right;">
         <button type="button" class="btn btn-success btn-sm" id="addRiderRow" ><i class="fa fa-plus"></i> Add Row</button> 
