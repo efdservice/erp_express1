@@ -11,6 +11,7 @@ use App\Models\Accounts\Transaction;
 use App\Models\Accounts\TransactionAccount;
 use App\Models\Rider;
 use App\Models\RiderInvoice;
+use App\Models\User;
 use App\Models\Vouchers;
 use App\Services\VoucherService;
 use Illuminate\Http\Request;
@@ -38,7 +39,23 @@ class VouchersController extends Controller
                 ->addColumn('voucher_type', function ($row) {
                     return CommonHelper::VoucherType($row->voucher_type);
                 })
-                ->rawColumns(['action'])
+                ->addColumn('Created_By', function ($row) {
+                    $user = User::find($row->Created_By);
+                    if ($user) {
+                        return $user->name . '<br/>' . $row->created_at->format('Y-m-d h:i a');
+                    } else {
+                        return null;
+                    }
+                })
+                ->addColumn('Updated_By', function ($row) {
+                    $user = User::find($row->Updated_By);
+                    if ($user) {
+                        return $user->name . '<br/>' . $row->updated_at->format('Y-m-d h:i a');
+                    } else {
+                        return null;
+                    }
+                })
+                ->rawColumns(['action', 'Created_By', 'Updated_By'])
                 ->make(true);
         }
         return view('vouchers.index') /* 

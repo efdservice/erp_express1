@@ -61,6 +61,7 @@ class Vouchers extends Model
         'trip_date',
         'direction',
         'lease_company',
+        'Updated_By',
         'status'
     ];
 

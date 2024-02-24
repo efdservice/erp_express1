@@ -39,10 +39,11 @@ class VoucherService
         $data['remarks'] = 'Journal Voucher';
         $data['amount'] = array_sum($request->cr_amount);
         $data['billing_month'] = $request->billing_month;
-        $data['Created_By'] = \Auth::user()->id;
 
 
         if ($id == '' || $id == 0) {
+            $data['Created_By'] = \Auth::user()->id;
+
             $data['trans_code'] = Account::trans_code();
             $tData['trans_code'] = $data['trans_code'];
 
@@ -66,6 +67,8 @@ class VoucherService
                 }
             }
         } else {
+            $data['Updated_By'] = \Auth::user()->id;
+
             $ret = Vouchers::where('trans_code', $id)->update($data);
             Transaction::where('trans_code', $id)->delete();
             $tData['updated_by'] = \Auth::user()->id;
@@ -176,11 +179,14 @@ class VoucherService
         //creating Payment Voucher transaction
 
 
-        $data['Created_By'] = \Auth::user()->id;
         $data['amount'] = $total_amount;
         if ($id) {
+            $data['Updated_By'] = \Auth::user()->id;
+
             $ret = Vouchers::where('trans_code', $id)->update($data);
         } else {
+            $data['Created_By'] = \Auth::user()->id;
+
             $data['trans_code'] = $trans_code;
 
             $ret = Vouchers::create($data);
@@ -213,7 +219,6 @@ class VoucherService
         $data['payment_from'] = $request->payment_from;
         $data['billing_month'] = $request->billing_month;
         $data['ref_id'] = $request->ref_id;
-        $data['Created_By'] = \Auth::user()->id;
         $id = $request->v_trans_code;
         if ($id) {
             Transaction::where('trans_code', $id)->delete();
@@ -265,9 +270,12 @@ class VoucherService
         //creating/updating voucher
         $data['amount'] = $total_amount;
         if ($id) {
+            $data['Updated_By'] = \Auth::user()->id;
+
             $ret = Vouchers::where('trans_code', $id)->update($data);
         } else {
             $data['trans_code'] = $trans_code;
+            $data['Created_By'] = \Auth::user()->id;
 
             $ret = Vouchers::create($data);
         }
@@ -302,7 +310,6 @@ class VoucherService
         $data['trip_date'] = $request->trip_date;
         $data['lease_company'] = $request->lease_company;
         $data['ref_id'] = $request->ref_id;
-        $data['Created_By'] = \Auth::user()->id;
 
         $id = $request->v_trans_code;
         if ($id) {
@@ -357,9 +364,12 @@ class VoucherService
         //creating/updating voucher
         $data['amount'] = $total_amount;
         if ($id) {
+            $data['Updated_By'] = \Auth::user()->id;
+
             $ret = Vouchers::where('trans_code', $id)->update($data);
         } else {
             $data['trans_code'] = $trans_code;
+            $data['Created_By'] = \Auth::user()->id;
 
             $ret = Vouchers::create($data);
         }
@@ -394,7 +404,6 @@ class VoucherService
         $data['lease_company'] = $request->lease_company;
         $data['vendor_id'] = $request->vendor_id;
         $data['ref_id'] = $request->ref_id;
-        $data['Created_By'] = \Auth::user()->id;
 
         $id = $request->v_trans_code;
         if ($id) {
@@ -449,8 +458,12 @@ class VoucherService
         //creating/updating voucher
         $data['amount'] = $total_amount;
         if ($id) {
+            $data['Updated_By'] = \Auth::user()->id;
+
             $ret = Vouchers::where('trans_code', $id)->update($data);
         } else {
+            $data['Created_By'] = \Auth::user()->id;
+
             $data['trans_code'] = $trans_code;
 
             $ret = Vouchers::create($data);

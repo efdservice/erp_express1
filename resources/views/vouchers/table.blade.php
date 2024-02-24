@@ -10,6 +10,8 @@
         <th>Billing Month</th>
         <th>Voucher Type</th>
         <th>Amount</th>
+        <th>Created By</th>
+        <th>Updated By</th>
         <th>Action</th>
     </tr>
     </thead>
@@ -37,6 +39,8 @@
                 {data: 'billing_month', name: 'billing_month'},
                 {data: 'voucher_type', name: 'voucher_type'},
                 {data: 'amount', name: 'amount'},
+                {data: 'Created_By', name: 'Created_By'},
+                {data: 'Updated_By', name: 'Updated_By'},
                 {data: 'action', name: 'action',
                     orderable: true, searchable: false
                 },
