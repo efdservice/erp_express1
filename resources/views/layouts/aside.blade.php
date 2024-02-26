@@ -324,7 +324,7 @@ $reports=['vendor_invoice_report','rider_invoice_report'];
                         @endcan
                         @endcan
                        
-                       {{--  <li class="nav-item has-treeview <?php if(in_array(Request::segment(3), $accounts)) echo 'menu-open'; ?>">
+                        <li class="nav-item has-treeview <?php if(in_array(Request::segment(3), $accounts)) echo 'menu-open'; ?>">
                             <a href="#" class="nav-link">
                                 <i class="nav-icon fas fa-dollar-sign"></i>
                                 <p>
@@ -365,7 +365,7 @@ $reports=['vendor_invoice_report','rider_invoice_report'];
                                 @endcan
                                 
                             </ul>
-                        </li> --}}
+                        </li>
                          
                          @can('general_ledger_view')
                         <li class="nav-item">

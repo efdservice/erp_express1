@@ -150,6 +150,10 @@ ADD COLUMN `lease_company`  bigint(20) NULL AFTER `direction`;
 ---------------
 ALTER TABLE `vouchers`
 ADD COLUMN `Updated_By`  int(11) NULL AFTER `lease_company`;
+-------------
+
+ALTER TABLE `rider_invoices`
+ADD COLUMN `gaurantee`  varchar(255) NULL AFTER `billing_month`;
 
 
 

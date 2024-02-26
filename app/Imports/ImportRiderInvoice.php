@@ -64,9 +64,14 @@ class ImportRiderInvoice implements ToCollection
 
                         $dateTimeObject = Date::excelToDateTimeObject($row[0]);
                         $invoice_date = Carbon::instance($dateTimeObject)->format('Y-m-d');
+                        /*  if (!$invoice_date) {
+                             $invoice_date = date('Y-m-01', strtotime($row[0]));
+                         } */
+                        /* $Billingdate = Date::excelToDateTimeObject($row[28]);
+                        $billing_month = Carbon::instance($Billingdate)->format('Y-m-01'); */
 
-                        $Billingdate = Date::excelToDateTimeObject($row[28]);
-                        $billing_month = Carbon::instance($Billingdate)->format('Y-m-01');
+                        $billing_month = date('Y-m-01', strtotime($row[28]));
+
 
                         $rider = Rider::where('rider_id', $row[1])->first();
                         if (!$rider) {
@@ -89,6 +94,7 @@ class ImportRiderInvoice implements ToCollection
                                 'billing_month' => $billing_month,
                                 'off' => $row[26],
                                 'descriptions' => $row[29],
+                                'gaurantee' => $row[30],
                             ]);
                             $j = 3;
                             foreach ($items as $item) {
