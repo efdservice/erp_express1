@@ -200,14 +200,14 @@ class VoucherService
 
         $rules = [
             'trans_date' => 'required',
-            'ref_id' => 'required',
+            /* 'ref_id' => 'required', */
             /*             'CID' => 'required',
              */ 'amount' => 'required',
         ];
         $message = [
             'trans_date.required' => 'Transaction Date Required',
-            'ref_id.required' => 'Please Select Sim',
-            'amount.required' => 'Amount should be greater than 0',
+            /*             'ref_id.required' => 'Please Select Sim',
+             */ 'amount.required' => 'Amount should be greater than 0',
             /*             'CID.required'=>' Company required',
              */
         ];
@@ -218,7 +218,7 @@ class VoucherService
         $data['payment_type'] = $request->payment_type;
         $data['payment_from'] = $request->payment_from;
         $data['billing_month'] = $request->billing_month;
-        $data['ref_id'] = $request->ref_id;
+        $data['ref_id'] = @$request->ref_id;
         $id = $request->v_trans_code;
         if ($id) {
             Transaction::where('trans_code', $id)->delete();
@@ -262,7 +262,7 @@ class VoucherService
 
         //cr to compnay
         //$tData['narration'] = $request->sim_narration;
-        $tData['trans_acc_id'] = 426;//$request->payment_from;
+        $tData['trans_acc_id'] = 811;//426;//$request->payment_from;
         $tData['dr_cr'] = 2;
         $tData['amount'] = $total_amount;
         Transaction::create($tData);

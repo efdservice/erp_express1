@@ -181,7 +181,7 @@
         </tr>
         <tr style="border-top: 1px solid #000;">
             <td colspan="3" style="padding: 10px;text-align: left;"></td>
-            <th style="padding: 10px;text-align: right;">Sim Charges:</th>
+            <th style="padding: 10px;text-align: right;">Bike Rent & Vendor & Sim Charges:</th>
             <th style="padding: 10px;text-align: right;">{{ $sim =\App\Helpers\Account::getVouchers($res[0]->RID,$res[0]->billing_month,9)}}</th>
         </tr>
         <tr style="border-top: 1px solid #000;">

@@ -1,13 +1,13 @@
 <div class="bg-light" style="border-radius:5px;padding:10px;">
 
 <div class="row" >
-<div class="form-group col-md-4">
+{{-- <div class="form-group col-md-4">
     <label for="exampleInputEmail1">Select Sim</label>
     <select name="ref_id" class="form-control form-control-sm select2">
         <option value="">Select</option>
         {!! \App\Models\Sim::dropdown(@$vouchers->ref_id) !!}
     </select>
-</div>
+</div> --}}
 {{--  <div class="form-group col-md-4">
     <label for="exampleInputEmail1">Company</label>
     <select name="CID" class="form-control form-control-sm select2" onchange="fetch_invoices(this.value)">

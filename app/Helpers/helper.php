@@ -605,7 +605,7 @@ class CommonHelper
         $result = [
             3 => 'Journal Voucher',
             5 => 'Invoice Voucher',
-            9 => 'Sim Voucher',
+            9 => 'Vendor Voucher',
             10 => 'Bike Rent Voucher',
             8 => 'RTA Fine Voucher',
         ];

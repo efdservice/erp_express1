@@ -51,7 +51,7 @@
             @include("vouchers.invoice_fields")
             @endif
             @if($voucherType == 9)
-            <h5>Sim Charges Voucher</h5>
+            <h5>Vendor Charges Voucher</h5>
             @include("vouchers.sim_fields")
             @endif
             @if($voucherType == 10)
