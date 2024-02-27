@@ -14,6 +14,7 @@ use App\Models\RiderInvoiceItem;
 use App\Models\RiderItemPrice;
 use App\Models\VendorInvoiceItem;
 use App\Models\VendorItemPrice;
+use App\Models\Vouchers;
 use Illuminate\Database\QueryException;
 use Illuminate\Support\Collection;
 use Illuminate\Validation\ValidationException;
@@ -143,10 +144,50 @@ class ImportRiderInvoice implements ToCollection
                             $data['billing_month'] = date("Y-m-01", strtotime($row[28]));
                             $data['posting_date'] = date('Y-m-d');
                             Transaction::create($data);
-                            //cr to vendor
-                            /* $data['trans_acc_id']=TransactionAccount::where(['PID'=>9,'Parent_Type'=>$VID])->value('id');
-                            $data['amount']=$profit;
-                            Transaction::create($data); */
+
+                            /* creating Vendor Voucher for Bike rent and Sim charges */
+                            if ($row[31]) {
+
+
+                                $trans_code = Account::trans_code();
+
+                                $tData['billing_month'] = $data['billing_month'];
+                                $tData['trans_date'] = $data['trans_date'];
+                                $tData['posting_date'] = $data['trans_date'];
+                                $tData['trans_code'] = $trans_code;
+                                $tData['status'] = 1;
+                                $tData['vt'] = 9;
+                                $tData['Created_By'] = Auth::user()->id;
+
+                                //dr to rider
+                                $tData['trans_acc_id'] = $data['trans_acc_id'];
+                                $tData['dr_cr'] = 1;
+                                $tData['amount'] = $row[31];
+                                $tData['narration'] = "Bike & Sim Charges";
+                                Transaction::create($tData);
+
+
+                                //cr to compnay
+                                //$tData['narration'] = $request->sim_narration;
+                                $tData['trans_acc_id'] = 811; //Bike & Sim Charges Account
+                                $tData['dr_cr'] = 2;
+                                $tData['amount'] = $row[31];
+                                Transaction::create($tData);
+
+                                //creating/updating voucher
+                                $vdata['trans_date'] = $data['trans_date'];
+                                $vdata['voucher_type'] = 9;
+                                $vdata['payment_type'] = 1;
+                                $vdata['payment_from'] = 811; //Bike & Sim Charges Account
+                                $vdata['billing_month'] = $data['billing_month'];
+                                $vdata['amount'] = $row[31];
+                                $vdata['trans_code'] = $trans_code;
+                                $vdata['Created_By'] = Auth::user()->id;
+
+                                Vouchers::create($vdata);
+
+                            }
+
                         }
                     }
                 }
