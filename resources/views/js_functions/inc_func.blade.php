@@ -115,7 +115,7 @@
                     g.closest('tr').remove();
                     toastr.success('Deleted Successfully..');
                 }else{
-                    toastr.error('not Delted....!');
+                    toastr.error('Not Deleted....!');
                 }
             },
             error: function (data) {

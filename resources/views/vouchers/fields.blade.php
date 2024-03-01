@@ -37,7 +37,8 @@
             </div>
             <div class="form-group col-md-2">
                 <label for="exampleInputEmail1">Billing Month</label>
-                {!! Form::select('billing_month',App\Helpers\CommonHelper::BillingMonth(),null ,['class' => 'form-control form-control-sm select2 ','id'=>'billing_month']) !!}                
+{{--                 {!! Form::select('billing_month',App\Helpers\CommonHelper::BillingMonth(),null ,['class' => 'form-control form-control-sm select2 ','id'=>'billing_month']) !!}                
+ --}}                <input type="month" name="billing_month" class="form-control form-control-sm" value="@isset($vouchers->billing_month){{date('Y-m',strtotime($vouchers->billing_month)) }}@else{{date('Y-m')}}@endisset">
             </div>
           
         </div>
@@ -77,6 +78,13 @@
     </div>
 
 <script>
+    $(document).ready(function() {
+  $('#datepicker').datepicker({
+    format: "mm-yyyy", // Output format
+    minView: 1, // Start with month view
+    startView: 1, // Open in month view
+  });
+});
     $(document).ready(function () {
    var base_url = $('#base_url').val();
 

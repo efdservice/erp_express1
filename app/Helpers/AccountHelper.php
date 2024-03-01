@@ -74,7 +74,7 @@ class Account
         } elseif ($type == 8) {
             return 'RTA Fine';
         } elseif ($type == 9) {
-            return 'Sim Charges';
+            return 'Bike Rent & Vendor & Sim Charges';
         } elseif ($type == 10) {
             return 'Bike Rent';
         }

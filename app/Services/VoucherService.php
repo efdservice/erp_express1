@@ -287,13 +287,13 @@ class VoucherService
 
         $rules = [
             'trans_date' => 'required',
-            'ref_id' => 'required',
+            /*  'ref_id' => 'required', */
             /*             'CID' => 'required',
              */ 'amount' => 'required',
         ];
         $message = [
             'trans_date.required' => 'Transaction Date Required',
-            'ref_id.required' => 'Please Select Sim',
+            /* 'ref_id.required' => 'Please Select Bike', */
             'amount.required' => 'Amount should be greater than 0',
             /*             'CID.required'=>' Company required',
              */

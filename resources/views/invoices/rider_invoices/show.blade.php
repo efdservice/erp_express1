@@ -2,7 +2,7 @@
 <html style="height: 100%;box-sizing: border-box;">
 <head>
     <meta charset="utf-8">
-    <title>Rider Invoice</title>
+    <title>RiderID: {{$res[0]->rider->rider_id}} Month: {{date('M-Y',strtotime($res[0]->billing_month))}}</title>
     <style>
         .page-footer, .page-footer-space {
             /*height: 39px;*/
@@ -103,13 +103,26 @@
         <tr>
             <td>
                 <table style="text-align: left;">
+                    
+                        <tr>
+                        <th>Rider ID:</th>
+                        <td>{{$res[0]->rider->rider_id }}</td>
+                    </tr>
                     <tr>
                         <th>Rider Name:</th>
                         <td>{{ \Illuminate\Support\Facades\DB::table("riders")->selectRaw('CONCAT(name," (",rider_id,")") AS rider_name')->where('id',$res[0]->RID)->value('rider_name') }}</td>
                     </tr>
-                        <tr>
-                        <th>Rider ID:</th>
-                        <td>{{$res[0]->rider->id }}</td>
+                    <tr>
+                        <th>Vendor:</th>
+                        <td>{{@$res[0]->rider->vendor->name }}</td>
+                    </tr>
+                    <tr>
+                        <th>Bike:</th>
+                        <td>{{@$res[0]->rider->bikes->plate }}</td>
+                    </tr>
+                    <tr>
+                        <th>Sim:</th>
+                        <td>{{@$res[0]->rider->sims->sim_number }}</td>
                     </tr>
                     
                 </table>

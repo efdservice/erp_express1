@@ -81,7 +81,9 @@ class VouchersController extends Controller
      */
     public function store(Request $request, VoucherService $voucherService)
     {
-        //$request->all();
+        //dd($request->all());
+
+        $request->billing_month = $request->billing_month . "-01";
 
         /** @var Vouchers $vouchers */
         if ($request->voucher_type == 3) {
@@ -174,6 +176,8 @@ class VouchersController extends Controller
     {
         /** @var Vouchers $vouchers */
         $vouchers = Vouchers::find($id);
+
+        $request->billing_month = $request->billing_month . "-01";
 
         if (empty($vouchers)) {
             Flash::error('Vouchers not found');

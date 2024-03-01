@@ -14,6 +14,10 @@ class RiderInvoice extends Model
     {
         return $this->hasOne(Rider::class, 'id', 'RID');
     }
+    public function vendor()
+    {
+        return $this->hasOne(Vendor::class, 'id', 'VID');
+    }
 
     public function riderInv_item()
     {
