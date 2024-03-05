@@ -111,6 +111,7 @@ Route::group(['middleware' => ['auth']], function () {
     Route::resource('vouchers', VouchersController::class);
     Route::get('get_invoice_balance', 'VouchersController@GetInvoiceBalance')->name('get_invoice_balance');
     Route::get('fetch_invoices/{id}/{vt}', 'VouchersController@fetch_invoices');
+    Route::any('attach_file/{id}', 'VouchersController@fileUpload');
 
 
 });

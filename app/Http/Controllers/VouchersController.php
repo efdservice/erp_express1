@@ -55,7 +55,15 @@ class VouchersController extends Controller
                         return null;
                     }
                 })
-                ->rawColumns(['action', 'Created_By', 'Updated_By'])
+                ->addColumn('attach_file', function ($row) {
+
+                    if ($row->attach_file) {
+                        return '<a href="' . \Storage::url('app/public/vouchers/' . $row->attach_file) . '" target="_blank">View</a>';
+                    } else {
+                        return null;
+                    }
+                })
+                ->rawColumns(['action', 'Created_By', 'Updated_By', 'attach_file'])
                 ->make(true);
         }
         return view('vouchers.index') /* 
@@ -343,6 +351,25 @@ class VouchersController extends Controller
             $vendor_balance = Account::show_bal($vendor_balance);
             return compact('htmlData', 'vendor_balance');
         }
+    }
+
+    public function fileUpload(Request $request, $id)
+    {
+
+        if (isset($request->attach_file)) {
+            $photo = $request->attach_file;
+            $docFile = $photo->store('public/vouchers');
+            $data['attach_file'] = basename($docFile);
+            $voucher = Vouchers::find($id);
+            $voucher->attach_file = $data['attach_file'];
+            $voucher->save();
+
+
+        }
+
+        return view('vouchers.attach_file', compact('id'));
+
+
     }
 
 }

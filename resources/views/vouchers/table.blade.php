@@ -12,6 +12,7 @@
         <th>Amount</th>
         <th>Created By</th>
         <th>Updated By</th>
+        <th>Document</th>
         <th>Action</th>
     </tr>
     </thead>
@@ -41,6 +42,7 @@
                 {data: 'amount', name: 'amount'},
                 {data: 'Created_By', name: 'Created_By'},
                 {data: 'Updated_By', name: 'Updated_By'},
+                {data: 'attach_file', name: 'Document'},
                 {data: 'action', name: 'action',
                     orderable: true, searchable: false
                 },
