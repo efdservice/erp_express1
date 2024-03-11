@@ -66,7 +66,7 @@ class VouchersController extends Controller
                 ->rawColumns(['action', 'Created_By', 'Updated_By', 'attach_file'])
                 ->make(true);
         }
-        return view('vouchers.index') /* 
+        return view('vouchers.index') /*
 ->with('vouchers', $vouchers) */ ;
     }
 
@@ -102,6 +102,9 @@ class VouchersController extends Controller
         }
         if ($request->voucher_type == 9) {
             $result = $voucherService->SimVoucher($request);
+        }
+        if ($request->voucher_type == 11) {
+            $result = $voucherService->FuelVoucher($request);
         }
         if ($request->voucher_type == 10) {
             $result = $voucherService->RentVoucher($request);
@@ -200,6 +203,9 @@ class VouchersController extends Controller
         }
         if ($request->voucher_type == 9) {
             $result = $voucherService->SimVoucher($request);
+        }
+        if ($request->voucher_type == 11) {
+            $result = $voucherService->FuelVoucher($request);
         }
         if ($request->voucher_type == 10) {
             $result = $voucherService->RentVoucher($request);
@@ -319,7 +325,7 @@ class VouchersController extends Controller
                             <label for="exampleInputEmail1">Payment To</label>
                             <input type="hidden" name="id[]" value="' . $item->rider->id . '">
                                ' . $item->rider->name . '(' . $item->rider->rider_id . ')
-                           
+
                         </div>
                         <div class="form-group col-md-4">
                             <label>Narration</label>

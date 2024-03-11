@@ -607,6 +607,7 @@ class CommonHelper
             5 => 'Invoice Voucher',
             9 => 'Vendor Voucher',
             10 => 'Bike Rent Voucher',
+            11 => 'Fuel Voucher',
             8 => 'RTA Fine Voucher',
         ];
 

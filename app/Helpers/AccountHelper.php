@@ -77,6 +77,8 @@ class Account
             return 'Bike Rent & Vendor & Sim Charges';
         } elseif ($type == 10) {
             return 'Bike Rent';
+        } elseif ($type == 11) {
+            return 'Fuel Charges';
         }
     }
     //@opening balance as on date as well while createing account

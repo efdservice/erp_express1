@@ -54,7 +54,7 @@
         </tr>
     </table>
 
-  
+
     <table width="100%" style="font-family: sans-serif; margin-top: 0px;font-size: 12px;">
         <tr>
             <td>
@@ -103,7 +103,7 @@
         <tr>
             <td>
                 <table style="text-align: left;">
-                    
+
                         <tr>
                         <th>Rider ID:</th>
                         <td>{{$res[0]->rider->rider_id }}</td>
@@ -124,7 +124,7 @@
                         <th>Sim:</th>
                         <td>{{@$res[0]->rider->sims->sim_number }}</td>
                     </tr>
-                    
+
                 </table>
             </td>
             <td>
@@ -152,7 +152,7 @@
                 </table>
             </td>
         </tr>
-        
+
 
     </table>
     <table style="width: 100%; font-family: sans-serif;text-align: center;border: 1px solid #000; border-collapse: collapse; margin-top: 20px;font-size: 12px;">
@@ -189,13 +189,18 @@
         </tr>
         <tr style="border-top: 1px solid #000;">
             <td colspan="3" style="padding: 10px;text-align: left;"></td>
-            <th style="padding: 10px;text-align: right;">Advance Payment:</th>
+            <th style="padding: 10px;text-align: right;">Payment:</th>
             <th style="padding: 10px;text-align: right;">{{ $advance = \App\Helpers\Account::getVouchers($res[0]->RID,$res[0]->billing_month,3)}}</th>
         </tr>
         <tr style="border-top: 1px solid #000;">
             <td colspan="3" style="padding: 10px;text-align: left;"></td>
             <th style="padding: 10px;text-align: right;">Bike Rent & Vendor & Sim Charges:</th>
             <th style="padding: 10px;text-align: right;">{{ $sim =\App\Helpers\Account::getVouchers($res[0]->RID,$res[0]->billing_month,9)}}</th>
+        </tr>
+        <tr style="border-top: 1px solid #000;">
+            <td colspan="3" style="padding: 10px;text-align: left;"></td>
+            <th style="padding: 10px;text-align: right;">Fuel Charges:</th>
+            <th style="padding: 10px;text-align: right;">{{ $fuel =\App\Helpers\Account::getVouchers($res[0]->RID,$res[0]->billing_month,11)}}</th>
         </tr>
         <tr style="border-top: 1px solid #000;">
             <td colspan="3" style="padding: 10px;text-align: left;"></td>
@@ -211,7 +216,7 @@
             <td colspan="3" style="padding: 10px;text-align: left;"></td>
             <th style="padding: 10px;text-align: right;">Total:</th>
             @php
-            $credit = $advance+$sim+$rent+$rta;
+            $credit = $advance+$sim+$rent+$rta+$fuel;
             $balance = $total-$credit;
             @endphp
             <th style="padding: 10px;text-align: right;">AED {{ \App\Helpers\Account::show_bal_format($balance) }}</th>
