@@ -112,23 +112,32 @@
                         <th>Rider Name:</th>
                         <td>{{ \Illuminate\Support\Facades\DB::table("riders")->selectRaw('CONCAT(name," (",rider_id,")") AS rider_name')->where('id',$res[0]->RID)->value('rider_name') }}</td>
                     </tr>
+
                     <tr>
                         <th>Vendor:</th>
                         <td>{{@$res[0]->rider->vendor->name }}</td>
                     </tr>
                     <tr>
-                        <th>Bike:</th>
-                        <td>{{@$res[0]->rider->bikes->plate }}</td>
+                        <th>Rider Contact:</th>
+                        <td>{{@$res[0]->rider->personal_contact }}</td>
                     </tr>
                     <tr>
-                        <th>Sim:</th>
-                        <td>{{@$res[0]->rider->sims->sim_number }}</td>
+                        <th>Fleet Supervisor:</th>
+                        <td>{{@$res[0]->rider->fleet_supervisor }}</td>
+                    </tr>
+                    <tr>
+                        <th>Sup. Contact:</th>
+                        <td>{{@$res[0]->rider->company_contact }}</td>
                     </tr>
 
                 </table>
             </td>
             <td>
                 <table style="text-align: left;">
+                    <tr>
+                        <th>Status:</th>
+                        <td @if($res[0]->rider->status == 3) style="color:red;" @endif>{{ App\Helpers\CommonHelper::RiderStatus($res[0]->rider->status) }}</td>
+                    </tr>
                     <tr>
                         <th>Working Days:</th>
                         <td>{{$res[0]->working_days}}</td>

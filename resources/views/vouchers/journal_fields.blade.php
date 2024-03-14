@@ -18,7 +18,7 @@
         </div>
         <div class="form-group col-md-2">
             <label>Cr Amount</label>
-            <input type="number" name="cr_amount[]" value="@if($entry->dr_cr == 2){{$entry->amount}}@endif" class="form-control form-control-sm cr_amount" placeholder="Paid Amount">
+            <input type="number" step="any" name="cr_amount[]" value="@if($entry->dr_cr == 2){{$entry->amount}}@endif" class="form-control form-control-sm cr_amount" placeholder="Paid Amount">
         </div>
        {{--  <div class="form-group col-md-1">
             <label style="visibility: hidden">plus</label>
@@ -47,7 +47,7 @@
         <label>Cr Amount</label>
         <input type="number" step="any" name="cr_amount[]" class="form-control form-control-sm cr_amount" placeholder="Paid Amount" onchange="getTotal();">
     </div>
-   
+
 </div>
 @endisset
 <div class="append-line"></div>

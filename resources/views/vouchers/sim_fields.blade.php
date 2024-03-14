@@ -27,7 +27,7 @@
 
 @isset($data)
 <div id="fetchRiderInv" class="bg-white">
-   
+
     <div class="row ">
         <div class="col-md-4">
             Payment Account
@@ -43,7 +43,7 @@
         </div>
     </div>
     @foreach($data as $entry)
-    
+
             <div class="row">
                 <input type="hidden" name="id[]" value="{{$entry->trans_acc->riderDetail->id}}">
                 <div class="form-group col-md-4">
@@ -71,7 +71,7 @@
                 @endif
             </div>
     @endforeach
-   
+
     </div>
 @else
 <div class="row" >
@@ -92,7 +92,7 @@
         <input type="text" name="amount" class="form-control form-control-sm" id="riderAmount" placeholder="Amount" step="any" onchange="getTotal();">
     </div>
     <div class="form-group col-md-2" style="padding-top: 21px;float:right;">
-        <button type="button" class="btn btn-success btn-sm" id="addRiderRow" ><i class="fa fa-plus"></i> Add Row</button> 
+        <button type="button" class="btn btn-success btn-sm" id="addRiderRow" ><i class="fa fa-plus"></i> Add Row</button>
     </div>
     <div id="rider_invoices"></div>
 
