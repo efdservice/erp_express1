@@ -28,18 +28,18 @@ class LedgerController extends Controller
         $tdr = 0;
         $tcr = 0;
         $cb = 0;
+        /*
+                $ids = TransactionAccount::getSubAccounts($request->ledger_id);
 
-        $ids = TransactionAccount::getSubAccounts($request->ledger_id);
+                if (count($ids) > 1) {
 
-        if (count($ids) > 1) {
+                    array_push($ids, $request->ledger_id);
 
-            array_push($ids, $request->ledger_id);
-
-            $res = Transaction::whereIn('trans_acc_id', $ids);
-        } else {
-            $res = Transaction::where('trans_acc_id', $request->ledger_id);
-        }
-
+                    $res = Transaction::whereIn('trans_acc_id', $ids);
+                } else {
+                    $res = Transaction::where('trans_acc_id', $request->ledger_id);
+                } */
+        $res = Transaction::where('trans_acc_id', $request->ledger_id);
         if ($request->billing_month) {
             $res = $res->where('billing_month', $request->billing_month);
             $request->df = $request->billing_month;

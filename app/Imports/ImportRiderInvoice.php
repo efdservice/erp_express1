@@ -81,7 +81,7 @@ class ImportRiderInvoice implements ToCollection
                         $RID = $rider->id;
                         $VID = $rider->VID;
                         //$VID = AssignVendorRider::where('RID', $RID)->value('VID');
-                        if (isset($row[21])) {
+                        if (isset ($row[21])) {
                             $ret = RiderInvoice::create([
                                 'inv_date' => $invoice_date,
                                 'RID' => $RID,
@@ -148,43 +148,45 @@ class ImportRiderInvoice implements ToCollection
                             /* creating Vendor Voucher for Bike rent and Sim charges */
                             if ($row[31]) {
 
-
-                                $trans_code = Account::trans_code();
-
-                                $tData['billing_month'] = $data['billing_month'];
-                                $tData['trans_date'] = $data['trans_date'];
-                                $tData['posting_date'] = $data['trans_date'];
-                                $tData['trans_code'] = $trans_code;
-                                $tData['status'] = 1;
-                                $tData['vt'] = 9;
-                                $tData['Created_By'] = Auth::user()->id;
-
-                                //dr to rider
-                                $tData['trans_acc_id'] = $data['trans_acc_id'];
-                                $tData['dr_cr'] = 1;
-                                $tData['amount'] = $row[31];
-                                $tData['narration'] = "Bike & Sim Charges";
-                                Transaction::create($tData);
+                                $Vdata['billing_month'] = $data['billing_month'];
+                                $Vdata['trans_acc_id'] = $data['trans_acc_id'];
+                                $Vdata['trans_date'] = $data['trans_date'];
+                                $Vdata['amount'] = $row[31];
+                                $Vdata['narration'] = "Bike & Sim Charges";
+                                $Vdata['voucher_type'] = 9;
+                                $Vdata['payment_from'] = 811; //Account ID
+                                $Vdata['payment_type'] = 1; //dr/cr
+                                Account::CreatVoucher($Vdata);
 
 
-                                //cr to compnay
-                                //$tData['narration'] = $request->sim_narration;
-                                $tData['trans_acc_id'] = 811; //Bike & Sim Charges Account
-                                $tData['dr_cr'] = 2;
-                                $tData['amount'] = $row[31];
-                                Transaction::create($tData);
+                            }
 
-                                //creating/updating voucher
-                                $vdata['trans_date'] = $data['trans_date'];
-                                $vdata['voucher_type'] = 9;
-                                $vdata['payment_type'] = 1;
-                                $vdata['payment_from'] = 811; //Bike & Sim Charges Account
-                                $vdata['billing_month'] = $data['billing_month'];
-                                $vdata['amount'] = $row[31];
-                                $vdata['trans_code'] = $trans_code;
-                                $vdata['Created_By'] = Auth::user()->id;
+                            /* creating Fuel Voucher */
+                            if ($row[32]) {
 
-                                Vouchers::create($vdata);
+                                $Vdata['billing_month'] = $data['billing_month'];
+                                $Vdata['trans_acc_id'] = $data['trans_acc_id'];
+                                $Vdata['trans_date'] = $data['trans_date'];
+                                $Vdata['amount'] = $row[32];
+                                $Vdata['narration'] = $row[33];
+                                $Vdata['voucher_type'] = 11;
+                                $Vdata['payment_from'] = 617; //Account ID
+                                $Vdata['payment_type'] = 1; //dr/cr
+                                Account::CreatVoucher($Vdata);
+
+                            }
+                            /* creating RTA Voucher */
+                            if ($row[34]) {
+
+                                $Vdata['billing_month'] = $data['billing_month'];
+                                $Vdata['trans_acc_id'] = $data['trans_acc_id'];
+                                $Vdata['trans_date'] = $data['trans_date'];
+                                $Vdata['amount'] = $row[34];
+                                $Vdata['narration'] = $row[35];
+                                $Vdata['voucher_type'] = 8;
+                                $Vdata['payment_from'] = 425; //Account ID
+                                $Vdata['payment_type'] = 1; //dr/cr
+                                Account::CreatVoucher($Vdata);
 
                             }
 

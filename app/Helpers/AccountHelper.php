@@ -272,4 +272,58 @@ class Account
         return $result->charges ?? 0;
 
     }
+
+    public static function CreatVoucher($data)
+    {
+        /* SAMPLE DATA */
+        /* $data = [
+            'billing_month' => $value,
+            'trans_date' => $value,
+            'voucher_type' => $value,
+            'trans_acc_id' => $value,
+            'amount' => $value,
+            'narration' => $value,
+            'payment_from' => $value,
+            'payment_type' => $value
+        ]; */
+        $trans_code = self::trans_code();
+
+        $tData['billing_month'] = $data['billing_month'];
+        $tData['trans_date'] = $data['trans_date'];
+        $tData['posting_date'] = $data['trans_date'];
+        $tData['trans_code'] = $trans_code;
+        $tData['status'] = 1;
+        $tData['vt'] = $data['voucher_type'];
+        $tData['Created_By'] = \Auth::user()->id;
+
+        //dr to rider
+        $tData['trans_acc_id'] = $data['trans_acc_id'];
+        $tData['dr_cr'] = 1;
+        $tData['amount'] = $data['amount'];
+        $tData['narration'] = $data['narration'];
+        Transaction::create($tData);
+
+
+        //cr to compnay
+        //$tData['narration'] = $request->sim_narration;
+        $tData['trans_acc_id'] = $data['payment_from'];
+        $tData['dr_cr'] = 2;
+        $tData['amount'] = $data['amount'];
+        Transaction::create($tData);
+
+        //creating/updating voucher
+        $vdata['trans_date'] = $data['trans_date'];
+        $vdata['voucher_type'] = $data['voucher_type'];
+        $vdata['payment_type'] = $data['payment_type'];
+        $vdata['payment_from'] = $data['payment_from'];
+        $vdata['billing_month'] = $data['billing_month'];
+        $vdata['amount'] = $data['amount'];
+        $vdata['trans_code'] = $trans_code;
+        $vdata['Created_By'] = \Auth::user()->id;
+
+        Vouchers::create($vdata);
+
+
+
+    }
 }

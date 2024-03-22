@@ -196,11 +196,7 @@
             <th style="padding: 10px;text-align: right;">Sub Total:</th>
             <th style="padding: 10px;text-align: right;">{{ \App\Helpers\Account::show_bal_format($total) }}</th>
         </tr>
-        <tr style="border-top: 1px solid #000;">
-            <td colspan="3" style="padding: 10px;text-align: left;"></td>
-            <th style="padding: 10px;text-align: right;">Payment:</th>
-            <th style="padding: 10px;text-align: right;">{{ $advance = \App\Helpers\Account::getVouchers($res[0]->RID,$res[0]->billing_month,3)}}</th>
-        </tr>
+
         <tr style="border-top: 1px solid #000;">
             <td colspan="3" style="padding: 10px;text-align: left;"></td>
             <th style="padding: 10px;text-align: right;">Bike Rent & Vendor & Sim Charges:</th>
@@ -220,6 +216,11 @@
             <td colspan="3" style="padding: 10px;text-align: left;"></td>
             <th style="padding: 10px;text-align: right;">RTA Charges:</th>
             <th style="padding: 10px;text-align: right;">{{ $rta =\App\Helpers\Account::getVouchers($res[0]->RID,$res[0]->billing_month,8)}}</th>
+        </tr>
+        <tr style="border-top: 1px solid #000;">
+            <td colspan="3" style="padding: 10px;text-align: left;"></td>
+            <th style="padding: 10px;text-align: right;">Payment:</th>
+            <th style="padding: 10px;text-align: right;">{{ $advance = \App\Helpers\Account::getVouchers($res[0]->RID,$res[0]->billing_month,3)}}</th>
         </tr>
         <tr style="border-top: 1px solid #000;">
             <td colspan="3" style="padding: 10px;text-align: left;"></td>
