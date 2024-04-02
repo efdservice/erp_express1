@@ -142,7 +142,7 @@ class Account
         } elseif ($bal < 0) {
             return '(' . number_format(abs($bal), 2) . ") CR";
         } elseif ($bal == 0) {
-            return "Nil";
+            return "0.00";
         }
     }
     public static function show_bal_format($bal)
@@ -152,7 +152,7 @@ class Account
         } elseif ($bal < 0) {
             return '(' . number_format(abs($bal), 2) . ")";
         } elseif ($bal == 0) {
-            return "Nil";
+            return "0.00";
         }
     }
     //show currency in words

@@ -39,11 +39,16 @@ class LedgerController extends Controller
                 } else {
                     $res = Transaction::where('trans_acc_id', $request->ledger_id);
                 } */
-        $res = Transaction::where('trans_acc_id', $request->ledger_id);
+        if ($request->ledger_id) {
+            $res = Transaction::where('trans_acc_id', $request->ledger_id);
+
+        } else {
+            $res = Transaction::where('status', 1);
+
+        }
         if ($request->billing_month) {
             $res = $res->where('billing_month', $request->billing_month);
             $request->df = $request->billing_month;
-            $ob = Account::Monthly_ob($request->billing_month, $request->ledger_id);
 
         } else {
             if ($request->df) {
@@ -51,10 +56,24 @@ class LedgerController extends Controller
 
 
             }
-            $ob = Account::ob($request->df, $request->ledger_id);
         }
 
-        $res = $res->where('status', 1)->orderBy('trans_date', 'ASC')->get();
+
+        if ($request->ledger_id) {
+            $res = $res->where('status', 1)->orderBy('trans_date', 'ASC')->get();
+
+            if ($request->billing_month) {
+                $ob = Account::Monthly_ob($request->billing_month, $request->ledger_id);
+
+            } else {
+                $ob = Account::ob($request->df, $request->ledger_id);
+
+            }
+        } else {
+            $res = $res->orderBy('trans_date', 'ASC')->groupBy('trans_acc_id')->get();
+
+            $ob = 0;
+        }
 
 
         //$ob = Account::ob($request->df, $request->ledger_id);
@@ -62,7 +81,7 @@ class LedgerController extends Controller
         $data = '';
         //$ob = Account::ob($request->df, $request->ledger_id);
         $data .= '<tr>';
-        $data .= '<td colspan="8" align="right">Opening Balance As At ' . $request->df . '</td>';
+        $data .= '<td colspan="9" align="right">Opening Balance As At ' . $request->df . '</td>';
         $data .= '<td align="right">' . Account::show_bal($ob) . '</td>';
         $data .= '</tr>';
 
@@ -84,6 +103,7 @@ class LedgerController extends Controller
             $data .= '<td></td>';
             $data .= '<td>' . $item->trans_date . '</td>';
             $data .= '<td>' . $code . $item->trans_acc->Trans_Acc_Name . '</td>';
+            $data .= '<td>' . date('M Y', strtotime($item->billing_month)) . '</td>';
             $data .= '<td>' . Account::vt($item->vt) . '</td>';
             $data .= '<td>' . CommonHelper::dsn($item->trans_code) . '</td>';
             $data .= '<td>' . $item->narration . '</td>';
@@ -93,7 +113,7 @@ class LedgerController extends Controller
             $data .= '</tr>';
         }
         $data .= '<tr>';
-        $data .= '<td colspan="6"></td>';
+        $data .= '<td colspan="7"></td>';
         $data .= '<th> ' . number_format($tdr, 2) . '</th>';
         $data .= '<th> ' . number_format($tcr, 2) . '</th>';
         $data .= '<th style="text-align: right">' . Account::show_bal($cb) . '</th>';

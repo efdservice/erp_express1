@@ -36,7 +36,7 @@
                                     <div class="col-md-2">
                                         <label>Account</label>
                                         <select class="form-control form-control-sm select2" name="ledger_id">
-                                            <option value="">All</option>
+                                            <option value="">Select</option>
                                             {!! App\Models\Accounts\TransactionAccount::dropdown() !!}
                                         </select>
                                     </div>
@@ -63,7 +63,6 @@
                                     <th>#</th>
                                     <th>Date</th>
                                     <th>Account</th>
-                                    <th>Month</th>
                                     <th>VT</th>
                                     <th>Voucher</th>
                                     <th>Description</th>

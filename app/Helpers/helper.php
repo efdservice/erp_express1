@@ -240,6 +240,7 @@ class CommonHelper
             'Al Sama Garage' => 'Al Sama Garage',
             'Easy Lease Garage' => 'Easy Lease Garage',
             'Theft' => 'Theft',
+            'Total Loss' => 'Total Loss',
             'Return' => 'Return'
         ];
         $list = '';
