@@ -4,7 +4,7 @@ $appication_setup=['categories', 'currencies', 'product_types', 'products', 'reg
     'currency_api','currency_history','sources','clients', 'continents', 'countries',
     'division','district', 'cities', 'province', 'areas','mosques'];
 $accounts=['root_accounts', 'dashboard', 'head_accounts', 'subhead_accounts',
-    'trans_accounts', 'payment_vouchers', 'receipt_vouchers','journal_vouchers','ledger',
+    'trans_accounts', 'payment_vouchers', 'receipt_vouchers','journal_vouchers','ledger','index',
     'financial_year','agent_wallet','service_providors','rider_pv'];
 $account_reports=['ledger_report','trail_balance','account_day_book','balance_sheet',
     'income_statement'];
@@ -48,7 +48,7 @@ $reports=['vendor_invoice_report','rider_invoice_report'];
                         <p> Dashboard </p>
                     </a>
                 </li>
-                
+
                 {{-- <li class="nav-item has-treeview <?php //if(in_array(Request::segment(1), $item)) echo 'menu-open';?>">
                     <a href="#" class="nav-link">
                         <i class='nav-icon fas fa-users-cog fa-xs'></i>
@@ -74,7 +74,7 @@ $reports=['vendor_invoice_report','rider_invoice_report'];
                             </a>
                         </li>
                         @endcan
-                  {{--      
+                  {{--
                     </ul>
                 </li> --}}
                 {{-- <li class="nav-item has-treeview @php if(in_array(Request::segment(1), $vendor)) echo 'menu-open';
@@ -95,8 +95,8 @@ $reports=['vendor_invoice_report','rider_invoice_report'];
                             </a>
                         </li>
                         @endcan
-                        
-                        
+
+
                     {{-- </ul>
                 </li> --}}
                  {{--  <li class="nav-item has-treeview <?php //if(in_array(Request::segment(2), $invoices)) echo 'menu-open';?>">
@@ -116,7 +116,7 @@ $reports=['vendor_invoice_report','rider_invoice_report'];
                             </a>
                         </li>
                         @endcan
-                       
+
                   {{--   </ul>
                 </li> --}}
                 @can('riders_view')
@@ -154,7 +154,7 @@ $reports=['vendor_invoice_report','rider_invoice_report'];
                                 <p>Assign Price</p>
                             </a>
                         </li>
-                       
+
                     </ul>
                 </li> --}}
                 @can("bikes_view")
@@ -182,7 +182,7 @@ $reports=['vendor_invoice_report','rider_invoice_report'];
                                 <p>RTA Fine Voucher</p>
                             </a>
                         </li>
-                       
+
                         <li class="nav-item">
                             <a href="{{ route('bike_rent.index') }}" class="nav-link {{ (request()->is('bike_rent')) ? 'active' : '' }}">
                                 <i class="nav-icon fas fa-angle-double-right fa-xs"></i>
@@ -209,14 +209,14 @@ $reports=['vendor_invoice_report','rider_invoice_report'];
                         </p>
                     </a>
                     <ul class="nav nav-treeview">
-                       
+
                         <li class="nav-item">
                             <a href="{{ route('sim.index') }}" class="nav-link {{ (request()->is('sim')) ? 'active' : '' }}">
                                 <i class="nav-icon fas fa-angle-double-right fa-xs"></i>
                                 <p>Sim List</p>
                             </a>
                         </li>
-                      
+
                        {{--  <li class="nav-item">
                             <a href="{{ route('sim_charges.index') }}" class="nav-link {{ (request()->is('sim_charges')) ? 'active' : '' }}">
                                 <i class="nav-icon fas fa-angle-double-right fa-xs"></i>
@@ -259,7 +259,7 @@ $reports=['vendor_invoice_report','rider_invoice_report'];
                     </ul>
                 </li>
                 @endcan
-                
+
                 <li class="nav-item has-treeview <?php if(in_array(Request::segment(2), $accounts)) echo 'menu-open';
                 elseif(in_array(Request::segment(3), $accounts)) echo 'menu-open'; elseif(in_array(Request::segment(1), $sale)) echo 'menu-open';
                 elseif(in_array(Request::segment(3), $account_reports)) echo 'menu-open'; ?>">
@@ -323,7 +323,7 @@ $reports=['vendor_invoice_report','rider_invoice_report'];
                         </li>
                         @endcan
                         @endcan
-                       
+
                         <li class="nav-item has-treeview <?php if(in_array(Request::segment(3), $accounts)) echo 'menu-open'; ?>">
                             <a href="#" class="nav-link">
                                 <i class="nav-icon fas fa-dollar-sign"></i>
@@ -363,11 +363,17 @@ $reports=['vendor_invoice_report','rider_invoice_report'];
                                         </a>
                                     </li>
                                 @endcan
-                                
+
                             </ul>
                         </li>
-                         
+
                          @can('general_ledger_view')
+                         <li class="nav-item">
+                            <a href="{{ url('Accounts/index') }}" class="nav-link {{ (request()->is('Accounts/index')) ? 'active' : '' }}">
+                                <i class="nav-icon fas fa-angle-double-right fa-xs"></i>
+                                <p>Ledger</p>
+                            </a>
+                        </li>
                         <li class="nav-item">
                             <a href="{{ url('Accounts/ledger') }}" class="nav-link {{ (request()->is('Accounts/ledger')) ? 'active' : '' }}">
                                 <i class="nav-icon fas fa-angle-double-right fa-xs"></i>
@@ -419,7 +425,7 @@ $reports=['vendor_invoice_report','rider_invoice_report'];
                         @endcan
                     </ul>
                 </li>
-               
+
                 <li class="nav-item has-treeview <?php if(in_array(Request::segment(1), $appication_setup)){ echo 'menu-open'; } elseif(in_array(Request::segment(3), $appication_setup)) echo 'menu-open'; elseif(in_array(Request::segment(2), $appication_setup)) echo 'menu-open';
                 elseif(in_array(Request::segment(3), $user)){ echo 'menu-open'; } elseif(in_array(Request::segment(2), $hr)){ echo 'menu-open'; }
                 elseif(in_array(Request::segment(1), $bus_setup)){ echo 'menu-open'; } ?>">
@@ -460,7 +466,7 @@ $reports=['vendor_invoice_report','rider_invoice_report'];
                                         <p>Roles</p>
                                     </a>
                                 </li>
-                               
+
                                 {{-- <li class="nav-item">
                                     <a href="{{ route('permission.index') }}" class="nav-link {{ (request()->is('Application_Setup/user_management/permission')) ? 'active' : '' }}">
                                         <i class="nav-icon fas fa-angle-double-right fa-xs"></i>

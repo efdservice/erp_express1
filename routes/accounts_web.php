@@ -1,5 +1,6 @@
 <?php
 use Illuminate\Support\Facades\Route;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -13,10 +14,10 @@ use Illuminate\Support\Facades\Route;
 Auth::routes();
 
 //Route::get('/home', [HomeController::class, 'index'])->name('home');
-Route::group(['middleware' => ['auth']], function() {
+Route::group(['middleware' => ['auth']], function () {
     Route::prefix('Accounts')->group(function () {
-        Route::resource('financial_year',FinancialYearController::class);
-        Route::post('get_financial_year','FinancialYearController@get_data');
+        Route::resource('financial_year', FinancialYearController::class);
+        Route::post('get_financial_year', 'FinancialYearController@get_data');
         Route::resource('root_accounts', Accounts\RootController::class);
         Route::post('get_root_accounts', 'Accounts\RootController@get_data');
         Route::resource('dashboard', Accounts\AccountDashboardController::class);
@@ -26,7 +27,7 @@ Route::group(['middleware' => ['auth']], function() {
         Route::post('get_subhead_accounts', 'Accounts\SubHeadAccountController@get_data');
         Route::resource('trans_accounts', Accounts\TransAccountController::class);
         Route::post('get_trans_accounts', 'Accounts\TransAccountController@get_data');
-        Route::prefix('vouchers')->group(function (){
+        Route::prefix('vouchers')->group(function () {
             Route::resource('receipt_vouchers', Accounts\ReceiptVoucherController::class);
             Route::post('get_receipt_vouchers', 'Accounts\ReceiptVoucherController@get_data');
             Route::get('fetch_client_inv/{id}', 'Accounts\ReceiptVoucherController@fetch_client_inv');
@@ -35,14 +36,16 @@ Route::group(['middleware' => ['auth']], function() {
             Route::post('get_payment_vouchers', 'Accounts\PaymentVoucherController@get_data');
             Route::resource('journal_vouchers', Accounts\JournalVoucherController::class);
             Route::post('get_journal_vouchers', 'Accounts\JournalVoucherController@get_data');
-            Route::resource('rider_pv',Accounts\RiderPvController::class);
-            Route::get('fetch_invoices/{id}/{vt}','Accounts\RiderPvController@fetch_invoices');
-            Route::get('get_balance','Accounts\RiderPvController@GetBalance')->name('get_balance');
-            Route::get('get_invoice_balance','Accounts\RiderPvController@GetInvoiceBalance')->name('get_invoice_balance');
+            Route::resource('rider_pv', Accounts\RiderPvController::class);
+            Route::get('fetch_invoices/{id}/{vt}', 'Accounts\RiderPvController@fetch_invoices');
+            Route::get('get_balance', 'Accounts\RiderPvController@GetBalance')->name('get_balance');
+            Route::get('get_invoice_balance', 'Accounts\RiderPvController@GetInvoiceBalance')->name('get_invoice_balance');
 
         });
-        Route::get('ledger', 'Accounts\Reports\LedgerController@index');
-        Route::prefix('reports')->group(function(){
+        Route::get('index', 'Accounts\Reports\LedgerController@index');
+        Route::get('ledger', 'Accounts\Reports\LedgerController@ledger');
+        Route::prefix('reports')->group(function () {
+            Route::post('getLedger', 'Accounts\Reports\LedgerController@getLedger');
             Route::post('get_ledger', 'Accounts\Reports\LedgerController@get_ledger');
             Route::resource('trail_balance', Accounts\Reports\TraialBalanceController::class);
             Route::resource('account_day_book', Accounts\Reports\AccountDayBookController::class);
@@ -52,8 +55,8 @@ Route::group(['middleware' => ['auth']], function() {
             Route::get('ledger_report', 'Accounts\Reports\LedgerController@index');
         });
     });
-    Route::resource('bike_rent',Accounts\BikeRentController::class);
-    Route::post('get_bike_rent','Accounts\BikeRentController@get_data');
+    Route::resource('bike_rent', Accounts\BikeRentController::class);
+    Route::post('get_bike_rent', 'Accounts\BikeRentController@get_data');
 
 });
 

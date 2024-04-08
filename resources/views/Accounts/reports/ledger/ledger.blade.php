@@ -33,13 +33,13 @@
                                         <label>Date To</label>
                                         <input name="dt" class="form-control form-control-sm date" placeholder="Date To">
                                     </div>
-                                    <div class="col-md-2">
+                                    {{-- <div class="col-md-2">
                                         <label>Account</label>
                                         <select class="form-control form-control-sm select2" name="ledger_id">
-{{--                                             <option value="">All</option>
- --}}                                            {!! App\Models\Accounts\TransactionAccount::dropdown() !!}
+                                            <option value="">All</option>
+                                            {!! App\Models\Accounts\TransactionAccount::dropdown() !!}
                                         </select>
-                                    </div>
+                                    </div> --}}
                                     <div class="col-md-2">
                                         <label>Biling Month</label>
                                         <select name="billing_month" class="form-control form-control-sm select2">
@@ -60,13 +60,13 @@
                             <table id="table2excel" class="table table-striped table-hover">
                                 <thead>
                                 <tr>
-                                    <th>#</th>
-                                    <th>Date</th>
                                     <th>Account</th>
-                                    <th>Month</th>
-                                    <th>VT</th>
-                                    <th>Voucher</th>
-                                    <th>Description</th>
+                                    <th>&nbsp;</th>
+                                    <th>&nbsp;</th>
+                                    <th>&nbsp;</th>
+                                    <th>&nbsp;</th>
+                                    <th>&nbsp;</th>
+                                    <th>&nbsp;</th>
                                     <th>Dr</th>
                                     <th>Cr</th>
                                     <th>Balance</th>
@@ -95,12 +95,13 @@
         $(function () {
             //Initialize Select2 Elements
             $('.select2').select2();
+            //get_data();
 
         });
         function get_data(){
             $("#loader").show();
             $.ajax({
-                url:"{{ url('Accounts/reports/get_ledger') }}",
+                url:"{{ url('Accounts/reports/getLedger') }}",
                 headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
                 type:"POST",
                 data:$("#form").serialize(),
