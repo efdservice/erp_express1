@@ -72,6 +72,10 @@ class ImportRiderInvoice implements ToCollection
                         $billing_month = Carbon::instance($Billingdate)->format('Y-m-01'); */
 
                         $billing_month = date('Y-m-01', strtotime($row[28]));
+                        if ($billing_month == '1970-01-01') {
+                            $Billingdate = Date::excelToDateTimeObject($row[28]);
+                            $billing_month = Carbon::instance($Billingdate)->format('Y-m-01');
+                        }
 
 
                         $rider = Rider::where('rider_id', $row[1])->first();
@@ -81,7 +85,7 @@ class ImportRiderInvoice implements ToCollection
                         $RID = $rider->id;
                         $VID = $rider->VID;
                         //$VID = AssignVendorRider::where('RID', $RID)->value('VID');
-                        if (isset ($row[21])) {
+                        if (isset($row[21])) {
                             $ret = RiderInvoice::create([
                                 'inv_date' => $invoice_date,
                                 'RID' => $RID,
