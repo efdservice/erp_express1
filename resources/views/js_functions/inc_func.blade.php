@@ -4,7 +4,7 @@
         $('.select2').select2();
         //this.form.reset();
         $("table.order-list").html('');
-        
+
     })
     // function save_rec(formUrl,formID){
     //     formData=$("#"+formID).serialize();
@@ -63,39 +63,40 @@
                 headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
                 success: function (data) {
                     for (i=0; i<Object.keys(data).length; i++){
+                        $("#"+frmId+" textarea[name~='"+Object.keys(data)[i]+"']").val(Object.values(data)[i]);
                         $("#"+frmId+" input[name~='"+Object.keys(data)[i]+"']").val(Object.values(data)[i]);
                         $("#"+frmId+" select[name~='"+Object.keys(data)[i]+"']").val(Object.values(data)[i]);
                         $("#"+frmId+" input[id~='"+Object.keys(data)[i]+"']").val(Object.values(data)[i]);
-                        
-                        
+
+
                     }
                     $(".select2").select2();
                     $("table.order-list").html('');
                    if(data.items){
-                    
+
                         Object.entries(data.items).forEach(([key, value]) => {
-  
+
                         RiderItems(key,value.item_price);
                         });
-                                     
+
                    }
-                    
+
                     $("#bike_mulkiya").html('');
                     $("#rta_advertising_permit").html('');
 
                     if(data.attach_documents){
                             let files = JSON.parse(data.attach_documents);
-                         
+
                                 if(files.bike_mulkiya != null){
                                     $("#bike_mulkiya").html("<a href='{{ Storage::url('app/')}}"+files.bike_mulkiya+"' target='_blank'>View Document</a>");
                                 }
                                 if(files.rta_advertising_permit != null){
                                     $("#rta_advertising_permit").html("<a href='{{ Storage::url('app/')}}"+files.rta_advertising_permit+"' target='_blank'>View Document</a>");
                                 }
-                           
-                                
-                        } 
-                       
+
+
+                        }
+
                 }
             })
         });
@@ -123,7 +124,7 @@
             }
         });
     });
-   
+
 $('body').on('click', '.show-modal', function () {
   var action = $(this).data('action');
   var title = $(this).data('title');
@@ -132,19 +133,19 @@ $('body').on('click', '.show-modal', function () {
     $('.modal-dialog').addClass('modal-' + size);
   }
   $('#modalTopbody').load(action, function () {
-    $("#loader").hide(); 
+    $("#loader").hide();
  });
 
   $('#modalTopTitle').text(title);
 
   $('#modalTop').modal('show');
-  $("#loader").show(); 
+  $("#loader").show();
 
 });
 
 $(document).on('submit', '#formajax', function (e) {
   e.preventDefault();
-  $("#loader").show(); 
+  $("#loader").show();
 
   let formID = 'formajax';
   var action = $(this).attr('action');
@@ -167,19 +168,19 @@ $(document).on('submit', '#formajax', function (e) {
         .show();
     },
     success: function (data) {
-        $("#loader").hide(); 
+        $("#loader").hide();
       toastr.success('Action performed successfully.');
       $('#modalTop').modal('hide');
 
       if ($('#reload_page').val() == 1) {
         location.reload();
       }
-      
+
       $('.data-table').DataTable().ajax.reload(null, false);
       get_data();
     },
     error: function (ajaxcontent) {
-        $("#loader").hide(); 
+        $("#loader").hide();
       if (ajaxcontent.responseJSON.success == 'false') {
         //toastr.error(ajaxcontent.responseJSON.errors);
         return false;
