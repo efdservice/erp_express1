@@ -69,7 +69,8 @@
                                     <th>&nbsp;</th>
                                     <th>Dr</th>
                                     <th>Cr</th>
-                                    <th>Balance</th>
+                                    <th style="text-align: right;">Balance</th>
+                                    <th style="text-align: right;">Total</th>
                                 </tr>
                                 </thead>
                                 <tbody id="get_data"></tbody>

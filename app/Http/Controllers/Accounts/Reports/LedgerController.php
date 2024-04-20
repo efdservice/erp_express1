@@ -141,7 +141,7 @@ class LedgerController extends Controller
 
             //$ob = Account::ob($request->df, $request->ledger_id);
             $data .= '<tr>';
-            $data .= '<th colspan="9" align="center">' . $sh->name . '</th>';
+            $data .= '<th colspan="10" align="center">' . $sh->name . '</th>';
             $data .= '<td align="right">' . /* Account::show_bal($ob) */ '</td>';
             $data .= '</tr>';
 
@@ -191,11 +191,13 @@ class LedgerController extends Controller
 
 
 
-                        $cb += $ob + ($res->dr - $res->cr);
+                        $balance = $ob + ($res->dr - $res->cr);
+                        $cb += $balance;
                         $data .= '<tr>';
                         $data .= '<td colspan="7" align="left">' . $ta->Trans_Acc_Name . '<small>  B/F = ' . Account::show_bal($ob) . '  </small></td>';
                         $data .= '<td>' . $res->dr ?? 0.00 . '</td>';
                         $data .= '<td>' . $res->cr ?? 0.00 . '</td>';
+                        $data .= '<td align="right">' . Account::show_bal($balance) . '</td>';
                         $data .= '<td align="right">' . Account::show_bal($cb) . '</td>';
                         $data .= '</tr>';
 
@@ -242,6 +244,7 @@ class LedgerController extends Controller
             $data .= '<td colspan="7"></td>';
             $data .= '<th> ' . number_format($tdr, 2) . '</th>';
             $data .= '<th> ' . number_format($tcr, 2) . '</th>';
+            $data .= '<th style="text-align: right">' . Account::show_bal($cb) . '</th>';
             $data .= '<th style="text-align: right">' . Account::show_bal($cb) . '</th>';
             $data .= '</tr>';
         }
