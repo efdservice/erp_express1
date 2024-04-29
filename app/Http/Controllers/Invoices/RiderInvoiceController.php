@@ -63,7 +63,7 @@ class RiderInvoiceController extends Controller
                     $btn = $btn . '
                         <div class="dropdown-divider"></div>
                         <a href="' . route('rider_invoices.show', $row->id) . '" target="_blank" class="dropdown-item"><i class="fas fa-eye"></i> Rider Invoice</a>
-                        
+
                       </div>
                     </div>';
                     /* <div class="dropdown-divider"></div>
@@ -71,7 +71,12 @@ class RiderInvoiceController extends Controller
                        */
                     return $btn;
                 })->addColumn('rider_name', function ($row) {
-                    return $row->rider->rider_id . '-' . $row->rider->name;
+                    if ($row->rider) {
+                        return $row->rider->rider_id . '-' . $row->rider->name;
+                    } else {
+                        return '';
+                    }
+
                     /* })->addColumn('vendor_total', function($row){
                         return VendorInvoiceItem::where('inv_id',$row->id)->sum('amount'); */
                 })->addColumn('total_qty', function ($row) {
