@@ -275,29 +275,35 @@ class VouchersController extends Controller
         $date = date('Y-m-d');
         $date = date('Y-m-d', strtotime($date . ' +1 day'));
         if ($vt == 5) {
-            $res = RiderInvoice::whereIn('RID', $id)->get();
+            $res = RiderInvoice::where('RID', $id)->get();
+
             $htmlData = '';
+            $rider_balance = 0;
             foreach ($res as $item) {
-                $total = Transaction::where('SID', $item->id)->where('vt', 4)->sum('amount');
+                /* $total = Transaction::where('SID', $item->id)->where('vt', 4)->sum('amount');
                 $paid = Transaction::where('SID', $item->id)->where('vt', 2)->sum('amount');
-                $balance = ($total) - ($paid);
+                $balance = ($total) - ($paid); */
+                $balance = Account::InvoiceBalance($item->id);
                 if ($balance > 0) {
                     $trans_acc_id = TransactionAccount::where(['PID' => 21, 'Parent_Type' => $item->RID])->value('id');
                     $rider_balance = Account::ob($date, $trans_acc_id);
                     $htmlData .= '
                 <div class="row">
                 <input type="hidden" name="inv_id[]" value="' . $item->id . '">
-                        <div class="form-group col-md-4">
+                <input type="hidden" name="id[]" value="' . $item->rider->id . '">
+                <input type="hidden" name="inv_billing_month[]" value="' . $item->billing_month . '">
+
+                        <div class="form-group col-md-7">
                             <label>Narration</label>
-                            <textarea name="narration[]" class="form-control form-control-sm narration" rows="10" placeholder="Narration" style="height: 40px !important;">Payment to Rider against #' . $item->id . ' through vendor</textarea>
+                            <textarea name="narration[]" class="form-control form-control-sm narration" rows="10" placeholder="Narration" style="height: 40px !important;">Payment to Rider against Invoice #' . $item->id . ' - Billing Month: ' . $item->billing_month . '</textarea>
                         </div>
                         <div class="form-group col-md-2">
                             <label>Invoice Balance</label>
-                            <input type="number" name="" class="form-control form-control-sm" value="' . $balance . '" readonly placeholder="Balance Amount">
+                            <input type="number" name="" class="form-control form-control-sm dr_amount" value="' . $balance . '" readonly placeholder="Balance Amount">
                         </div>
                         <div class="form-group col-md-2">
                             <label>Amount</label>
-                            <input type="number" name="amount[]" step="any" class="form-control form-control-sm amount" placeholder="Paid Amount">
+                            <input type="number" name="amount[]" step="any" class="form-control form-control-sm cr_amount" onkeyup="getTotal();" placeholder="Paid Amount">
                         </div>
                     </div>
                     <!--row-->
@@ -311,9 +317,10 @@ class VouchersController extends Controller
             $htmlData = '';
             $vendor_balance = 0;
             foreach ($res as $item) {
-                $total = Transaction::where('SID', $item->id)->where('vt', 4)->sum('amount');
+                /* $total = Transaction::where('SID', $item->id)->where('vt', 4)->sum('amount');
                 $paid = Transaction::where('SID', $item->id)->where('vt', 2)->sum('amount');
-                $balance = ($total) - ($paid);
+                $balance = ($total) - ($paid); */
+                $balance = Account::InvoiceBalance($item->id);
                 if ($balance > 0) {
                     $trans_acc_id = TransactionAccount::where(['PID' => 21, 'Parent_Type' => $item->RID])->value('id');
                     $rider_balance = Account::ob($date, $trans_acc_id);
@@ -321,6 +328,7 @@ class VouchersController extends Controller
                 <tr><td>
                 <div class="row">
                 <input type="hidden" name="inv_id[]" value="' . $item->id . '">
+                <input type="hidden" name="inv_billing_month[]" value="' . $item->billing_month . '">
                         <div class="form-group col-md-2">
                             <label for="exampleInputEmail1">Payment To</label>
                             <input type="hidden" name="id[]" value="' . $item->rider->id . '">

@@ -32,9 +32,9 @@
 
 <!--row-->
 <div class="row bg-light" id="rider_section" style="display: none">
-<div class="form-group col-md-3">
+<div class="form-group col-md-4">
     <label for="exampleInputEmail1">Select Rider</label>
-    <select name="RID" class="form-control form-control-sm select2"id="RID" >
+    <select name="RID" class="form-control form-control-sm select2"id="RID" onchange="fetch_invoices(this.value)" @isset($vouchers) disabled @endisset >
         <option value="">Select</option>
         {!! \App\Models\Rider::dropdown(@$vouchers->payment_to) !!}
     </select>
@@ -43,7 +43,7 @@
     <label>Rider Balance</label>
     <input type="text" name="riderBalance" class="form-control form-control-sm" id="riderBalance" readonly placeholder="Balance Amount">
 </div>
-<div class="form-group col-md-2">
+{{-- <div class="form-group col-md-2">
     <label>Invoice Balance</label>
     <input type="hidden" name="inv_id" id="inv_id" value="" />
     <input type="text" name="riderInvoiceBalance" class="form-control form-control-sm" id="riderInvoiceBalance" readonly placeholder="Invoice Amount">
@@ -57,8 +57,8 @@
     <input type="text" name="amount" class="form-control form-control-sm" id="riderAmount" placeholder="Amount" step="any">
 </div>
 <div class="form-group col-md-1" style="padding-top: 21px;float:right;">
-        <button type="button" class="btn btn-success btn-sm" id="addRiderRow" ><i class="fa fa-plus"></i> Add</button> 
-</div>
+        <button type="button" class="btn btn-success btn-sm" id="addRiderRow" ><i class="fa fa-plus"></i> Add</button>
+</div>--}}
 <div id="rider_invoices"></div>
 
 </div>

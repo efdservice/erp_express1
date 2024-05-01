@@ -69,7 +69,7 @@
                     </div> --}}
                     <div class="form-group col-md-2">
                         <label for="exampleInputEmail1">Billing Month</label>
-                        {!! Form::select('billing_month',App\Helpers\CommonHelper::BillingMonth(),null ,['class' => 'form-control form-control-sm select2 ','id'=>'billing_month']) !!}                
+                        {!! Form::select('billing_month',App\Helpers\CommonHelper::BillingMonth(),null ,['class' => 'form-control form-control-sm select2 ','id'=>'billing_month']) !!}
                     </div>
                     <!--col-->
                     <div class="col-md-12 form-group">
@@ -132,7 +132,7 @@
                                 <label><strong>Sub Total</strong>:</label>
                             </div>
                             <div class="col-md-1 form-group">
-                                <input type="text" name="total_amount" class="form-control form-control-sm" id="sub_total" placeholder="0.00" value="0.00">
+                                <input type="text" name="total_amount" class="form-control form-control-sm" id="sub_total" placeholder="0.00" value="0.00" readonly>
                             </div>
                         </div>
                         <!--row-->

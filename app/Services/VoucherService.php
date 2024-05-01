@@ -113,9 +113,10 @@ class VoucherService
         $data = $request->except(['_method', '_token', 'narration', 'dr_amount', 'cr_amount', 'trans_acc_id', 'v_trans_code', 'id', 'VID', 'RID', 'riderBalance', 'inv_id', 'riderInvoiceBalance']);
         $data['trans_date'] = $request->trans_date;
         $data['posting_date'] = $request->trans_date;
+        $data['billing_month'] = $request->billing_month;
 
         if ($request->invoice_voucher_type == 5) {
-            $data['payment_to'] = 0;
+            $data['payment_to'] = $request->RID;
             $data['remarks'] = 'Payment to Rider direct....';
         } else {
             $data['payment_to'] = $request->VID;
@@ -134,7 +135,6 @@ class VoucherService
         //account entry
         $tData['trans_date'] = $request->trans_date;
         $tData['posting_date'] = $request->trans_date;
-        $tData['billing_month'] = $request->billing_month;
         //$tData['payment_to']=$request->RID??$request->VID;
         $tData['payment_from'] = $request->payment_from;
         $tData['status'] = 1;
@@ -161,6 +161,7 @@ class VoucherService
                 $tData['Created_By'] = \Auth::user()->id;
                 $tData['SID'] = $request['inv_id'][$i] ?? null;
                 //dr to rider
+                $tData['billing_month'] = $request['inv_billing_month'][$i];
                 $tData['trans_acc_id'] = $RTAID;
                 $tData['dr_cr'] = 1;
                 $tData['amount'] = $request['amount'][$i];

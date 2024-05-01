@@ -5,6 +5,7 @@ use App\Models\Accounts\SubHeadAccount;
 use App\Models\Accounts\Transaction;
 use App\Models\Accounts\TransactionAccount;
 use App\Models\Rider;
+use App\Models\RiderInvoice;
 use App\Models\Vouchers;
 use DB;
 use Session;
@@ -335,6 +336,24 @@ class Account
     public static function getTAbySubHead($id)
     {
         return TransactionAccount::where('PID', $id)->get();
+
+    }
+
+    public static function InvoiceBalance($invoice_id)
+    {
+        $invoice = RiderInvoice::find($invoice_id);
+        $balance = 0;
+        if ($invoice) {
+            $simandvendor = self::getVouchers($invoice->RID, $invoice->billing_month, 9);
+            $fuel = self::getVouchers($invoice->RID, $invoice->billing_month, 11);
+            $bikerent = self::getVouchers($invoice->RID, $invoice->billing_month, 10);
+            $rta = self::getVouchers($invoice->RID, $invoice->billing_month, 8);
+            $payment = self::getVouchers($invoice->RID, $invoice->billing_month, 3);
+            $invoice_payment = self::getVouchers($invoice->RID, $invoice->billing_month, 5);
+            $balance = $invoice->total_amount - ($simandvendor + $fuel + $bikerent + $rta + $payment + $invoice_payment);
+
+        }
+        return $balance;
 
     }
 }
