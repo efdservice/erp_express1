@@ -28,6 +28,7 @@ class VoucherService
         $data = $request->except(['_method', '_token', 'v_trans_code', 'narration', 'dr_amount', 'cr_amount', 'trans_acc_id', 'id']);
         $id = $request->v_trans_code;
         //account entry
+        $tData['payment_type'] = @$request->payment_type;
 
         $tData['trans_date'] = $request->trans_date;
         $tData['posting_date'] = $request->trans_date;
@@ -140,6 +141,7 @@ class VoucherService
         $tData['status'] = 1;
         $tData['vt'] = 5;
         $tData['trans_code'] = $trans_code;
+        $tData['payment_type'] = @$request->payment_type;
 
         /* if (isset($request->attach_file)) {
             $doc = $request->attach_file;
@@ -237,6 +239,7 @@ class VoucherService
         $tData['vt'] = 9;
         $tData['Created_By'] = \Auth::user()->id;
         $tData['SID'] = $request['ref_id'];
+        $tData['payment_type'] = @$request->payment_type;
 
         //dr to rider
 
@@ -324,6 +327,7 @@ class VoucherService
         $tData['vt'] = 11;
         $tData['Created_By'] = \Auth::user()->id;
         $tData['SID'] = $request['ref_id'];
+        $tData['payment_type'] = @$request->payment_type;
 
         //dr to rider
 
@@ -417,6 +421,7 @@ class VoucherService
         $tData['vt'] = 8;
         $tData['Created_By'] = \Auth::user()->id;
         $tData['SID'] = $request['ref_id'];
+        $tData['payment_type'] = @$request->payment_type;
 
         //dr to rider
 
@@ -511,6 +516,7 @@ class VoucherService
         $tData['vt'] = 10;
         $tData['Created_By'] = \Auth::user()->id;
         $tData['SID'] = $request['ref_id'];
+        $tData['payment_type'] = @$request->payment_type;
 
         //dr to rider
 
@@ -553,6 +559,101 @@ class VoucherService
             $data['Created_By'] = \Auth::user()->id;
 
             $data['trans_code'] = $trans_code;
+
+            $ret = Vouchers::create($data);
+        }
+
+    }
+
+    public function DefaultVoucher($request, $dr_cr)
+    {
+
+        if ($dr_cr == 1) {
+            $rider_dr_cr = 1;
+            $payment_dr_cr = 2;
+        } else {
+            $rider_dr_cr = 2;
+            $payment_dr_cr = 1;
+        }
+        $rules = [
+            'trans_date' => 'required',
+            /* 'ref_id' => 'required', */
+            /*             'CID' => 'required',
+             */ 'amount' => 'required',
+        ];
+        $message = [
+            'trans_date.required' => 'Transaction Date Required',
+            /*             'ref_id.required' => 'Please Select Sim',
+             */ 'amount.required' => 'Amount should be greater than 0',
+            /*             'CID.required'=>' Company required',
+             */
+        ];
+        $request->validate($rules, $message);
+
+        $data['trans_date'] = $request->trans_date;
+        $data['voucher_type'] = $request->voucher_type;
+        $data['payment_type'] = $request->payment_type;
+        $data['payment_from'] = $request->payment_from;
+        $data['billing_month'] = $request->billing_month;
+        $data['ref_id'] = @$request->ref_id;
+        $id = $request->v_trans_code;
+        if ($id) {
+            Transaction::where('trans_code', $id)->delete();
+            $trans_code = $id;
+
+        } else {
+            $trans_code = Account::trans_code();
+
+        }
+        $tData['billing_month'] = $request->billing_month;
+        $tData['trans_date'] = $request->trans_date;
+        $tData['posting_date'] = $request->trans_date;
+        $tData['trans_code'] = $trans_code;
+        $tData['status'] = 1;
+        $tData['vt'] = $request->voucher_type;
+        $tData['Created_By'] = \Auth::user()->id;
+        $tData['SID'] = $request['ref_id'];
+        $tData['payment_type'] = @$request->payment_type;
+
+        //dr to rider
+
+        $total_amount = 0;
+        $count = count($request->amount);
+
+
+        for ($i = 0; $i < $count; $i++) {
+            if ($request['amount'][$i] > 0) {
+                $total_amount += $request['amount'][$i];
+
+                $RTAID = TransactionAccount::where(['PID' => 21, 'Parent_Type' => $request['id'][$i]])->value('id');
+                //dr to rider
+                $tData['trans_acc_id'] = $RTAID;
+                $tData['dr_cr'] = $rider_dr_cr;
+                $tData['amount'] = $request['amount'][$i];
+                $tData['narration'] = $request['narration'][$i];
+                Transaction::create($tData);
+
+            }
+        }
+
+
+
+        //cr to compnay
+        //$tData['narration'] = $request->sim_narration;
+        $tData['trans_acc_id'] = $request->payment_from;
+        $tData['dr_cr'] = $payment_dr_cr;
+        $tData['amount'] = $total_amount;
+        Transaction::create($tData);
+
+        //creating/updating voucher
+        $data['amount'] = $total_amount;
+        if ($id) {
+            $data['Updated_By'] = \Auth::user()->id;
+
+            $ret = Vouchers::where('trans_code', $id)->update($data);
+        } else {
+            $data['trans_code'] = $trans_code;
+            $data['Created_By'] = \Auth::user()->id;
 
             $ret = Vouchers::create($data);
         }

@@ -81,7 +81,12 @@ class Account
             return 'Bike Rent';
         } elseif ($type == 11) {
             return 'Fuel Charges';
+        } elseif ($type == 12) {
+            return 'Advance Issue';
+        } elseif ($type == 13) {
+            return 'Advance Repay';
         }
+
     }
     //@opening balance as on date as well while createing account
     public static function ob($date, $tid)
@@ -269,11 +274,16 @@ class Account
         $RTAID = TransactionAccount::where(['PID' => 21, 'Parent_Type' => $rider_id])->value('id');
 
         $result = Transaction::select(\DB::raw('SUM(amount) as charges'))
-            ->where('trans_acc_id', $RTAID)
-            ->where('vt', $vt)->where('billing_month', $billing_month)->first();
+            ->where('trans_acc_id', $RTAID)->where('vt', $vt);
+        if ($billing_month) {
+            $result = $result->where('billing_month', $billing_month);
+        }
+        $result = $result->first();
         return $result->charges ?? 0;
 
     }
+
+
 
     public static function CreatVoucher($data)
     {

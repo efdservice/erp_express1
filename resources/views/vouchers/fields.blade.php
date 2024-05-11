@@ -20,7 +20,7 @@
                 <label for="exampleInputEmail1">Posting Date</label>
                 <input  name="posting_date" class="form-control form-control-sm date" placeholder="Posting Date" value="{{ date('Y-m-d') }}">
             </div> --}}
-            @if($voucherType==5)
+            @if($voucherType==5 || $voucherType==12 || $voucherType==13)
             <div class="form-group col-md-3">
                 <label for="exampleInputEmail1">Bank/Cash A/C</label>
                 {!! Form::select('payment_from',App\Models\Accounts\TransactionAccount::bank_cash_list(),null ,['class' => 'form-control form-control-sm select2 ','id'=>'payment_from']) !!}
@@ -69,6 +69,14 @@
             @if($voucherType == 8)
             <h5>RTA Fine Voucher</h5>
             @include("vouchers.rta_fields")
+            @endif
+            @if($voucherType == 12)
+            <h5>Advance Issue Voucher</h5>
+            @include("vouchers.default_fields")
+            @endif
+            @if($voucherType == 13)
+            <h5>Advance Repay Voucher</h5>
+            @include("vouchers.default_fields")
             @endif
 
 

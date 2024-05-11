@@ -111,6 +111,13 @@ class VouchersController extends Controller
         }
         if ($request->voucher_type == 8) {
             $result = $voucherService->RtaVoucher($request);
+        }
+        if ($request->voucher_type == 12) {
+            $result = $voucherService->DefaultVoucher($request, 1);
+
+        }
+        if ($request->voucher_type == 13) {
+            $result = $voucherService->DefaultVoucher($request, 2);
 
         }
 

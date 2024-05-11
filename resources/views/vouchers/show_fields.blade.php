@@ -56,7 +56,7 @@
     </table>
     @isset($result->trans_code)
     <table width="100%" style="font-family: sans-serif; margin-top: 20px;font-size: 12px">
-       
+
         <tr>
             <td style="padding: 3px;width: 65%;text-align: left;"><strong>Voucher No</strong>: {{ $result->trans_code }}</td>
             <th style="padding: 3px;width: 15%;text-align: left;">Voucher Date:</th>
@@ -85,7 +85,7 @@
         </tr>
         </thead>
         <tbody>
-        @php $td=0; $tc=0; 
+        @php $td=0; $tc=0;
         $code ='';
         @endphp
         @foreach($data as $key=>$val)
@@ -101,19 +101,23 @@
                 {
                     $tc+=$val->amount;
                 }
-
-                if($val->trans_acc->PID == 21){
+                if(isset($val->trans_acc->PID)){
+                    if($val->trans_acc->PID == 21){
                 $rider = app\Helpers\Account::getRider($val->trans_acc->Parent_Type);
                 $code = $rider->rider_id.' - ';
 
             }
+                }
+
             @endphp
 
-          
+
             <tr>
                 <td style="padding: 5px;border:1px solid">{{ $key+1 }}</td>
                 <td style="padding: 5px;border:1px solid">
-                    {{ $code.$val->trans_acc->Trans_Acc_Name}}
+                    @isset($val->trans_acc->Trans_Acc_Name)
+                    {{ @$code.$val->trans_acc->Trans_Acc_Name}}
+                    @endisset
                     {{-- {{ \App\Models\Accounts\TransactionAccount::where('id',$val->trans_acc_id)->value('trans_acc_name') }} --}}
                 </td>
                 <td style="padding: 5px;border:1px solid;text-align: left">{{ $val->narration }}</td>

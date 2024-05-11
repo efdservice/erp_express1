@@ -113,8 +113,11 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('fetch_invoices/{id}/{vt}', 'VouchersController@fetch_invoices');
     Route::any('attach_file/{id}', 'VouchersController@fileUpload');
 
+    Route::resource('loans', LoansController::class);
 
 });
+
+
 
 
 
