@@ -610,8 +610,7 @@ class CommonHelper
             10 => 'Bike Rent Voucher',
             11 => 'Fuel Voucher',
             8 => 'RTA Fine Voucher',
-            12 => 'Advance Issue Voucher',
-            13 => 'Advance Repay Voucher',
+            12 => 'Advance Issue Voucher'
         ];
 
         if ($type) {
