@@ -192,7 +192,7 @@
                 </td>
                 <td style="padding: 5px;border:1px solid;text-align: center">{{ $val->qty }}</td>
                 <td style="padding:5px;border:1px solid">{{ $val->rate }}</td>
-                <td style="padding:5px;border:1px solid; text-align: right">@if($val->amount!=0){{ $val->amount }}@endif</td>
+                <td style="padding:5px;border:1px solid; text-align: right">{{ $val->amount }}</td>
             </tr>
         @endforeach
         </tbody>
@@ -206,50 +206,63 @@
             <th style="padding: 10px;text-align: right;">{{ \App\Helpers\Account::show_bal_format($total) }}</th>
         </tr>
 
+        @php
+        $sim =\App\Helpers\Account::getVouchers($res[0]->RID,$res[0]->billing_month,9);
+        @endphp
+        @if($sim!=0)
         <tr style="border-top: 1px solid #000;">
             <td colspan="3" style="padding: 10px;text-align: left;"></td>
             <th style="padding: 10px;text-align: right;">Bike Rent & Vendor & Sim Charges:</th>
-            @php
-                $sim =\App\Helpers\Account::getVouchers($res[0]->RID,$res[0]->billing_month,9);
-            @endphp
-            <th style="padding: 10px;text-align: right;">@if($sim!=0){{ $sim}}@endif</th>
+
+            <th style="padding: 10px;text-align: right;">{{ $sim}}</th>
         </tr>
+        @endif
+        @php
+                $fuel =\App\Helpers\Account::getVouchers($res[0]->RID,$res[0]->billing_month,11);
+        @endphp
+        @if($fuel!=0)
         <tr style="border-top: 1px solid #000;">
             <td colspan="3" style="padding: 10px;text-align: left;"></td>
             <th style="padding: 10px;text-align: right;">Fuel Charges:</th>
-            @php
-                $fuel =\App\Helpers\Account::getVouchers($res[0]->RID,$res[0]->billing_month,11);
-            @endphp
-            <th style="padding: 10px;text-align: right;">@if($fuel!=0){{ $fuel }}@endif</th>
+
+            <th style="padding: 10px;text-align: right;">{{ $fuel }}</th>
         </tr>
+        @endif
+        @php
+                $rent =\App\Helpers\Account::getVouchers($res[0]->RID,$res[0]->billing_month,10);
+        @endphp
+        @if($rent!=0)
         <tr style="border-top: 1px solid #000;">
             <td colspan="3" style="padding: 10px;text-align: left;"></td>
             <th style="padding: 10px;text-align: right;">Bike Rent Charges:</th>
-            @php
-                $rent =\App\Helpers\Account::getVouchers($res[0]->RID,$res[0]->billing_month,10);
-            @endphp
-            <th style="padding: 10px;text-align: right;">@if($rent!=0){{ $rent }}@endif</th>
+
+            <th style="padding: 10px;text-align: right;">{{ $rent }}</th>
         </tr>
+        @endif
+        @php
+        $rta =\App\Helpers\Account::getVouchers($res[0]->RID,$res[0]->billing_month,8);
+        @endphp
+        @if($rta!=0)
         <tr style="border-top: 1px solid #000;">
             <td colspan="3" style="padding: 10px;text-align: left;"></td>
             <th style="padding: 10px;text-align: right;">RTA Charges:</th>
-            @php
-                $rta =\App\Helpers\Account::getVouchers($res[0]->RID,$res[0]->billing_month,8);
-            @endphp
-            <th style="padding: 10px;text-align: right;">@if($rta!=0){{ $rta}}@endif</th>
-        </tr>
 
+            <th style="padding: 10px;text-align: right;">{{ $rta}}</th>
+        </tr>
+        @endif
+        @php
+        $repay =\App\Helpers\Account::getVouchers($res[0]->RID,$res[0]->billing_month,13);
+
+        $loan_balance = \App\Helpers\Account::getVouchers($res[0]->RID,null,12)-\App\Helpers\Account::getVouchersTillMonth($res[0]->RID,$res[0]->billing_month,13);
+     @endphp
+     @if($repay!=0)
         <tr style="border-top: 1px solid #000;">
             <td colspan="3" style="padding: 10px;text-align: left;"></td>
-            @php
-            $repay =\App\Helpers\Account::getVouchers($res[0]->RID,$res[0]->billing_month,13);
 
-            $loan_balance = \App\Helpers\Account::getVouchers($res[0]->RID,null,12)-\App\Helpers\Account::getVouchersTillMonth($res[0]->RID,$res[0]->billing_month,13);
-         @endphp
             <th style="padding: 10px;text-align: right;">Loan & Advance ( Balance = {{$loan_balance-$repay}} )</th>
-            <th style="padding: 10px;text-align: right;">@if($repay!=0){{$repay}}@endif</th>
+            <th style="padding: 10px;text-align: right;">{{$repay}}</th>
         </tr>
-
+    @endif
         <tr style="border-top: 1px solid #000;">
             <td colspan="3" style="padding: 10px;text-align: left;"></td>
             <th style="padding: 10px;text-align: right;">Total:</th>
@@ -265,7 +278,7 @@
             @php
                 $paid = \App\Helpers\Account::getVouchers($res[0]->RID,$res[0]->billing_month,3)+\App\Helpers\Account::getVouchers($res[0]->RID,$res[0]->billing_month,5);
             @endphp
-            <th style="padding: 10px;text-align: right;">@if($paid!=0){{ $paid}}@endif</th>
+            <th style="padding: 10px;text-align: right;">{{ $paid}}</th>
         </tr>
         <tr style="border-top: 1px solid #000;">
             <td colspan="3" style="padding: 10px;text-align: left;"></td>
@@ -273,11 +286,3 @@
             <th style="padding: 10px;text-align: right;">AED {{ $balance-$paid}}</th>
         </tr>
 
-        </tfoot>
-    </table>
-    <div id="btns" style="margin-top: 50px">
-        <button class="btn btn-sm btn-outline-danger" type="button" onClick="window.print()"><i class="fa fa-file-pdf-o"></i> Print</button>
-    </div>
-</div>
-</body>
-</html>

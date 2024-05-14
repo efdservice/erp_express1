@@ -37,7 +37,7 @@ class RiderInvoiceController extends Controller
     public function index(Request $request)
     {
         if ($request->ajax()) {
-            $data = RiderInvoice::query()->with(['rider'])->get();
+            $data = RiderInvoice::query()->with(['rider'])->orderBy('id', 'DESC')->get();
             return DataTables::of($data)
                 ->addIndexColumn()
                 ->addColumn('action', function ($row) {
