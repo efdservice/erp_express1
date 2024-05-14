@@ -625,7 +625,7 @@ class VoucherService
         for ($i = 0; $i < $count; $i++) {
             if ($request['amount'][$i] > 0) {
                 $total_amount += $request['amount'][$i];
-                if (in_array($request->voucher_type, [12, 13])) {
+                if (in_array($request->voucher_type, [14])) {
                     $RTAID = $request['id'][$i];
                 } else {
                     $RTAID = TransactionAccount::where(['PID' => 21, 'Parent_Type' => $request['id'][$i]])->value('id');
