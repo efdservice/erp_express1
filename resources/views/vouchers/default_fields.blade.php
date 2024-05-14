@@ -7,7 +7,7 @@
 
     <div class="row ">
         <div class="col-md-4">
-            Payment Account
+        Account
         </div>
         <div class="col-md-4">
             Narration
@@ -30,13 +30,14 @@
                     @else
                     {{@$entry->trans_acc->Trans_Acc_Name}}
                     @endif
+
                 </div>
                 <div class="form-group col-md-4">
                     <textarea name="narration[]" class="form-control form-control-sm narration" rows="10" placeholder="Narration" style="height: 40px !important;">{{$entry->narration}}</textarea>
                 </div>
                @if($entry->dr_cr == 1)
                 <div class="form-group col-md-2">
-                    <input type="number" step="any" name="amount[]" value="{{$entry->amount}}" class="form-control form-control-sm" placeholder="Paid Amount">
+                    <input type="number" step="any" name="amount[]" value="{{$entry->amount}}" class="form-control form-control-sm dr_amount" placeholder="Paid Amount">
                 </div>
                 @endif
                 @if($entry->dr_cr == 2)
@@ -53,27 +54,39 @@
 @else
 <div class="row" >
     <div class="form-group col-md-4">
-        <label for="exampleInputEmail1">Select Rider</label>
-        <select name="RID" class="form-control form-control-sm select2" id="RID" >
+        <label for="exampleInputEmail1">Select Account</label>
+        <select name="id[]" class="form-control form-control-sm select2" id="RID" >
             <option value="">Select</option>
+            @if(in_array(request('vt'),[14]))
+            {!! \App\Models\Accounts\TransactionAccount::visaExpense_dropdown() !!}
+            @else
             {!! \App\Models\Rider::dropdown(@$vouchers->payment_to) !!}
+            @endif
         </select>
     </div>
-
-    <div class="form-group col-md-4">
+    @if(in_array(request('vt'),[8,10,11]))
+    <div class="form-group col-md-2">
+        <label for="exampleInputEmail1">Select Bike</label>
+        <select name="bike_id[]" class="form-control form-control-sm select2" id="RID" >
+            <option value="">Select</option>
+            {!! \App\Models\Bike::dropdown(@$vouchers->payment_to) !!}
+        </select>
+    </div>
+@endif
+    <div class="form-group col-md-3">
         <label>Narration</label>
-        <textarea name="narration" id="narration" class="form-control form-control-sm narration" rows="10" placeholder="Narration" style="height: 40px !important;"></textarea>
+        <textarea name="narration[]" id="narration" class="form-control form-control-sm narration" rows="10" placeholder="Narration" style="height: 40px !important;"></textarea>
     </div>
     <div class="form-group col-md-2">
         <label>Amount</label>
-        <input type="text" name="amount" class="form-control form-control-sm" id="riderAmount" placeholder="Amount" step="any" onchange="getTotal();">
+        <input type="text" name="amount[]" class="form-control form-control-sm dr_amount" id="riderAmount" placeholder="Amount" step="any" onchange="getTotal();">
     </div>
-    <div class="form-group col-md-2" style="padding-top: 21px;float:right;">
-        <button type="button" class="btn btn-success btn-sm" id="addRiderRow" ><i class="fa fa-plus"></i> Add Row</button>
-    </div>
-    <div id="rider_invoices"></div>
+    <div class="col-md-1"></div>
 
 </div>
+<div class="append-line"></div>
+<button type="button" class="btn btn-success btn-sm @if(in_array(request('vt'),[12,13]))new_rider_line @endif @if(in_array(request('vt'),[14]))new_expense_line @endif @if(in_array(request('vt'),[8,10,11]))new_bike_line @endif" id="" ><i class="fa fa-plus"></i> Add Row</button>
+
 </div>
 <table id="myTable" class="table order-list">
 </table>

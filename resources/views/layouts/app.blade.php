@@ -51,12 +51,12 @@
            @include('layouts.navbar')
            @include('layouts.aside')
 
-		  
+
 		   @yield('content')
 
 		   @include('partials.modal')
 
-		   
+
 			<footer class="main-footer">
 				<strong>Copyright &copy; 2021 <a href="#">Express-Fast</a>.</strong>
 				All rights reserved.
@@ -110,7 +110,7 @@
 		<script src="{{ URL::asset('public/dist/js/toastr.min.js') }}"></script>
 		<script src="{{ URL::asset('public/plugins/summernote/summernote-bs4.min.js') }}"></script>
 		@include('js_functions.inc_func')
-		
+
 	<script>
 		 $(document).on("click", ".new_line", function () {
     $(".append-line").append(`
@@ -137,6 +137,7 @@
 `);
     $(".select2").select2();
 });
+
 	</script>
 	 @if(session()->get('success'))
 	 <script>

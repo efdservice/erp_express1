@@ -30,7 +30,7 @@
                                 <button type="button" class="text-white btn btn-success btn-sm btn-flat float-right" data-toggle="modal" data-target="#excel-modal"><i class="fa fa-file-excel"></i> Import Excel</button>
                                 @endcan
 
-                                
+
                                 <table class="table table-hover text-nowrap data-table">
                                     <thead>
                                     <tr>
@@ -39,10 +39,10 @@
                                         <th>Vendor</th>
                                         <th>Sim</th>
                                         <th>Bike Plate #</th>
-                                        <th>Supervisor</th>                                        
-                                        <th>Project</th>                                      
-                                        <th>Balance</th>                                      
-                                       
+                                        <th>Supervisor</th>
+                                        <th>Project</th>
+                                        <th>Balance</th>
+
                                         <th>Status</th>
                                         <th>Action</th>
                                     </tr>

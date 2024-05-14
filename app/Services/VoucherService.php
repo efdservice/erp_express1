@@ -567,7 +567,7 @@ class VoucherService
 
     public function DefaultVoucher($request, $dr_cr)
     {
-
+        //1 for debit 2 for credit
         if ($dr_cr == 1) {
             $rider_dr_cr = 1;
             $payment_dr_cr = 2;
@@ -605,6 +605,7 @@ class VoucherService
             $trans_code = Account::trans_code();
 
         }
+
         $tData['billing_month'] = $request->billing_month;
         $tData['trans_date'] = $request->trans_date;
         $tData['posting_date'] = $request->trans_date;
@@ -612,7 +613,7 @@ class VoucherService
         $tData['status'] = 1;
         $tData['vt'] = $request->voucher_type;
         $tData['Created_By'] = \Auth::user()->id;
-        $tData['SID'] = $request['ref_id'];
+
         $tData['payment_type'] = @$request->payment_type;
 
         //dr to rider
@@ -624,13 +625,19 @@ class VoucherService
         for ($i = 0; $i < $count; $i++) {
             if ($request['amount'][$i] > 0) {
                 $total_amount += $request['amount'][$i];
-
-                $RTAID = TransactionAccount::where(['PID' => 21, 'Parent_Type' => $request['id'][$i]])->value('id');
+                if (in_array($request->voucher_type, [12, 13])) {
+                    $RTAID = $request['id'][$i];
+                } else {
+                    $RTAID = TransactionAccount::where(['PID' => 21, 'Parent_Type' => $request['id'][$i]])->value('id');
+                }
                 //dr to rider
                 $tData['trans_acc_id'] = $RTAID;
                 $tData['dr_cr'] = $rider_dr_cr;
                 $tData['amount'] = $request['amount'][$i];
                 $tData['narration'] = $request['narration'][$i];
+                if (isset($request['bike_id'][$i])) {
+                    $tData['SID'] = $request['bike_id'][$i];
+                }
                 Transaction::create($tData);
 
             }
@@ -640,6 +647,7 @@ class VoucherService
 
         //cr to compnay
         //$tData['narration'] = $request->sim_narration;
+        $tData['SID'] = null;
         $tData['trans_acc_id'] = $request->payment_from;
         $tData['dr_cr'] = $payment_dr_cr;
         $tData['amount'] = $total_amount;

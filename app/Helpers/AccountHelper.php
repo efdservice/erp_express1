@@ -85,6 +85,8 @@ class Account
             return 'Advance Issue';
         } elseif ($type == 13) {
             return 'Advance Repay';
+        } elseif ($type == 14) {
+            return 'Expense';
         }
 
     }
@@ -282,6 +284,19 @@ class Account
         return $result->charges ?? 0;
 
     }
+    public static function getVouchersTillMonth($rider_id, $billing_month, $vt)
+    {
+        $RTAID = TransactionAccount::where(['PID' => 21, 'Parent_Type' => $rider_id])->value('id');
+
+        $result = Transaction::select(\DB::raw('SUM(amount) as charges'))
+            ->where('trans_acc_id', $RTAID)->where('vt', $vt);
+        if ($billing_month) {
+            $result = $result->where('billing_month', '<', $billing_month);
+        }
+        $result = $result->first();
+        return $result->charges ?? 0;
+
+    }
 
 
 
@@ -360,7 +375,8 @@ class Account
             $rta = self::getVouchers($invoice->RID, $invoice->billing_month, 8);
             $payment = self::getVouchers($invoice->RID, $invoice->billing_month, 3);
             $invoice_payment = self::getVouchers($invoice->RID, $invoice->billing_month, 5);
-            $balance = $invoice->total_amount - ($simandvendor + $fuel + $bikerent + $rta + $payment + $invoice_payment);
+            $loan_repay = self::getVouchers($invoice->RID, $invoice->billing_month, 13);
+            $balance = $invoice->total_amount - ($simandvendor + $fuel + $bikerent + $rta + $payment + $invoice_payment + $loan_repay);
 
         }
         return $balance;

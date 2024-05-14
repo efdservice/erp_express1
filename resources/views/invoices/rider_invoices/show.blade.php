@@ -217,26 +217,21 @@
             <th style="padding: 10px;text-align: right;">RTA Charges:</th>
             <th style="padding: 10px;text-align: right;">{{ $rta =\App\Helpers\Account::getVouchers($res[0]->RID,$res[0]->billing_month,8)}}</th>
         </tr>
-        <tr style="border-top: 1px solid #000;">
-            <td colspan="3" style="padding: 10px;text-align: left;"></td>
-            <th style="padding: 10px;text-align: right;">Payment:</th>
-            <th style="padding: 10px;text-align: right;">{{ $advance = \App\Helpers\Account::getVouchers($res[0]->RID,$res[0]->billing_month,3)+\App\Helpers\Account::getVouchers($res[0]->RID,$res[0]->billing_month,5)}}</th>
-        </tr>
+
         <tr style="border-top: 1px solid #000;">
             <td colspan="3" style="padding: 10px;text-align: left;"></td>
             @php
             $repay =\App\Helpers\Account::getVouchers($res[0]->RID,$res[0]->billing_month,13);
 
-            $balance = \App\Helpers\Account::getVouchers($res[0]->RID,null,12)-\App\Helpers\Account::getVouchers($res[0]->RID,null,13);
-            $balance = $balance+$repay;
-            /* if($balance <=0){
-                echo 0;
-            }else{
-                echo $balance;
-            } */
-        @endphp
-            <th style="padding: 10px;text-align: right;">Loan & Advance ( Balance = {{$balance-$repay}} )</th>
+            $loan_balance = \App\Helpers\Account::getVouchers($res[0]->RID,null,12)-\App\Helpers\Account::getVouchersTillMonth($res[0]->RID,$res[0]->billing_month,13);
+         @endphp
+            <th style="padding: 10px;text-align: right;">Loan & Advance ( Balance = {{$loan_balance-$repay}} )</th>
             <th style="padding: 10px;text-align: right;">{{$repay}}</th>
+        </tr>
+        <tr style="border-top: 1px solid #000;">
+            <td colspan="3" style="padding: 10px;text-align: left;"></td>
+            <th style="padding: 10px;text-align: right;">Paid Amount:</th>
+            <th style="padding: 10px;text-align: right;">{{ $advance = \App\Helpers\Account::getVouchers($res[0]->RID,$res[0]->billing_month,3)+\App\Helpers\Account::getVouchers($res[0]->RID,$res[0]->billing_month,5)}}</th>
         </tr>
         <tr style="border-top: 1px solid #000;">
             <td colspan="3" style="padding: 10px;text-align: left;"></td>

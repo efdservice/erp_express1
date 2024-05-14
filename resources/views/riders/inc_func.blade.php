@@ -3,15 +3,15 @@
 <script type="text/javascript">
     function add_new(){
         $("#modal-new").modal({backdrop: 'static', keyboard: false},'show');
-         
+
            this.form.reset();
            $("table.order-list").html('');
-       
 
-      
-        
-     
-       
+
+
+
+
+
     }
 
     $("#form").submit(function (e) {
@@ -69,8 +69,8 @@
             ajax: "{{ route('rider.index') }}",
             columns: [
                 {data: 'rider_id', name: 'rider_id'},
-                {data: 'name', name: 'name'},               
-                {data: 'VID', name: 'VID'},               
+                {data: 'name', name: 'name'},
+                {data: 'VID', name: 'VID'},
                 {data: 'id', name: 'id'},
                 {data: 'license_no', name: 'license_no'},
                 {data: 'fleet_supervisor', name: 'fleet_supervisor'},
@@ -88,7 +88,7 @@
     $(document).ready(function (e) {
 
         //$("table.order-list").html('');
-       
+
         var base_url = $('#base_url').val();
 
         var counter = 0;
@@ -105,7 +105,7 @@
 
 
     $("table.order-list").on("click", ".ibtnDel", function (event) {
-        $(this).closest("tr").remove();       
+        $(this).closest("tr").remove();
         counter -= 1
     });
 
@@ -151,7 +151,7 @@
             });
         });
 
-       
+
     });
 
     $('body').on('click', '.doAction', function () {
@@ -188,7 +188,7 @@
         }
         let g=$(this);
         var value = ob.value;
-       
+
         $.ajax({
             type: "POST",
             url: url,
@@ -213,17 +213,17 @@ function RiderItems(item_id,item_price){
     var base_url = $('#base_url').val();
 
     var newRow = $('<tr>');
-           
+
             $.get(base_url+'/item-list?item_id='+item_id+'&item_price='+item_price).done(function(data){
             newRow.append(data);
         });
-      
+
       /*   alert(cols);
 
         cols += '<td><input type="button" class="ibtnDel btn btn-md btn-danger "  value="Delete"></td>'; */
         //newRow.append(cols);
         $("table.order-list").append(newRow);
-       
+
 }
 
 

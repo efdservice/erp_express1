@@ -50,6 +50,86 @@
         </div>
     </div>
     </div>
+<script>
+    $(document).on("click", ".new_rider_line", function () {
+    $(".append-line").append(`
+                        <div class="row">
+                            <div class="form-group col-md-4">
+                                <select name="id[]" class="form-control form-control-sm select2">
+                                    <option value="">Select</option>
+                                    {!! \App\Models\Rider::dropdown() !!}
+                                </select>
+                        </div>
 
+                <div class="form-group col-md-3">
+                    <textarea name="narration[]" class="form-control form-control-sm" rows="10" placeholder="Narration" style="height: 40px !important;"></textarea>
+                </div>
+
+                <div class="form-group col-md-2">
+                    <input type="number" step="any" name="amount[]" class="form-control form-control-sm dr_amount" placeholder="Amount" onchange="getTotal();">
+                </div>
+                <div class="form-group col-md-1">
+                    <button type="button" class="btn btn-danger btn-xs remove"><i class="fa fa-trash"></i> </button>
+                </div>
+            </div>
+`);
+$(".select2").select2();
+});
+$(document).on("click", ".new_expense_line", function () {
+    $(".append-line").append(`
+                        <div class="row">
+                            <div class="form-group col-md-4">
+                                <select name="id[]" class="form-control form-control-sm select2">
+                                    <option value="">Select</option>
+                                    {!! \App\Models\Accounts\TransactionAccount::visaExpense_dropdown() !!}
+                                </select>
+                        </div>
+
+                <div class="form-group col-md-3">
+                    <textarea name="narration[]" class="form-control form-control-sm" rows="10" placeholder="Narration" style="height: 40px !important;"></textarea>
+                </div>
+
+                <div class="form-group col-md-2">
+                    <input type="number" step="any" name="amount[]" class="form-control form-control-sm dr_amount" placeholder="Amount" onchange="getTotal();">
+                </div>
+                <div class="form-group col-md-1">
+                    <button type="button" class="btn btn-danger btn-xs remove"><i class="fa fa-trash"></i> </button>
+                </div>
+            </div>
+`);
+$(".select2").select2();
+});
+$(document).on("click", ".new_bike_line", function () {
+    $(".append-line").append(`
+                        <div class="row">
+                            <div class="form-group col-md-4">
+                                <select name="id[]" class="form-control form-control-sm select2">
+                                    <option value="">Select</option>
+                                    {!! \App\Models\Rider::dropdown() !!}
+                                </select>
+                        </div>
+
+                        <div class="form-group col-md-2">
+                                <select name="bike_id[]" class="form-control form-control-sm select2">
+                                    <option value="">Select</option>
+                                    {!! \App\Models\Bike::dropdown() !!}
+                                </select>
+                        </div>
+
+                <div class="form-group col-md-3">
+                    <textarea name="narration[]" class="form-control form-control-sm" rows="10" placeholder="Narration" style="height: 40px !important;"></textarea>
+                </div>
+
+                <div class="form-group col-md-2">
+                    <input type="number" step="any" name="amount[]" class="form-control form-control-sm dr_amount" placeholder="Amount" onchange="getTotal();">
+                </div>
+                <div class="form-group col-md-1">
+                    <button type="button" class="btn btn-danger btn-xs remove"><i class="fa fa-trash"></i> </button>
+                </div>
+            </div>
+`);
+$(".select2").select2();
+});
+</script>
 @endsection
 

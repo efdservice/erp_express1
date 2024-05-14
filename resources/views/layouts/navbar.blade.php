@@ -5,7 +5,7 @@
         <li class="nav-item">
             <a class="nav-link" data-widget="pushmenu" href="#" style="color: white" role="button"><i class="fas fa-bars"></i></a>
         </li>
-      @can('jv_create')
+      {{-- @can('jv_create')
         <div class="dropdown">
             <button class="btn btn-primary dropdown-toggle float-right" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 <i class="fa fa-plus"></i> Create Voucher
@@ -17,7 +17,7 @@
                 @endforeach
             </div>
           </div>
-          @endcan
+          @endcan --}}
         {{--<li class="nav-item d-none d-sm-inline-block">--}}
             {{--<a href="#" class="nav-link">Contact</a>--}}
         {{--</li>--}}
@@ -38,7 +38,7 @@
     <!-- Right navbar links -->
     <ul class="navbar-nav ml-auto">
         <!-- Messages Dropdown Menu -->
-        
+
         <li class="nav-item dropdown">
             <a class="nav-link" data-toggle="dropdown" href="#">
                 <i class="far fa-comments" style="color: white;"></i>
@@ -61,8 +61,8 @@
                     <!-- Message End -->
                 </a>
                 <div class="dropdown-divider"></div>
-                
-               
+
+
                 <a href="#" class="dropdown-item dropdown-footer">See All Messages</a> --}}
             </div>
         </li>

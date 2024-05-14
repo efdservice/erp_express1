@@ -7,7 +7,7 @@
 @endisset
 
 <input type="hidden" name="v_trans_code" value="{{@$vouchers->trans_code??0}}">
-<input type="hidden" name="voucher_type" value="{{$voucherType}}">
+<input type="hidden" name="voucher_type" id="voucher_type" value="{{$voucherType}}">
 
         <div class="row">
 
@@ -20,7 +20,7 @@
                 <label for="exampleInputEmail1">Posting Date</label>
                 <input  name="posting_date" class="form-control form-control-sm date" placeholder="Posting Date" value="{{ date('Y-m-d') }}">
             </div> --}}
-            @if($voucherType==5 || $voucherType==12 || $voucherType==13)
+            @if(in_array($voucherType,[5,12,13,14]))
             <div class="form-group col-md-3">
                 <label for="exampleInputEmail1">Bank/Cash A/C</label>
                 {!! Form::select('payment_from',App\Models\Accounts\TransactionAccount::bank_cash_list(),null ,['class' => 'form-control form-control-sm select2 ','id'=>'payment_from']) !!}
@@ -31,6 +31,12 @@
             @endif
             @if($voucherType==11)
             <input type="hidden" name="payment_from" value="617" /><!--Fuel Charges Account ID-->
+            @endif
+            @if($voucherType==8)
+            <input type="hidden" name="payment_from" value="425" /><!--RTA FINE Charges Account ID-->
+            @endif
+            @if($voucherType==10)
+            <input type="hidden" name="payment_from" value="441" /><!--Bike Rent Charges Account ID-->
             @endif
             <div class="form-group col-md-2">
                 <label for="exampleInputEmail1">Payment Type</label>
@@ -58,11 +64,11 @@
             <h5>Vendor Charges Voucher</h5>
             @include("vouchers.sim_fields")
             @endif
-            @if($voucherType == 10)
-            <h5>Bike Rent Voucher</h5>
-            @include("vouchers.rent_fields")
+            @if(in_array($voucherType,[10,11,8,12,13,14]))
+
+            @include("vouchers.default_fields")
             @endif
-            @if($voucherType == 11)
+           {{--  @if($voucherType == 11)
             <h5>Fuel Voucher</h5>
             @include("vouchers.fuel_fields")
             @endif
@@ -77,7 +83,7 @@
             @if($voucherType == 13)
             <h5>Advance Repay Voucher</h5>
             @include("vouchers.default_fields")
-            @endif
+            @endif --}}
 
 
             <div class="row">
@@ -216,6 +222,8 @@ function fetch_invoices(g) {
                 }
             });
         }
+
+
 </script>
 
 <script src="{{ URL::asset('public/js/voucher.js') }}"></script>

@@ -103,20 +103,20 @@ class VouchersController extends Controller
         if ($request->voucher_type == 9) {
             $result = $voucherService->SimVoucher($request);
         }
-        if ($request->voucher_type == 11) {
-            $result = $voucherService->FuelVoucher($request);
-        }
-        if ($request->voucher_type == 10) {
-            $result = $voucherService->RentVoucher($request);
-        }
-        if ($request->voucher_type == 8) {
-            $result = $voucherService->RtaVoucher($request);
-        }
-        if ($request->voucher_type == 12) {
+        /*  if ($request->voucher_type == 11) {
+             $result = $voucherService->FuelVoucher($request);
+         }
+         if ($request->voucher_type == 10) {
+             $result = $voucherService->RentVoucher($request);
+         }
+         if ($request->voucher_type == 8) {
+             $result = $voucherService->RtaVoucher($request);
+         } */
+        if (in_array($request->voucher_type, [8, 10, 11, 12, 14])) {
             $result = $voucherService->DefaultVoucher($request, 1);
 
         }
-        if ($request->voucher_type == 13) {
+        if (in_array($request->voucher_type, [13])) {
             $result = $voucherService->DefaultVoucher($request, 2);
 
         }
@@ -293,7 +293,7 @@ class VouchersController extends Controller
                 $balance = Account::InvoiceBalance($item->id);
                 if ($balance > 0) {
                     $trans_acc_id = TransactionAccount::where(['PID' => 21, 'Parent_Type' => $item->RID])->value('id');
-                    $rider_balance = Account::ob($date, $trans_acc_id);
+                    $rider_balance = Account::Monthly_ob($date, $trans_acc_id);
                     $htmlData .= '
                 <div class="row">
                 <input type="hidden" name="inv_id[]" value="' . $item->id . '">
@@ -330,7 +330,7 @@ class VouchersController extends Controller
                 $balance = Account::InvoiceBalance($item->id);
                 if ($balance > 0) {
                     $trans_acc_id = TransactionAccount::where(['PID' => 21, 'Parent_Type' => $item->RID])->value('id');
-                    $rider_balance = Account::ob($date, $trans_acc_id);
+                    $rider_balance = Account::Monthly_ob($date, $trans_acc_id);
                     $htmlData .= '
                 <tr><td>
                 <div class="row">
