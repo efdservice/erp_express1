@@ -1,4 +1,3 @@
-<h4>Send email</h4>
 <form action="{{url('invoices/sendemail/'.$invoice->id)}}" method="POST" id="formajax">
 
     <div class="col-md-12 form-group">
@@ -19,5 +18,5 @@ Regards,
 </textarea>
     </div>
 
-    <button type="submit" class="btn btn-primary">Submit</button>
+    <button type="submit" class="btn btn-primary float-right">Send Email</button>
   </form>

@@ -69,7 +69,7 @@ class RiderInvoiceController extends Controller
                     if (isset ($row->rider->personal_email)) {
                         $btn = $btn . '
                         <div class="dropdown-divider"></div>
-                        <a href="javascript:void(0);" data-action="' . route('invoices.send_email', $row->id) . '" class="dropdown-item show-modal"><i class="fas fa-envelope"></i> Send Email</a>';
+                        <a href="javascript:void(0);" data-title="Email Invoice" data-action="' . route('invoices.send_email', $row->id) . '" class="dropdown-item show-modal"><i class="fas fa-envelope"></i> Send Email</a>';
                     }
                     $btn = $btn . '
                       </div>
