@@ -104,9 +104,11 @@
                 if(isset($val->trans_acc->PID)){
                     if($val->trans_acc->PID == 21){
                 $rider = app\Helpers\Account::getRider($val->trans_acc->Parent_Type);
-                $code = $rider->rider_id.' - ';
+                if($rider){
+                    $code = $rider->rider_id.' - ';
+                }
 
-            }
+                    }
                 }
 
             @endphp

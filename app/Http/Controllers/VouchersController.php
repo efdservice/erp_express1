@@ -282,7 +282,7 @@ class VouchersController extends Controller
         $date = date('Y-m-d');
         $date = date('Y-m-d', strtotime($date . ' +1 day'));
         if ($vt == 5) {
-            $res = RiderInvoice::where('RID', $id)->get();
+            $res = RiderInvoice::where('RID', $id)->whereDate('billing_month', '>=', '2024-04-01')->get();
 
             $htmlData = '';
             $rider_balance = 0;
