@@ -50,6 +50,7 @@ Route::group(['middleware' => ['auth']], function () {
         Route::resource('rider_invoices', Invoices\RiderInvoiceController::class);
         Route::get('search_item_price/{RID}/{itemID}', [\App\Http\Controllers\ItemController::class, 'search_item_price']);
         Route::post('import_excel', [\App\Http\Controllers\Invoices\RiderInvoiceController::class, 'import_excel'])->name('invoices.import_excel');
+        Route::any('sendemail/{id}', [\App\Http\Controllers\Invoices\RiderInvoiceController::class, 'sendEmail'])->name('invoices.send_email');
     });
     Route::resource('item', ItemController::class);
     Route::get('item_assign_rv', 'ItemController@assign_rv');

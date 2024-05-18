@@ -43,7 +43,7 @@
 <div style="position: relative;min-height: 100%;height: 100%;">
     <table width="100%" style="font-family: sans-serif;">
         <tr>
-            <td width="33.33%"><img src="{{ URL::asset('public/dist/img/print-logo.png') }}" width="150" /></td>
+            <td width="33.33%"><img src="/public/dist/img/print-logo.png" width="150" /></td>
             <td width="33.33%" style="text-align: center;"><h4 style="margin-bottom: 10px;margin-top: 5px;font-size: 14px;">Express Fast Delivery Service</h4>
                 <p style="margin-bottom: 5px;font-size: 14px;margin-top: 5px;">Office No. 305, Al Rubaya Building Damascus Street Al Qusais 2 Dubai U.A.E</p>
                 <p style="margin-bottom: 5px;font-size: 14px;margin-top: 5px;"> TRN 1005392707000003</p></td>

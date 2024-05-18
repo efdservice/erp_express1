@@ -16,9 +16,11 @@ use App\Models\RiderInvoiceItem;
 use App\Models\RiderItemPrice;
 use App\Models\VendorInvoiceItem;
 use App\Models\VendorItemPrice;
+
 use Illuminate\Database\QueryException;
 use Illuminate\Http\Request;
 use DB;
+use Illuminate\Support\Facades\Mail;
 use Maatwebsite\Excel\Facades\Excel;
 use Yajra\DataTables\Facades\DataTables;
 use Auth;
@@ -63,7 +65,13 @@ class RiderInvoiceController extends Controller
                     $btn = $btn . '
                         <div class="dropdown-divider"></div>
                         <a href="' . route('rider_invoices.show', $row->id) . '" target="_blank" class="dropdown-item"><i class="fas fa-eye"></i> Rider Invoice</a>
-
+                        ';
+                    if (isset ($row->rider->personal_email)) {
+                        $btn = $btn . '
+                        <div class="dropdown-divider"></div>
+                        <a href="javascript:void(0);" data-action="' . route('invoices.send_email', $row->id) . '" class="dropdown-item show-modal"><i class="fas fa-envelope"></i> Send Email</a>';
+                    }
+                    $btn = $btn . '
                       </div>
                     </div>';
                     /* <div class="dropdown-divider"></div>
@@ -339,5 +347,29 @@ class RiderInvoiceController extends Controller
         ];
         $this->validate($request, $rules, $message);
         Excel::import(new ImportRiderInvoice(), $request->file('file'));
+    }
+
+    public function sendEmail($id, Request $request)
+    {
+
+        if ($request->isMethod('post')) {
+
+            $data = [
+                'html' => $request->email_message
+            ];
+            $res = RiderInvoice::with(['riderInv_item'])->where('id', $id)->get();
+            $pdf = \PDF::loadView('invoices.rider_invoices.show', ['res' => $res]);
+
+            Mail::send('emails.general', $data, function ($message) use ($request, $pdf) {
+                $message->to([$request->email_to]);
+                //$message->replyTo([$request->email]);
+                $message->subject($request->email_subject);
+                $message->attachData($pdf->output(), $request->email_subject . '.pdf');
+                $message->priority(3);
+            });
+
+        }
+        $invoice = RiderInvoice::find($id);
+        return view('invoices.rider_invoices.send_email', compact('invoice'));
     }
 }
