@@ -211,15 +211,23 @@ class VouchersController extends Controller
         if ($request->voucher_type == 9) {
             $result = $voucherService->SimVoucher($request);
         }
-        if ($request->voucher_type == 11) {
-            $result = $voucherService->FuelVoucher($request);
+        if (in_array($request->voucher_type, [8, 10, 11, 12, 14])) {
+            $result = $voucherService->DefaultVoucher($request, 1);
+
         }
-        if ($request->voucher_type == 10) {
-            $result = $voucherService->RentVoucher($request);
+        if (in_array($request->voucher_type, [13])) {
+            $result = $voucherService->DefaultVoucher($request, 2);
+
         }
-        if ($request->voucher_type == 8) {
-            $result = $voucherService->RtaVoucher($request);
-        }
+        /*   if ($request->voucher_type == 11) {
+              $result = $voucherService->FuelVoucher($request);
+          }
+          if ($request->voucher_type == 10) {
+              $result = $voucherService->RentVoucher($request);
+          }
+          if ($request->voucher_type == 8) {
+              $result = $voucherService->RtaVoucher($request);
+          } */
         /*  $vouchers->fill($request->all());
          $vouchers->save();
 
