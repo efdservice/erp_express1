@@ -375,8 +375,8 @@ class Account
             $rta = self::getVouchers($invoice->RID, $invoice->billing_month, 8);
             $payment = self::getVouchers($invoice->RID, $invoice->billing_month, 3);
             $invoice_payment = self::getVouchers($invoice->RID, $invoice->billing_month, 5);
-            $loan_repay = self::getVouchers($invoice->RID, $invoice->billing_month, 13);
-            $balance = $invoice->total_amount - ($simandvendor + $fuel + $bikerent + $rta + $payment + $invoice_payment + $loan_repay);
+            $loan_advance = self::getVouchers($invoice->RID, $invoice->billing_month, 12);
+            $balance = $invoice->total_amount - ($simandvendor + $fuel + $bikerent + $rta + $payment + $invoice_payment + $loan_advance);
 
         }
         return $balance;

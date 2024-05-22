@@ -251,23 +251,24 @@
         </tr>
         @endif
         @php
-        $repay =\App\Helpers\Account::getVouchers($res[0]->RID,$res[0]->billing_month,13);
+        /* $repay =\App\Helpers\Account::getVouchers($res[0]->RID,$res[0]->billing_month,13);
+        $loan_balance = \App\Helpers\Account::getVouchers($res[0]->RID,null,12)-\App\Helpers\Account::getVouchersTillMonth($res[0]->RID,$res[0]->billing_month,13); */
 
-        $loan_balance = \App\Helpers\Account::getVouchers($res[0]->RID,null,12)-\App\Helpers\Account::getVouchersTillMonth($res[0]->RID,$res[0]->billing_month,13);
+        $loan_advance = \App\Helpers\Account::getVouchers($res[0]->RID,$res[0]->billing_month,12);
      @endphp
-     @if($repay!=0)
+     @if($loan_advance!=0)
         <tr style="border-top: 1px solid #000;">
             <td colspan="3" style="padding: 10px;text-align: left;"></td>
 
-            <th style="padding: 10px;text-align: right;">Loan & Advance ( Balance = {{$loan_balance-$repay}} )</th>
-            <th style="padding: 10px;text-align: right;">{{$repay}}</th>
+            <th style="padding: 10px;text-align: right;">Advance/Loan:</th>
+            <th style="padding: 10px;text-align: right;">{{$loan_advance}}</th>
         </tr>
     @endif
         <tr style="border-top: 1px solid #000;">
             <td colspan="3" style="padding: 10px;text-align: left;"></td>
             <th style="padding: 10px;text-align: right;">Total:</th>
             @php
-            $credit = $sim+$rent+$rta+$fuel+$repay;
+            $credit = $sim+$rent+$rta+$fuel+$loan_advance;
             $balance = $total-$credit;
             @endphp
             <th style="padding: 10px;text-align: right;">AED {{ \App\Helpers\Account::show_bal_format($balance) }}</th>
