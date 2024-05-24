@@ -80,13 +80,16 @@ class TransactionAccount extends Model
 
     public static function visaExpense_list()
     {
-        $list = self::where('PID', 18)->pluck('Trans_Acc_Name', 'id');
+        $subHead = SubHeadAccount::select('id')->whereIn('HID', [9, 10, 11])->get()->toArray();
+
+        $list = self::whereIn('PID', $subHead)->pluck('Trans_Acc_Name', 'id');
         return $list->prepend('Select', 0);
 
     }
 
     public static function visaExpense_dropdown($id = 0)
     {
+
         $res = self::visaExpense_list();
         $list = '';
         if ($res) {
