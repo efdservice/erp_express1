@@ -31,7 +31,15 @@
                     {{@$entry->trans_acc->Trans_Acc_Name}}
                     @endif
 
+                    @if(in_array($entry->vt,[8,10,11,15]))
+                    @if($entry->SID)
+                    <input type="hidden" name="bike_id[]" value="{{$entry->SID}}">
+                    {{ ' (Bike:'.$entry->bike->plate.')'}}
+                    @endif
+                    @endif
                 </div>
+
+
                 <div class="form-group col-md-4">
                     <textarea name="narration[]" class="form-control form-control-sm narration" rows="10" placeholder="Narration" style="height: 40px !important;">{{$entry->narration}}</textarea>
                 </div>
@@ -64,7 +72,7 @@
             @endif
         </select>
     </div>
-    @if(in_array(request('vt'),[8,10,11]))
+    @if(in_array(request('vt'),[8,10,11,15]))
     <div class="form-group col-md-2">
         <label for="exampleInputEmail1">Select Bike</label>
         <select name="bike_id[]" class="form-control form-control-sm select2" id="RID" >
@@ -85,7 +93,7 @@
 
 </div>
 <div class="append-line"></div>
-<button type="button" class="btn btn-success btn-sm @if(in_array(request('vt'),[12,13]))new_rider_line @endif @if(in_array(request('vt'),[14]))new_expense_line @endif @if(in_array(request('vt'),[8,10,11]))new_bike_line @endif" id="" ><i class="fa fa-plus"></i> Add Row</button>
+<button type="button" class="btn btn-success btn-sm @if(in_array(request('vt'),[12,13]))new_rider_line @endif @if(in_array(request('vt'),[14]))new_expense_line @endif @if(in_array(request('vt'),[8,10,11,15]))new_bike_line @endif" id="" ><i class="fa fa-plus"></i> Add Row</button>
 
 </div>
 <table id="myTable" class="table order-list">

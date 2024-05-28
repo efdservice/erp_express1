@@ -38,6 +38,9 @@
             @if($voucherType==10)
             <input type="hidden" name="payment_from" value="441" /><!--Bike Rent Charges Account ID-->
             @endif
+            @if($voucherType==15)
+            <input type="hidden" name="payment_from" value="767" /><!--Bike Maintenance Charges Account ID-->
+            @endif
             <div class="form-group col-md-2">
                 <label for="exampleInputEmail1">Payment Type</label>
                 {!! Form::select('payment_type',App\Helpers\Account::payment_type_list(),null ,['class' => 'form-control form-control-sm select2 ','id'=>'payment_type']) !!}
@@ -64,7 +67,7 @@
             <h5>Vendor Charges Voucher</h5>
             @include("vouchers.sim_fields")
             @endif
-            @if(in_array($voucherType,[10,11,8,12,13,14]))
+            @if(in_array($voucherType,[10,11,8,12,13,14,15]))
 
             @include("vouchers.default_fields")
             @endif

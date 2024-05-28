@@ -112,7 +112,7 @@ class VouchersController extends Controller
          if ($request->voucher_type == 8) {
              $result = $voucherService->RtaVoucher($request);
          } */
-        if (in_array($request->voucher_type, [8, 10, 11, 12, 14])) {
+        if (in_array($request->voucher_type, [8, 10, 11, 12, 14, 15])) {
             $result = $voucherService->DefaultVoucher($request, 1);
 
         }
@@ -211,7 +211,7 @@ class VouchersController extends Controller
         if ($request->voucher_type == 9) {
             $result = $voucherService->SimVoucher($request);
         }
-        if (in_array($request->voucher_type, [8, 10, 11, 12, 14])) {
+        if (in_array($request->voucher_type, [8, 10, 11, 12, 14, 15])) {
             $result = $voucherService->DefaultVoucher($request, 1);
 
         }

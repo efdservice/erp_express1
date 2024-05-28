@@ -2,6 +2,7 @@
 
 namespace App\Models\Accounts;
 
+use App\Models\Bike;
 use App\Models\Rider;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -110,7 +111,10 @@ class TransactionAccount extends Model
     {
         return $this->hasOne(Rider::class, 'id', 'Parent_Type');
     }
-
+    public function bike()
+    {
+        return $this->hasOne(Bike::class, 'id', 'SID');
+    }
     public static function getSubAccounts($id)
     {
         $TA = self::find($id);

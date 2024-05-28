@@ -2,6 +2,7 @@
 
 namespace App\Models\Accounts;
 
+use App\Models\Bike;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Session;
@@ -43,6 +44,10 @@ class Transaction extends Model
     public function trans_acc()
     {
         return $this->belongsTo(TransactionAccount::class, 'trans_acc_id', 'id');
+    }
+    public function bike()
+    {
+        return $this->hasOne(Bike::class, 'id', 'SID');
     }
 
 

@@ -87,6 +87,8 @@ class Account
             return 'Advance Repay';
         } elseif ($type == 14) {
             return 'Expense';
+        } elseif ($type == 15) {
+            return 'Maintenance';
         }
 
     }
