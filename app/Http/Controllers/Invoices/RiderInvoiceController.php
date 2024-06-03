@@ -66,7 +66,7 @@ class RiderInvoiceController extends Controller
                         <div class="dropdown-divider"></div>
                         <a href="' . route('rider_invoices.show', $row->id) . '" target="_blank" class="dropdown-item"><i class="fas fa-eye"></i> Rider Invoice</a>
                         ';
-                    if (isset ($row->rider->personal_email)) {
+                    if (isset($row->rider->personal_email)) {
                         $btn = $btn . '
                         <div class="dropdown-divider"></div>
                         <a href="javascript:void(0);" data-title="Email Invoice" data-action="' . route('invoices.send_email', $row->id) . '" class="dropdown-item show-modal"><i class="fas fa-envelope"></i> Send Email</a>';
@@ -210,6 +210,11 @@ class RiderInvoiceController extends Controller
                 Transaction::where('vt', 4)->where('SID', $id)->delete();
                 $invID = $id;
             }
+
+            if ($request->billing_month) {
+                $request->billing_month = $request->billing_month . "-01";
+            }
+
             $rider_amount = RiderInvoiceItem::where('inv_id', $invID)->sum('amount');
             //$vendor_amount=VendorInvoiceItem::where('inv_id',$invID)->sum('amount');
             //$profit=$vendor_amount-$rider_amount;

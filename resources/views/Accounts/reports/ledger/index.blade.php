@@ -42,12 +42,14 @@
                                     </div>
                                     <div class="col-md-2">
                                         <label>Biling Month</label>
-                                        <select name="billing_month" class="form-control form-control-sm select2">
+                                            <input type="month" name="billing_month" class="form-control form-control-sm" />
+
+                                        {{-- <select name="billing_month" class="form-control form-control-sm select2">
                                             <option value="">Select</option>
                                            @foreach(App\Helpers\CommonHelper::BillingMonth() as $key=>$value)
                                            <option value="{{$key}}">{{$value}}</option>
                                            @endforeach
-                                        </select>
+                                        </select> --}}
                                     </div>
                                     <div class="col-md-1" style="margin-top: 20px;">
                                         <button type="button" class="btn btn-sm btn-primary" onclick="get_data()"><i class="fa fa-search"></i> Search </button>

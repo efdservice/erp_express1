@@ -48,6 +48,10 @@ class LedgerController extends Controller
 
         }
         if ($request->billing_month) {
+            $request->billing_month = $request->billing_month . "-01";
+        }
+
+        if ($request->billing_month) {
             $res = $res->where('billing_month', $request->billing_month);
             $request->df = $request->billing_month;
 
@@ -144,6 +148,9 @@ class LedgerController extends Controller
             $data .= '<th colspan="10" align="center">' . $sh->name . '</th>';
             $data .= '<td align="right">' . /* Account::show_bal($ob) */ '</td>';
             $data .= '</tr>';
+            if ($request->billing_month) {
+                $request->billing_month = $request->billing_month . "-01";
+            }
 
             if ($sh->id) {
                 $TAccount = Account::getTAbySubHead($sh->id);
