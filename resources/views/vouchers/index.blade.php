@@ -11,6 +11,8 @@
                     <h1>Vouchers</h1>
                 </div>
                 <div class="col-sm-6">
+                    <button type="button" class="text-white btn btn-success btn-sm btn-flat float-right" data-toggle="modal" data-target="#excel-modal"><i class="fa fa-file-excel"></i> Import Excel</button>
+
                     <div class="dropdown">
                         <button class="btn btn-primary dropdown-toggle float-right" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             <i class="fa fa-plus"></i> Create Voucher
@@ -50,6 +52,7 @@
         </div>
     </div>
     </div>
+    @include('vouchers.import-modal')
 <script>
     $(document).on("click", ".new_rider_line", function () {
     $(".append-line").append(`
@@ -130,6 +133,47 @@ $(document).on("click", ".new_bike_line", function () {
 `);
 $(".select2").select2();
 });
+
+//upload excelfile
+$(document).ready(function (e) {
+        $("#upload-excel").on("submit",function (e){
+            e.preventDefault();
+            $.ajax({
+                url:"{{ route('voucher.import_excel') }}",
+                type: "POST",
+                data:  new FormData(this),
+                contentType: false,
+                cache: false,
+                processData:false,
+                beforeSend : function()
+                {
+                    $("#upload-excel").find('.save_rec').hide();
+                    $("#upload-excel").find('.loader').show();
+                },
+                success: function(data)
+                {
+                    toastr.success('Operation Successfully..');
+                    $('.data-table').DataTable().ajax.reload();
+                    $("#excel-modal").modal('hide');
+                },error:function(ajaxcontent) {
+                    if(ajaxcontent.responseJSON.success=='false'){
+                        toastr.error(ajaxcontent.responseJSON.errors);
+                        return false;
+                    }
+                    vali=ajaxcontent.responseJSON.errors;
+                    $.each(vali, function( index, value ) {
+                        $("#excel-form input[name~='" + index + "']").css('border', '1px solid red');
+                        $("#excel-form select[name~='" + index + "']").parent().find('.select2-container--default .select2-selection--single').css('border','1px solid red');
+                        toastr.error(value);
+                    });
+                },
+                complete: function() {
+                    $("#upload-excel").find('.save_rec').show();
+                    $("#upload-excel").find('.loader').hide();
+                },
+            });
+        });
+    });
 </script>
 @endsection
 

@@ -7,6 +7,7 @@ use App\Helpers\CommonHelper;
 use App\Http\Requests\CreateVouchersRequest;
 use App\Http\Requests\UpdateVouchersRequest;
 use App\Http\Controllers\AppBaseController;
+use App\Imports\VoucherImport;
 use App\Models\Accounts\Transaction;
 use App\Models\Accounts\TransactionAccount;
 use App\Models\Rider;
@@ -16,6 +17,7 @@ use App\Models\Vouchers;
 use App\Services\VoucherService;
 use Illuminate\Http\Request;
 use Flash;
+use Maatwebsite\Excel\Facades\Excel;
 use Response;
 use Yajra\DataTables\DataTables;
 
@@ -399,6 +401,18 @@ class VouchersController extends Controller
         return view('vouchers.attach_file', compact('id'));
 
 
+    }
+
+    public function import_excel(Request $request)
+    {
+        $rules = [
+            'file' => 'required|max:50000|mimes:xlsx'
+        ];
+        $message = [
+            'file.required' => 'Excel File Required'
+        ];
+        $this->validate($request, $rules, $message);
+        Excel::import(new VoucherImport($request->all()), $request->file('file'));
     }
 
 }

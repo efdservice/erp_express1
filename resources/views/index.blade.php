@@ -27,6 +27,7 @@
                         <div class="row">
                             <div class="col-md-12">
                                 <button type="button" class="text-white btn btn-primary btn-sm btn-flat float-right" onclick="add_new()">Add New</button>
+
                                 <table class="table table-hover text-nowrap data-table">
                                     <thead>
                                     <tr>

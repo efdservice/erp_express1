@@ -110,6 +110,7 @@ Route::group(['middleware' => ['auth']], function () {
     Route::any('settings', [\App\Http\Controllers\HomeController::class, 'settings'])->name('settings');
 
     Route::resource('vouchers', VouchersController::class);
+    Route::post('import_excel', 'VouchersController@import_excel')->name('voucher.import_excel');
     Route::get('get_invoice_balance', 'VouchersController@GetInvoiceBalance')->name('get_invoice_balance');
     Route::get('fetch_invoices/{id}/{vt}', 'VouchersController@fetch_invoices');
     Route::any('attach_file/{id}', 'VouchersController@fileUpload');

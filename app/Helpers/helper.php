@@ -624,6 +624,29 @@ class CommonHelper
 
         }
     }
+    public static function ImportVoucherType($type = null)
+    {
+        $result = [
+            /* 3 => 'Journal Voucher',
+            5 => 'Invoice Voucher', */
+            9 => 'Vendor Voucher',
+            /* 10 => 'Bike Rent Voucher', */
+            11 => 'Fuel Voucher',
+            8 => 'RTA Fine Voucher',
+            /*  12 => 'Advance/Loan Voucher', */
+            /*             13 => 'Advance Repay Voucher',
+             */
+            /*  14 => 'Expense Voucher', */
+            15 => 'Maintenance Voucher',
+        ];
+
+        if ($type) {
+            return $result[$type];
+        } else {
+            return $result;
+
+        }
+    }
 
     public static function LoanTerms($type = null)
     {
