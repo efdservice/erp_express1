@@ -173,6 +173,13 @@
                     $(frmId+" input[name~='"+Object.keys(data.result)[i]+"']").val(Object.values(data.result)[i]);
                     $(frmId+" select[name~='"+Object.keys(data.result)[i]+"']").val(Object.values(data.result)[i]);
                     $(frmId+" textarea[name~='"+Object.keys(data.result)[i]+"']").val(Object.values(data.result)[i]);
+
+                    if(Object.keys(data.result)[i]=='billing_month'){
+                        var b_month = Object.values(data.result)[i];
+                         var b= b_month.split('-01');
+
+                        $("#billing_month").val(b[0]);
+                    }
                 }
                 $(".append-line").append(data.html);
                 $(".select2").select2();

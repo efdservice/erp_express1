@@ -123,6 +123,7 @@ class RiderInvoiceController extends Controller
      */
     public function store(Request $request)
     {
+
         $rules = [
             'inv_date' => 'required',
             'RID' => 'required|numeric|min:0|not_in:0',
@@ -138,6 +139,11 @@ class RiderInvoiceController extends Controller
         $data = $request->except(['_token', 'item_id', 'qty', 'rate', 'discount', 'tax', 'amount', 'month_invoice']);
         $id = $request->id;
         $count = count($request->qty);
+        if ($request->billing_month) {
+            $request->billing_month = $request->billing_month . "-01";
+            $data['billing_month'] = $request->billing_month . "-01";
+        }
+
         try {
             //add vendor invoice item
             //$VID=AssignVendorRider::where('RID',$request->RID)->value('VID');
@@ -211,9 +217,7 @@ class RiderInvoiceController extends Controller
                 $invID = $id;
             }
 
-            if ($request->billing_month) {
-                $request->billing_month = $request->billing_month . "-01";
-            }
+
 
             $rider_amount = RiderInvoiceItem::where('inv_id', $invID)->sum('amount');
             //$vendor_amount=VendorInvoiceItem::where('inv_id',$invID)->sum('amount');

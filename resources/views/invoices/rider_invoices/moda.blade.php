@@ -69,7 +69,7 @@
                     </div> --}}
                     <div class="form-group col-md-2">
                         <label for="exampleInputEmail1">Billing Month</label>
-                        <input type="month" name="billing_month" class="form-control form-control-sm" />
+                        <input type="month" name="billing_month"  class="form-control form-control-sm" id="billing_month" />
 
 {{--                         {!! Form::select('billing_month',App\Helpers\CommonHelper::BillingMonth(),null ,['class' => 'form-control form-control-sm select2 ','id'=>'billing_month']) !!}
  --}}                    </div>
