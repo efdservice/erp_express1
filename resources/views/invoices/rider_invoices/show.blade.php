@@ -240,6 +240,17 @@
         </tr>
         @endif
         @php
+        $maintenance =\App\Helpers\Account::getVouchers($res[0]->RID,$res[0]->billing_month,15);
+        @endphp
+        @if($rent!=0)
+        <tr style="border-top: 1px solid #000;">
+            <td colspan="3" style="padding: 10px;text-align: left;"></td>
+            <th style="padding: 10px;text-align: right;">Bike Maintenenace Charges:</th>
+
+            <th style="padding: 10px;text-align: right;">{{ $maintenance }}</th>
+        </tr>
+        @endif
+        @php
         $rta =\App\Helpers\Account::getVouchers($res[0]->RID,$res[0]->billing_month,8);
         @endphp
         @if($rta!=0)
@@ -268,7 +279,7 @@
             <td colspan="3" style="padding: 10px;text-align: left;"></td>
             <th style="padding: 10px;text-align: right;">Total:</th>
             @php
-            $credit = $sim+$rent+$rta+$fuel+$loan_advance;
+            $credit = $sim+$rent+$rta+$fuel+$loan_advance+$maintenance;
             $balance = $total-$credit;
             @endphp
             <th style="padding: 10px;text-align: right;">AED {{ \App\Helpers\Account::show_bal_format($balance) }}</th>
