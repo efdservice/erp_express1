@@ -374,11 +374,12 @@ class Account
             $simandvendor = self::getVouchers($invoice->RID, $invoice->billing_month, 9);
             $fuel = self::getVouchers($invoice->RID, $invoice->billing_month, 11);
             $bikerent = self::getVouchers($invoice->RID, $invoice->billing_month, 10);
+            $bikemaintenance = self::getVouchers($invoice->RID, $invoice->billing_month, 15);
             $rta = self::getVouchers($invoice->RID, $invoice->billing_month, 8);
             $payment = self::getVouchers($invoice->RID, $invoice->billing_month, 3);
             $invoice_payment = self::getVouchers($invoice->RID, $invoice->billing_month, 5);
             $loan_advance = self::getVouchers($invoice->RID, $invoice->billing_month, 12);
-            $balance = $invoice->total_amount - ($simandvendor + $fuel + $bikerent + $rta + $payment + $invoice_payment + $loan_advance);
+            $balance = $invoice->total_amount - ($simandvendor + $fuel + $bikerent + $rta + $payment + $invoice_payment + $loan_advance + $bikemaintenance);
 
         }
         return $balance;
