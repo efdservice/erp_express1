@@ -214,7 +214,7 @@
             <td colspan="3" style="padding: 10px;text-align: left;"></td>
             <th style="padding: 10px;text-align: right;">Bike Rent & Vendor & Sim Charges:</th>
 
-            <th style="padding: 10px;text-align: right;">{{ $sim}}</th>
+            <th style="padding: 10px;text-align: right;">{{ number_format($sim,2)}}</th>
         </tr>
         @endif
         @php
@@ -225,7 +225,7 @@
             <td colspan="3" style="padding: 10px;text-align: left;"></td>
             <th style="padding: 10px;text-align: right;">Fuel Charges:</th>
 
-            <th style="padding: 10px;text-align: right;">{{ $fuel }}</th>
+            <th style="padding: 10px;text-align: right;">{{ number_format($fuel,2) }}</th>
         </tr>
         @endif
         @php
@@ -236,7 +236,7 @@
             <td colspan="3" style="padding: 10px;text-align: left;"></td>
             <th style="padding: 10px;text-align: right;">Bike Rent Charges:</th>
 
-            <th style="padding: 10px;text-align: right;">{{ $rent }}</th>
+            <th style="padding: 10px;text-align: right;">{{ number_format($rent,2) }}</th>
         </tr>
         @endif
         @php
@@ -247,7 +247,7 @@
             <td colspan="3" style="padding: 10px;text-align: left;"></td>
             <th style="padding: 10px;text-align: right;">Bike Maintenenace Charges:</th>
 
-            <th style="padding: 10px;text-align: right;">{{ $maintenance }}</th>
+            <th style="padding: 10px;text-align: right;">{{ number_format($maintenance,2) }}</th>
         </tr>
         @endif
         @php
@@ -258,7 +258,7 @@
             <td colspan="3" style="padding: 10px;text-align: left;"></td>
             <th style="padding: 10px;text-align: right;">RTA Charges:</th>
 
-            <th style="padding: 10px;text-align: right;">{{ $rta}}</th>
+            <th style="padding: 10px;text-align: right;">{{ number_format($rta,2)}}</th>
         </tr>
         @endif
         @php
@@ -272,7 +272,7 @@
             <td colspan="3" style="padding: 10px;text-align: left;"></td>
 
             <th style="padding: 10px;text-align: right;">Advance/Loan:</th>
-            <th style="padding: 10px;text-align: right;">{{$loan_advance}}</th>
+            <th style="padding: 10px;text-align: right;">{{number_format($loan_advance,2)}}</th>
         </tr>
     @endif
         <tr style="border-top: 1px solid #000;">
@@ -290,11 +290,11 @@
             @php
                 $paid = \App\Helpers\Account::getVouchers($res[0]->RID,$res[0]->billing_month,3)+\App\Helpers\Account::getVouchers($res[0]->RID,$res[0]->billing_month,5);
             @endphp
-            <th style="padding: 10px;text-align: right;">{{ $paid}}</th>
+            <th style="padding: 10px;text-align: right;">{{ number_format($paid,2)}}</th>
         </tr>
         <tr style="border-top: 1px solid #000;">
             <td colspan="3" style="padding: 10px;text-align: left;"></td>
             <th style="padding: 10px;text-align: right;">Balance:</th>
-            <th style="padding: 10px;text-align: right;">AED {{ $balance-$paid}}</th>
+            <th style="padding: 10px;text-align: right;">AED {{ number_format(($balance-$paid),2)}}</th>
         </tr>
 
