@@ -75,7 +75,7 @@
     @if(in_array(request('vt'),[8,10,11,15]))
     <div class="form-group col-md-2">
         <label for="exampleInputEmail1">Select Bike</label>
-        <select name="bike_id[]" class="form-control form-control-sm select2" id="RID" >
+        <select name="bike_id[]" class="form-control form-control-sm select2" id="BIKEID" >
             <option value="">Select</option>
             {!! \App\Models\Bike::dropdown(@$vouchers->payment_to) !!}
         </select>
