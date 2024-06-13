@@ -93,7 +93,7 @@
 
 </div>
 <div class="append-line"></div>
-<button type="button" class="btn btn-success btn-sm @if(in_array(request('vt'),[12,13]))new_rider_line @endif @if(in_array(request('vt'),[14]))new_expense_line @endif @if(in_array(request('vt'),[8,10,11,15]))new_bike_line @endif" id="" ><i class="fa fa-plus"></i> Add Row</button>
+<button type="button" class="btn btn-success btn-sm @if(in_array(request('vt'),[12,13,16]))new_rider_line @endif @if(in_array(request('vt'),[14]))new_expense_line @endif @if(in_array(request('vt'),[8,10,11,15]))new_bike_line @endif" id="" ><i class="fa fa-plus"></i> Add Row</button>
 
 </div>
 <table id="myTable" class="table order-list">

@@ -615,6 +615,7 @@ class CommonHelper
              */
             14 => 'Expense Voucher',
             15 => 'Maintenance Voucher',
+            16 => 'COD Voucher',
         ];
 
         if ($type) {

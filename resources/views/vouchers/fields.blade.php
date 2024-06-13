@@ -20,7 +20,7 @@
                 <label for="exampleInputEmail1">Posting Date</label>
                 <input  name="posting_date" class="form-control form-control-sm date" placeholder="Posting Date" value="{{ date('Y-m-d') }}">
             </div> --}}
-            @if(in_array($voucherType,[5,12,13,14]))
+            @if(in_array($voucherType,[5,12,13,14,16]))
             <div class="form-group col-md-3">
                 <label for="exampleInputEmail1">Bank/Cash A/C</label>
                 {!! Form::select('payment_from',App\Models\Accounts\TransactionAccount::bank_cash_list(),null ,['class' => 'form-control form-control-sm select2 ','id'=>'payment_from']) !!}
@@ -67,7 +67,7 @@
             <h5>Vendor Charges Voucher</h5>
             @include("vouchers.sim_fields")
             @endif
-            @if(in_array($voucherType,[10,11,8,12,13,14,15]))
+            @if(in_array($voucherType,[10,11,8,12,13,14,15,16]))
 
             @include("vouchers.default_fields")
             @endif

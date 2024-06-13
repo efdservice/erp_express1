@@ -275,11 +275,22 @@
             <th style="padding: 10px;text-align: right;">{{number_format($loan_advance,2)}}</th>
         </tr>
     @endif
+    @php
+      $cod = \App\Helpers\Account::getVouchers($res[0]->RID,$res[0]->billing_month,16);
+     @endphp
+     @if($cod!=0)
+        <tr style="border-top: 1px solid #000;">
+            <td colspan="3" style="padding: 10px;text-align: left;"></td>
+
+            <th style="padding: 10px;text-align: right;">COD:</th>
+            <th style="padding: 10px;text-align: right;">{{number_format($cod,2)}}</th>
+        </tr>
+    @endif
         <tr style="border-top: 1px solid #000;">
             <td colspan="3" style="padding: 10px;text-align: left;"></td>
             <th style="padding: 10px;text-align: right;">Total:</th>
             @php
-            $credit = $sim+$rent+$rta+$fuel+$loan_advance+$maintenance;
+            $credit = $sim+$rent+$rta+$fuel+$loan_advance+$maintenance+$cod;
             $balance = $total-$credit;
             @endphp
             <th style="padding: 10px;text-align: right;">AED {{ \App\Helpers\Account::show_bal_format($balance) }}</th>
