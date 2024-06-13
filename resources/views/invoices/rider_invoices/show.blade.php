@@ -4,6 +4,7 @@
     <meta charset="utf-8">
     <title>RiderID: {{$res[0]->rider->rider_id}} Month: {{date('M-Y',strtotime($res[0]->billing_month))}}</title>
     <style>
+
         .page-footer, .page-footer-space {
             /*height: 39px;*/
         }
@@ -44,18 +45,18 @@
     <table width="100%" style="font-family: sans-serif;">
         <tr>
             <td width="33.33%">&nbsp;{{-- <img src="/public/dist/img/print-logo.png" width="150" /> --}}</td>
-            <td width="33.33%" style="text-align: center;"><h4 style="margin-bottom: 10px;margin-top: 5px;font-size: 14px;">Express Fast Delivery Service</h4>
-                <p style="margin-bottom: 5px;font-size: 14px;margin-top: 5px;">Office No. 305, Al Rubaya Building Damascus Street Al Qusais 2 Dubai U.A.E</p>
-                <p style="margin-bottom: 5px;font-size: 14px;margin-top: 5px;"> TRN 1005392707000003</p></td>
+            <td width="33.33%" style="text-align: center;"><h4 style="margin-bottom: 10px;margin-top: 5px;font-size: 12px;">Express Fast Delivery Service</h4>
+                <p style="margin-bottom: 5px;font-size: 12px;margin-top: 5px;">Office No. 305, Al Rubaya Building Damascus Street Al Qusais 2 Dubai U.A.E</p>
+                <p style="margin-bottom: 5px;font-size: 12px;margin-top: 5px;"> TRN 1005392707000003</p></td>
             <td width="33.33%" style="text-align: right;"></td>
         </tr>
         <tr style="text-align: center;">
-            <td colspan="3"><h4 style="margin-bottom: 15px;margin-top: 25px;font-size: 14px;border-bottom: 1px solid #000;border-top: 1px solid #000;padding: 7px 0px;">Rider Invoice</h4></td>
+            <td colspan="3"><h4 style="margin-bottom: 0px;margin-top: 5px;font-size: 12px;border-bottom: 1px solid #000;border-top: 1px solid #000;padding: 3px 0px;">Rider Invoice</h4></td>
         </tr>
     </table>
 
 
-    <table width="100%" style="font-family: sans-serif; margin-top: 0px;font-size: 12px;">
+    <table width="100%" style="font-family: sans-serif; margin-top: 0px;font-size: 10px;">
         <tr>
             <td>
                 <table style="text-align: left;">
@@ -164,14 +165,14 @@
 
 
     </table>
-    <table style="width: 100%; font-family: sans-serif;text-align: center;border: 1px solid #000; border-collapse: collapse; margin-top: 20px;font-size: 12px;">
+    <table style="width: 100%; font-family: sans-serif;text-align: center;border: 1px solid #000; border-collapse: collapse; margin-top: 5px;font-size: 10px;">
         <thead>
-        <tr style="border: 1px solid #000;">
+        <tr >
             <th>#</th>
-            <th style="border: 1px solid #000; padding: 10px;">Item Description</th>
-            <th style="border: 1px solid #000; padding: 10px;">Qty</th>
-            <th style="border: 1px solid #000; padding: 10px;">Rate</th>
-            <th style="border: 1px solid #000; padding: 10px;">Amount</th>
+            <th style="border: 1px solid #000; padding: 5px;">Item Description</th>
+            <th style="border: 1px solid #000; padding: 5px;">Qty</th>
+            <th style="border: 1px solid #000; padding: 5px;">Rate</th>
+            <th style="border: 1px solid #000; padding: 5px;">Amount</th>
         </tr>
         </thead>
         <tbody>
@@ -199,11 +200,11 @@
         <tfoot>
 
         <tr style="border-top: 1px solid #000;">
-            <td colspan="1" style="padding: 10px;text-align: left;"></td>
-            <td colspan="1" style="padding: 10px;text-align: right;font-weight:bold;">Total Orders:</td>
-            <td colspan="1" style="padding: 10px;text-align: center;font-weight:bold;">{{$total_qty}}</td>
-            <th style="padding: 10px;text-align: right;">Sub Total:</th>
-            <th style="padding: 10px;text-align: right;">{{ \App\Helpers\Account::show_bal_format($total) }}</th>
+            <td colspan="1" style="padding: 5px;text-align: left;"></td>
+            <td colspan="1" style="padding: 5px;text-align: right;font-weight:bold;">Total Orders:</td>
+            <td colspan="1" style="padding: 5px;text-align: center;font-weight:bold;">{{$total_qty}}</td>
+            <th style="padding: 5px;text-align: right;">Sub Total:</th>
+            <th style="padding: 5px;text-align: right;">{{ \App\Helpers\Account::show_bal_format($total) }}</th>
         </tr>
 
         @php
@@ -211,10 +212,10 @@
         @endphp
         @if($sim!=0)
         <tr style="border-top: 1px solid #000;">
-            <td colspan="3" style="padding: 10px;text-align: left;"></td>
-            <th style="padding: 10px;text-align: right;">Bike Rent & Vendor & Sim Charges:</th>
+            <td colspan="3" style="padding: 5px;text-align: left;"></td>
+            <th style="padding: 5px;text-align: right;">Bike Rent & Vendor & Sim Charges:</th>
 
-            <th style="padding: 10px;text-align: right;">{{ number_format($sim,2)}}</th>
+            <th style="padding: 5px;text-align: right;">{{ number_format($sim,2)}}</th>
         </tr>
         @endif
         @php
@@ -222,10 +223,10 @@
         @endphp
         @if($fuel!=0)
         <tr style="border-top: 1px solid #000;">
-            <td colspan="3" style="padding: 10px;text-align: left;"></td>
-            <th style="padding: 10px;text-align: right;">Fuel Charges:</th>
+            <td colspan="3" style="padding: 5px;text-align: left;"></td>
+            <th style="padding: 5px;text-align: right;">Fuel Charges:</th>
 
-            <th style="padding: 10px;text-align: right;">{{ number_format($fuel,2) }}</th>
+            <th style="padding: 5px;text-align: right;">{{ number_format($fuel,2) }}</th>
         </tr>
         @endif
         @php
@@ -233,10 +234,10 @@
         @endphp
         @if($rent!=0)
         <tr style="border-top: 1px solid #000;">
-            <td colspan="3" style="padding: 10px;text-align: left;"></td>
-            <th style="padding: 10px;text-align: right;">Bike Rent Charges:</th>
+            <td colspan="3" style="padding: 5px;text-align: left;"></td>
+            <th style="padding: 5px;text-align: right;">Bike Rent Charges:</th>
 
-            <th style="padding: 10px;text-align: right;">{{ number_format($rent,2) }}</th>
+            <th style="padding: 5px;text-align: right;">{{ number_format($rent,2) }}</th>
         </tr>
         @endif
         @php
@@ -244,10 +245,10 @@
         @endphp
         @if($rent!=0)
         <tr style="border-top: 1px solid #000;">
-            <td colspan="3" style="padding: 10px;text-align: left;"></td>
-            <th style="padding: 10px;text-align: right;">Bike Maintenenace Charges:</th>
+            <td colspan="3" style="padding: 5px;text-align: left;"></td>
+            <th style="padding: 5px;text-align: right;">Bike Maintenenace Charges:</th>
 
-            <th style="padding: 10px;text-align: right;">{{ number_format($maintenance,2) }}</th>
+            <th style="padding: 5px;text-align: right;">{{ number_format($maintenance,2) }}</th>
         </tr>
         @endif
         @php
@@ -255,10 +256,10 @@
         @endphp
         @if($rta!=0)
         <tr style="border-top: 1px solid #000;">
-            <td colspan="3" style="padding: 10px;text-align: left;"></td>
-            <th style="padding: 10px;text-align: right;">RTA Charges:</th>
+            <td colspan="3" style="padding: 5px;text-align: left;"></td>
+            <th style="padding: 5px;text-align: right;">RTA Charges:</th>
 
-            <th style="padding: 10px;text-align: right;">{{ number_format($rta,2)}}</th>
+            <th style="padding: 5px;text-align: right;">{{ number_format($rta,2)}}</th>
         </tr>
         @endif
         @php
@@ -269,10 +270,10 @@
      @endphp
      @if($loan_advance!=0)
         <tr style="border-top: 1px solid #000;">
-            <td colspan="3" style="padding: 10px;text-align: left;"></td>
+            <td colspan="3" style="padding: 5px;text-align: left;"></td>
 
-            <th style="padding: 10px;text-align: right;">Advance/Loan:</th>
-            <th style="padding: 10px;text-align: right;">{{number_format($loan_advance,2)}}</th>
+            <th style="padding: 5px;text-align: right;">Advance/Loan:</th>
+            <th style="padding: 5px;text-align: right;">{{number_format($loan_advance,2)}}</th>
         </tr>
     @endif
     @php
@@ -280,32 +281,32 @@
      @endphp
      @if($cod!=0)
         <tr style="border-top: 1px solid #000;">
-            <td colspan="3" style="padding: 10px;text-align: left;"></td>
+            <td colspan="3" style="padding: 5px;text-align: left;"></td>
 
-            <th style="padding: 10px;text-align: right;">COD:</th>
-            <th style="padding: 10px;text-align: right;">{{number_format($cod,2)}}</th>
+            <th style="padding: 5px;text-align: right;">COD:</th>
+            <th style="padding: 5px;text-align: right;">{{number_format($cod,2)}}</th>
         </tr>
     @endif
         <tr style="border-top: 1px solid #000;">
-            <td colspan="3" style="padding: 10px;text-align: left;"></td>
-            <th style="padding: 10px;text-align: right;">Total:</th>
+            <td colspan="3" style="padding: 5px;text-align: left;"></td>
+            <th style="padding: 5px;text-align: right;">Total:</th>
             @php
             $credit = $sim+$rent+$rta+$fuel+$loan_advance+$maintenance+$cod;
             $balance = $total-$credit;
             @endphp
-            <th style="padding: 10px;text-align: right;">AED {{ \App\Helpers\Account::show_bal_format($balance) }}</th>
+            <th style="padding: 5px;text-align: right;">AED {{ \App\Helpers\Account::show_bal_format($balance) }}</th>
         </tr>
         <tr style="border-top: 1px solid #000;">
-            <td colspan="3" style="padding: 10px;text-align: left;"></td>
-            <th style="padding: 10px;text-align: right;">Paid Amount:</th>
+            <td colspan="3" style="padding: 5px;text-align: left;"></td>
+            <th style="padding: 5px;text-align: right;">Paid Amount:</th>
             @php
                 $paid = \App\Helpers\Account::getVouchers($res[0]->RID,$res[0]->billing_month,3)+\App\Helpers\Account::getVouchers($res[0]->RID,$res[0]->billing_month,5);
             @endphp
-            <th style="padding: 10px;text-align: right;">{{ number_format($paid,2)}}</th>
+            <th style="padding: 5px;text-align: right;">{{ number_format($paid,2)}}</th>
         </tr>
         <tr style="border-top: 1px solid #000;">
-            <td colspan="3" style="padding: 10px;text-align: left;"></td>
-            <th style="padding: 10px;text-align: right;">Balance:</th>
-            <th style="padding: 10px;text-align: right;">AED {{ number_format(($balance-$paid),2)}}</th>
+            <td colspan="3" style="padding: 5px;text-align: left;"></td>
+            <th style="padding: 5px;text-align: right;">Balance:</th>
+            <th style="padding: 5px;text-align: right;">AED {{ number_format(($balance-$paid),2)}}</th>
         </tr>
 
