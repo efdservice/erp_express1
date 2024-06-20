@@ -163,7 +163,7 @@ class VoucherService
                 $tData['Created_By'] = \Auth::user()->id;
                 $tData['SID'] = $request['inv_id'][$i] ?? null;
                 //dr to rider
-                $tData['billing_month'] = $request['inv_billing_month'][$i];
+                $tData['billing_month'] = $request->billing_month;//$request['inv_billing_month'][$i];
                 $tData['trans_acc_id'] = $RTAID;
                 $tData['dr_cr'] = 1;
                 $tData['amount'] = $request['amount'][$i];
