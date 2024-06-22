@@ -19,6 +19,8 @@
 
         <!-- Main content -->
         <section class="content">
+            @include('flash')
+
             <div class="container-fluid">
                 <!-- SELECT2 EXAMPLE -->
                 <div class="card card-default rounded-0">
@@ -30,7 +32,7 @@
                                     <div class="small-box bg-light" >
                                         <div class="inner" >
                                             <h4>{{$wh->total}}</h4>
-            
+
                                             <span>{{$wh->warehouse}}</span>
                                         </div>
                                         <div class="icon">
@@ -39,8 +41,8 @@
                                     </div>
                                 </div>
                                 @endforeach
-                              
-                            
+
+
                         </div>
                         <div class="row">
                             <div class="col-md-12">
@@ -55,10 +57,10 @@
                                         <th>Vendor</th>
                                         <th>Sim</th>
                                         <th>Bike Plate #</th>
-                                        <th>Supervisor</th>                                        
-                                        <th>Project</th>    
-                                        <th>Status</th>    
-                                        
+                                        <th>Supervisor</th>
+                                        <th>Project</th>
+                                        <th>Status</th>
+
                                         <th>Company</th>
                                         <th>Action</th>
                                     </tr>

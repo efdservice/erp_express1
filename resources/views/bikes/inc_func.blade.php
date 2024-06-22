@@ -123,12 +123,13 @@
             },
         })
     }
+
     $(document).on("click",".get-bike-id",function () {
             var id=$(this).attr("data-id");
             var rider=$(this).attr("data-rider");
             $("#rider-form input[name~='BID']").val(id);
             $("#rider-form select[name~='RID']").val(rider);
-           
+
 
             $.ajax({
                url:'{{ url('bike/get_bike_history') }}/'+id,
@@ -137,10 +138,16 @@
                     var htmlData='';
                     for(i in data){
                         htmlData+='<tr>';
-                            htmlData+='<td>'+data[i].rider?.name+'</td>';
+                            htmlData+='<td>'+data[i].rider?.name+'<br/>'+data[i].notes+'</td>';
                             htmlData+='<td>'+data[i].warehouse+'</td>';
                             htmlData+='<td>'+data[i].note_date+'</td>';
-                            htmlData+='<td>'+data[i].notes+'</td>';
+                            if(data[i].warehouse =='Active'){
+                                htmlData+='<td><small><a href="'+$("#base_url").val()+'/bike/contract/'+data[i].id+'" target="_blank">Print Contract</a> | ';
+                                    if(data[i].contract){
+                                htmlData+='<a href="{{ Storage::url("app/contract/")}}'+data[i].contract+'" target="_blank">Signed Contract</a><br/>';
+                                    }
+                                    htmlData+='<form action="'+$("#base_url").val()+'/bike/contract_upload" method="post" enctype="multipart/form-data"><b>Upload Signed Contract</b><br/><input type="hidden" name="_token" value="<?php echo csrf_token(); ?>"><input type="hidden" name="id" value="'+data[i].id+'" /><input type="file" name="contract" required="required" /><button type="submit"  class="border-0 bg-primary">Upload</button></form></small></td>';
+                            }
                         htmlData+='</tr>';
                     }
                     $("#rider_history").html(htmlData);
@@ -148,8 +155,7 @@
             });
     });
 
-    
-    
+
 
 
 </script>

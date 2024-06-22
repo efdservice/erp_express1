@@ -8,15 +8,20 @@ use Illuminate\Database\Eloquent\Model;
 class BikeHistory extends Model
 {
     use HasFactory;
-    protected $guarded=[];
+    protected $guarded = [];
 
-    public function rider(){
-        return $this->belongsTo(Rider::class,'RID','id');
+    public function rider()
+    {
+        return $this->belongsTo(Rider::class, 'RID', 'id');
+    }
+    public function bike()
+    {
+        return $this->belongsTo(Bike::class, 'BID', 'id');
     }
 
 
     protected $casts = [
-        'created_at'  => 'datetime:Y-m-d h:i:s',
+        'created_at' => 'datetime:Y-m-d h:i:s',
         'updated_at' => 'datetime:Y-m-d h:i:s',
     ];
 }

@@ -158,6 +158,10 @@ ADD COLUMN `gaurantee`  varchar(255) NULL AFTER `billing_month`;
 
 ALTER TABLE `vouchers`
 ADD COLUMN `attach_file`  varchar(255) NULL AFTER `Updated_By`;
+-----------------------------
+
+ALTER TABLE `bike_histories`
+ADD COLUMN `contract`  varchar(255) NULL AFTER `warehouse`;
 
 
 

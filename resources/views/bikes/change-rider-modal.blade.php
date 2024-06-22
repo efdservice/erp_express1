@@ -11,7 +11,7 @@
                 </div>
                 <div class="modal-body">
                     <div class="row">
-                        
+
                         <div class="col-md-4 form-group">
                             <label>Change Status</label>
                             <select class="form-control form-control-sm warehouse select2" name="warehouse" id="warehouse" onchange="bike_status()">
@@ -33,7 +33,7 @@
                         <div class="col-md-8">
                             <textarea class="form-control" placeholder="Note....." name="notes"></textarea>
                         </div>
-                        
+
                         <!--col-->
                     </div>
                     <div class="row">
@@ -54,7 +54,7 @@
                                 <th>Rider</th>
                                 <th>Status</th>
                                 <th>Date</th>
-                                <th>Note</th>
+                                <th>Actions</th>
                             </tr>
                             <tbody id="rider_history"></tbody>
                         </table>
@@ -62,7 +62,7 @@
                 </div>
                 <!--modal--body-->
                 <div class="modal-footer">
-                    
+
                 </div>
             </form>
         </div>
