@@ -58,7 +58,7 @@
                <p class="s3" style="padding-top: 1pt;padding-left: 1pt;text-indent: 0pt;text-align: left;">NOON I,D.</p>
             </td>
             <td style="width:161pt;border:1px solid #000000;">
-               <p class="s4" style="padding-top: 1pt;text-indent: 0pt;text-align: center;">{{$contract->rider->rider_id}}</p>
+               <p class="s4" style="padding-top: 1pt;text-indent: 0pt;text-align: center;">{{$contract->rider->noon_no}}</p>
             </td>
          </tr>
          <tr style="height:16pt">

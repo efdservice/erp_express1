@@ -2,7 +2,7 @@
     <div class="modal-dialog modal-xl">
         <div class="modal-content rounded-0">
             <form id="form">
-                
+
                 <input type="hidden" name="id" value="0">
             <div class="modal-header bg-gradient-gray rounded-0">
                 <h4 class="modal-title">Rider Details:</h4>
@@ -11,7 +11,7 @@
                 </button>
             </div>
             <div class="modal-body">
-               
+
                 <div class="row">
                     <div class="col-md-3 form-group">
                         <label>Rider ID*</label>
@@ -90,7 +90,7 @@
                         <input type="text" class="form-control form-control-sm date" name="doj" placeholder="Date of Joining">
                     </div>
                     <!--col-->
-                   
+
                     <!--col-->
                     <div class="col-md-3 form-group">
                         <label>Project</label>
@@ -130,7 +130,7 @@
                             <option value=""></option>
                             {!! App\Helpers\CommonHelper::get_supervisor() !!}
                         </select>
-                    </div> 
+                    </div>
                     <div class="col-md-3 form-group">
                         <label>Passport Handover</label>
                         <select class="form-control form-control-sm" name="passport_handover">
@@ -144,12 +144,12 @@
                             @foreach(App\Helpers\CommonHelper::RiderStatus() as $key=>$value)
                             <option value="{{$key}}">{{$value}}</option>
                             @endforeach
-                            
-                          
+
+
                         </select>
                     </div>
                 </div>
-                {{-- <div class="row bg-light mb-1">
+                <div class="row bg-light mb-1">
                     <div class="col-md-3 form-group">
                         <label>Emirate (Hub)</label>
                         <input type="text" class="form-control form-control-sm" name="emirate_hub" placeholder="Emirate (Hub)">
@@ -159,8 +159,29 @@
                         <label>Emirate ID</label>
                         <input type="text" class="form-control form-control-sm" name="emirate_id" placeholder="Emirate ID">
                     </div>
-                    <!--col-->
                     <div class="col-md-3 form-group">
+                        <label>Licence No</label>
+                        <input type="text" class="form-control form-control-sm" name="license_no" placeholder="License No">
+                    </div>
+                    <div class="col-md-3 form-group">
+                        <label>Passport </label>
+                        <input type="text" class="form-control form-control-sm" name="passport" placeholder="Passport">
+                    </div>
+                    <div class="col-md-3 form-group">
+                        <label>NOON No. </label>
+                        <input type="text" class="form-control form-control-sm" name="noon_no" placeholder="Noon No.">
+                    </div>
+                    <div class="col-md-3 form-group">
+                        <label>WPS</label>
+                        <input type="text" class="form-control form-control-sm" name="wps" placeholder="WPS">
+                    </div>
+                    <div class="col-md-3 form-group">
+                        <label>C3 Card</label>
+                        <input type="text" class="form-control form-control-sm" name="c3_card" placeholder="C3 Card">
+                    </div>
+                    </div>
+                    <!--col-->
+                   {{--  <div class="col-md-3 form-group">
                         <label>EID EXP Date</label>
                         <input type="text" class="form-control form-control-sm date" name="emirate_exp" placeholder="EID EXP Date">
                     </div>
@@ -171,10 +192,7 @@
                 </div>
                 <div class="row bg-light mb-1">
                     <!--col-->
-                    <div class="col-md-3 form-group">
-                        <label>Passport *</label>
-                        <input type="text" class="form-control form-control-sm" name="passport" placeholder="Passport">
-                    </div>
+
                     <!--col-->
                     <div class="col-md-3 form-group">
                         <label>Passport Expiry *</label>
@@ -187,10 +205,7 @@
                 </div>
                 <div class="row bg-light mb-1">
                     <!--col-->
-                    <div class="col-md-3 form-group">
-                        <label>Licence No</label>
-                        <input type="text" class="form-control form-control-sm" name="license_no" placeholder="License No">
-                    </div>
+
                     <!--col-->
                     <div class="col-md-3 form-group">
                         <label>Licence Expiry</label>
@@ -203,13 +218,13 @@
                     <!--col-->
                 </div> --}}
                 <div class="row">
-                    
+
                     <!--col-->
                     {{-- <div class="col-md-3 form-group">
                         <label>Attach Documents</label>
                         <input type="file" multiple class="form-control form-control-sm" name="attach_documents[]">
                     </div> --}}
-                 
+
                     <!--col-->
                     <div class="col-md-12 form-group">
                         <label>Other Details</label>
@@ -228,10 +243,10 @@
         </tr>
     </thead>
     <tbody>
-       
+
         <tr class=" bg-light">
             <td class="col-sm-4">
-               
+
                 <select name="item_id" class="form-control form-control-sm" id="item_id"><option value="0">Select Item</option>
                     @php
                         $items = \App\Models\Item::all();
@@ -248,32 +263,32 @@
             <td >
                 <input type="button" class="btn btn-lg btn-dark btn-sm btn-block " style="width: 200px;background:#000;" id="addrow" value="Add Item" />
             </td>
-           
+
             {{-- <td class="col-sm-2"><input type="button" class="ibtnDel btn btn-md btn-danger btn-xs"  value="Delete"></td> --}}
         </tr>
     </tbody>
-   
+
 </table>
 <table id="myTable" class="table order-list">
 </table>
-                
+
                       {{--   @php
                             $items = \App\Models\Item::all();
-                           
+
                         @endphp
                         @foreach ($items as $item)
                         @php
                              /* $rider_item = \App\Models\RiderItemPrice::where('item_id',$item->id)
                              ->where('RID',$); */
                         @endphp
-                        
+
                             <div class="col-3 form-group">
-                                <label>{{$item->item_name}}(Price: {{$item->pirce}})</label>                                
+                                <label>{{$item->item_name}}(Price: {{$item->pirce}})</label>
                             <input type="number" name="items[{{$item->id}}]" id="item-{{$item->id}}" step="any" class="form-control form-control-sm" />
                             </div>
                         @endforeach
                         </div> --}}
-                
+
             </div>
             <div class="modal-footer">
                 <button type="submit" class="btn btn-primary pull-right save_rec btn-sm">Save</button>

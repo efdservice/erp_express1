@@ -163,6 +163,23 @@ ADD COLUMN `attach_file`  varchar(255) NULL AFTER `Updated_By`;
 ALTER TABLE `bike_histories`
 ADD COLUMN `contract`  varchar(255) NULL AFTER `warehouse`;
 
+--------------
+ALTER TABLE `riders`
+ADD COLUMN `noon_no`  varchar(100) NULL AFTER `passport_handover`,
+ADD COLUMN `wps`  varchar(100) NULL AFTER `noon_no`,
+ADD COLUMN `c3_card`  varchar(100) NULL AFTER `wps`;
+
+ALTER TABLE `bikes`
+ADD COLUMN `traffic_file_number`  varchar(100) NULL AFTER `warehouse`,
+ADD COLUMN `emirates`  varchar(100) NULL AFTER `traffic_file_number`;
+
+
+
+ALTER TABLE `bikes`
+MODIFY COLUMN `company`  int(11) NOT NULL AFTER `engine`;
+
+
+
 
 
 

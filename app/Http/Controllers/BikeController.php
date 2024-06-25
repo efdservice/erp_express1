@@ -25,7 +25,7 @@ class BikeController extends Controller
     public function index(Request $request)
     {
         if ($request->ajax()) {
-            $data = Bike::with('rider')->latest()->get();
+            $data = Bike::all();
             return DataTables::of($data)
                 ->addIndexColumn()
                 ->addColumn('rider_name', function ($row) {
@@ -44,10 +44,7 @@ class BikeController extends Controller
                 })
                 ->addColumn('sim_number', function ($row) {
                     if ($row->rider) {
-                        /* $sim_number = '';
-                        foreach($row->rider->sims as $sim){
-                            $sim_number .= $sim->sim_mnumber;
-                        } */
+
                         return $row->rider->sims->sim_number ?? '';
 
 
@@ -66,6 +63,13 @@ class BikeController extends Controller
 
                     $stats = BikeHistory::where('BID', $row->id)->orderBy('id', 'desc')->first();
                     return $stats->warehouse ?? '';
+                })
+                ->addColumn('company', function ($row) {
+                    if ($row->lease_company) {
+                        return $row->lease_company->name ?? '';
+                    } else {
+                        return '';
+                    }
                 })
                 ->addColumn('action', function ($row) {
                     $btn = '';
@@ -128,15 +132,15 @@ class BikeController extends Controller
             'chassis_number' => 'required',
             'engine' => 'required',
             'company' => 'required',
-            'RID' => 'required|unique:bikes,RID,' . $request->input('id'),
+            /* 'RID' => 'required|unique:bikes,RID,' . $request->input('id'), */
         ];
         $message = [
             'plate.required' => 'Plate Required',
             'chassis_number.required' => 'Chassis number Required',
             'engine.required' => 'Engine number Required',
             'company.required' => 'Company Required',
-            'RID.required' => 'Rider must be assign.',
-            'RID.unique' => 'Rider has already assigned.',
+            /*  'RID.required' => 'Rider must be assign.',
+             'RID.unique' => 'Rider has already assigned.', */
         ];
         $this->validate($request, $rules, $message);
         $data = $request->except(['code']);
@@ -154,10 +158,10 @@ class BikeController extends Controller
         try {
             if ($id == 0 || $id == '') {
                 $ret = Bike::create($data);
-                BikeHistory::create(['RID' => $request->RID, 'BID' => $id, 'notes' => $request->notes, 'warehouse' => 'Active']);
+                //BikeHistory::create(['RID' => $request->RID, 'BID' => $id, 'notes' => $request->notes, 'warehouse' => 'Active']);
             } else {
                 $ret = Bike::where('id', $id)->update($data);
-                BikeHistory::create(['RID' => $request->RID, 'BID' => $id, 'notes' => $request->notes, 'warehouse' => 'Active']);
+                //BikeHistory::create(['RID' => $request->RID, 'BID' => $id, 'notes' => $request->notes, 'warehouse' => 'Active']);
             }
             DB::commit();
             return $ret;

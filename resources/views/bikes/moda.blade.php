@@ -42,17 +42,30 @@
                     </div>
                     <!--col-->
                     <div class="col-md-4 form-group">
-                        <label>Company</label>
-                        <input type="text" class="form-control form-control-sm" name="company" placeholder="Company">
+                        <label>Traffic File No.</label>
+                        <input type="text" class="form-control form-control-sm" name="traffic_file_number" placeholder="Traffic File Number">
                     </div>
                     <!--col-->
-                    <div class="col-md-4 form-group" id="rider_select1">
+                    <div class="col-md-4 form-group">
+                        <label>Emirates</label>
+                        <input type="text" class="form-control form-control-sm" name="emirates" placeholder="Emirates">
+                    </div>
+                    <!--col-->
+                    <div class="col-md-4 form-group">
+                        <label>Company</label>
+                        <select class="form-control form-control-sm select2" name="company">
+                            <option value="">Select Rider</option>
+                            {!! \App\Models\LeaseCompany::dropdown() !!}
+                        </select>
+                    </div>
+                    <!--col-->
+                    {{-- <div class="col-md-4 form-group" id="rider_select1">
                         <label>Assign to Rider</label>
                         <select class="form-control form-control-sm select2" name="RID">
                             <option value="">Select Rider</option>
                             {!! \App\Models\Rider::dropdown() !!}
                         </select>
-                    </div>
+                    </div> --}}
                     <div class="col-md-4 form-group">
                         <label>Fleet Supervisor</label>
                         <select class="form-control form-control-sm" name="fleet_supervisor">
@@ -60,6 +73,7 @@
                             {!! App\Helpers\CommonHelper::get_supervisor() !!}
                         </select>
                     </div>
+                    <div class="col-md-4 form-group">&nbsp;</div>
                     <!--col-->
                     <div class="col-md-6 form-group">
                         <label>Bike Mulkiya Document</label>
