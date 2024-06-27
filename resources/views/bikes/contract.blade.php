@@ -396,15 +396,15 @@
                     <tr>
                         <td>
                             <p><b>Motor Mechanic</b><br/>
-                            Machanic Name</p>
+                                Muhammad Sufyan Akbar Ali</p>
                         </td>
                         <td>
                             <p><b>Rider Signature</b><br/>
-                            Machanic Name</p>
+                            {{@$contract->rider->name}}</p>
                         </td>
                         <td>
                             <p><b>Supervisor Signature</b><br/>
-                            Machanic Name</p>
+                                {{@$contract->rider->fleet_supervisor}}</p>
                         </td>
                     </tr>
                 </table>
@@ -508,12 +508,13 @@
             <td><b>Express Fast Delivery Service Name & Signature</b><br/></td>
             <td>
                 <p>
-                    <b>Name & Signature</b><br/>
-                    <b>{{@$contract->rider->name}}</b><br/>
-                    <br/><br/><br/><br/>
-                    <br/><br/><br/><br/>
                     <b>Fingerprint</b><br/>
-                    (Thumbprint of the right hand)
+                    (Thumbprint of the right hand)<br/>
+                    <br/><br/><br/><br/>
+                    <br/><br/><br/><br/>
+                    <b>Name & Signature</b><br/>
+                    <b>{{@$contract->rider->name}}</b>
+
                 </p>
             </td>
         </tr>
