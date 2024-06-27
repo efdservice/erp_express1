@@ -29,10 +29,20 @@
       </style>
    </head>
    <body style="padding:5px;" >
-      <p style="text-indent: 0pt;text-align: left;"><br/></p>
-      <div class="textbox" style="border:1.7pt solid #000000;display:block;min-height:25.4pt;width:188.8pt;text-align: center;margin:0 auto;">
-         <p class="s1" style="padding-top: 2pt;padding-left: 21pt;text-indent: 0pt;line-height: 21pt;text-align: center;">Bike Handing Over</p>
-      </div>
+    <table width="100%" style="font-family: sans-serif;">
+        <tr>
+            <td width="33.33%">&nbsp;<img src="/public/dist/img/print-logo.png" width="100" /> </td>
+            <td width="33.33%" style="text-align: center;"><h4 style="margin-bottom: 10px;margin-top: 5px;font-size: 12px;">Express Fast Delivery Service</h4>
+                <p style="margin-bottom: 5px;font-size: 12px;margin-top: 5px;">Office No. 305, Al Rubaya Building Damascus Street Al Qusais 2 Dubai U.A.E</p>
+                <p style="margin-bottom: 5px;font-size: 12px;margin-top: 5px;"> TRN 1005392707000003</p></td>
+            <td width="33.33%" style="text-align: right;"></td>
+        </tr>
+        <tr style="text-align: center;">
+            <td colspan="3"><h4 style="margin-bottom: 0px;margin-top: 5px;font-size: 12px;border-bottom: 1px solid #000;border-top: 1px solid #000;padding: 3px 0px;">Bike Handing Over</h4></td>
+        </tr>
+    </table>
+
+
       <p style="padding-left: 165pt;text-indent: 0pt;text-align: left;"></p>
       <p class="s2" style="padding-left: 8pt;text-indent: 0pt;text-align: left;">&quot;Rider&quot; Data</p>
       <table style="border-collapse:collapse;width:100%;" >
@@ -55,10 +65,10 @@
                <p class="s4" style="padding-top: 1pt;text-indent: 0pt;text-align: center;">{{$contract->rider->name}}</p>
             </td>
             <td style="width:73pt;border:1px solid #000000;">
-               <p class="s3" style="padding-top: 1pt;padding-left: 1pt;text-indent: 0pt;text-align: left;">NOON I,D.</p>
+               <p class="s3" style="padding-top: 1pt;padding-left: 1pt;text-indent: 0pt;text-align: left;">RIDER I,D.</p>
             </td>
             <td style="width:161pt;border:1px solid #000000;">
-               <p class="s4" style="padding-top: 1pt;text-indent: 0pt;text-align: center;">{{$contract->rider->noon_no}}</p>
+               <p class="s4" style="padding-top: 1pt;text-indent: 0pt;text-align: center;">{{$contract->rider->rider_id}}</p>
             </td>
          </tr>
          <tr style="height:16pt">
@@ -151,7 +161,7 @@
                <p class="s3" style="padding-top: 1pt;padding-left: 2pt;text-indent: 0pt;text-align: left;"><span class="s7">T.C.No</span>.</p>
             </td>
             <td style="width:175pt;border:1px solid #000000;" colspan="2">
-               <p class="s4" style="padding-top: 1pt;text-indent: 0pt;text-align: center;">&nbsp;</p>
+               <p class="s4" style="padding-top: 1pt;text-indent: 0pt;text-align: center;">{{@$contract->bike->traffic_file_number}}</p>
             </td>
             <td style="width:92pt;border:1px solid #000000;">
                <p class="s3" style="padding-top: 1pt;padding-left: 1pt;text-indent: 0pt;text-align: left;">Bike Plate No.</p>
@@ -382,7 +392,7 @@
                 <p style="text-indent: 0pt;text-align: left;"><br/></p>
                 <p style="text-indent: 0pt;text-align: left;"><br/></p>
                 <p style="text-indent: 0pt;text-align: left;"><br/></p>
-                <table style="width: 100%;padding-top:10px;text-align:center;">
+                <table style="width: 100%;text-align:center;">
                     <tr>
                         <td>
                             <p><b>Motor Mechanic</b><br/>
@@ -423,7 +433,7 @@
                <p class="s13" style="padding-top: 3pt;padding-left: 1pt;text-indent: 0pt;text-align: left;">Emirates I,D</p>
             </td>
             <td style="width:168pt;border:1px solid #000000;">
-               <p class="s13" style="padding-top: 3pt;padding-left: 34pt;text-indent: 0pt;text-align: left;">{{@$contract->rider->emirate}}</p>
+               <p class="s13" style="padding-top: 3pt;padding-left: 34pt;text-indent: 0pt;text-align: left;">{{@$contract->rider->emirate_id}}</p>
             </td>
          </tr>
       </table>
@@ -435,7 +445,7 @@
                <p class="s13" style="padding-top: 3pt;padding-left: 1pt;text-indent: 0pt;text-align: left;"><span class="s14">T.C.No</span>.</p>
             </td>
             <td style="width:238pt;border:1px solid #000000;">
-               <p class="s15" style="padding-top: 3pt;text-indent: 0pt;text-align: center;"></p>
+               <p class="s15" style="padding-top: 3pt;text-indent: 0pt;text-align: center;">{{@$contract->bike->traffic_file_number}}</p>
             </td>
             <td style="width:73pt;border:1px solid #000000;">
                <p class="s13" style="padding-top: 3pt;padding-left: 1pt;text-indent: 0pt;text-align: left;">Bike Plate No.</p>
