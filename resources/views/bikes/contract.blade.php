@@ -411,7 +411,16 @@
 
 
       <p style="text-indent: 0pt;text-align: left;page-break-after: always;"><br/></p>
+      <table width="100%" style="font-family: sans-serif;">
+        <tr>
+            <td width="33.33%">&nbsp;<img src="/public/dist/img/print-logo.png" width="100" /> </td>
+            <td width="33.33%" style="text-align: center;"><h4 style="margin-bottom: 10px;margin-top: 5px;font-size: 12px;">Express Fast Delivery Service</h4>
+                <p style="margin-bottom: 5px;font-size: 12px;margin-top: 5px;">Office No. 305, Al Rubaya Building Damascus Street Al Qusais 2 Dubai U.A.E</p>
+                <p style="margin-bottom: 5px;font-size: 12px;margin-top: 5px;"> TRN 1005392707000003</p></td>
+            <td width="33.33%" style="text-align: right;"></td>
+        </tr>
 
+    </table>
       <h1 style="padding-left: 8pt;text-indent: 0pt;text-align: left;">Declaration:                                     Date: {{$contract->note_date}}</h1>
       <p class="s11" style="padding-top: 9pt;padding-left: 8pt;text-indent: 0pt;text-align: left;">Confirmation of receipt of a motorcycle “<b>Bike</b>”: I hereby certify, I am the</p>
       <p style="text-indent: 0pt;text-align: left;"><br/></p>
