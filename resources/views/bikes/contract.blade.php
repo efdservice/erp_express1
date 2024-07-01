@@ -48,11 +48,11 @@
       <table style="border-collapse:collapse;width:100%;" >
         <tr>
             <th style="padding:5px;">Rider Status:</th>
-            <td style="padding:5px;">{{App\Helpers\CommonHelper::RiderStatus($contract->rider->status)}}</td>
+            <td style="padding:5px;">{{App\Helpers\CommonHelper::RiderStatus(@$contract->rider->status)}}</td>
             <th style="padding:5px 5px 5px 50px;">Supervisor:</th>
-            <td style="padding:5px;">{{$contract->rider->fleet_supervisor}}</td>
+            <td style="padding:5px;">{{@$contract->rider->fleet_supervisor}}</td>
             <th style="padding:5px 5px 5px 150px;">Date:</th>
-            <td style="padding:5px 5px 5px 5px;">{{$contract->note_date}}</td>
+            <td style="padding:5px 5px 5px 5px;">{{@$contract->note_date}}</td>
         </tr>
       </table>
       <p style="text-indent: 0pt;text-align: left;"><br/></p>
@@ -62,13 +62,13 @@
                <p class="s3" style="padding-top: 1pt;padding-left: 1pt;text-indent: 0pt;text-align: left;">Name</p>
             </td>
             <td style="width:238pt;border:1px solid #000000;">
-               <p class="s4" style="padding-top: 1pt;text-indent: 0pt;text-align: center;">{{$contract->rider->name}}</p>
+               <p class="s4" style="padding-top: 1pt;text-indent: 0pt;text-align: center;">{{@$contract->rider->name}}</p>
             </td>
             <td style="width:73pt;border:1px solid #000000;">
                <p class="s3" style="padding-top: 1pt;padding-left: 1pt;text-indent: 0pt;text-align: left;">RIDER I,D.</p>
             </td>
             <td style="width:161pt;border:1px solid #000000;">
-               <p class="s4" style="padding-top: 1pt;text-indent: 0pt;text-align: center;">{{$contract->rider->rider_id}}</p>
+               <p class="s4" style="padding-top: 1pt;text-indent: 0pt;text-align: center;">{{@$contract->rider->rider_id}}</p>
             </td>
          </tr>
          <tr style="height:16pt">
@@ -76,13 +76,13 @@
                <p class="s3" style="padding-top: 1pt;padding-left: 1pt;text-indent: 0pt;text-align: left;">Emirates ID.</p>
             </td>
             <td style="width:238pt;border:1px solid #000000;">
-               <p class="s4" style="padding-top: 1pt;text-indent: 0pt;text-align: center;">{{$contract->rider->emirate_id}}</p>
+               <p class="s4" style="padding-top: 1pt;text-indent: 0pt;text-align: center;">{{@$contract->rider->emirate_id}}</p>
             </td>
             <td style="width:73pt;border:1px solid #000000;">
                <p class="s3" style="padding-top: 1pt;padding-left: 1pt;text-indent: 0pt;text-align: left;">Passport No.</p>
             </td>
             <td style="width:161pt;border:1px solid #000000;">
-               <p class="s4" style="padding-top: 1pt;text-indent: 0pt;text-align: center;">{{$contract->rider->passport}}</p>
+               <p class="s4" style="padding-top: 1pt;text-indent: 0pt;text-align: center;">{{@$contract->rider->passport}}</p>
             </td>
          </tr>
          <tr style="height:16pt">
@@ -90,13 +90,13 @@
                <p class="s3" style="padding-top: 1pt;padding-left: 1pt;text-indent: 0pt;text-align: left;">Phone No.</p>
             </td>
             <td style="width:238pt;border:1px solid #000000;">
-               <p class="s4" style="padding-top: 1pt;text-indent: 0pt;text-align: center;">{{$contract->rider->personal_contact}}</p>
+               <p class="s4" style="padding-top: 1pt;text-indent: 0pt;text-align: center;">{{@$contract->rider->personal_contact}}</p>
             </td>
             <td style="width:73pt;border:1px solid #000000;">
                <p class="s3" style="padding-top: 1pt;padding-left: 1pt;text-indent: 0pt;text-align: left;">License No.</p>
             </td>
             <td style="width:161pt;border:1px solid #000000;">
-               <p class="s4" style="padding-top: 1pt;text-indent: 0pt;text-align: center;">{{$contract->rider->license_no}}</p>
+               <p class="s4" style="padding-top: 1pt;text-indent: 0pt;text-align: center;">{{@$contract->rider->license_no}}</p>
             </td>
          </tr>
          <tr style="height:16pt">
@@ -104,13 +104,13 @@
                <p class="s3" style="padding-top: 1pt;padding-left: 1pt;text-indent: 0pt;text-align: left;">Email I,d.</p>
             </td>
             <td style="width:238pt;border:1px solid #000000;">
-               <p style="padding-top: 1pt;text-indent: 0pt;text-align: center;">{{$contract->rider->personal_email}}</p>
+               <p style="padding-top: 1pt;text-indent: 0pt;text-align: center;">{{@$contract->rider->personal_email}}</p>
             </td>
             <td style="width:73pt;border:1px solid #000000;">
                <p class="s3" style="padding-top: 1pt;padding-left: 1pt;text-indent: 0pt;text-align: left;">Emirate.</p>
             </td>
             <td style="width:161pt;border:1px solid #000000;">
-               <p class="s4" style="padding-top: 1pt;text-indent: 0pt;text-align: center;">{{$contract->rider->emirate_hub}}</p>
+               <p class="s4" style="padding-top: 1pt;text-indent: 0pt;text-align: center;">{{@$contract->rider->emirate_hub}}</p>
             </td>
          </tr>
          <tr style="height:16pt">
@@ -118,7 +118,7 @@
                <p class="s3" style="padding-top: 1pt;padding-left: 1pt;text-indent: 0pt;text-align: left;">Vendor.</p>
             </td>
             <td style="width:238pt;border:1px solid #000000;">
-               <p class="s4" style="padding-top: 1pt;text-indent: 0pt;text-align: center;">{{$contract->rider->vendor->name}}</p>
+               <p class="s4" style="padding-top: 1pt;text-indent: 0pt;text-align: center;">{{@$contract->rider->vendor->name}}</p>
             </td>
             <td style="width:73pt;border:1px solid #000000;">
                <p class="s3" style="padding-top: 1pt;padding-left: 1pt;text-indent: 0pt;text-align: left;">Salary Model.</p>
@@ -421,7 +421,7 @@
         </tr>
 
     </table>
-      <h1 style="padding-left: 8pt;text-indent: 0pt;text-align: left;">Declaration:                                     Date: {{$contract->note_date}}</h1>
+      <h1 style="padding-left: 8pt;text-indent: 0pt;text-align: left;">Declaration:                                     Date: {{@$contract->note_date}}</h1>
       <p class="s11" style="padding-top: 9pt;padding-left: 8pt;text-indent: 0pt;text-align: left;">Confirmation of receipt of a motorcycle “<b>Bike</b>”: I hereby certify, I am the</p>
       <p style="text-indent: 0pt;text-align: left;"><br/></p>
             </td>
