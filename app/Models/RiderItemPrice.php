@@ -8,9 +8,14 @@ use Illuminate\Database\Eloquent\Model;
 class RiderItemPrice extends Model
 {
     use HasFactory;
-    protected $guarded=[];
+    protected $guarded = [];
 
-    public function vendorItem(){
-        return $this->hasMany(VendorItemPrice::class,'item_id','item_id');
+    public function vendorItem()
+    {
+        return $this->hasMany(VendorItemPrice::class, 'item_id', 'item_id');
+    }
+    public function item()
+    {
+        return $this->hasOne(Item::class, 'id', 'item_id');
     }
 }

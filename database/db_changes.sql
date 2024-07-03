@@ -177,6 +177,11 @@ ADD COLUMN `emirates`  varchar(100) NULL AFTER `traffic_file_number`;
 
 ALTER TABLE `bikes`
 MODIFY COLUMN `company`  int(11) NOT NULL AFTER `engine`;
+---------------------
+
+ALTER TABLE `riders`
+ADD COLUMN `contract`  varchar(100) NULL AFTER `c3_card`;
+
 
 
 

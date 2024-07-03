@@ -39,41 +39,38 @@ class RiderController extends Controller
                 ->addColumn('PID', function ($row) {
                     return $row->project->name ?? '';
                 })
-                ->addColumn('Balance', function ($row) {
-                    $trans_acc_id = $row->account->id ?? 0;
-                    if ($trans_acc_id != 0) {
-                        return Account::Monthly_ob(date('y-m-d'), $trans_acc_id);
+                /*  ->addColumn('Balance', function ($row) {
+                     $trans_acc_id = $row->account->id ?? 0;
+                     if ($trans_acc_id != 0) {
+                         return Account::Monthly_ob(date('y-m-d'), $trans_acc_id);
 
-                    } else {
-                        return 0;
-                    }
-                })
-                ->addColumn('id', function ($row) {
-                    return $row->sims->sim_number ?? '';
-                    /* $sim = '';
-                    foreach($row->sims as $item){
-                        $sim .= $item->sim_number.' '??'';
-                    }
-                    return $sim; */
-                })
-                ->addColumn('license_no', function ($row) {
-                    return $row->bikes->plate ?? '';
-                    /*  $plate = '';
-                     foreach($row->bikes as $bike){
-                         $plate .= $bike->plate.' '??'';
+                     } else {
+                         return 0;
                      }
-                     return $plate; */
-                })
+                 }) */
+                /*    ->addColumn('id', function ($row) {
+                       return $row->sims->sim_number ?? '';
+
+                   })
+                   ->addColumn('license_no', function ($row) {
+                       return $row->bikes->plate ?? '';
+
+                   }) */
                 ->addColumn('status', function ($row) {
 
                     return CommonHelper::RiderStatus($row->status);
                     //return  Form::select('category_id', CommonHelper::RiderStatus(), $row->status, ['class' => 'statuschange','onchange' => 'changeStatus('.$row->id.',this)']);
-    
+
                     //return '<a href="javascript:void(0)" data-toggle="tooltip"  data-action="'.url('rider-status/'.$row->id).'" data-original-title="Action" class="doAction" ><span class="badge badge-primary" >Active</span></a>';
-    
+
                 })
                 ->addColumn('action', function ($row) {
                     $btn = '';
+                    if (\Auth::user()->can('riders_document')) {
+                        $btn = $btn . '<a href="' . route('rider.contract', $row->id) . '" data-toggle="tooltip" class="file btn btn-warning btn-xs mr-1" data-modalID="modal-new" target="_blank"><i class="fas fa-file"></i> Contract</a>';
+                        /*                         $btn = $btn . '<button class="btn btn-sm btn-primary" onclick="upload_contract()">Upload</button>';
+                         */
+                    }
                     if (\Auth::user()->can('riders_document')) {
                         $btn = $btn . '<a href="' . route('rider.document', $row->id) . '" data-toggle="tooltip" class="file btn btn-success btn-xs" data-modalID="modal-new"><i class="fas fa-file"></i> Documents</a>';
                     }
@@ -354,5 +351,31 @@ class RiderController extends Controller
         $rider = Rider::find($rider_id);
 
         return view('riders.document', compact('files', 'rider'));
+    }
+
+    public function contract($id)
+    {
+        $rider = Rider::find($id);
+
+        return view('riders.contract', compact('rider'));
+    }
+    public function contract_upload(Request $request)
+    {
+        if (isset($request->contract)) {
+
+            $doc = $request->contract;
+            $extension = $doc->extension();
+            $name = time() . '.' . $extension;
+            $doc->storeAs('contract', $name);
+
+            $contract = Rider::find($request->id);
+            $contract->contract = $name;
+            $contract->save();
+
+            return redirect(url('riders'))->with('success', $contract->name . '( ' . $contract->rider_id . ' ) Contract uploaded.');
+        } else {
+
+            return view('riders.contract-modal');
+        }
     }
 }
