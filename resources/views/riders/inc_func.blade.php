@@ -13,6 +13,18 @@
 
 
     }
+    function upload_contract(){
+        $("#contract-modal").modal({backdrop: 'static', keyboard: false},'show');
+
+           this.form.reset();
+
+
+
+
+
+
+
+    }
 
     $("#form").submit(function (e) {
         let formID='form';
@@ -71,12 +83,12 @@
                 {data: 'rider_id', name: 'rider_id'},
                 {data: 'name', name: 'name'},
                 {data: 'VID', name: 'VID'},
-                {data: 'id', name: 'id'},
-                {data: 'license_no', name: 'license_no'},
+            /*     {data: 'id', name: 'id'},
+                {data: 'license_no', name: 'license_no'}, */
                 {data: 'fleet_supervisor', name: 'fleet_supervisor'},
                 {data: 'PID', name: 'PID'},
-                {data: 'Balance', name: 'Balance'},
-                {data: 'status', name: 'status'},
+/*                 {data: 'Balance', name: 'Balance'},
+ */                {data: 'status', name: 'status'},
                 {data: 'action', name: 'action',
                     orderable: false, searchable: false
                 },

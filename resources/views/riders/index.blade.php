@@ -37,12 +37,12 @@
                                         <th>ID</th>
                                         <th>Rider Name</th>
                                         <th>Vendor</th>
-                                        <th>Sim</th>
-                                        <th>Bike Plate #</th>
+                                      {{--   <th>Sim</th>
+                                        <th>Bike Plate #</th> --}}
                                         <th>Supervisor</th>
                                         <th>Project</th>
-                                        <th>Balance</th>
-
+{{--                                         <th>Balance</th>
+ --}}
                                         <th>Status</th>
                                         <th>Action</th>
                                     </tr>
@@ -63,6 +63,7 @@
     </div>
     @include('riders.moda')
     @include('riders.import-modal')
+    @include('riders.contract-modal')
     @include('riders.inc_func')
 @endsection
 
