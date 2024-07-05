@@ -22,12 +22,13 @@
     @foreach($data as $entry)
 
             <div class="row">
-                <input type="hidden" name="id[]" value="{{$entry->trans_acc->riderDetail->id}}">
                 <div class="form-group col-md-4">
                     <br>
                     @if($entry->trans_acc->riderDetail)
+                        <input type="hidden" name="id[]" value="{{$entry->trans_acc->riderDetail->id}}">
                        {{ @$entry->trans_acc->riderDetail->name.' ('.@$entry->trans_acc->riderDetail->rider_id.')'}}
                     @else
+                    <input type="hidden" name="id[]" value="{{$entry->trans_acc->id}}">
                     {{@$entry->trans_acc->Trans_Acc_Name}}
                     @endif
 
