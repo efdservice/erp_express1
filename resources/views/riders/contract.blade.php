@@ -53,7 +53,7 @@
                <p class="s1" style="padding-top: 2pt;padding-left: 1pt;text-indent: 0pt;text-align: left;">Name</p>
             </td>
             <td style="width:266pt;border-top-style:solid;border-top-width:1pt;border-left-style:solid;border-left-width:1pt;border-bottom-style:solid;border-bottom-width:1pt;border-right-style:solid;border-right-width:1pt" colspan="2">
-               <p class="s2" style="padding-top: 2pt;padding-left: 64pt;text-indent: 0pt;text-align: left;">{{@$rider->name}}</p>
+               <p class="s2" style="padding-top: 2pt;padding-left: 64pt;text-indent: 0pt;text-align: center;">{{@$rider->name}}</p>
             </td>
             <td style="width:98pt;border-top-style:solid;border-top-width:1pt;border-left-style:solid;border-left-width:1pt;border-bottom-style:solid;border-bottom-width:1pt;border-right-style:solid;border-right-width:1pt">
                <p class="s1" style="padding-top: 2pt;padding-left: 1pt;text-indent: 0pt;text-align: left;">NOON I, D</p>
@@ -81,7 +81,7 @@
                <p class="s1" style="padding-top: 2pt;padding-left: 1pt;text-indent: 0pt;text-align: left;">Phone No.</p>
             </td>
             <td style="width:266pt;border-top-style:solid;border-top-width:1pt;border-left-style:solid;border-left-width:1pt;border-bottom-style:solid;border-bottom-width:1pt;border-right-style:solid;border-right-width:1pt" colspan="2">
-               <p class="s2" style="padding-top: 2pt;padding-left: 61pt;text-indent: 0pt;text-align: left;">{{@$rider->personal_contact}}  -</p>
+               <p class="s2" style="padding-top: 2pt;padding-left: 61pt;text-indent: 0pt;text-align: center;">{{@$rider->personal_contact}}  -</p>
             </td>
             <td style="width:98pt;border-top-style:solid;border-top-width:1pt;border-left-style:solid;border-left-width:1pt;border-bottom-style:solid;border-bottom-width:1pt;border-right-style:solid;border-right-width:1pt">
                <p class="s1" style="padding-top: 2pt;padding-left: 1pt;text-indent: 0pt;text-align: left;">License No.</p>
