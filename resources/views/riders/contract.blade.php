@@ -189,13 +189,13 @@
             </td>
          </tr>
          <tr style="height:17pt">
-            <td style="width:131pt;border-top-style:solid;border-top-width:1pt;border-left-style:solid;border-left-width:1pt;border-bottom-style:solid;border-bottom-width:1pt;border-right-style:solid;border-right-width:1pt" bgcolor="#FFC000">
+            <td style="width:131pt;border-top-style:solid;border-top-width:1pt;border-left-style:solid;border-left-width:1pt;border-bottom-style:solid;border-bottom-width:1pt;border-right-style:solid;border-right-width:1pt" bgcolor="#FFC000" colspan="4">
                <p class="s1" style="padding-top: 2pt;padding-left: 24pt;text-indent: 0pt;text-align: left;">Delivery KM Range</p>
             </td>
-            <td style="width:85pt;border-top-style:solid;border-top-width:1pt;border-left-style:solid;border-left-width:1pt;border-bottom-style:solid;border-bottom-width:1pt;border-right-style:solid;border-right-width:1pt" bgcolor="#FFC000">
-               <p class="s1" style="padding-top: 2pt;text-indent: 0pt;text-align: center;">DXB &amp; AUX</p>
+            <td style="width:85pt;border-top-style:solid;border-top-width:1pt;border-left-style:solid;border-left-width:1pt;border-bottom-style:solid;border-bottom-width:1pt;border-right-style:solid;border-right-width:1pt" bgcolor="#FFC000" colspan="2">
+               <p class="s1" style="padding-top: 2pt;text-indent: 0pt;text-align: center;">Rate</p>
             </td>
-            <td style="width:88pt;border-top-style:solid;border-top-width:1pt;border-left-style:solid;border-left-width:1pt;border-bottom-style:solid;border-bottom-width:1pt;border-right-style:solid;border-right-width:1pt" bgcolor="#FFC000">
+           {{--  <td style="width:88pt;border-top-style:solid;border-top-width:1pt;border-left-style:solid;border-left-width:1pt;border-bottom-style:solid;border-bottom-width:1pt;border-right-style:solid;border-right-width:1pt" bgcolor="#FFC000">
                <p class="s1" style="padding-top: 2pt;padding-left: 19pt;text-indent: 0pt;text-align: left;">RAK &amp; UAQ</p>
             </td>
             <td style="width:120pt;border-top-style:solid;border-top-width:1pt;border-left-style:solid;border-left-width:1pt;border-bottom-style:solid;border-bottom-width:1pt;border-right-style:solid;border-right-width:1pt" bgcolor="#FFC000">
@@ -203,18 +203,18 @@
             </td>
             <td style="width:136pt;border-top-style:solid;border-top-width:1pt;border-left-style:solid;border-left-width:1pt;border-bottom-style:solid;border-bottom-width:1pt;border-right-style:solid;border-right-width:1pt" bgcolor="#FFC000">
                <p class="s1" style="padding-top: 2pt;padding-right: 1pt;text-indent: 0pt;text-align: center;">RAK &amp; UAQ BATCH ORDER</p>
-            </td>
+            </td> --}}
          </tr>
 
          @foreach($rider->items as $item)
          <tr style="height:15pt">
-            <td style="width:131pt;border-top-style:solid;border-top-width:1pt;border-left-style:solid;border-left-width:1pt;border-bottom-style:solid;border-bottom-width:1pt;border-right-style:solid;border-right-width:1pt">
+            <td style="width:131pt;border-top-style:solid;border-top-width:1pt;border-left-style:solid;border-left-width:1pt;border-bottom-style:solid;border-bottom-width:1pt;border-right-style:solid;border-right-width:1pt" colspan="4">
                <p class="s8" style="padding-top: 1pt;padding-left: 18pt;text-indent: 0pt;text-align: left;">{{@$item->item->item_name}}</p>
             </td>
-            <td style="width:85pt;border-top-style:solid;border-top-width:1pt;border-left-style:solid;border-left-width:1pt;border-bottom-style:solid;border-bottom-width:1pt;border-right-style:solid;border-right-width:1pt">
+            <td style="width:85pt;border-top-style:solid;border-top-width:1pt;border-left-style:solid;border-left-width:1pt;border-bottom-style:solid;border-bottom-width:1pt;border-right-style:solid;border-right-width:1pt" colspan="2">
                <p class="s2" style="padding-top: 1pt;text-indent: 0pt;text-align: center;">{{@$item->price}}</p>
             </td>
-            <td style="width:88pt;border-top-style:solid;border-top-width:1pt;border-left-style:solid;border-left-width:1pt;border-bottom-style:solid;border-bottom-width:1pt;border-right-style:solid;border-right-width:1pt">
+           {{--  <td style="width:88pt;border-top-style:solid;border-top-width:1pt;border-left-style:solid;border-left-width:1pt;border-bottom-style:solid;border-bottom-width:1pt;border-right-style:solid;border-right-width:1pt">
                <p class="s2" style="padding-top: 1pt;text-indent: 0pt;text-align: center;">{{@$item->price}}</p>
             </td>
             <td style="width:120pt;border-top-style:solid;border-top-width:1pt;border-left-style:solid;border-left-width:1pt;border-bottom-style:solid;border-bottom-width:1pt;border-right-style:solid;border-right-width:1pt">
@@ -222,11 +222,11 @@
             </td>
             <td style="width:136pt;border-top-style:solid;border-top-width:1pt;border-left-style:solid;border-left-width:1pt;border-bottom-style:solid;border-bottom-width:1pt;border-right-style:solid;border-right-width:1pt">
                <p class="s2" style="padding-top: 1pt;padding-right: 1pt;text-indent: 0pt;text-align: center;">{{@$item->price}}</p>
-            </td>
+            </td> --}}
          </tr>
          @endforeach
 
-         <tr style="height:19pt">
+         {{-- <tr style="height:19pt">
             <td style="width:131pt;border-top-style:solid;border-top-width:1pt;border-left-style:solid;border-left-width:1pt;border-bottom-style:solid;border-bottom-width:1pt;border-right-style:solid;border-right-width:1pt">
                <p class="s1" style="padding-top: 3pt;padding-left: 18pt;text-indent: 0pt;text-align: left;">Minimum Guarantee:</p>
             </td>
@@ -267,7 +267,7 @@
             <td style="width:256pt;border-top-style:solid;border-top-width:1pt;border-left-style:solid;border-left-width:1pt;border-bottom-style:solid;border-bottom-width:1pt;border-right-style:solid;border-right-width:1pt" colspan="2">
                <p class="s9" style="padding-top: 3pt;padding-left: 51pt;text-indent: 0pt;text-align: left;">30days (Working 26 Days/ 4 days Off)</p>
             </td>
-         </tr>
+         </tr> --}}
       </table>
       <p style="padding-top: 10pt;padding-left: 7pt;text-indent: 0pt;text-align: left;">Payment of fees will be settled in United Arab Emirates Dirhams (<b>AED</b>).</p>
       <p style="text-indent: 0pt;text-align: left;"><br/></p>
