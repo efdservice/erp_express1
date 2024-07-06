@@ -270,6 +270,8 @@
          </tr> --}}
       </table>
       <p style="padding-top: 10pt;padding-left: 7pt;text-indent: 0pt;text-align: left;">Payment of fees will be settled in United Arab Emirates Dirhams (<b>AED</b>).</p>
+
+      <p style="text-indent: 0pt;text-align: left;page-break-after: always;"><br/></p>
       <p style="text-indent: 0pt;text-align: left;"><br/></p>
       <ol id="l1">
          <li data-list-text="1).">
