@@ -31,7 +31,7 @@
       </style>
    </head>
    <body>
-    <table width="100%" style="font-family: sans-serif;">
+    {{-- <table width="100%" style="font-family: sans-serif;">
         <tr>
             <td width="33.33%">&nbsp;<img src="/public/dist/img/print-logo.png" width="100" /> </td>
             <td width="33.33%" style="text-align: center;"><h4 style="margin-bottom: 10px;margin-top: 5px;font-size: 12px;">Express Fast Delivery Service</h4>
@@ -40,7 +40,8 @@
             <td width="33.33%" style="text-align: right;"></td>
         </tr>
 
-    </table>
+    </table> --}}
+    <div style="height: 100px;">&nbsp;</div>
       <p style="padding-top: 0pt;text-indent: 0pt;text-align: left;"></p>
       <h1 style="text-indent: 0pt;text-align: center;">AGREEMENT FOR FOOD DELIVERY RIDER</h1>
       <p style="text-indent: 0pt;text-align: left;"></p>
@@ -281,15 +282,16 @@
       </table>
       <p style="padding-top: 10pt;padding-left: 7pt;text-indent: 0pt;text-align: left;">Payment of fees will be settled in United Arab Emirates Dirhams (<b>AED</b>).</p>
 
-      <p style="text-indent: 0pt;text-align: left;page-break-after: always;"><br/></p>
-      <table width="100%" style="font-family: sans-serif;">
+      <p style="text-indent: 0pt;text-align: left;page-break-after: always;"></p>
+      <div style="height: 100px;">&nbsp;</div>
+      {{-- <table width="100%" style="font-family: sans-serif;">
         <tr>
             <td width="33.33%">&nbsp;<img src="/public/dist/img/print-logo.png" width="100" /> </td>
             <td width="33.33%" style="text-align: center;"><h4 style="margin-bottom: 10px;margin-top: 5px;font-size: 12px;">Express Fast Delivery Service</h4>
                 <p style="margin-bottom: 5px;font-size: 12px;margin-top: 5px;">Office No. 305, Al Rubaya Building Damascus Street Al Qusais 2 Dubai U.A.E</p>
                 <p style="margin-bottom: 5px;font-size: 12px;margin-top: 5px;"> TRN 1005392707000003</p></td>
             <td width="33.33%" style="text-align: right;"></td>
-        </tr>
+        </tr> --}}
 
     </table>
       <p style="text-indent: 0pt;text-align: left;"><br/></p>
@@ -357,8 +359,8 @@
             <p style="text-indent: 0pt;text-align: left;"><br/></p>
          </li>
          <p style="text-indent: 0pt;text-align: left;page-break-after: always;"><br/></p>
-
-         <table width="100%" style="font-family: sans-serif;">
+         <div style="height: 100px;">&nbsp;</div>
+         {{-- <table width="100%" style="font-family: sans-serif;">
             <tr>
                 <td width="33.33%">&nbsp;<img src="/public/dist/img/print-logo.png" width="100" /> </td>
                 <td width="33.33%" style="text-align: center;"><h4 style="margin-bottom: 10px;margin-top: 5px;font-size: 12px;">Express Fast Delivery Service</h4>
@@ -367,7 +369,7 @@
                 <td width="33.33%" style="text-align: right;"></td>
             </tr>
 
-        </table>
+        </table> --}}
         <br/>
          <li data-list-text="17).">
             <p style="padding-left: 7pt;text-indent: 0pt;text-align: left;">The company shall ensure that all vehicles, helmets, and boxes are branded by the registered vendor assigned by Noon. If new vehicles are added or replaced for maintenance, the company should have the vehicles, box, and helmet in plain without any branding.</p>
