@@ -53,13 +53,13 @@
                <p class="s1" style="padding-top: 2pt;padding-left: 1pt;text-indent: 0pt;text-align: left;">Name</p>
             </td>
             <td style="width:266pt;border-top-style:solid;border-top-width:1pt;border-left-style:solid;border-left-width:1pt;border-bottom-style:solid;border-bottom-width:1pt;border-right-style:solid;border-right-width:1pt" colspan="2">
-               <p class="s2" style="padding-top: 2pt;padding-left: 64pt;text-indent: 0pt;text-align: center;">{{@$rider->name}}</p>
+               <p class="s2" style="padding-top: 2pt;text-indent: 0pt;text-align: center;">{{@$rider->name}}</p>
             </td>
             <td style="width:98pt;border-top-style:solid;border-top-width:1pt;border-left-style:solid;border-left-width:1pt;border-bottom-style:solid;border-bottom-width:1pt;border-right-style:solid;border-right-width:1pt">
                <p class="s1" style="padding-top: 2pt;padding-left: 1pt;text-indent: 0pt;text-align: left;">NOON I, D</p>
             </td>
             <td style="width:136pt;border-top-style:solid;border-top-width:1pt;border-left-style:solid;border-left-width:1pt;border-bottom-style:solid;border-bottom-width:1pt;border-right-style:solid;border-right-width:1pt">
-               <p class="s4" style="padding-top: 2pt;padding-right: 1pt;text-indent: 0pt;text-align: center;">{{@$rider->rider_id}}</p>
+               <p class="s4" style="padding-top: 2pt;text-indent: 0pt;text-align: center;">{{@$rider->rider_id}}</p>
             </td>
          </tr>
          <tr style="height:16pt">
@@ -81,7 +81,7 @@
                <p class="s1" style="padding-top: 2pt;padding-left: 1pt;text-indent: 0pt;text-align: left;">Phone No.</p>
             </td>
             <td style="width:266pt;border-top-style:solid;border-top-width:1pt;border-left-style:solid;border-left-width:1pt;border-bottom-style:solid;border-bottom-width:1pt;border-right-style:solid;border-right-width:1pt" colspan="2">
-               <p class="s2" style="padding-top: 2pt;padding-left: 61pt;text-indent: 0pt;text-align: center;">{{@$rider->personal_contact}}  -</p>
+               <p class="s2" style="padding-top: 2pt;text-indent: 0pt;text-align: center;">{{@$rider->personal_contact}}  -</p>
             </td>
             <td style="width:98pt;border-top-style:solid;border-top-width:1pt;border-left-style:solid;border-left-width:1pt;border-bottom-style:solid;border-bottom-width:1pt;border-right-style:solid;border-right-width:1pt">
                <p class="s1" style="padding-top: 2pt;padding-left: 1pt;text-indent: 0pt;text-align: left;">License No.</p>
