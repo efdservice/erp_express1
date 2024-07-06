@@ -31,9 +31,19 @@
       </style>
    </head>
    <body>
-      <p style="padding-top: 9pt;text-indent: 0pt;text-align: left;"><br/></p>
+    <table width="100%" style="font-family: sans-serif;">
+        <tr>
+            <td width="33.33%">&nbsp;<img src="/public/dist/img/print-logo.png" width="100" /> </td>
+            <td width="33.33%" style="text-align: center;"><h4 style="margin-bottom: 10px;margin-top: 5px;font-size: 12px;">Express Fast Delivery Service</h4>
+                <p style="margin-bottom: 5px;font-size: 12px;margin-top: 5px;">Office No. 305, Al Rubaya Building Damascus Street Al Qusais 2 Dubai U.A.E</p>
+                <p style="margin-bottom: 5px;font-size: 12px;margin-top: 5px;"> TRN 1005392707000003</p></td>
+            <td width="33.33%" style="text-align: right;"></td>
+        </tr>
+
+    </table>
+      <p style="padding-top: 0pt;text-indent: 0pt;text-align: left;"></p>
       <h1 style="text-indent: 0pt;text-align: center;">AGREEMENT FOR FOOD DELIVERY RIDER</h1>
-      <p style="text-indent: 0pt;text-align: left;"><br/></p>
+      <p style="text-indent: 0pt;text-align: left;"></p>
       <h2 style="text-indent: 0pt;text-align: right;">Date : {{date('d-M-Y')}}</h2>
       <p style="text-indent: 0pt;text-align: left;"><br/></p>
       <table style="border-collapse:collapse;margin-left:5.75089pt" cellspacing="0">
@@ -272,6 +282,16 @@
       <p style="padding-top: 10pt;padding-left: 7pt;text-indent: 0pt;text-align: left;">Payment of fees will be settled in United Arab Emirates Dirhams (<b>AED</b>).</p>
 
       <p style="text-indent: 0pt;text-align: left;page-break-after: always;"><br/></p>
+      <table width="100%" style="font-family: sans-serif;">
+        <tr>
+            <td width="33.33%">&nbsp;<img src="/public/dist/img/print-logo.png" width="100" /> </td>
+            <td width="33.33%" style="text-align: center;"><h4 style="margin-bottom: 10px;margin-top: 5px;font-size: 12px;">Express Fast Delivery Service</h4>
+                <p style="margin-bottom: 5px;font-size: 12px;margin-top: 5px;">Office No. 305, Al Rubaya Building Damascus Street Al Qusais 2 Dubai U.A.E</p>
+                <p style="margin-bottom: 5px;font-size: 12px;margin-top: 5px;"> TRN 1005392707000003</p></td>
+            <td width="33.33%" style="text-align: right;"></td>
+        </tr>
+
+    </table>
       <p style="text-indent: 0pt;text-align: left;"><br/></p>
       <ol id="l1">
          <li data-list-text="1).">
@@ -336,6 +356,19 @@
             <p style="padding-left: 7pt;text-indent: 0pt;text-align: left;">The company shall ensure that all vehicles/bikes are maintained in working, clean, hygienic, and good condition. The drivers/riders should follow all the safety regulations as per UAE Authorities. Complaints received against the riders/drivers more than <b>3 times within 3 </b>months will require such riders/drivers to undergo training at the cost of the rider.</p>
             <p style="text-indent: 0pt;text-align: left;"><br/></p>
          </li>
+         <p style="text-indent: 0pt;text-align: left;page-break-after: always;"><br/></p>
+
+         <table width="100%" style="font-family: sans-serif;">
+            <tr>
+                <td width="33.33%">&nbsp;<img src="/public/dist/img/print-logo.png" width="100" /> </td>
+                <td width="33.33%" style="text-align: center;"><h4 style="margin-bottom: 10px;margin-top: 5px;font-size: 12px;">Express Fast Delivery Service</h4>
+                    <p style="margin-bottom: 5px;font-size: 12px;margin-top: 5px;">Office No. 305, Al Rubaya Building Damascus Street Al Qusais 2 Dubai U.A.E</p>
+                    <p style="margin-bottom: 5px;font-size: 12px;margin-top: 5px;"> TRN 1005392707000003</p></td>
+                <td width="33.33%" style="text-align: right;"></td>
+            </tr>
+
+        </table>
+        <br/>
          <li data-list-text="17).">
             <p style="padding-left: 7pt;text-indent: 0pt;text-align: left;">The company shall ensure that all vehicles, helmets, and boxes are branded by the registered vendor assigned by Noon. If new vehicles are added or replaced for maintenance, the company should have the vehicles, box, and helmet in plain without any branding.</p>
          </li>
