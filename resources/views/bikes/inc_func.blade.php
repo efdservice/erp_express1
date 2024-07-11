@@ -137,8 +137,17 @@
                success:function (data) {
                     var htmlData='';
                     for(i in data){
+                        let rider = 'No Active Rider';
+                        let note = '';
+                        if(data[i].rider?.name){
+                            rider = data[i].rider?.name;
+                        }
+                        if(data[i].rider?.notes){
+                            note = data[i].rider?.notes;
+                        }
+
                         htmlData+='<tr>';
-                            htmlData+='<td>'+data[i].rider?.name+'<br/>'+data[i].notes+'</td>';
+                            htmlData+='<td>'+rider+'<br/>'+note+'</td>';
                             htmlData+='<td>'+data[i].warehouse+'</td>';
                             htmlData+='<td>'+data[i].note_date+'</td>';
                             if(data[i].warehouse =='Active'){
