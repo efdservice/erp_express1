@@ -35,7 +35,7 @@
                     @if(in_array($entry->vt,[8,10,11,15]))
                     @if($entry->SID)
                     <input type="hidden" name="bike_id[]" value="{{$entry->SID}}">
-                    {{ ' (Bike:'.$entry->bike->plate.')'}}
+                    {{ ' (Bike:'.@$entry->bike->plate.')'}}
                     @endif
                     @endif
                 </div>
