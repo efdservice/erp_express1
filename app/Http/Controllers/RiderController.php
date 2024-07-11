@@ -60,16 +60,16 @@ class RiderController extends Controller
 
                     return CommonHelper::RiderStatus($row->status);
                     //return  Form::select('category_id', CommonHelper::RiderStatus(), $row->status, ['class' => 'statuschange','onchange' => 'changeStatus('.$row->id.',this)']);
-
+    
                     //return '<a href="javascript:void(0)" data-toggle="tooltip"  data-action="'.url('rider-status/'.$row->id).'" data-original-title="Action" class="doAction" ><span class="badge badge-primary" >Active</span></a>';
-
+    
                 })
                 ->addColumn('action', function ($row) {
                     $btn = '';
                     if (\Auth::user()->can('riders_document')) {
-                        $btn = $btn . '<a href="' . route('rider.contract', $row->id) . '" data-toggle="tooltip" class="file btn btn-warning btn-xs mr-1" data-modalID="modal-new" target="_blank"><i class="fas fa-file"></i> Contract</a>';
-                        /*                         $btn = $btn . '<button class="btn btn-sm btn-primary" onclick="upload_contract()">Upload</button>';
-                         */
+
+                        $btn = $btn . '<a href="javascript:void();" data-action="' . route('rider_contract_upload', $row->id) . '" data-size="md" data-title="Rider Contract" class="btn btn-warning btn-xs show-modal mr-1"><i class="fas fa-file"></i> Contract</a>';
+
                     }
                     if (\Auth::user()->can('riders_document')) {
                         $btn = $btn . '<a href="' . route('rider.document', $row->id) . '" data-toggle="tooltip" class="file btn btn-success btn-xs" data-modalID="modal-new"><i class="fas fa-file"></i> Documents</a>';
@@ -359,7 +359,7 @@ class RiderController extends Controller
 
         return view('riders.contract', compact('rider'));
     }
-    public function contract_upload(Request $request)
+    public function contract_upload(Request $request, $id)
     {
         if (isset($request->contract)) {
 
@@ -368,14 +368,14 @@ class RiderController extends Controller
             $name = time() . '.' . $extension;
             $doc->storeAs('contract', $name);
 
-            $contract = Rider::find($request->id);
-            $contract->contract = $name;
-            $contract->save();
+            $rider = Rider::find($request->id);
+            $rider->contract = $name;
+            $rider->save();
 
-            return redirect(url('riders'))->with('success', $contract->name . '( ' . $contract->rider_id . ' ) Contract uploaded.');
+            return redirect(url('rider'))->with('success', $rider->name . '( ' . $rider->rider_id . ' ) Contract uploaded.');
         } else {
-
-            return view('riders.contract-modal');
+            $rider = Rider::find($id);
+            return view('riders.contract-modal', compact('rider'));
         }
     }
 }
