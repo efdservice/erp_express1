@@ -41,7 +41,7 @@
         </tr>
 
     </table> --}}
-    <div style="height: 100px;">&nbsp;</div>
+    <div style="height: 110px;">&nbsp;</div>
       <p style="padding-top: 0pt;text-indent: 0pt;text-align: left;"></p>
       <h1 style="text-indent: 0pt;text-align: center;">AGREEMENT FOR FOOD DELIVERY RIDER</h1>
       <p style="text-indent: 0pt;text-align: left;"></p>
@@ -283,7 +283,7 @@
       <p style="padding-top: 10pt;padding-left: 7pt;text-indent: 0pt;text-align: left;">Payment of fees will be settled in United Arab Emirates Dirhams (<b>AED</b>).</p>
 
       <p style="text-indent: 0pt;text-align: left;page-break-after: always;"></p>
-      <div style="height: 100px;">&nbsp;</div>
+      <div style="height: 110px;">&nbsp;</div>
       {{-- <table width="100%" style="font-family: sans-serif;">
         <tr>
             <td width="33.33%">&nbsp;<img src="/public/dist/img/print-logo.png" width="100" /> </td>
@@ -359,7 +359,7 @@
             <p style="text-indent: 0pt;text-align: left;"><br/></p>
          </li>
          <p style="text-indent: 0pt;text-align: left;page-break-after: always;"><br/></p>
-         <div style="height: 100px;">&nbsp;</div>
+         <div style="height: 110px;">&nbsp;</div>
          {{-- <table width="100%" style="font-family: sans-serif;">
             <tr>
                 <td width="33.33%">&nbsp;<img src="/public/dist/img/print-logo.png" width="100" /> </td>
