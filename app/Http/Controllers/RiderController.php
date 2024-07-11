@@ -68,7 +68,7 @@ class RiderController extends Controller
                     $btn = '';
                     if (\Auth::user()->can('riders_document')) {
 
-                        $btn = $btn . '<a href="javascript:void();" data-action="' . route('rider_contract_upload', $row->id) . '" data-size="md" data-title="Rider Contract" class="btn btn-warning btn-xs show-modal mr-1"><i class="fas fa-file"></i> Contract</a>';
+                        $btn = $btn . '<a href="javascript:void();" data-action="' . route('rider_contract_upload', $row->id) . '" data-size="md" data-title="' . $row->name . ' (' . $row->rider_id . ') Contract" class="btn btn-warning btn-xs show-modal mr-1"><i class="fas fa-file"></i> Contract</a>';
 
                     }
                     if (\Auth::user()->can('riders_document')) {
