@@ -199,14 +199,16 @@
                <p class="s2" style="padding-top: 4pt;padding-left: 1pt;text-indent: 0pt;text-align: left;">Per the completed delivery order by each assigned Operator</p>
             </td>
          </tr>
+      </table>
+      <table style="border-collapse:collapse;margin-left:8px;border:0px;">
          <tr style="height:17pt">
-            <td style="border-top-style:solid;border-top-width:1pt;border-left-style:solid;border-left-width:1pt;border-bottom-style:solid;border-bottom-width:1pt;border-right-style:solid;border-right-width:1pt" bgcolor="#FFC000" colspan="2">
+            <td style="width:230px;border-top-style:solid;border-top-width:1pt;border-left-style:solid;border-left-width:1pt;border-bottom-style:solid;border-bottom-width:1pt;border-right-style:solid;border-right-width:1pt" bgcolor="#FFC000" colspan="1">
                <p class="s1" style="padding-top: 2pt;padding-left: 24pt;text-indent: 0pt;text-align: left;">Delivery KM Range</p>
             </td>
-            <td style="border-top-style:solid;border-top-width:1pt;border-left-style:solid;border-left-width:1pt;border-bottom-style:solid;border-bottom-width:1pt;border-right-style:solid;border-right-width:1pt;text-align:center;" bgcolor="#FFC000" colspan="2">
+            <td style="width:520px;border-top-style:solid;border-top-width:1pt;border-left-style:solid;border-left-width:1pt;border-bottom-style:solid;border-bottom-width:1pt;border-right-style:solid;border-right-width:1pt;text-align:center;" bgcolor="#FFC000" colspan="3">
                 <p class="s1" style="padding-top: 2pt;padding-left: 24pt;text-indent: 0pt;text-align: center;">Description</p>
              </td>
-            <td style="border-top-style:solid;border-top-width:1pt;border-left-style:solid;border-left-width:1pt;border-bottom-style:solid;border-bottom-width:1pt;border-right-style:solid;border-right-width:1pt" bgcolor="#FFC000" colspan="2">
+            <td style="width:100px;border-top-style:solid;border-top-width:1pt;border-left-style:solid;border-left-width:1pt;border-bottom-style:solid;border-bottom-width:1pt;border-right-style:solid;border-right-width:1pt" bgcolor="#FFC000" colspan="1">
                <p class="s1" style="padding-top: 2pt;text-indent: 0pt;text-align: center;">Rate</p>
             </td>
            {{--  <td style="width:88pt;border-top-style:solid;border-top-width:1pt;border-left-style:solid;border-left-width:1pt;border-bottom-style:solid;border-bottom-width:1pt;border-right-style:solid;border-right-width:1pt" bgcolor="#FFC000">
@@ -222,13 +224,13 @@
 
          @foreach($rider->items as $item)
          <tr style="height:15pt">
-            <td style="width:131pt;border-top-style:solid;border-top-width:1pt;border-left-style:solid;border-left-width:1pt;border-bottom-style:solid;border-bottom-width:1pt;border-right-style:solid;border-right-width:1pt" colspan="2">
+            <td style="border-top-style:solid;border-top-width:1pt;border-left-style:solid;border-left-width:1pt;border-bottom-style:solid;border-bottom-width:1pt;border-right-style:solid;border-right-width:1pt" colspan="1">
                <p class="s8" style="padding-top: 1pt;padding-left: 18pt;text-indent: 0pt;text-align: left;">{{@$item->item->item_name}}</p>
             </td>
-            <td style="width:131pt;border-top-style:solid;border-top-width:1pt;border-left-style:solid;border-left-width:1pt;border-bottom-style:solid;border-bottom-width:1pt;border-right-style:solid;border-right-width:1pt" colspan="2">
+            <td style="border-top-style:solid;border-top-width:1pt;border-left-style:solid;border-left-width:1pt;border-bottom-style:solid;border-bottom-width:1pt;border-right-style:solid;border-right-width:1pt" colspan="3">
                 <p class="s8" style="padding-top: 1pt;padding-left: 18pt;text-indent: 0pt;text-align: left;">{{@$item->item->descriptions}}</p>
              </td>
-            <td style="width:85pt;border-top-style:solid;border-top-width:1pt;border-left-style:solid;border-left-width:1pt;border-bottom-style:solid;border-bottom-width:1pt;border-right-style:solid;border-right-width:1pt" colspan="2">
+            <td style="border-top-style:solid;border-top-width:1pt;border-left-style:solid;border-left-width:1pt;border-bottom-style:solid;border-bottom-width:1pt;border-right-style:solid;border-right-width:1pt" colspan="1">
                <p class="s2" style="padding-top: 1pt;text-indent: 0pt;text-align: center;">{{@$item->price}}</p>
             </td>
            {{--  <td style="width:88pt;border-top-style:solid;border-top-width:1pt;border-left-style:solid;border-left-width:1pt;border-bottom-style:solid;border-bottom-width:1pt;border-right-style:solid;border-right-width:1pt">
