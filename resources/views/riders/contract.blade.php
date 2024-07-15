@@ -138,7 +138,7 @@
                <p class="s1" style="padding-top: 1pt;padding-left: 1pt;text-indent: 0pt;text-align: left;">Contract Period:</p>
             </td>
             <td style="border-top-style:solid;border-top-width:1pt;border-left-style:solid;border-left-width:1pt;border-bottom-style:solid;border-bottom-width:1pt;border-right-style:solid;border-right-width:1pt" colspan="4">
-               <p class="s2" style="padding-top: 1pt;padding-left: 1pt;text-indent: 0pt;text-align: left;">Minimum <b>12 Months </b>or Express Fast Visa Holder <b>24 Months </b>(Auto-Renewable)</p>
+               <p class="s2" style="padding-top: 1pt;padding-left: 1pt;text-indent: 0pt;text-align: left;">Minimum <b>12 Months </b>or Express Fast Visa Holder <b>24 Months </b></p>
             </td>
          </tr>
          <tr style="height:16pt">
@@ -146,7 +146,7 @@
                <p class="s1" style="padding-top: 1pt;padding-left: 1pt;text-indent: 0pt;text-align: left;">Contract Start Date</p>
             </td>
             <td style="width:429pt;border-top-style:solid;border-top-width:1pt;border-left-style:solid;border-left-width:1pt;border-bottom-style:solid;border-bottom-width:1pt;border-right-style:solid;border-right-width:1pt" colspan="4">
-               <p class="s2" style="padding-top: 1pt;padding-left: 1pt;text-indent: 0pt;text-align: left;">Date of signing the contract by the second Party</p>
+               <p class="s2" style="padding-top: 1pt;padding-left: 1pt;text-indent: 0pt;text-align: left;">Date of signing the contract by the second Party (The contract is Renwable annually on January 1st</p>
             </td>
          </tr>
          <tr style="height:16pt">
