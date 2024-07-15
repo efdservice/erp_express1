@@ -131,8 +131,8 @@
                         <td>{{@$res[0]->rider->company_contact }}</td>
                     </tr>
                     <tr>
-                        <th>Other details:</th>
-                        <td>{{@$res[0]->rider->other_details }}</td>
+                        <th>Description:</th>
+                        <td>{{@$res[0]->descriptions }}</td>
                     </tr>
                 </table>
             </td>
