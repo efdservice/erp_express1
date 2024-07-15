@@ -146,7 +146,7 @@
                <p class="s1" style="padding-top: 1pt;padding-left: 1pt;text-indent: 0pt;text-align: left;">Contract Start Date</p>
             </td>
             <td style="border-top-style:solid;border-top-width:1pt;border-left-style:solid;border-left-width:1pt;border-bottom-style:solid;border-bottom-width:1pt;border-right-style:solid;border-right-width:1pt" colspan="5">
-               <p class="s2" style="padding-top: 1pt;padding-left: 1pt;text-indent: 0pt;text-align: left;">Date of signing the contract by the second Party (The contract is Renwable annually on January 1st)</p>
+               <p class="s2" style="padding-top: 1pt;padding-left: 1pt;text-indent: 0pt;text-align: left;">Date of signing the contract by the second Party (The contract is Renwable annually on <b>January 1st</b>)</p>
             </td>
          </tr>
          <tr style="height:16pt">
