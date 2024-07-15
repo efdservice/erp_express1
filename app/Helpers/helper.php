@@ -569,7 +569,9 @@ class CommonHelper
         $result = [
             1 => 'Active',
             2 => 'Vacation',
-            3 => 'Terminate'
+            3 => 'Terminate',
+            4 => 'Theft',
+            5 => 'Absconded'
         ];
 
         if ($status != null) {

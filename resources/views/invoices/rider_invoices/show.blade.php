@@ -140,7 +140,7 @@
                 <table style="text-align: left;">
                     <tr>
                         <th>Status:</th>
-                        <td @if($res[0]->rider->status == 3) style="color:red;" @endif>{{ App\Helpers\CommonHelper::RiderStatus($res[0]->rider->status) }}</td>
+                        <td @if(in_array($res[0]->rider->status,[3,4,5])) style="color:red;" @endif>{{ App\Helpers\CommonHelper::RiderStatus($res[0]->rider->status) }}</td>
                     </tr>
                     <tr>
                         <th>Working Days:</th>
