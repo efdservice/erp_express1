@@ -130,7 +130,10 @@
                         <th>Sup. Contact:</th>
                         <td>{{@$res[0]->rider->company_contact }}</td>
                     </tr>
-
+                    <tr>
+                        <th>Other details:</th>
+                        <td>{{@$res[0]->rider->other_details }}</td>
+                    </tr>
                 </table>
             </td>
             <td>
