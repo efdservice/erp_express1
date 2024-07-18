@@ -267,7 +267,12 @@ class CommonHelper
         $array = [
             'Rusbeel Yousaf' => 'Rusbeel Yousaf',
             'Kaleem' => 'Kaleem',
-            'Shakeel' => 'Shakeel'
+            'Shakeel' => 'Shakeel',
+            'Waqas Mehmood' => 'Waqas Mehmood',
+            'Bashir Ahmad' => 'Bashir Ahmad',
+            'Aysha Madam' => 'Aysha Madam',
+            'Rithik Ram Naresh' => 'Rithik Ram Naresh',
+            'Zuhair Iftikhar' => 'Zuhair Iftikhar'
         ];
 
         $list = '';
