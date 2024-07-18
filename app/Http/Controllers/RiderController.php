@@ -33,9 +33,9 @@ class RiderController extends Controller
             $data = Rider::latest()->get();
             return DataTables::of($data)
                 ->addIndexColumn()
-                ->addColumn('VID', function ($row) {
-                    return $row->vendor->name ?? '';
-                })
+                /*  ->addColumn('VID', function ($row) {
+                     return $row->vendor->name ?? '';
+                 }) */
                 ->addColumn('PID', function ($row) {
                     return $row->project->name ?? '';
                 })
@@ -48,14 +48,14 @@ class RiderController extends Controller
                          return 0;
                      }
                  }) */
-                /*    ->addColumn('id', function ($row) {
-                       return $row->sims->sim_number ?? '';
+                ->addColumn('id', function ($row) {
+                    return $row->sims->sim_number ?? '';
 
-                   })
-                   ->addColumn('license_no', function ($row) {
-                       return $row->bikes->plate ?? '';
+                })
+                /*  ->addColumn('license_no', function ($row) {
+                     return $row->bikes->plate ?? '';
 
-                   }) */
+                 }) */
                 ->addColumn('status', function ($row) {
 
                     return CommonHelper::RiderStatus($row->status);

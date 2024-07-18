@@ -82,9 +82,9 @@
             columns: [
                 {data: 'rider_id', name: 'rider_id'},
                 {data: 'name', name: 'name'},
-                {data: 'VID', name: 'VID'},
-            /*     {data: 'id', name: 'id'},
-                {data: 'license_no', name: 'license_no'}, */
+/*                 {data: 'VID', name: 'VID'},
+ */                 {data: 'id', name: 'id'},
+              /*  {data: 'license_no', name: 'license_no'}, */
                 {data: 'fleet_supervisor', name: 'fleet_supervisor'},
                 {data: 'PID', name: 'PID'},
 /*                 {data: 'Balance', name: 'Balance'},
