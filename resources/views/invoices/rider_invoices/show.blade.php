@@ -120,7 +120,7 @@
                     </tr>
                     <tr>
                         <th>Rider Contact:</th>
-                        <td>{{@$res[0]->rider->personal_contact }}</td>
+                        <td>{{@$res[0]->sim->sim_number }}</td>
                     </tr>
                     <tr>
                         <th>Fleet Supervisor:</th>

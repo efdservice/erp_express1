@@ -92,7 +92,7 @@
                <p class="s1" style="padding-top: 2pt;padding-left: 1pt;text-indent: 0pt;text-align: left;">Phone No.</p>
             </td>
             <td style="border-top-style:solid;border-top-width:1pt;border-left-style:solid;border-left-width:1pt;border-bottom-style:solid;border-bottom-width:1pt;border-right-style:solid;border-right-width:1pt" >
-               <p class="s2" style="padding-top: 2pt;text-indent: 0pt;text-align: center;">{{@$rider->sims->sim_number}}  -</p>
+               <p class="s2" style="padding-top: 2pt;text-indent: 0pt;text-align: center;">{{@$rider->personal_contact}}  -</p>
             </td>
             <td style="border-top-style:solid;border-top-width:1pt;border-left-style:solid;border-left-width:1pt;border-bottom-style:solid;border-bottom-width:1pt;border-right-style:solid;border-right-width:1pt">
                <p class="s1" style="padding-top: 2pt;padding-left: 1pt;text-indent: 0pt;text-align: left;">License No.</p>

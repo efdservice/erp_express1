@@ -31,4 +31,9 @@ class RiderInvoice extends Model
     {
         return $this->hasOne(Bike::class, 'RID', 'RID');
     }
+
+    public function sim()
+    {
+        return $this->hasOne(Sim::class, 'assign_sim', 'RID');
+    }
 }
