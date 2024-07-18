@@ -29,6 +29,6 @@ class RiderInvoice extends Model
     }
     public function bike()
     {
-        return $this->hasOne(Bike::class, 'id', 'RID');
+        return $this->hasOne(Bike::class, 'RID', 'RID');
     }
 }
