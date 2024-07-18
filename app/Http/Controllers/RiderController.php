@@ -52,10 +52,10 @@ class RiderController extends Controller
                     return $row->sims->sim_number ?? '';
 
                 })
-                /*  ->addColumn('license_no', function ($row) {
-                     return $row->bikes->plate ?? '';
+                ->addColumn('license_no', function ($row) {
+                    return $row->bikes->plate ?? '';
 
-                 }) */
+                })
                 ->addColumn('status', function ($row) {
 
                     return CommonHelper::RiderStatus($row->status);

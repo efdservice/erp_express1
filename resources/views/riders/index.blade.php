@@ -38,7 +38,7 @@
                                         <th>Rider Name</th>
                                        {{--  <th>Vendor</th> --}}
                                         <th>Sim</th>
-                                        {{-- <th>Bike Plate #</th> --}}
+                                        <th>Bike Plate #</th>
                                         <th>Supervisor</th>
                                         <th>Project</th>
 {{--                                         <th>Balance</th>
