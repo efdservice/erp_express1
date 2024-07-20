@@ -33,9 +33,9 @@ class RiderController extends Controller
             $data = Rider::latest()->get();
             return DataTables::of($data)
                 ->addIndexColumn()
-                /*  ->addColumn('VID', function ($row) {
-                     return $row->vendor->name ?? '';
-                 }) */
+                ->addColumn('name', function ($row) {
+                    return '<a href="javascript:void();" data-action="' . route('rider_show', $row->id) . '" data-size="lg" data-title="' . $row->name . ' (' . $row->rider_id . ') " class="show-modal">' . $row->name . '</a>';
+                })
                 ->addColumn('PID', function ($row) {
                     return $row->project->name ?? '';
                 })
@@ -66,8 +66,8 @@ class RiderController extends Controller
                 })
                 ->addColumn('action', function ($row) {
                     $btn = '';
-                    $btn = $btn . '<a href="javascript:void();" data-action="' . route('rider_show', $row->id) . '" data-size="lg" data-title="' . $row->name . ' (' . $row->rider_id . ') Contract" class="btn btn-default btn-xs show-modal mr-1"><i class="fas fa-eye"></i> Show</a>';
-
+                    //$btn = $btn . '<a href="javascript:void();" data-action="' . route('rider_show', $row->id) . '" data-size="lg" data-title="' . $row->name . ' (' . $row->rider_id . ') Contract" class="btn btn-default btn-xs show-modal mr-1"><i class="fas fa-eye"></i> Show</a>';
+    
                     if (\Auth::user()->can('riders_document')) {
 
                         $btn = $btn . '<a href="javascript:void();" data-action="' . route('rider_contract_upload', $row->id) . '" data-size="md" data-title="' . $row->name . ' (' . $row->rider_id . ') Contract" class="btn btn-warning btn-xs show-modal mr-1"><i class="fas fa-file"></i> Contract</a>';
@@ -84,7 +84,7 @@ class RiderController extends Controller
                     }
                     return $btn;
                 })
-                ->rawColumns(['action', 'status'])
+                ->rawColumns(['action', 'status', 'name'])
                 ->make(true);
 
         }
