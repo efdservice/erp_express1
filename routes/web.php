@@ -70,6 +70,7 @@ Route::group(['middleware' => ['auth']], function () {
 
     Route::get('riders/contract/{id?}', [\App\Http\Controllers\RiderController::class, 'contract'])->name('rider.contract');
     Route::any('riders/contract_upload/{id?}', [\App\Http\Controllers\RiderController::class, 'contract_upload'])->name('rider_contract_upload');
+    Route::any('riders/show/{id?}', [\App\Http\Controllers\RiderController::class, 'show'])->name('rider_show');
 
     Route::get('bike/get_bike_history/{id?}', [\App\Http\Controllers\BikeController::class, 'get_bike_history']);
     Route::get('bike/contract/{id?}', [\App\Http\Controllers\BikeController::class, 'contract']);

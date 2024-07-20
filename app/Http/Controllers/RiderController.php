@@ -66,6 +66,8 @@ class RiderController extends Controller
                 })
                 ->addColumn('action', function ($row) {
                     $btn = '';
+                    $btn = $btn . '<a href="javascript:void();" data-action="' . route('rider_show', $row->id) . '" data-size="lg" data-title="' . $row->name . ' (' . $row->rider_id . ') Contract" class="btn btn-default btn-xs show-modal mr-1"><i class="fas fa-eye"></i> Show</a>';
+
                     if (\Auth::user()->can('riders_document')) {
 
                         $btn = $btn . '<a href="javascript:void();" data-action="' . route('rider_contract_upload', $row->id) . '" data-size="md" data-title="' . $row->name . ' (' . $row->rider_id . ') Contract" class="btn btn-warning btn-xs show-modal mr-1"><i class="fas fa-file"></i> Contract</a>';
@@ -167,6 +169,10 @@ class RiderController extends Controller
 
 
             } else {
+                if (!auth()->user()->hasRole('Admin')) {
+                    unset($data['name']);
+                    unset($data['rider_id']);
+                }
                 $ret = Rider::where('id', $id)->update($data);
                 TransactionAccount::where('Parent_Type', $id)->where('PID', 21)->update($tData);
                 if ($request->post('items')) {
@@ -217,7 +223,8 @@ class RiderController extends Controller
      */
     public function show($id)
     {
-        //
+        $rider = Rider::find($id);
+        return view('riders.show', compact('rider'));
     }
 
     /**
