@@ -304,106 +304,137 @@
     </table>
       <p style="text-indent: 0pt;text-align: left;"><br/></p>
       <ol id="l1">
-         <li data-list-text="1).">
-            <p style="padding-left: 7pt;text-indent: 0pt;text-align: left;">Minimum Guarantee Noon will assure a Minimum guarantee of <b>AED 130 </b>multiplied by the number of days the rider has rendered service calculated on a monthly basis provided the terms.</p>
-         </li>
-         <li data-list-text="2).">
-            <p style="padding-top: 8pt;padding-left: 7pt;text-indent: 2pt;text-align: left;">We are offering and providing the same rate to the rider as we are receiving from the employer. Additionally, the rider is liable to pay fixed charges totaling <b>AED 1,000</b>, which include <b>AED 600 </b>for bike rent, <b>AED 105 </b>for SIM charges, and <b>AED 295 </b>for Express Fast charges.&quot;</p>
-         </li>
-         <li data-list-text="3).">
-            <p style="padding-top: 2pt;padding-left: 7pt;text-indent: 0pt;text-align: left;">You shall be eligible for end of service benefits as per UAE Labor Law, and the amount for the same is already considered in Commission rate and Salary.</p>
-         </li>
-      </ol>
-      <p style="padding-top: 2pt;padding-left: 7pt;text-indent: 0pt;text-align: left;">0</p>
-      <ol id="l2">
-         <li data-list-text="5).">
-            <p style="padding-top: 3pt;padding-left: 7pt;text-indent: 0pt;text-align: left;">You are entitled to Annual Leave as per UAE Labor Law after completion of <b>24 Months</b>, and the amount of the same is already considered in Commission Based Rate and net salary.</p>
-         </li>
-         <li data-list-text="6).">
-            <p style="padding-top: 2pt;padding-left: 7pt;text-indent: 0pt;text-align: left;">The Company shall be entitled to terminate this Agreement without warning and without paying Terminal/Severance Benefits if you are found guilty in any of the cases as stated in UAE Labor Law.</p>
-         </li>
-         <li data-list-text="7).">
-            <p style="padding-top: 2pt;padding-left: 20pt;text-indent: -13pt;text-align: left;">The term of this contract shall be <b>12 Months </b>or Express fast delivery service Visa holders <b>24 Months </b>from the starting date.</p>
-         </li>
-         <li data-list-text="8).">
-            <p style="padding-top: 5pt;padding-left: 7pt;text-indent: 0pt;text-align: left;">Any rider who leaves or is terminated from the job will be liable for a <b>2-month </b>rental fee of <b>AED 1,200 </b>for the bike, whether they are using an Express Fast delivery service bike or a rental bike. If the rider leaves or is terminated by Express Fast Delivery or the employer, an additional charge of <b>AED 1,000 </b>will be applied, in addition to the mentioned bike rental fee, resulting in a total penalty of <b>AED 2,200.</b></p>
-         </li>
-         <li data-list-text="9).">
-            <p style="padding-top: 4pt;padding-left: 7pt;text-indent: 0pt;text-align: left;">Before the final settlement of salary, it&#39;s necessary to clear all assets from Express Fast, Noon, and the bike leasing company. Failure to do so will result in charges for bike rent every month <b>(AED 600) </b>until the assets are returned, in addition to the total penalty amount of <b>AED 2200.</b></p>
-         </li>
-         <li data-list-text="10).">
-            <p style="padding-top: 2pt;padding-left: 7pt;text-indent: 0pt;text-align: left;">Once the rider completes the working month (ETC <b>30 days</b>), your monthly evaluation will be conducted. The employer will receive the report from noon management after the assessment of your monthly performance and RTA fines for that specific month. Then, the work salary will be calculated and released <b>15 </b>days after the month closure, and the invoice raised.</p>
-         </li>
-         <li data-list-text="11).">
-            <p style="padding-top: 2pt;padding-left: 7pt;text-indent: 0pt;text-align: left;">If a rider&#39;s monthly orders are less than <b>400 </b>or if they have attendance for less than <b>26 days </b>or less than <b>10 hours </b>of login time in a day, they will be charged half of their bike rent and mobile bill, and they will not be eligible for minimum guarantee fees.</p>
-         </li>
-         <li data-list-text="12).">
-            <h2 style="padding-top: 2pt;padding-left: 26pt;text-indent: -18pt;text-align: left;">Bike Maintenance:</h2>
-            <ol id="l3">
-               <li data-list-text="a">
-                  <p style="padding-left: 31pt;text-indent: -23pt;text-align: left;">If a rider exceeds the limit of actual bike service kilometers, extra mileage will be charged to the rider at a rate of <b>1 kilometer</b></p>
-                  <p style="padding-left: 7pt;text-indent: 0pt;text-align: left;">per <b>1 AED</b>.</p>
-               </li>
-               <li data-list-text="b">
-                  <p style="padding-left: 7pt;text-indent: 0pt;text-align: left;">If a rider gets into an accident while using the bike and does not obtain an accident report from the police, they will be responsible for the maintenance costs of the bike.</p>
-               </li>
-               <li data-list-text="c">
-                  <p style="padding-left: 7pt;text-indent: 0pt;text-align: left;">If a rider is found to be at fault in an accident or other incident, they will be responsible for paying any government fines and charges imposed by the leasing company directly or through the company. These fines and charges will be billed to the rider, and they will be required to pay them.</p>
-               </li>
-            </ol>
-         </li>
-         <li data-list-text="13).">
-            <p style="padding-top: 2pt;padding-left: 7pt;text-indent: 0pt;text-align: left;">Upon the discovery of compromised packaging or a lack of packaging, further examination for visible product damage will be conducted. If visible product damage is found, the damaged item(s) will be estimated and charged to the company.</p>
-         </li>
-         <li data-list-text="14).">
-            <p style="padding-top: 2pt;padding-left: 7pt;text-indent: 0pt;text-align: left;">The company shall ensure pickup and delivery associates are always in clean &amp; tidy noon uniforms. They are required to display good behavior to Noon&#39;s customers and all stores. Any unacceptable behavior like intoxication during working hours, and fighting with each other/customers/team/in stores will not be tolerated. The delivery associates will be terminated on the spot, and a penalty of <b>AED 2200 </b>for each person will be charged to the rider.</p>
-         </li>
-         <li data-list-text="15).">
-            <p style="padding-top: 5pt;padding-left: 7pt;text-indent: 0pt;text-align: justify;">The company ensures pickup and delivery meet the scheduled time assigned by the Noon supervisor. Any delays should be informed to the Noon supervisor. If reported late and no information is passed off the delay, <b>AED 50 </b>deduction will be made for over <b>30 minutes</b>, and late over <b>30 minutes </b>will be considered as no pay for the service.</p>
-            <p style="text-indent: 0pt;text-align: left;"><br/></p>
-         </li>
-         <li data-list-text="16).">
-            <p style="padding-left: 7pt;text-indent: 0pt;text-align: left;">The company shall ensure that all vehicles/bikes are maintained in working, clean, hygienic, and good condition. The drivers/riders should follow all the safety regulations as per UAE Authorities. Complaints received against the riders/drivers more than <b>3 times within 3 </b>months will require such riders/drivers to undergo training at the cost of the rider.</p>
-            <p style="text-indent: 0pt;text-align: left;"><br/></p>
-         </li>
-         <p style="text-indent: 0pt;text-align: left;page-break-after: always;"><br/></p>
-         <div style="height: 110px;">&nbsp;</div>
-         {{-- <table width="100%" style="font-family: sans-serif;">
-            <tr>
-                <td width="33.33%">&nbsp;<img src="/public/dist/img/print-logo.png" width="100" /> </td>
-                <td width="33.33%" style="text-align: center;"><h4 style="margin-bottom: 10px;margin-top: 5px;font-size: 12px;">Express Fast Delivery Service</h4>
-                    <p style="margin-bottom: 5px;font-size: 12px;margin-top: 5px;">Office No. 305, Al Rubaya Building Damascus Street Al Qusais 2 Dubai U.A.E</p>
-                    <p style="margin-bottom: 5px;font-size: 12px;margin-top: 5px;"> TRN 1005392707000003</p></td>
-                <td width="33.33%" style="text-align: right;"></td>
-            </tr>
-
-        </table> --}}
-        <br/>
-         <li data-list-text="17).">
-            <p style="padding-left: 7pt;text-indent: 0pt;text-align: left;">The company shall ensure that all vehicles, helmets, and boxes are branded by the registered vendor assigned by Noon. If new vehicles are added or replaced for maintenance, the company should have the vehicles, box, and helmet in plain without any branding.</p>
-         </li>
-         <li data-list-text="18).">
-            <p style="padding-top: 4pt;padding-left: 7pt;text-indent: 0pt;text-align: left;">All the drivers/riders are strictly required to display good behavior to our customers/stores. Any unacceptable behavior like intoxication during working hours, fighting with each other/customers/sop/absentees’ team will not be tolerated. The rider will be terminated on the spot, and a penalty of <b>AED 2200 </b>will be deducted from the rider.</p>
-         </li>
-         <li data-list-text="19).">
-            <p style="padding-top: 4pt;padding-left: 28pt;text-indent: -21pt;text-align: left;">Driver/Rider needs to report to duty <b>5 minutes </b>before the assigned shift, and late login up to <b>30 minutes </b>will have <b>AED 500</b></p>
-            <p style="padding-left: 7pt;text-indent: 0pt;text-align: left;">deduction, and late over <b>30 minutes </b>will be considered as no pay.</p>
-         </li>
-         <li data-list-text="20).">
-            <p style="padding-top: 5pt;padding-left: 7pt;text-indent: 0pt;text-align: left;">Driver/Rider taking leaves from duty should inform the Noon fleet manager/Noon supervisor, and failing to do so will incur a deduction in Driver/Rider&#39;s two (<b>2</b>) days’ salary.</p>
-         </li>
-         <li data-list-text="21).">
-            <p style="padding-top: 2pt;padding-left: 7pt;text-indent: 0pt;text-align: left;">Driver/Rider who has reported working and is required to take leave during the day needs to inform the Noon fleet Supervisor. Rider&#39;s leaving for the day without informing the Noon team will have their one (<b>1</b>) day salary deducted.</p>
-         </li>
-         <li data-list-text="22).">
-            <p style="padding-top: 2pt;padding-left: 28pt;text-indent: -21pt;text-align: left;">The company should ensure vehicle replacement within <b>1 </b>hour due to reasons not limited to a vehicle breakdown.</p>
-         </li>
-         <li data-list-text="23).">
-            <p style="padding-top: 2pt;padding-left: 7pt;text-indent: 0pt;text-align: left;">Bikes with Noon branding seen or reported used for other services like personal works, without uniform, except the rider, any other person using other than Noon will be considered a breach of this contract. A charge of Penalty Amount <b>AED 2200 </b>will be charged to the rider, and the contract will be terminated.</p>
-         </li>
-         <li data-list-text="24).">
-            <p style="padding-top: 2pt;padding-left: 7pt;text-indent: 0pt;text-align: left;">If there is any appreciation or depreciation in rates from employer the riders will work for the same compensations offered by the employer</p>
-         </li>
+        <li data-list-text="1).">
+            <p style="padding-left: 30pt;text-indent: -23pt;text-align: left;">Minimum Guarantee Noon will assure a
+                Minimum guarantee of multiplied by the number of days the rider has rendered service calculated on a
+                monthly basis provided the terms.</p>
+        </li>
+        <li data-list-text="2).">
+            <p style="padding-top: 2pt;padding-left: 30pt;text-indent: -23pt;text-align: left;">If a rider works less
+                than <b>26 days </b>or works less than <b>10 hours </b>a day, or if their on-time delivery rate is less
+                than <b>90%</b>, or they have fewer than <b>350 </b>orders per month, they will be fined <b>AED 40
+                </b>for each day they fall short. Instead of receiving the guaranteed minimum fee (<b>AED 3500 </b>in
+                Dubai &amp; Abu Dhabi, <b>AED 3000 </b>in Ras Al Khaimah &amp; Umm Al Quwain), they will only get <b>AED
+                    10 </b>per order for the orders they complete in that month.</p>
+        </li>
+        <li data-list-text="3).">
+            <p style="padding-top: 2pt;padding-left: 30pt;text-indent: -23pt;text-align: left;">You shall be eligible
+                for end of service benefits as per UAE Labor Law, and the amount for the same is already considered in
+                Commission rate and Salary.</p>
+        </li>
+        <li data-list-text="4).">
+            <p style="padding-top: 2pt;padding-left: 30pt;text-indent: -23pt;text-align: left;">You are entitled to
+                Annual Leave as per UAE Labor Law after completion of <b>24 Months</b>, and the amount of the same is
+                already considered in Commission Based Rate and net salary.</p>
+        </li>
+        <li data-list-text="5).">
+            <p style="padding-top: 2pt;padding-left: 30pt;text-indent: -23pt;text-align: left;">The Company shall be
+                entitled to terminate this Agreement without warning and without paying Terminal/Severance Benefits if
+                you are found guilty in any of the cases as stated in UAE Labor Law.</p>
+        </li>
+        <li data-list-text="6).">
+            <p style="padding-top: 2pt;padding-left: 30pt;text-indent: -22pt;text-align: left;">The term of this
+                contract shall be <b>12 Months </b>or Express fast delivery service Visa holders <b>24 Months </b>from
+                the starting date.</p>
+        </li>
+        <li data-list-text="7).">
+            <p style="padding-top: 2pt;padding-left: 30pt;text-indent: -22pt;text-align: left;">Any rider who leaves or
+                is terminated from the job will be liable to pay an early termination penalty of <b>AED 1,000</b>.</p>
+        </li>
+        <li data-list-text="8).">
+            <p style="padding-top: 2pt;padding-left: 30pt;text-indent: -23pt;text-align: left;">Before the final
+                settlement of salary, it&#39;s necessary to clear COD and return all assets from Express Fast, Noon, and
+                the bike leasing company. After this clearance, the salary will be released accordingly.</p>
+        </li>
+        <li data-list-text="9).">
+            <p style="padding-top: 2pt;padding-left: 30pt;text-indent: -23pt;text-align: left;">Once the rider completes
+                the working month (ETC <b>30 days</b>), your monthly evaluation will be conducted. The employer will
+                receive the report from noon management after the assessment of your monthly performance and RTA fines
+                for that specific month. Then, the work salary will be calculated and released <b>15 days </b>after the
+                month closure, and the invoice raised.</p>
+        </li>
+        <li data-list-text="10).">
+            <p style="padding-top: 2pt;padding-left: 30pt;text-indent: -23pt;text-align: left;">Upon the discovery of
+                compromised packaging or a lack of packaging, further examination for visible product damage will be
+                conducted. If visible product damage is found, the damaged item(s) will be estimated and charged to the
+                company.</p>
+        </li>
+        <li data-list-text="11).">
+            <p style="padding-top: 2pt;padding-left: 30pt;text-indent: -23pt;text-align: left;">The company shall ensure
+                pickup and delivery associates are always in clean &amp; tidy noon uniforms. They are required to
+                display good behavior to Noon&#39;s customers and all stores. Any unacceptable behavior like
+                intoxication during working hours, and fighting with each other/customers/team/in stores will not be
+                tolerated. The delivery associates will be terminated on the spot, and a penalty of <b>AED 1,000 </b>for
+                each person will be charged to the rider.</p>
+        </li>
+        <li data-list-text="12).">
+            <p style="padding-top: 2pt;padding-left: 30pt;text-indent: -23pt;text-align: left;">The company ensures
+                pickup and delivery meet the scheduled time assigned by the Noon supervisor. Any delays should be
+                informed to the Noon supervisor. If reported late and no information is passed off the delay, <b>AED 50
+                </b>deduction will be made for over <b>30 minutes</b>, and late over <b>30 minutes </b>will be
+                considered as no pay for the service.</p>
+        </li>
+        <li data-list-text="13).">
+            <p style="padding-top: 7pt;padding-left: 30pt;text-indent: -23pt;text-align: left;">The company shall ensure
+                that all vehicles/bikes are maintained in working, clean, hygienic, and good condition. The
+                drivers/riders should follow all the safety regulations as per UAE Authorities. Complaints received
+                against the riders/drivers more than <b>3 times </b>within <b>3 months </b>will require such
+                riders/drivers to undergo training at the cost of the rider.</p>
+        </li>
+        <li data-list-text="14).">
+            <p style="padding-top: 2pt;padding-left: 30pt;text-indent: -23pt;text-align: left;">The company shall ensure
+                that all vehicles, helmets, and boxes are branded by the registered vendor assigned by Noon. If new
+                vehicles are added or replaced for maintenance, the company should have the vehicles, box, and helmet in
+                plain without any branding.</p>
+        </li>
+        <li data-list-text="15).">
+            <p style="padding-top: 6pt;padding-left: 30pt;text-indent: -23pt;text-align: justify;">All the
+                drivers/riders are strictly required to display good behavior to our customers/stores. Any unacceptable
+                behavior like intoxication during working hours, fighting with each other/customers/sop/absentees’ team
+                will not be tolerated. The rider will be terminated on the spot, and a penalty of <b>AED 1,000 </b>will
+                be deducted from the rider.</p>
+        </li>
+        <li data-list-text="16).">
+            <p style="padding-top: 2pt;padding-left: 30pt;text-indent: -23pt;text-align: left;">Drivers/Riders need to
+                report to duty <b>5 </b>minutes before the assigned shift. A late login of up to 30 minutes will result
+                in a <b>AED 50 </b>deduction for that day, and being late by more than 30 minutes will be considered as
+                no pay.</p>
+        </li>
+        <li data-list-text="17).">
+            <p style="padding-top: 6pt;padding-left: 30pt;text-indent: -23pt;text-align: left;">Driver/Rider taking
+                leaves from duty should inform the Noon fleet manager/Noon supervisor, and failing to do so will incur a
+                deduction in Driver/Rider&#39;s two (<b>2</b>) days' salary.</p>
+        </li>
+        <li data-list-text="18).">
+            <p style="padding-top: 2pt;padding-left: 30pt;text-indent: -23pt;text-align: left;">Driver/Rider who has
+                reported working and is required to take leave during the day needs to inform the Noon fleet Supervisor.
+                Rider&#39;s leaving for the day without informing the Noon team will have their one (<b>1</b>) day
+                salary deducted.</p>
+        </li>
+        <li data-list-text="19).">
+            <p style="padding-top: 2pt;padding-left: 30pt;text-indent: -22pt;text-align: left;">The company should
+                ensure vehicle replacement within 1 hour due to reasons not limited to a vehicle breakdown.</p>
+            <p style="text-indent: 0pt;text-align: left;"><br /></p>
+        </li>
+        <p style="text-indent: 0pt;text-align: left;page-break-after: always;"></p>
+      <div style="height: 110px;">&nbsp;</div>
+        <li data-list-text="20).">
+            <p style="padding-left: 30pt;text-indent: -23pt;text-align: left;">Bikes with Noon branding seen or reported
+                used for other services like personal works, without uniform, except the rider, any other person using
+                other than Noon will be considered a breach of this contract. A charge of Penalty Amount <b>AED 1,000
+                </b>will be charged to the rider, and the contract will be terminated.</p>
+        </li>
+        <li data-list-text="21).">
+            <p style="padding-top: 9pt;padding-left: 30pt;text-indent: -23pt;text-align: left;">If there is any
+                appreciation or depreciation in rates from employer the riders will work for the same compensations
+                offered by the employer</p>
+        </li>
+        <li data-list-text="22).">
+            <p style="padding-top: 2pt;padding-left: 30pt;text-indent: -23pt;text-align: left;">If a rider consistently
+                fails to meet the specified criteria of maintaining perfect attendance for <b>26 days</b>, ensuring
+                on-time delivery, or completing <b>350 </b>orders per month for two consecutive months, termination from
+                the job may be considered</p>
+        </li>
       </ol>
       <p style="padding-top: 1pt;text-indent: 0pt;text-align: left;"><br/></p>
       <h2 style="padding-left: 7pt;text-indent: 0pt;text-align: left;">IN WITNESS WHEREOF</h2>
