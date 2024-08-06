@@ -17,7 +17,7 @@ $item=['item','item_assign_rv','assign_price_edit'];
 $invoices=['vendor_invoices','rider_invoices'];
 $bikes=['bike','rta_fine','lease_company','bike_rent'];
 $sims=['sim','sim_charges'];
-$reports=['vendor_invoice_report','rider_invoice_report'];
+$reports=['vendor_invoice_report','rider_invoice_report','rider_list'];
 ?>
 <!-- Main Sidebar Container -->
 <aside class="main-sidebar sidebar-dark-primary elevation-4 bg-navy">
@@ -254,6 +254,12 @@ $reports=['vendor_invoice_report','rider_invoice_report'];
                             <a href="{{ url('reports/vendor_invoice_report') }}" class="nav-link {{ (request()->is('reports/vendor_invoice_report')) ? 'active' : '' }}">
                                 <i class="nav-icon fas fa-angle-double-right fa-xs"></i>
                                 <p>Vendor Invoice Report</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{ url('reports/rider_list') }}" class="nav-link {{ (request()->is('reports/rider_list')) ? 'active' : '' }}">
+                                <i class="nav-icon fas fa-angle-double-right fa-xs"></i>
+                                <p>Rider Report</p>
                             </a>
                         </li>
                     </ul>

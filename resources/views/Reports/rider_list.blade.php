@@ -1,0 +1,146 @@
+@extends('layouts.app')
+@section('content')
+<style>
+    .table tr:first-child>td{
+    position: sticky;
+    top: 0;
+}
+</style>
+    <!-- Content Wrapper. Contains page content -->
+    <div class="content-wrapper">
+        <!-- Content Header (Page header) -->
+        <section class="content-header">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-sm-6">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="#">Home</a></li>
+                            <li class="breadcrumb-item">Reports</li>
+                            <li class="breadcrumb-item active">Rider Report</li>
+                        </ol>
+                    </div>
+                </div>
+            </div><!-- /.container-fluid -->
+        </section>
+        <!-- Main content -->
+        <section class="content">
+            <div class="row">
+                <div class="col-12">
+                    <div class="card rounded-0">
+                        <!-- /.card-header -->
+                        <div class="card-body">
+                            {{-- <form id="form">
+                                <div class="row">
+                                    <div class="col-md-2">
+                                        <input name="df" class="form-control form-control-sm date" placeholder="Date From">
+                                    </div>
+                                    <div class="col-md-2">
+                                        <input name="dt" class="form-control form-control-sm date" placeholder="Date To">
+                                    </div>
+                                    <div class="col-md-2">
+                                        <select class="form-control form-control-sm select2" name="ledger_id">
+                                            {!! App\Models\Accounts\TransactionAccount::dropdown() !!}
+                                        </select>
+                                    </div>
+                                    <div class="col-sm-1">
+                                        <button type="button" class="btn btn-xs btn-primary" onclick="get_data()"><i class="fa fa-search"></i> </button>
+                                    </div>
+                                </div>
+                                <!--row-->
+                            </form> --}}
+                            <br>
+                            <button class="btn btn-xs btn-primary float-right exportToExcel"><i class="fa fa-file-excel"> Export</i> </button>
+                            <table id="table2excel" class="table table-striped table-hover">
+                                <thead>
+                                <tr>
+                                    <th>Name</th>
+                                    <th>License No.</th>
+                                    <th>License Expiry</th>
+                                    <th>Nationality</th>
+                                    <th>Passport No.</th>
+                                    <th>Passport Expiry Date</th>
+                                    <th>Passport Handover Status</th>
+                                    <th>CDM ID</th>
+                                    <th>Email ID</th>
+                                    <th>Fleet Supervisor</th>
+                                    <th>WPS/Non WPS</th>
+                                    <th>C3 Card</th>
+                                </tr>
+                                </thead>
+                                {{-- <tbody id="get_data"></tbody> --}}
+                                @foreach($riders as $row)
+                                <tr>
+                                    <td>{{$row->name.'('.$row->rider_id.')'}}</td>
+                                    <td>{{$row->license_no}}</td>
+                                    <td>{{$row->license_expiry}}</td>
+                                    <td>{{@$row->country->name}}</td>
+                                    <td>{{$row->passport}}</td>
+                                    <td>{{$row->passport_expiry}}</td>
+                                    <td>{{$row->passport_handover}}</td>
+                                    <td>{{$row->cdm_deposit_id}}</td>
+                                    <td>{{$row->personal_email}}</td>
+                                    <td>{{$row->fleet_supervisor}}</td>
+                                    <td>{{$row->wps}}</td>
+                                    <td>{{$row->c3_card}}</td>
+
+                                </tr>
+                                @endforeach
+
+                            </table>
+                        </div>
+                        <!-- /.card-body -->
+                        <div class="card-footer clearfix">
+                            <div class="pagination-panel"></div>
+                        </div>
+                    </div>
+                    <!-- /.card -->
+                </div>
+                <!-- /.col -->
+            </div>
+            <!-- /.row -->
+        </section>
+        <!-- /.content -->
+    </div>
+    <!-- /.content-wrapper -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="{{ URL::asset('public/export_excel/jquery.table2excel.js') }}"></script>
+    <script>
+        $(function () {
+            //Initialize Select2 Elements
+            $('.select2').select2();
+
+        });
+        function get_data(){
+            $("#loader").show();
+            $.ajax({
+                url:"{{ url('Accounts/reports/get_ledger') }}",
+                headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
+                type:"POST",
+                data:$("#form").serialize(),
+                dataType:"JSON",
+                success:function (data) {
+                    $("#get_data").html(data.data);
+                    $("#loader").hide();
+                }
+            })
+        }
+    </script>
+    <script>
+        var jq = $.noConflict();
+        jq(document).ready(function(){
+            $(".exportToExcel").click(function () {
+                jq("#table2excel").table2excel({
+                    filename: "Rider_report.xls",
+                    exclude: ".noExl",
+                    name: "Rider Report",
+                    filename: "Rider_" + new Date().toISOString().replace(/[\-\:\.]/g, "") + ".xls",
+                    fileext: ".xls",
+                    exclude_img: true,
+                    exclude_links: true,
+                    exclude_inputs: true,
+                    preserveColors: true,
+                });
+            });
+        });
+    </script>
+@endsection

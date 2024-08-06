@@ -1,5 +1,6 @@
 <?php
 use Illuminate\Support\Facades\Route;
+
 /*
 |--------------------------------------------------------------------------
 | Reports Routes
@@ -12,10 +13,11 @@ use Illuminate\Support\Facades\Route;
 */
 Auth::routes();
 
-Route::group(['middleware' => ['auth']], function() {
-    Route::prefix('reports')->group(function (){
-        Route::get('rider_invoice_report','ReportController@rider_invoice_index');
-        Route::get('vendor_invoice_report','ReportController@vendor_invoice_index');
+Route::group(['middleware' => ['auth']], function () {
+    Route::prefix('reports')->group(function () {
+        Route::get('rider_invoice_report', 'ReportController@rider_invoice_index');
+        Route::get('vendor_invoice_report', 'ReportController@vendor_invoice_index');
+        Route::get('rider_list', 'ReportController@rider_list');
     });
 });
 

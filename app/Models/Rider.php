@@ -40,7 +40,10 @@ class Rider extends Model
     {
         return $this->hasOne(Sim::class, 'assign_sim', 'id');
     }
-
+    public function country()
+    {
+        return $this->hasOne(Countries::class, 'id', 'nationality');
+    }
     public function account()
     {
         return $this->belongsTo(TransactionAccount::class, 'id', 'Parent_Type')->where('PID', 21);
