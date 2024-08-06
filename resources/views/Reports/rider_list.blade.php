@@ -53,6 +53,7 @@
                             <table id="table2excel" class="table table-striped table-hover">
                                 <thead>
                                 <tr>
+                                    <th>#</th>
                                     <th>Name</th>
                                     <th>License No.</th>
                                     <th>License Expiry</th>
@@ -70,7 +71,8 @@
                                 {{-- <tbody id="get_data"></tbody> --}}
                                 @foreach($riders as $row)
                                 <tr>
-                                    <td>{{$row->name.'('.$row->rider_id.')'}}</td>
+                                    <td>{{$row->rider_id}}</td>
+                                    <td>{{$row->name}}</td>
                                     <td>{{$row->license_no}}</td>
                                     <td>{{$row->license_expiry}}</td>
                                     <td>{{@$row->country->name}}</td>
