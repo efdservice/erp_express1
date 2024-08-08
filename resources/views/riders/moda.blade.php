@@ -152,7 +152,11 @@
                 <div class="row bg-light mb-1">
                     <div class="col-md-3 form-group">
                         <label>Emirate (Hub)</label>
-                        <input type="text" class="form-control form-control-sm" name="emirate_hub" placeholder="Emirate (Hub)">
+                        <select class="form-control form-control-sm" name="emirate_hub">
+                            <option value=""></option>
+                            {!! App\Helpers\CommonHelper::EmiratesHub() !!}
+                        </select>
+
                     </div>
                     <!--col-->
                     <div class="col-md-3 form-group">

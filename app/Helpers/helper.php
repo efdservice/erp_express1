@@ -298,6 +298,26 @@ class CommonHelper
 
     }
 
+    public static function EmiratesHub($id = 0)
+    {
+        $array = [
+            'DXB' => 'DXB',
+            'AUH' => 'AUH',
+            'UAQ' => 'UAQ',
+            'RAK' => 'RAK',
+            'SHJ' => 'SHJ',
+            'FUJ' => 'FUJ',
+            'AJM' => 'AJM'
+        ];
+
+        $list = '';
+        foreach ($array as $key => $value) {
+            $list .= '<option ' . ($id == $key ? 'selected' : '') . ' value="' . $key . '">' . $value . '</option>';
+        }
+        return $list;
+
+    }
+
     public static function get_PaymentReason($id = 0)
     {
         $array = [
@@ -585,6 +605,7 @@ class CommonHelper
             return $result;
         }
     }
+
 
     public static function getBalance($trans_acc_id)
     {
