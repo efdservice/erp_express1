@@ -312,7 +312,7 @@
         <li data-list-text="2).">
             <p style="padding-top: 2pt;padding-left: 30pt;text-indent: -23pt;text-align: left;">If a rider works less
                 than <b>26 days </b>or works less than <b>10 hours </b>a day, or if their on-time delivery rate is less
-                than <b>90%</b>, or they have fewer than <b>350 </b>orders per month, they will be fined <b>AED 40
+                than <b>90%</b>, or they have fewer than <b>350 </b>orders per month, they will be fined <b>AED 50
                 </b>for each day they fall short. Instead of receiving the guaranteed minimum fee (<b>AED 3500 </b>in
                 Dubai &amp; Abu Dhabi, <b>AED 3000 </b>in Ras Al Khaimah &amp; Umm Al Quwain), they will only get <b>AED
                     10 </b>per order for the orders they complete in that month.</p>
