@@ -272,8 +272,8 @@ class RiderController extends Controller
      */
     public function destroy($id)
     {
-        $ret = Rider::destroy($id);
-        TransactionAccount::where('Parent_Type', $id)->where('PID', 9)->delete();
+        $ret = 1;//Rider::destroy($id);
+        //TransactionAccount::where('Parent_Type', $id)->where('PID', 9)->delete();
         if ($ret) {
             return 1;
         }
