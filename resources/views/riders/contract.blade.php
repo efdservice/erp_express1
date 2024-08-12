@@ -41,7 +41,7 @@
         </tr>
 
     </table> --}}
-    <div style="height: 110px;">&nbsp;</div>
+    <div style="height: 130px;">&nbsp;</div>
       <p style="padding-top: 0pt;text-indent: 0pt;text-align: left;"></p>
       <h1 style="text-indent: 0pt;text-align: center;">AGREEMENT FOR FOOD DELIVERY RIDER</h1>
       <p style="text-indent: 0pt;text-align: left;"></p>
@@ -417,7 +417,7 @@
             <p style="text-indent: 0pt;text-align: left;"><br /></p>
         </li>
         <p style="text-indent: 0pt;text-align: left;page-break-after: always;"></p>
-      <div style="height: 110px;">&nbsp;</div>
+      <div style="height: 130px;">&nbsp;</div>
         <li data-list-text="20).">
             <p style="padding-left: 30pt;text-indent: -23pt;text-align: left;">Bikes with Noon branding seen or reported
                 used for other services like personal works, without uniform, except the rider, any other person using
