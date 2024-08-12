@@ -91,7 +91,7 @@
                                     <td>{{@$row->vendor->name}}</td>
                                     <td>{{ App\Helpers\CommonHelper::RiderStatus($row->status) }}</td>
                                     <td class="d-none">{{$row->ethnicity}}</td>
-                                    <td class="d-none">{{$row->DEPT}}</td>
+                                    <td class="d-none">{{$row->designation}}</td>
                                     <td class="d-none"></td>
                                     <td class="d-none">{{$row->visa_occupation}}</td>
                                     <td class="d-none">{{@$row->project->name}}</td>

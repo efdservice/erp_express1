@@ -35,9 +35,9 @@
     <div class="col-md-4 border-right border-bottom" style="height: 45px;">
         <b>Visa Status</b><br/> {{@$rider->visa_status}}
     </div>
-    <div class="col-md-4 border-right border-bottom" style="height: 45px;">
+   {{--  <div class="col-md-4 border-right border-bottom" style="height: 45px;">
         <b>NF DID</b><br/> {{@$rider->NFDID}}
-    </div>
+    </div> --}}
     <div class="col-md-4 border-right border-bottom" style="height: 45px;">
         <b>CDM Deposit ID</b><br/> {{@$rider->cdm_deposit_id}}
     </div>
@@ -51,8 +51,11 @@
         <b>Project</b><br/> {{@$rider->project->name}}
     </div>
     <div class="col-md-4 border-right border-bottom" style="height: 45px;">
-        <b>DEPT</b><br/> {{@$rider->DEPT}}
+        <b>Designation</b><br/> {{@$rider->designation}}
     </div>
+   {{--  <div class="col-md-4 border-right border-bottom" style="height: 45px;">
+        <b>DEPT</b><br/> {{@$rider->DEPT}}
+    </div> --}}
     <div class="col-md-4 border-right border-bottom" style="height: 45px;">
         <b>Ethnicity</b><br/> {{@$rider->ethnicity}}
     </div>
@@ -83,9 +86,9 @@
     <div class="col-md-4 border-right border-bottom" style="height: 45px;">
         <b>Passport</b><br/> {{@$rider->passport}}
     </div>
-    <div class="col-md-4 border-right border-bottom" style="height: 45px;">
+   {{--  <div class="col-md-4 border-right border-bottom" style="height: 45px;">
         <b>NOON No.</b><br/> {{@$rider->noon_no}}
-    </div>
+    </div> --}}
     <div class="col-md-4 border-right border-bottom" style="height: 45px;">
         <b>WPS</b><br/> {{@$rider->wps}}
     </div>

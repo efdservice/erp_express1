@@ -182,6 +182,11 @@ MODIFY COLUMN `company`  int(11) NOT NULL AFTER `engine`;
 ALTER TABLE `riders`
 ADD COLUMN `contract`  varchar(100) NULL AFTER `c3_card`;
 
+--------------
+
+ALTER TABLE `riders`
+ADD COLUMN `designation`  varchar(50) NULL AFTER `contract`;
+
 
 
 

@@ -45,10 +45,10 @@
                         <input type="text" class="form-control form-control-sm" name="personal_email" placeholder="Vendor Email">
                     </div>
                     <!--col-->
-                    <div class="col-md-3 form-group">
+                    {{-- <div class="col-md-3 form-group">
                         <label>Email</label>
                         <input type="text" class="form-control form-control-sm" name="email" placeholder="Person Email">
-                    </div>
+                    </div> --}}
                     <!--col-->
                     <div class="col-md-3 form-group">
                         <label>Nationality</label>
@@ -70,10 +70,10 @@
                         <input type="text" class="form-control form-control-sm" name="visa_status" placeholder="Visa Status">
                     </div>
                     <!--col-->
-                    <div class="col-md-3 form-group">
+                    {{-- <div class="col-md-3 form-group">
                         <label>NF DID</label>
                         <input type="text" class="form-control form-control-sm" name="NFDID" placeholder="NF DID">
-                    </div>
+                    </div> --}}
                     <!--col-->
                     <div class="col-md-3 form-group">
                         <label>CDM Deposit ID</label>
@@ -99,11 +99,18 @@
                             {!! \App\Models\Projects::dropdown() !!}
                         </select>
                     </div>
-                    <!--col-->
                     <div class="col-md-3 form-group">
+                        <label>Designation</label>
+                        <select class="form-control form-control-sm" name="designation">
+                            {!! App\Helpers\CommonHelper::Designations() !!}
+                        </select>
+
+                    </div>
+                    <!--col-->
+                    {{-- <div class="col-md-3 form-group">
                         <label>Dept</label>
                         <input type="text" class="form-control form-control-sm dat" name="DEPT" placeholder="Dept">
-                    </div>
+                    </div> --}}
                     <!--col-->
                     <div class="col-md-3 form-group">
                         <label>Ethnicity</label>
@@ -171,10 +178,10 @@
                         <label>Passport </label>
                         <input type="text" class="form-control form-control-sm" name="passport" placeholder="Passport">
                     </div>
-                    <div class="col-md-3 form-group">
+                    {{-- <div class="col-md-3 form-group">
                         <label>NOON No. </label>
                         <input type="text" class="form-control form-control-sm" name="noon_no" placeholder="Noon No.">
-                    </div>
+                    </div> --}}
                     <div class="col-md-3 form-group">
                         <label>WPS</label>
                         <input type="text" class="form-control form-control-sm" name="wps" placeholder="WPS">

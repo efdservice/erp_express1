@@ -318,6 +318,23 @@ class CommonHelper
 
     }
 
+    public static function Designations($id = 0)
+    {
+        $array = [
+            'Rider' => 'Rider',
+            'Staff' => 'Staff',
+            'Driver' => 'Driver',
+            'Mechanic' => 'Mechanic'
+        ];
+
+        $list = '';
+        foreach ($array as $key => $value) {
+            $list .= '<option ' . ($id == $key ? 'selected' : '') . ' value="' . $key . '">' . $value . '</option>';
+        }
+        return $list;
+
+    }
+
     public static function get_PaymentReason($id = 0)
     {
         $array = [
