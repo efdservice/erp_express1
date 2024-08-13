@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Helpers\Account;
 use App\Imports\RiderImport;
+use App\Models\Accounts\Transaction;
 use App\Models\Accounts\TransactionAccount;
 use App\Models\Files;
 use App\Models\Item;
@@ -272,11 +273,21 @@ class RiderController extends Controller
      */
     public function destroy($id)
     {
-        $ret = 1;//Rider::destroy($id);
-        //TransactionAccount::where('Parent_Type', $id)->where('PID', 9)->delete();
-        if ($ret) {
+        $rider = Rider::find($id);
+
+        $transactions = Transaction::where('trans_acc_id', $rider->account->id)->first();
+        if ($transactions) {
+            return 0;
+        } else {
+            $ret = Rider::destroy($id);
             return 1;
         }
+
+        //$ret = Rider::destroy($id);
+        //TransactionAccount::where('Parent_Type', $id)->where('PID', 9)->delete();
+        /* if ($ret) {
+            return 1;
+        } */
     }
 
     public function status(Request $request)
