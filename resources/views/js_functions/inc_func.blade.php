@@ -175,6 +175,9 @@ $(document).on('submit', '#formajax', function (e) {
       if ($('#reload_page').val() == 1) {
         location.reload();
       }
+      if ($('#edit_redirect').val() == 1) {
+        location.href = "{{url('rider/')}}/"+data.id+"/edit";
+      }
 
       $('.data-table').DataTable().ajax.reload(null, false);
       get_data();

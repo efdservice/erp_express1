@@ -61,14 +61,14 @@ class RiderController extends Controller
 
                     return CommonHelper::RiderStatus($row->status);
                     //return  Form::select('category_id', CommonHelper::RiderStatus(), $row->status, ['class' => 'statuschange','onchange' => 'changeStatus('.$row->id.',this)']);
-    
+
                     //return '<a href="javascript:void(0)" data-toggle="tooltip"  data-action="'.url('rider-status/'.$row->id).'" data-original-title="Action" class="doAction" ><span class="badge badge-primary" >Active</span></a>';
-    
+
                 })
                 ->addColumn('action', function ($row) {
                     $btn = '';
                     //$btn = $btn . '<a href="javascript:void();" data-action="' . route('rider_show', $row->id) . '" data-size="lg" data-title="' . $row->name . ' (' . $row->rider_id . ') Contract" class="btn btn-default btn-xs show-modal mr-1"><i class="fas fa-eye"></i> Show</a>';
-    
+
                     if (\Auth::user()->can('riders_document')) {
 
                         $btn = $btn . '<a href="javascript:void();" data-action="' . route('rider_contract_upload', $row->id) . '" data-size="md" data-title="' . $row->name . ' (' . $row->rider_id . ') Contract" class="btn btn-warning btn-xs show-modal mr-1"><i class="fas fa-file"></i> Contract</a>';
@@ -78,7 +78,8 @@ class RiderController extends Controller
                         $btn = $btn . '<a href="' . route('rider.document', $row->id) . '" data-toggle="tooltip" class="file btn btn-success btn-xs" data-modalID="modal-new"><i class="fas fa-file"></i> Documents</a>';
                     }
                     if (\Auth::user()->can('riders_edit')) {
-                        $btn = $btn . ' <a href="#" data-toggle="tooltip" data-action="' . route('rider.edit', $row->id) . '" class="edit btn btn-primary btn-xs editRec" data-modalID="modal-new"><i class="fas fa-edit"></i> Edit</a>';
+                        //$btn = $btn . ' <a href="#" data-toggle="tooltip" data-action="' . route('rider.edit', $row->id) . '" class="edit btn btn-primary btn-xs editRec" data-modalID="modal-new"><i class="fas fa-edit"></i> Edit</a>';
+                        $btn = $btn . ' <a href="' . route('rider.edit', $row->id) . '" class="edit btn btn-primary btn-xs " ><i class="fas fa-edit"></i> Edit</a>';
                     }
                     if (\Auth::user()->can('riders_delete')) {
                         $btn = $btn . ' <a href="javascript:void(0)" data-toggle="tooltip"  data-action="' . route('rider.store') . '/' . $row->id . '" data-original-title="Delete" class="btn btn-danger btn-xs deleteRecord"><i class="fas fa-trash"></i> Del</a>';
@@ -100,6 +101,7 @@ class RiderController extends Controller
     public function create()
     {
         //
+        return view('riders.form');
     }
 
     /**
@@ -110,8 +112,11 @@ class RiderController extends Controller
      */
     public function store(Request $request)
     {
+
         unset($request['item_id']);
+        unset($request['_token']);
         unset($request['item_price']);
+        unset($request['edit_redirect']);
 
 
         $rules = [
@@ -141,11 +146,14 @@ class RiderController extends Controller
         }
         $data['attach_documents'] = json_encode($arrayFiles);
         $id = $request->input('id');
+        unset($request['id']);
+
         DB::beginTransaction();
         try {
             $tData['Trans_Acc_Name'] = $request->name;
             $tData['PID'] = 21;
             if ($id == 0 || $id == '') {
+                $data['rider_id'] = $request['rider_id'];
                 $ret = Rider::create($data);
                 $tData['Parent_Type'] = $ret->id;
                 $code = Account::current_code('RD', $ret->id);
@@ -236,21 +244,26 @@ class RiderController extends Controller
      */
     public function edit($id)
     {
-        $res = Rider::find($id)->toArray();
+        $res = Rider::find($id);
+        $trans_acc_id = $res->account->id;
+        $rider_items = $res->items;
+        $res->toArray();
+
         $result = $res;
 
-        $items = Item::all();
+        /*  $items = Item::all();
 
-        foreach ($items as $item) {
-            $r_item = RiderItemPrice::where('RID', $id)->where('VID', $res['VID'])->where('item_id', $item->id)->first();
-            if ($r_item) {
-                $result['items'][$r_item->item_id]['item_id'] = $r_item->item_id;
-                $result['items'][$r_item->item_id]['item_price'] = $r_item->price;
+         foreach ($items as $item) {
+             $r_item = RiderItemPrice::where('RID', $id)->where('VID', $res['VID']) ->where('item_id', $item->id)->first();
+             if ($r_item) {
+                 $result['items'][$r_item->item_id]['item_id'] = $r_item->item_id;
+                 $result['items'][$r_item->item_id]['item_price'] = $r_item->price;
 
-            }
-        }
+             }
+         } */
 
-        return $result;
+
+        return view('riders.form', compact('result', 'trans_acc_id', 'rider_items'));
     }
 
     /**
@@ -262,7 +275,8 @@ class RiderController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $rider = Rider::find($id);
+        return view('riders.form', compact('rider'));
     }
 
     /**

@@ -297,6 +297,20 @@ class CommonHelper
         return $list;
 
     }
+    public static function get_Ethnicity($id = 0)
+    {
+        $array = [
+            'Muslim' => 'Muslim',
+            'non-Muslim' => 'non-Muslim'
+        ];
+
+        $list = '';
+        foreach ($array as $key => $value) {
+            $list .= '<option ' . ($id == $key ? 'selected' : '') . ' value="' . $key . '">' . $value . '</option>';
+        }
+        return $list;
+
+    }
 
     public static function EmiratesHub($id = 0)
     {

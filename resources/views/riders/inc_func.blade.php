@@ -5,7 +5,7 @@
         $("#modal-new").modal({backdrop: 'static', keyboard: false},'show');
 
            this.form.reset();
-           $("table.order-list").html('');
+           $("table.order-list2").html('');
 
 
 
@@ -101,6 +101,7 @@
 
         //$("table.order-list").html('');
 
+
         var base_url = $('#base_url').val();
 
         var counter = 0;
@@ -116,7 +117,7 @@
 
 
 
-    $("table.order-list").on("click", ".ibtnDel", function (event) {
+    $("table.order-list2").on("click", ".ibtnDel", function (event) {
         $(this).closest("tr").remove();
         counter -= 1
     });
@@ -234,7 +235,7 @@ function RiderItems(item_id,item_price){
 
         cols += '<td><input type="button" class="ibtnDel btn btn-md btn-danger "  value="Delete"></td>'; */
         //newRow.append(cols);
-        $("table.order-list").append(newRow);
+        $("table.order-list2").append(newRow);
 
 }
 

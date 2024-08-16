@@ -1,5 +1,5 @@
 @extends('layouts.app')
-@section('title', 'Vendors')
+@section('title', 'Rider List')
 <link href="https://cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css" rel="stylesheet">
 @section('content')
     <div class="content-wrapper">
@@ -26,8 +26,10 @@
                         <div class="row">
                             <div class="col-md-12">
                                 @can('riders_create')
-                                <button type="button" class="text-white btn btn-primary btn-sm btn-flat float-right" onclick="add_new()">Add New</button>
-                                <button type="button" class="text-white btn btn-success btn-sm btn-flat float-right" data-toggle="modal" data-target="#excel-modal"><i class="fa fa-file-excel"></i> Import Excel</button>
+{{--                                 <button type="button" class="text-white btn btn-primary btn-sm btn-flat float-right" onclick="add_new()">Add New</button>
+ --}}
+ <a href="{{route('rider.create')}}" class="btn btn-primary btn-sm btn-flat float-right">Create</a>
+ <button type="button" class="text-white btn btn-success btn-sm btn-flat float-right" data-toggle="modal" data-target="#excel-modal"><i class="fa fa-file-excel"></i> Import Excel</button>
                                 @endcan
 
 

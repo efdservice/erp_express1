@@ -187,6 +187,14 @@ ADD COLUMN `contract`  varchar(100) NULL AFTER `c3_card`;
 ALTER TABLE `riders`
 ADD COLUMN `designation`  varchar(50) NULL AFTER `contract`;
 
+-----------
+ALTER TABLE `rider_item_prices` DROP FOREIGN KEY `rider_item_prices_item_id_foreign`;
+
+ALTER TABLE `rider_item_prices` ADD CONSTRAINT `rider_item_prices_item_id_foreign` FOREIGN KEY (`item_id`) REFERENCES `items` (`id`) ON DELETE CASCADE ON UPDATE NO ACTION;
+
+
+ALTER TABLE `rider_item_prices` DROP FOREIGN KEY `rider_item_prices_item_id_foreign`;
+
 
 
 

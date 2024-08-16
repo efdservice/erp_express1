@@ -8,7 +8,50 @@ use Illuminate\Database\Eloquent\Model;
 
 class Rider extends Model
 {
-    use HasFactory;
+    //use HasFactory;
+    public $table = 'riders';
+    /*  public $fillable = [
+         'name',
+         'rider_id ',
+         'personal_contact',
+         'company_contact',
+         'personal_email',
+         'email',
+         'nationality',
+         'cdm_deposit_id',
+         'doj',
+         'emirate_hub',
+         'emirate_id',
+         'emirate_exp',
+         'mashreq_id	',
+         'passport',
+         'passport_expiry',
+         'PID',
+         'DEPT',
+         'ethnicity',
+         'dob',
+         'license_no',
+         'license_expiry',
+         'visa_status',
+         'branded_plate_no',
+         'vaccine_status',
+         'attach_documents',
+         'other_details',
+         'created_by',
+         'updated_by',
+         'VID',
+         'visa_sponsor',
+         'visa_occupation',
+         'status',
+         'TAID',
+         'fleet_supervisor',
+         'passport_handover',
+         'noon_no',
+         'wps',
+         'c3_card',
+         'contract',
+         'designation'
+     ]; */
     protected $guarded = [];
 
     public static function dropdown($id = 0)
