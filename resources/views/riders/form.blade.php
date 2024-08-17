@@ -68,7 +68,7 @@
                             <b>Status</b> <a class="float-right">@isset($result){{App\Helpers\CommonHelper::RiderStatus($result['status'])??'not-set'}}@endisset</a>
                          </li>
                          <li class="list-group-item">
-                            <b>Balance</b> <a class="float-right">@isset($result){{App\Helpers\Account::show_bal(App\Helpers\Account::Monthly_ob(date('y-m-d'), $trans_acc_id))??'not-set'}}@endisset</a>
+                            <b>Balance</b> <a class="float-right">@isset($trans_acc_id){{App\Helpers\Account::show_bal(App\Helpers\Account::Monthly_ob(date('y-m-d'), $trans_acc_id))??'not-set'}}@endisset</a>
                          </li>
                       </ul>
                       {{-- <a href="#" class="btn btn-primary btn-block"><b>Update</b></a> --}}
