@@ -1,4 +1,4 @@
-@extends('layouts.app')
+{{-- @extends('layouts.app')
 @section('title', $rider->name.' Documents')
 @section('content')
 
@@ -16,13 +16,13 @@
             </div>
         </div><!-- /.container-fluid -->
     </section>
-
+ --}}
     <!-- Main content -->
     <section class="content">
         <div class="container-fluid">
             <!-- SELECT2 EXAMPLE -->
             <div class="card card-default rounded-0">
-                
+
                 <div class="card-body">
                     <div class="card-title"><b>{{$rider->name}}</b> Documents
                         <br>
@@ -30,15 +30,15 @@
                             <b>Phone:</b> {{$rider->phone}}
                         </p>
                     </div>
-                    
-                    
+
+
 <br style="clear: both;" />
 <br style="clear: both;" />
-                    <form action="" method="post" enctype="multipart/form-data">
+                    <form action="{{route('rider.document',$rider->id)}}" method="post" enctype="multipart/form-data" id="formajax">
                         @csrf
                         @php
                         $existing = [];
-                        @endphp    
+                        @endphp
                 @foreach($files as $file)
                 @php
                     array_push($existing,$file->type);
@@ -57,7 +57,7 @@
                             </div>
                             <div class="col-2">
                                 <a href="{{ Storage::url('app/rider/'.$file->file_name)}}" class="btn btn-default" target="_blank">
-                                
+
                                 @if($file->file_type == 'pdf')
                                     <i class="fa fa-file-pdf text-danger"></i>
                                 @elseif(in_array($file->file_type,['jpeg','jpg','png']))
@@ -65,13 +65,13 @@
                                     @else
                                     <i class="fa fa-file text-info"></i>
                                     @endif
-                                
+
                                 &nbsp;
                                View Document
                                 </a>
-                            
+
                             </div>
-                            
+
                     </div>
                 </div>
                 @endforeach
@@ -95,14 +95,14 @@
                 </div>
                 @endif
                 @endforeach
-                <input type="submit" class="btn btn-success" value="Save" />
+                <input type="submit" class="btn btn-primary" value="Save Documents" />
                     </form>
-              
-      
+
+
     </div>
 </div>
         </div>
-    </section>
+   {{--  </section>
 </div>
 
-@endsection
+@endsection --}}

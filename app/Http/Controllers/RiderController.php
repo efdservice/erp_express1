@@ -74,9 +74,9 @@ class RiderController extends Controller
                         $btn = $btn . '<a href="javascript:void();" data-action="' . route('rider_contract_upload', $row->id) . '" data-size="md" data-title="' . $row->name . ' (' . $row->rider_id . ') Contract" class="btn btn-warning btn-xs show-modal mr-1"><i class="fas fa-file"></i> Contract</a>';
 
                     }
-                    if (\Auth::user()->can('riders_document')) {
+                    /* if (\Auth::user()->can('riders_document')) {
                         $btn = $btn . '<a href="' . route('rider.document', $row->id) . '" data-toggle="tooltip" class="file btn btn-success btn-xs" data-modalID="modal-new"><i class="fas fa-file"></i> Documents</a>';
-                    }
+                    } */
                     if (\Auth::user()->can('riders_edit')) {
                         //$btn = $btn . ' <a href="#" data-toggle="tooltip" data-action="' . route('rider.edit', $row->id) . '" class="edit btn btn-primary btn-xs editRec" data-modalID="modal-new"><i class="fas fa-edit"></i> Edit</a>';
                         $btn = $btn . ' <a href="' . route('rider.edit', $row->id) . '" class="edit btn btn-primary btn-xs " ><i class="fas fa-edit"></i> Edit</a>';
@@ -245,6 +245,7 @@ class RiderController extends Controller
     public function edit($id)
     {
         $res = Rider::find($id);
+        $rider = $res;
         $trans_acc_id = $res->account->id;
         $rider_items = $res->items;
         $res->toArray();
@@ -261,9 +262,10 @@ class RiderController extends Controller
 
              }
          } */
+        $files = Files::where('type_id', $id)->get();
 
 
-        return view('riders.form', compact('result', 'trans_acc_id', 'rider_items'));
+        return view('riders.form', compact('result', 'trans_acc_id', 'rider_items', 'rider', 'files'));
     }
 
     /**
@@ -376,7 +378,7 @@ class RiderController extends Controller
                     Files::updateOrCreate($condition, $data);
                 }
             }
-
+            return 1;
         }
 
         $files = Files::where('type_id', $rider_id)->get();
@@ -408,6 +410,23 @@ class RiderController extends Controller
         } else {
             $rider = Rider::find($id);
             return view('riders.contract-modal', compact('rider'));
+        }
+    }
+
+    public function picture_upload(Request $request, $id)
+    {
+        if (isset($request->image_name)) {
+
+            $image_name = $request->image_name;
+            $extension = $image_name->extension();
+            $name = time() . '.' . $extension;
+            $image_name->storeAs('profile', $name);
+
+            $rider = Rider::find($request->id);
+            $rider->image_name = $name;
+            $rider->save();
+
+            return true;//redirect(url('rider'))->with('success', $rider->name . '( ' . $rider->rider_id . ' ) Profile Picture uploaded.');
         }
     }
 }

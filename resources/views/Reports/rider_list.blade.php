@@ -81,6 +81,7 @@
                                     <th class="d-none">Fleet Supervisor</th>
                                     <th class="d-none">WPS/Non WPS</th>
                                     <th class="d-none">C3 Card</th>
+                                    <th class="d-none">Company Contact</th>
                                 </tr>
                                 </thead>
                                 {{-- <tbody id="get_data"></tbody> --}}
@@ -114,6 +115,7 @@
                                     <td class="d-none">{{$row->fleet_supervisor}}</td>
                                     <td class="d-none">{{$row->wps}}</td>
                                     <td class="d-none">{{$row->c3_card}}</td>
+                                    <td class="d-none">{{$row->company_contact}}</td>
 
                                 </tr>
                                 @endforeach

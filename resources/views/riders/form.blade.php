@@ -25,9 +25,39 @@
              <div class="col-md-3">
                 <div class="card card-primary card-outline">
                    <div class="card-body box-profile">
-                      <div class="text-center">
-                         <img class="profile-user-img img-fluid img-circle" src="https://placehold.co/200X200" alt="User profile picture">
+                    <div class="">
+<form action="{{url('riders/picture_upload/'.$result['id'])}}" method="POST" enctype="multipart/form-data" id="formajax2">
+    @csrf
+                        @php
+                        if($result['image_name']){
+                            $image_name = Storage::url('app/profile/'.$result['image_name']);
+                        }else{
+                            $image_name = asset('public/uploads/default.jpg');
+                        }
+                    @endphp
+                        <img src="{{ $image_name}}" id="output" width="400"  class="profile-user-img img-fluid" />
+                        <div class="button-wrapper">
+                          <label for="upload" class="btn btn-default me-2 mb-3 mt-3" tabindex="0">
+                            <span class="d-none d-sm-block">Change Photo</span>
+                            <i class="ti ti-upload d-block d-sm-none"></i>
+                            <input type="file" id="upload" name="image_name" class="account-file-input " hidden accept="image/png, image/jpeg" onchange="loadFile(event)" />
+                          </label>
+                          <input type="submit" class="btn btn-primary" value="Upload"/>
+                        </div>
+                    </form>
                       </div>
+                      <script>
+
+                        var loadFile = function (event) {
+                          var image = document.getElementById("output");
+                          image.src = URL.createObjectURL(event.target.files[0]);
+                        };
+
+
+                        </script>
+                      {{-- <div class="text-center">
+                         <img class="profile-user-img img-fluid" src="https://placehold.co/400X400" alt="User profile picture">
+                      </div> --}}
                       <h3 class="profile-username text-center">@isset($result){{$result['name']??'not-set'}}@endisset</h3>
                       <p class="text-muted text-center">@isset($result){{$result['designation']??'not-set'}}@endisset</p>
                       <ul class="list-group list-group-unbordered mb-3">
@@ -76,9 +106,11 @@
                    <div class="card-header p-2">
                       <ul class="nav nav-pills">
                          <li class="nav-item"><a class="nav-link active" href="#information" data-toggle="tab">Information</a></li>
-                        {{--  <li class="nav-item"><a class="nav-link" href="#timeline" data-toggle="tab">Timeline</a></li>
-                         <li class="nav-item"><a class="nav-link" href="#settings" data-toggle="tab">Settings</a></li> --}}
-                      </ul>
+                         @can('riders_document')
+                         <li class="nav-item"><a class="nav-link" href="#timeline" data-toggle="tab">Documents</a></li>
+                         @endcan
+{{--                          <li class="nav-item"><a class="nav-link" href="#settings" data-toggle="tab">Settings</a></li>
+ --}}                      </ul>
                    </div>
                    <div class="card-body">
                       <div class="tab-content">
@@ -404,8 +436,10 @@
                             </form>
 
                          </div>
+                         </div>
                          <div class="tab-pane" id="timeline">
 
+                            @include('riders.document')
                          </div>
                          <div class="tab-pane" id="settings">
 

@@ -39,7 +39,7 @@
 }
 .form-control-sm{
     border-radius:2 !important;
-   
+
 }
 textarea{
     border-radius: 0px !important;
@@ -118,12 +118,12 @@ input[type="file"]::file-selector-button {
     margin-right: 16px;
     transition: background-color 200ms;
   }
-  
+
   /* file upload button hover state */
   input[type="file"]::file-selector-button:hover {
     background-color: #f3f4f6;
   }
-  
+
   /* file upload button active state */
   input[type="file"]::file-selector-button:active {
     background-color: #e5e7eb;
@@ -155,4 +155,7 @@ padding: 5px !important;
   }
   .modal-content{
     border-radius: 10px !important;
+  }
+  .profile-user-img{
+    width: auto !important;
   }
