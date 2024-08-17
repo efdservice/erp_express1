@@ -246,7 +246,7 @@ class RiderController extends Controller
     {
         $res = Rider::find($id);
         $rider = $res;
-        $trans_acc_id = $res->account->id;
+        $trans_acc_id = $res->account->id ?? null;
         $rider_items = $res->items;
         $res->toArray();
 
