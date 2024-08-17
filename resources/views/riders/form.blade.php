@@ -26,16 +26,19 @@
                 <div class="card card-primary card-outline">
                    <div class="card-body box-profile">
                     <div class="">
+                        @isset($result)
 <form action="{{url('riders/picture_upload/'.$result['id'])}}" method="POST" enctype="multipart/form-data" id="formajax2">
+    @endisset
     @csrf
                         @php
-                        if($result['image_name']){
+                        if(@$result['image_name']){
                             $image_name = Storage::url('app/profile/'.$result['image_name']);
                         }else{
                             $image_name = asset('public/uploads/default.jpg');
                         }
                     @endphp
                         <img src="{{ $image_name}}" id="output" width="400"  class="profile-user-img img-fluid" />
+                        @isset($result)
                         <div class="button-wrapper">
                           <label for="upload" class="btn btn-default me-2 mb-3 mt-3" tabindex="0">
                             <span class="d-none d-sm-block">Change Photo</span>
@@ -44,6 +47,7 @@
                           </label>
                           <input type="submit" class="btn btn-primary" value="Upload"/>
                         </div>
+                        @endisset
                     </form>
                       </div>
                       <script>
@@ -438,8 +442,9 @@
                          </div>
                          </div>
                          <div class="tab-pane" id="timeline">
-
+                            @isset($rider)
                             @include('riders.document')
+                            @endisset
                          </div>
                          <div class="tab-pane" id="settings">
 
