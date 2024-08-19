@@ -200,8 +200,13 @@ class LedgerController extends Controller
 
                         $balance = $ob + ($res->dr - $res->cr);
                         $cb += $balance;
+                        if ($ta->riderDetail) {
+                            $rider_id = '(' . @$ta->riderDetail->rider_id . ')';
+                        } else {
+                            $rider_id = '';
+                        }
                         $data .= '<tr>';
-                        $data .= '<td colspan="7" align="left">' . $ta->Trans_Acc_Name . '<small>  B/F = ' . Account::show_bal($ob) . '  </small></td>';
+                        $data .= '<td colspan="7" align="left">' . $rider_id . $ta->Trans_Acc_Name . '<small>  B/F = ' . Account::show_bal($ob) . '  </small></td>';
                         $data .= '<td>' . $res->dr ?? 0.00 . '</td>';
                         $data .= '<td>' . $res->cr ?? 0.00 . '</td>';
                         $data .= '<td align="right">' . Account::show_bal($balance) . '</td>';
