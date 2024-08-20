@@ -31,25 +31,29 @@
                         <!-- /.card-header -->
                         <div class="card-body">
                             <h3>Rider Report</h3>
-                            {{-- <form id="form">
+                            <form id="form">
                                 <div class="row">
-                                    <div class="col-md-2">
-                                        <input name="df" class="form-control form-control-sm date" placeholder="Date From">
-                                    </div>
-                                    <div class="col-md-2">
-                                        <input name="dt" class="form-control form-control-sm date" placeholder="Date To">
-                                    </div>
-                                    <div class="col-md-2">
-                                        <select class="form-control form-control-sm select2" name="ledger_id">
-                                            {!! App\Models\Accounts\TransactionAccount::dropdown() !!}
+
+                                    <div class="col-md-3">
+                                        <label>Status</label>
+                                        <select class="form-control form-control-sm select2" name="status">
+                                            <option value="">Select</option>
+                                            @foreach(App\Helpers\CommonHelper::RiderStatus() as $key=>$value)
+                                            <option value="{{$key}}"@if(request('status')==$key)selected @endif>{{$value}}</option>
+                                            @endforeach
                                         </select>
                                     </div>
-                                    <div class="col-sm-1">
-                                        <button type="button" class="btn btn-xs btn-primary" onclick="get_data()"><i class="fa fa-search"></i> </button>
+                                    <div class="col-md-3">
+
+                                        <label>Biling Month</label>
+                                        <input type="month" name="billing_month" value="{{request('billing_month')??date('Y-m')}}" class="form-control form-control-sm" required/>
+                                    </div>
+                                    <div class="col-md-3 mt-4">
+                                        <button type="button" class="btn btn-sm btn-primary" onclick="get_data()"><i class="fa fa-search"></i> Search</button>
                                     </div>
                                 </div>
                                 <!--row-->
-                            </form> --}}
+                            </form>
                             <br>
                             <button class="btn btn-xs btn-primary float-right exportToExcel"><i class="fa fa-file-excel"> Export</i> </button>
                             <table id="table2excel" class="table table-striped table-hover">
@@ -65,8 +69,8 @@
 
                                 </tr>
                                 </thead>
-                                {{-- <tbody id="get_data"></tbody> --}}
-                                @foreach($riders as $row)
+                                <tbody id="get_data"></tbody>
+                               {{--  @foreach($riders as $row)
                                 <tr>
                                     <td>{{$row->rider_id}}</td>
                                     <td>{{$row->name}}</td>
@@ -80,7 +84,7 @@
 
                                 </tr>
                                 @endforeach
-
+ --}}
                             </table>
                         </div>
                         <!-- /.card-body -->
@@ -108,7 +112,7 @@
         function get_data(){
             $("#loader").show();
             $.ajax({
-                url:"{{ url('Accounts/reports/get_ledger') }}",
+                url:"{{ url('reports/rider_report_data') }}",
                 headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
                 type:"POST",
                 data:$("#form").serialize(),

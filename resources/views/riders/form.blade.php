@@ -150,7 +150,7 @@
                                         <label>Vendor</label>
                                         <select class="form-control form-control-sm select2" name="VID">
                                             <option value="">Select</option>
-                                            {!! \App\Models\Vendor::dropdown() !!}
+                                            {!! \App\Models\Vendor::dropdown(@$result['VID']) !!}
                                         </select>
                                     </div>
                                     <!--col-->
@@ -173,7 +173,7 @@
                                         <label>Nationality</label>
                                         <select class="form-control form-control-sm select2" name="nationality">
                                             <option value="">Select</option>
-                                            {!! \App\Models\Country::dropdown() !!}
+                                            {!! \App\Models\Country::dropdown(@$result['nationality']) !!}
                                         </select>
                                     </div>
                                     <div class="col-md-3 form-group">

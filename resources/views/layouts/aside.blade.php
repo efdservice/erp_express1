@@ -17,7 +17,7 @@ $item=['item','item_assign_rv','assign_price_edit'];
 $invoices=['vendor_invoices','rider_invoices'];
 $bikes=['bike','rta_fine','lease_company','bike_rent'];
 $sims=['sim','sim_charges'];
-$reports=['vendor_invoice_report','rider_invoice_report','rider_list'];
+$reports=['vendor_invoice_report','rider_invoice_report','rider_list','rider_report'];
 ?>
 <!-- Main Sidebar Container -->
 <aside class="main-sidebar sidebar-dark-primary elevation-4 bg-navy">

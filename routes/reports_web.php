@@ -19,6 +19,7 @@ Route::group(['middleware' => ['auth']], function () {
         Route::get('vendor_invoice_report', 'ReportController@vendor_invoice_index');
         Route::get('rider_list', 'ReportController@rider_list');
         Route::get('rider_report', 'ReportController@rider_report');
+        Route::post('rider_report_data', 'ReportController@rider_report_data');
     });
 });
 
