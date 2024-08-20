@@ -259,6 +259,12 @@ $reports=['vendor_invoice_report','rider_invoice_report','rider_list'];
                         <li class="nav-item">
                             <a href="{{ url('reports/rider_list') }}" class="nav-link {{ (request()->is('reports/rider_list')) ? 'active' : '' }}">
                                 <i class="nav-icon fas fa-angle-double-right fa-xs"></i>
+                                <p>Rider List</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{ url('reports/rider_report') }}" class="nav-link {{ (request()->is('reports/rider_report')) ? 'active' : '' }}">
+                                <i class="nav-icon fas fa-angle-double-right fa-xs"></i>
                                 <p>Rider Report</p>
                             </a>
                         </li>

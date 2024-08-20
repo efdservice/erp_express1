@@ -20,4 +20,9 @@ class ReportController extends Controller
         $riders = Rider::all()->sortBy('rider_id');
         return view('Reports.rider_list', compact('riders'));
     }
+    public function rider_report()
+    {
+        $riders = Rider::all()->sortBy('rider_id');
+        return view('Reports.rider_report', compact('riders'));
+    }
 }
