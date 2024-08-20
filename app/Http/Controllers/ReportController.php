@@ -47,7 +47,7 @@ class ReportController extends Controller
         foreach ($result as $rider) {
 
             if (isset($rider->account->id)) {
-                $balance = Account::ob($request->billing_month, $rider->account->id);
+                $balance = Account::Monthly_ob($request->billing_month, $rider->account->id);
             } else {
                 $balance = 0.00;
             }
