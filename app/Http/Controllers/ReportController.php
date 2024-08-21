@@ -79,6 +79,7 @@ class ReportController extends Controller
 
         $data .= '<tr>';
         $data .= '<td colspan="6"></td>';
+        $data .= '<th style="text-align: right">' . number_format($total, 2) . '</th>';
         $data .= '<th style="text-align: right">' . Account::show_bal($total) . '</th>';
         $data .= '</tr>';
 
