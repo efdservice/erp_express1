@@ -627,7 +627,9 @@ class CommonHelper
             2 => 'Vacation',
             3 => 'Terminate',
             4 => 'Theft',
-            5 => 'Absconded'
+            5 => 'Absconded',
+            6 => 'Stop Salary'
+
         ];
 
         if ($status != null) {
