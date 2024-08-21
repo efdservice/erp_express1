@@ -41,9 +41,14 @@ class ReportController extends Controller
         if ($request->status) {
             $result = $result->where('status', $request->status);
         }
-
+        if ($request->VID) {
+            $result = $result->where('VID', $request->VID);
+        }
+        if ($request->designation) {
+            $result = $result->where('designation', $request->designation);
+        }
         $result = $result->get();
-
+        $balance = 0.00;
         foreach ($result as $rider) {
 
             if (isset($rider->account->id)) {

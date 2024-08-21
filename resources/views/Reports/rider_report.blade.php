@@ -33,8 +33,21 @@
                             <h3>Rider Report</h3>
                             <form id="form">
                                 <div class="row">
-
-                                    <div class="col-md-3">
+                                    <div class="col-md-2">
+                                        <label>Designation</label>
+                                        <select class="form-control form-control-sm select2" name="designation">
+                                            <option value="">Select</option>
+                                            {!! App\Helpers\CommonHelper::Designations(@$result['designation']) !!}
+                                        </select>
+                                    </div>
+                                    <div class="col-md-2">
+                                        <label>Vendor</label>
+                                        <select class="form-control form-control-sm select2" name="VID">
+                                            <option value="">Select</option>
+                                            {!! \App\Models\Vendor::dropdown(@$result['VID']) !!}
+                                        </select>
+                                    </div>
+                                    <div class="col-md-2">
                                         <label>Status</label>
                                         <select class="form-control form-control-sm select2" name="status">
                                             <option value="">Select</option>
@@ -43,12 +56,13 @@
                                             @endforeach
                                         </select>
                                     </div>
-                                    <div class="col-md-3">
+
+                                    <div class="col-md-2">
 
                                         <label>Biling Month</label>
                                         <input type="month" name="billing_month" value="{{request('billing_month')??date('Y-m')}}" class="form-control form-control-sm" required/>
                                     </div>
-                                    <div class="col-md-3 mt-4">
+                                    <div class="col-md-2 mt-4">
                                         <button type="button" class="btn btn-sm btn-primary" onclick="get_data()"><i class="fa fa-search"></i> Search</button>
                                     </div>
                                 </div>
