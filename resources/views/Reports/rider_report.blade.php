@@ -79,7 +79,8 @@
                                     <th >Designation</th>
                                     <th >Bike No</th>
                                     <th>Status</th>
-                                    <th>Balance</th>
+                                    <th style="text-align: right;">Balance Amount</th>
+                                    <th style="text-align: right;">Balance</th>
 
                                 </tr>
                                 </thead>

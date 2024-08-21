@@ -52,18 +52,19 @@ class ReportController extends Controller
         foreach ($result as $rider) {
 
             if (isset($rider->account->id)) {
-                $balance = Account::Monthly_ob($request->billing_month, $rider->account->id);
+                $balance = Account::BillingMonth_Balance($request->billing_month, $rider->account->id);
             } else {
                 $balance = 0.00;
             }
             $data .= '<tr>';
-            $data .= '<td  align="left">' . @$rider->rider_id . '</td>';
-            $data .= '<td  align="left">' . @$rider->name . '</td>';
-            $data .= '<td  align="left">' . @$rider->vendor->name . '</td>';
-            $data .= '<td  align="left">' . @$rider->designation . '</td>';
-            $data .= '<td  align="left">' . @$rider->bikes->plate . '</td>';
-            $data .= '<td  align="left">' . CommonHelper::RiderStatus($rider->status) . '</td>';
+            $data .= '<td  >' . @$rider->rider_id . '</td>';
+            $data .= '<td  >' . @$rider->name . '</td>';
+            $data .= '<td >' . @$rider->vendor->name . '</td>';
+            $data .= '<td >' . @$rider->designation . '</td>';
+            $data .= '<td  >' . @$rider->bikes->plate . '</td>';
+            $data .= '<td >' . CommonHelper::RiderStatus($rider->status) . '</td>';
 
+            $data .= '<td align="right" >' . number_format($balance, 2) . '</td>';
             $data .= '<td align="right">' . Account::show_bal($balance) . '</td>';
             $data .= '</tr>';
 
