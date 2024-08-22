@@ -2,6 +2,13 @@
 @section('title', 'Rider Profile')
 
 @section('content')
+<style>
+.myform .required:after {
+  content: " *";
+    color: red;
+    font-weight: 200;
+}
+</style>
 <div class="content-wrapper" style="min-height: 1603.43px;">
     <section class="content-header">
        <div class="container-fluid">
@@ -120,7 +127,7 @@
                       <div class="tab-content">
                          <div class="active tab-pane" id="information">
                             @isset($result)
-                            {!! Form::model($result, ['route' => ['rider.store'], 'id'=>'formajax']) !!}
+                            {!! Form::model($result, ['route' => ['rider.store'], 'id'=>'formajax','class'=>'myform']) !!}
                             <input type="hidden" name="id" value="{{$result['id']}}"/>
                             @else
                             {!! Form::open(['route' => 'rider.store', 'id'=>'formajax']) !!}
@@ -133,12 +140,12 @@
 
                                 <div class="row">
                                     <div class="col-md-3 form-group">
-                                        <label>Rider ID*</label>
+                                        <label class="required">Rider ID <span style="color:red;">*</span></label>
                                         {!! Form::text('rider_id', null, ['class' => 'form-control form-control-sm', 'maxlength' => 255]) !!}
                                     </div>
                                     <!--col-->
                                     <div class="col-md-3 form-group">
-                                        <label>Rider Name *</label>
+                                        <label>Rider Name <span style="color:red;">*</span></label>
                                         {!! Form::text('name', null, ['class' => 'form-control form-control-sm', 'maxlength' => 255]) !!}
                                     </div>
                                     <!--col-->
@@ -147,9 +154,9 @@
                                         {!! Form::text('personal_contact', null, ['class' => 'form-control form-control-sm', 'maxlength' => 255]) !!}
                                     </div>
                                     <div class="col-md-3 form-group">
-                                        <label>Vendor</label>
+                                        <label>Vendor <span style="color:red;">*</span></label>
                                         <select class="form-control form-control-sm select2" name="VID">
-                                            <option value="">Select</option>
+
                                             {!! \App\Models\Vendor::dropdown(@$result['VID']) !!}
                                         </select>
                                     </div>
@@ -160,7 +167,7 @@
                                     </div>
                                     <!--col-->
                                     <div class="col-md-3 form-group">
-                                        <label>Personal Gmail ID *</label>
+                                        <label>Personal Gmail ID  <span style="color:red;">*</span></label>
                                         {!! Form::text('personal_email', null, ['class' => 'form-control form-control-sm', 'maxlength' => 255]) !!}
                                     </div>
                                     <!--col-->
@@ -170,18 +177,50 @@
                                     </div> --}}
                                     <!--col-->
                                     <div class="col-md-3 form-group">
-                                        <label>Nationality</label>
+                                        <label>Nationality <span style="color:red;">*</span></label>
                                         <select class="form-control form-control-sm select2" name="nationality">
-                                            <option value="">Select</option>
+
                                             {!! \App\Models\Country::dropdown(@$result['nationality']) !!}
                                         </select>
                                     </div>
+                                    <div class="col-md-3 form-group">
+                                        <label>Ethnicity</label>
+                                        <select type="text" class="form-control form-control-sm select2" name="ethnicity">
+
+                                            {!! App\Helpers\CommonHelper::get_Ethnicity(@$result['ethnicity']) !!}
+
+                                        </select>
+                                    </div>
+                                    <!--col-->
+                                    <div class="col-md-3 form-group">
+                                        <label>DOB <span style="color:red;">*</span></label>
+                                        {!! Form::date('dob', null, ['class' => 'form-control form-control-sm', 'maxlength' => 255]) !!}
+                                    </div>
+                                    <div class="col-md-3 form-group">
+                                        <label>Date of Joining <span style="color:red;">*</span></label>
+                                        {!! Form::date('doj', null, ['class' => 'form-control form-control-sm', 'maxlength' => 255]) !!}
+                                    </div>
+                                    <div class="col-md-3 form-group">
+                                        <label>Project <span style="color:red;">*</span></label>
+                                        <select class="form-control form-control-sm select2" name="PID">
+
+                                            {!! \App\Models\Projects::dropdown(@$result['PID']) !!}
+                                        </select>
+                                    </div>
+                                    <div class="col-md-3 form-group">
+                                        <label>Designation <span style="color:red;">*</span></label>
+                                        <select class="form-control form-control-sm select2" name="designation">
+                                            {!! App\Helpers\CommonHelper::Designations(@$result['designation']) !!}
+                                        </select>
+
+                                    </div>
+
                                     <div class="col-md-3 form-group">
                                         <label>Visa Sponsor</label>
                                         {!! Form::text('visa_sponsor', null, ['class' => 'form-control form-control-sm', 'maxlength' => 255]) !!}
                                     </div>
                                     <div class="col-md-3 form-group">
-                                        <label>Occupation on Visa</label>
+                                        <label>Occupation on Visa <span style="color:red;">*</span></label>
                                         {!! Form::text('visa_occupation', null, ['class' => 'form-control form-control-sm', 'maxlength' => 255]) !!}
                                     </div>
                                     <div class="col-md-6 form-group">
@@ -204,46 +243,18 @@
                                         {!! Form::text('mashreq_id', null, ['class' => 'form-control form-control-sm', 'maxlength' => 255]) !!}
                                     </div>
                                     <!--col-->
-                                    <div class="col-md-3 form-group">
-                                        <label>Date of Joining</label>
-                                        {!! Form::date('doj', null, ['class' => 'form-control form-control-sm', 'maxlength' => 255]) !!}
-                                    </div>
+
                                     <!--col-->
 
                                     <!--col-->
-                                    <div class="col-md-3 form-group">
-                                        <label>Project</label>
-                                        <select class="form-control form-control-sm select2" name="PID">
-                                            <option value="">Select Project</option>
-                                            {!! \App\Models\Projects::dropdown(@$result['PID']) !!}
-                                        </select>
-                                    </div>
-                                    <div class="col-md-3 form-group">
-                                        <label>Designation</label>
-                                        <select class="form-control form-control-sm select2" name="designation">
-                                            {!! App\Helpers\CommonHelper::Designations(@$result['designation']) !!}
-                                        </select>
 
-                                    </div>
                                     <!--col-->
                                     {{-- <div class="col-md-3 form-group">
                                         <label>Dept</label>
                                         <input type="text" class="form-control form-control-sm dat" name="DEPT" placeholder="Dept">
                                     </div> --}}
                                     <!--col-->
-                                    <div class="col-md-3 form-group">
-                                        <label>Ethnicity</label>
-                                        <select type="text" class="form-control form-control-sm select2" name="ethnicity">
 
-                                            {!! App\Helpers\CommonHelper::get_Ethnicity(@$result['ethnicity']) !!}
-
-                                        </select>
-                                    </div>
-                                    <!--col-->
-                                    <div class="col-md-3 form-group">
-                                        <label>DOB</label>
-                                        {!! Form::date('dob', null, ['class' => 'form-control form-control-sm', 'maxlength' => 255]) !!}
-                                    </div>
                                     <!--col-->
                                     <div class="col-md-3 form-group">
                                         <label>Branded Plate Number</label>
@@ -251,21 +262,15 @@
                                     </div>
                                     <!--col-->
                                     <div class="col-md-3 form-group">
-                                        <label>Fleet Supervisor</label>
+                                        <label>Fleet Supervisor <span style="color:red;">*</span></label>
                                         <select class="form-control form-control-sm select2" name="fleet_supervisor">
-                                            <option value=""></option>
+
                                             {!! App\Helpers\CommonHelper::get_supervisor(@$result['fleet_supervisor']) !!}
                                         </select>
                                     </div>
+
                                     <div class="col-md-3 form-group">
-                                        <label>Passport Handover</label>
-                                        <select class="form-control form-control-sm select2" name="passport_handover">
-                                            <option value=""></option>
-                                            {!! App\Helpers\CommonHelper::get_passport_handover(@$result['passport_handover']) !!}
-                                        </select>
-                                    </div>
-                                    <div class="col-md-3 form-group">
-                                        <label>Status</label>
+                                        <label>Status <span style="color:red;">*</span></label>
                                         <select class="form-control form-control-sm select2" name="status">
                                             @foreach(App\Helpers\CommonHelper::RiderStatus() as $key=>$value)
                                             <option value="{{$key}}"@if(@$result['status']==$key)selected @endif>{{$value}}</option>
@@ -274,28 +279,55 @@
 
                                         </select>
                                     </div>
+                                    <div class="col-md-3 form-group">
+                                        <label>Salary Model <span style="color:red;">*</span></label>
+                                        {!! Form::text('salary_model', null, ['class' => 'form-control form-control-sm', 'maxlength' => 255]) !!}
+                                    </div>
+                                    <div class="col-md-3 form-group">
+                                        <label>Rider Reference <span style="color:red;">*</span></label>
+                                        {!! Form::text('rider_reference', null, ['class' => 'form-control form-control-sm', 'maxlength' => 255]) !!}
+                                    </div>
                                 </div>
                                 <div class="row bg-light mb-1">
                                     <div class="col-md-3 form-group">
-                                        <label>Emirate (Hub)</label>
+                                        <label>Emirate (Hub) <span style="color:red;">*</span></label>
                                         <select class="form-control form-control-sm select2" name="emirate_hub">
-                                            <option value=""></option>
+
                                             {!! App\Helpers\CommonHelper::EmiratesHub(@$result['emirate_hub']) !!}
                                         </select>
 
                                     </div>
                                     <!--col-->
                                     <div class="col-md-3 form-group">
-                                        <label>Emirate ID</label>
+                                        <label>Emirate ID <span style="color:red;">*</span></label>
                                         {!! Form::text('emirate_id', null, ['class' => 'form-control form-control-sm', 'maxlength' => 255]) !!}
                                     </div>
                                     <div class="col-md-3 form-group">
-                                        <label>Licence No</label>
+                                        <label>EID EXP Date <span style="color:red;">*</span></label>
+                                        <input type="text" class="form-control form-control-sm date" name="emirate_exp" placeholder="EID EXP Date">
+                                    </div>
+                                    <div class="col-md-3 form-group">
+                                        <label>Licence No <span style="color:red;">*</span></label>
                                         {!! Form::text('license_no', null, ['class' => 'form-control form-control-sm', 'maxlength' => 255]) !!}
                                     </div>
                                     <div class="col-md-3 form-group">
-                                        <label>Passport </label>
+                                        <label>Licence Expiry <span style="color:red;">*</span></label>
+                                        <input type="text" class="form-control form-control-sm date" name="license_expiry" placeholder="License Expiry">
+                                    </div>
+                                    <div class="col-md-3 form-group">
+                                        <label>Passport <span style="color:red;">*</span></label>
                                         {!! Form::text('passport', null, ['class' => 'form-control form-control-sm', 'maxlength' => 255]) !!}
+                                    </div>
+                                    <div class="col-md-3 form-group">
+                                        <label>Passport Expiry <span style="color:red;">*</span></label>
+                                        <input type="text" class="form-control form-control-sm date" name="passport_expiry" placeholder="Passport Expiry">
+                                    </div>
+                                    <div class="col-md-3 form-group">
+                                        <label>Passport Handover <span style="color:red;">*</span></label>
+                                        <select class="form-control form-control-sm select2" name="passport_handover">
+
+                                            {!! App\Helpers\CommonHelper::get_passport_handover(@$result['passport_handover']) !!}
+                                        </select>
                                     </div>
                                     {{-- <div class="col-md-3 form-group">
                                         <label>NOON No. </label>
@@ -309,53 +341,12 @@
                                         <label>C3 Card</label>
                                         {!! Form::text('c3_card', null, ['class' => 'form-control form-control-sm', 'maxlength' => 255]) !!}
                                     </div>
-                                    </div>
-                                    <!--col-->
-                                   {{--  <div class="col-md-3 form-group">
-                                        <label>EID EXP Date</label>
-                                        <input type="text" class="form-control form-control-sm date" name="emirate_exp" placeholder="EID EXP Date">
-                                    </div>
-                                    <div class="col-md-3 form-group">
-                                        <label>Attach Document</label>
-                                        <input type="file"  class="form-control form-control-sm" name="attach_eid">
-                                    </div>
-                                </div>
-                                <div class="row bg-light mb-1">
-                                    <!--col-->
 
-                                    <!--col-->
-                                    <div class="col-md-3 form-group">
-                                        <label>Passport Expiry *</label>
-                                        <input type="text" class="form-control form-control-sm date" name="passport_expiry" placeholder="Passport Expiry">
                                     </div>
-                                    <div class="col-md-3 form-group">
-                                        <label>Attach Documents</label>
-                                        <input type="file" multiple class="form-control form-control-sm" name="attach_documents[]">
-                                    </div>
-                                </div>
-                                <div class="row bg-light mb-1">
-                                    <!--col-->
 
-                                    <!--col-->
-                                    <div class="col-md-3 form-group">
-                                        <label>Licence Expiry</label>
-                                        <input type="text" class="form-control form-control-sm date" name="license_expiry" placeholder="License Expiry">
-                                    </div>
-                                    <div class="col-md-3 form-group">
-                                        <label>Attach Documents</label>
-                                        <input type="file" multiple class="form-control form-control-sm" name="attach_documents[]">
-                                    </div>
-                                    <!--col-->
-                                </div> --}}
                                 <div class="row">
 
-                                    <!--col-->
-                                    {{-- <div class="col-md-3 form-group">
-                                        <label>Attach Documents</label>
-                                        <input type="file" multiple class="form-control form-control-sm" name="attach_documents[]">
-                                    </div> --}}
 
-                                    <!--col-->
                                     <div class="col-md-12 form-group">
                                         <label>Other Details</label>
                                         {!! Form::textarea('other_details', null, ['class' => 'form-control form-control-sm']) !!}
