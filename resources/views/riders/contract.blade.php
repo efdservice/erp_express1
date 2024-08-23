@@ -106,7 +106,8 @@
                <p class="s1" style="padding-top: 2pt;padding-left: 1pt;text-indent: 0pt;text-align: left;"><span class="s5">Ref.No</span>.</p>
             </td>
             <td style="border-top-style:solid;border-top-width:1pt;border-left-style:solid;border-left-width:1pt;border-bottom-style:solid;border-bottom-width:1pt;border-right-style:solid;border-right-width:1pt" >
-               <p style="text-indent: 0pt;text-align: left;"><br/></p>
+                <p class="s2" style="padding-top: 2pt;padding-right: 1pt;text-indent: 0pt;text-align: center;">{{@$rider->rider_reference}}</p>
+
             </td>
             <td style="border-top-style:solid;border-top-width:1pt;border-left-style:solid;border-left-width:1pt;border-bottom-style:solid;border-bottom-width:1pt;border-right-style:solid;border-right-width:1pt">
                <p class="s1" style="padding-top: 2pt;padding-left: 1pt;text-indent: 0pt;text-align: left;">Email I’d</p>
