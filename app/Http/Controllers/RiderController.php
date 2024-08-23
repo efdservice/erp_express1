@@ -61,14 +61,14 @@ class RiderController extends Controller
 
                     return CommonHelper::RiderStatus($row->status);
                     //return  Form::select('category_id', CommonHelper::RiderStatus(), $row->status, ['class' => 'statuschange','onchange' => 'changeStatus('.$row->id.',this)']);
-
+    
                     //return '<a href="javascript:void(0)" data-toggle="tooltip"  data-action="'.url('rider-status/'.$row->id).'" data-original-title="Action" class="doAction" ><span class="badge badge-primary" >Active</span></a>';
-
+    
                 })
                 ->addColumn('action', function ($row) {
                     $btn = '';
                     //$btn = $btn . '<a href="javascript:void();" data-action="' . route('rider_show', $row->id) . '" data-size="lg" data-title="' . $row->name . ' (' . $row->rider_id . ') Contract" class="btn btn-default btn-xs show-modal mr-1"><i class="fas fa-eye"></i> Show</a>';
-
+    
                     if (\Auth::user()->can('riders_document')) {
 
                         $btn = $btn . '<a href="javascript:void();" data-action="' . route('rider_contract_upload', $row->id) . '" data-size="md" data-title="' . $row->name . ' (' . $row->rider_id . ') Contract" class="btn btn-warning btn-xs show-modal mr-1"><i class="fas fa-file"></i> Contract</a>';
@@ -117,6 +117,7 @@ class RiderController extends Controller
         unset($request['_token']);
         unset($request['item_price']);
         unset($request['edit_redirect']);
+        unset($request['redirect_to']);
 
 
         $rules = [
@@ -140,7 +141,6 @@ class RiderController extends Controller
             'nationality' => 'required',
             'passport' => 'required',
             'passport_expiry' => 'required',
-            'cdm_deposit_id' => 'required',
             'fleet_supervisor' => 'required',
             'salary_model' => 'required',
             'rider_reference' => 'required',

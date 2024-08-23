@@ -178,6 +178,9 @@ $(document).on('submit', '#formajax', function (e) {
       if ($('#edit_redirect').val() == 1) {
         location.href = "{{url('rider/')}}/"+data.id+"/edit";
       }
+      if ($('#redirect_to').val()) {
+        location.href = $('#redirect_to').val();
+      }
 
       $('.data-table').DataTable().ajax.reload(null, false);
       get_data();

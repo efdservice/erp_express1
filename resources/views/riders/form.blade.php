@@ -129,10 +129,15 @@
                             @isset($result)
                             {!! Form::model($result, ['route' => ['rider.store'], 'id'=>'formajax','class'=>'myform']) !!}
                             <input type="hidden" name="id" value="{{$result['id']}}"/>
+                            <input type="hidden" name="redirect_to" id="redirect_to" value="{{url('rider')}}" />
+
                             @else
                             {!! Form::open(['route' => 'rider.store', 'id'=>'formajax']) !!}
                             <input type="hidden" name="id" value="0">
-                            <input type="hidden" name="edit_redirect" id="edit_redirect" value="1">
+                            {{-- <input type="hidden" name="edit_redirect" id="edit_redirect" value="1"> --}}
+                            <input type="hidden" name="redirect_to" id="redirect_to" value="{{url('rider')}}" />
+
+
                             @endisset
                             @csrf
 
@@ -140,6 +145,7 @@
 
                                 <div class="row">
                                     <div class="col-md-3 form-group">
+
                                         <label class="required">Rider ID <span style="color:red;">*</span></label>
                                         {!! Form::text('rider_id', null, ['class' => 'form-control form-control-sm', 'maxlength' => 255]) !!}
                                     </div>
@@ -304,7 +310,7 @@
                                     </div>
                                     <div class="col-md-3 form-group">
                                         <label>EID EXP Date <span style="color:red;">*</span></label>
-                                        <input type="text" class="form-control form-control-sm date" name="emirate_exp" placeholder="EID EXP Date">
+                                        {!! Form::date('emirate_exp', null, ['class' => 'form-control form-control-sm', 'maxlength' => 255]) !!}
                                     </div>
                                     <div class="col-md-3 form-group">
                                         <label>Licence No <span style="color:red;">*</span></label>
@@ -312,7 +318,7 @@
                                     </div>
                                     <div class="col-md-3 form-group">
                                         <label>Licence Expiry <span style="color:red;">*</span></label>
-                                        <input type="text" class="form-control form-control-sm date" name="license_expiry" placeholder="License Expiry">
+                                        {!! Form::date('license_expiry', null, ['class' => 'form-control form-control-sm', 'maxlength' => 255]) !!}
                                     </div>
                                     <div class="col-md-3 form-group">
                                         <label>Passport <span style="color:red;">*</span></label>
@@ -320,7 +326,7 @@
                                     </div>
                                     <div class="col-md-3 form-group">
                                         <label>Passport Expiry <span style="color:red;">*</span></label>
-                                        <input type="text" class="form-control form-control-sm date" name="passport_expiry" placeholder="Passport Expiry">
+                                        {!! Form::date('passport_expiry', null, ['class' => 'form-control form-control-sm', 'maxlength' => 255]) !!}
                                     </div>
                                     <div class="col-md-3 form-group">
                                         <label>Passport Handover <span style="color:red;">*</span></label>
