@@ -447,7 +447,7 @@ class RiderController extends Controller
             $rider->image_name = $name;
             $rider->save();
 
-            return true;//redirect(url('rider'))->with('success', $rider->name . '( ' . $rider->rider_id . ' ) Profile Picture uploaded.');
+            return "Picture uploaded successfully";//redirect(url('rider'))->with('success', $rider->name . '( ' . $rider->rider_id . ' ) Profile Picture uploaded.');
         }
     }
 }

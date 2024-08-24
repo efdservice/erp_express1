@@ -220,7 +220,55 @@ $(document).on('submit', '#formajax', function (e) {
   });
 });
 
+$(document).on('submit', '#formajax2', function (e) {
+  e.preventDefault();
+  $("#loader").show();
 
+  let formID = 'formajax2';
+  var action = $(this).attr('action');
+
+  var formData = new FormData(this);
+  $.ajax({
+    url: action,
+    headers: { 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content') },
+    type: 'POST',
+    data: formData,
+    contentType: false,
+    cache: false,
+    processData: false,
+    success: function (data) {
+        $("#loader").hide();
+      toastr.success(data);
+    },
+    error: function (ajaxcontent) {
+        $("#loader").hide();
+      if ($('#card').val() == 1) {
+        $("#loader").hide();
+      }
+      if (ajaxcontent.responseJSON.success == 'false') {
+        //toastr.error(ajaxcontent.responseJSON.errors);
+        return false;
+      }
+      vali = ajaxcontent.responseJSON.errors;
+      $('#' + formID + ' input').css('border', '1px solid #dfdfdf');
+      $('#' + formID + ' input')
+        .next('span')
+        .remove();
+
+      $.each(vali, function (index, value) {
+        $('#' + formID + " input[name~='" + index + "']").css('border', '1px solid red');
+        //$('#' + formID + " input[name~='" + index + "']").after('<span style="color:red;">' + value + '</span>');
+        $('#' + formID + " select[name~='" + index + "']")
+          //.parent()
+          //.find('.select2-container--default .select2-selection--single')
+          .css('border', '1px solid red');
+        toastr.error(value);
+      });
+
+      $('#dataTableBuilder').DataTable().ajax.reload();
+    }
+  });
+});
 
 
 </script>
