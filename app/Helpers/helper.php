@@ -368,8 +368,7 @@ class CommonHelper
     {
         $array = [
             'WPS' => 'WPS',
-            'NON/WPS' => 'NON/WPS',
-            'Cash' => 'Cash'
+            'NON/WPS' => 'NON/WPS'
         ];
 
         $list = '';
@@ -384,6 +383,7 @@ class CommonHelper
         $array = [
             'Active' => 'Active',
             'Block' => 'Block',
+            'Cash' => 'Cash',
             'Pending' => 'Pending'
         ];
 
