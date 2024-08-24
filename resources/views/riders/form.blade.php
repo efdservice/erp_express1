@@ -231,7 +231,9 @@
                                     </div>
                                     <div class="col-md-6 form-group">
                                         <label>Visa Status</label>
-                                        {!! Form::text('visa_status', null, ['class' => 'form-control form-control-sm', 'maxlength' => 255]) !!}
+                                        <select class="form-control form-control-sm select2" name="visa_status">
+                                            {!! App\Helpers\CommonHelper::VisaStatus(@$result['visa_status']) !!}
+                                        </select>
                                     </div>
                                     <!--col-->
                                     {{-- <div class="col-md-3 form-group">

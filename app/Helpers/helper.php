@@ -368,7 +368,8 @@ class CommonHelper
     {
         $array = [
             'WPS' => 'WPS',
-            'NON/WPS' => 'NON/WPS'
+            'NON/WPS' => 'NON/WPS',
+            'Cash' => 'Cash'
         ];
 
         $list = '';
@@ -384,6 +385,21 @@ class CommonHelper
             'Active' => 'Active',
             'Block' => 'Block',
             'Pending' => 'Pending'
+        ];
+
+        $list = '';
+        foreach ($array as $key => $value) {
+            $list .= '<option ' . ($id == $key ? 'selected' : '') . ' value="' . $key . '">' . $value . '</option>';
+        }
+        return $list;
+
+    }
+    public static function VisaStatus($id = 0)
+    {
+        $array = [
+            'Express Fast Visa' => 'Express Fast Visa',
+            'Temp Labour Card' => 'Temp Labour Card',
+            'Pending Labor Card' => 'Pending Labor Card'
         ];
 
         $list = '';
@@ -673,7 +689,8 @@ class CommonHelper
             3 => 'Terminate',
             4 => 'Theft',
             5 => 'Absconded',
-            6 => 'Stop Salary'
+            6 => 'Stop Salary',
+            7 => 'Coming'
 
         ];
 
