@@ -348,6 +348,51 @@ class CommonHelper
         return $list;
 
     }
+    public static function SalaryModel($id = 0)
+    {
+        $array = [
+            '3000 Fix Salary' => '3000 Fix Salary',
+            '3200 Fix Salary' => '3200 Fix Salary',
+            '3500 Fix Salary' => '3500 Fix Salary',
+            'Commission' => 'Commission'
+        ];
+
+        $list = '';
+        foreach ($array as $key => $value) {
+            $list .= '<option ' . ($id == $key ? 'selected' : '') . ' value="' . $key . '">' . $value . '</option>';
+        }
+        return $list;
+
+    }
+    public static function WPS($id = 0)
+    {
+        $array = [
+            'WPS' => 'WPS',
+            'NON/WPS' => 'NON/WPS'
+        ];
+
+        $list = '';
+        foreach ($array as $key => $value) {
+            $list .= '<option ' . ($id == $key ? 'selected' : '') . ' value="' . $key . '">' . $value . '</option>';
+        }
+        return $list;
+
+    }
+    public static function C3Card($id = 0)
+    {
+        $array = [
+            'Active' => 'Active',
+            'Block' => 'Block',
+            'Pending' => 'Pending'
+        ];
+
+        $list = '';
+        foreach ($array as $key => $value) {
+            $list .= '<option ' . ($id == $key ? 'selected' : '') . ' value="' . $key . '">' . $value . '</option>';
+        }
+        return $list;
+
+    }
 
     public static function get_PaymentReason($id = 0)
     {

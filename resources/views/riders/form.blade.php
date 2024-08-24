@@ -287,7 +287,10 @@
                                     </div>
                                     <div class="col-md-3 form-group">
                                         <label>Salary Model <span style="color:red;">*</span></label>
-                                        {!! Form::text('salary_model', null, ['class' => 'form-control form-control-sm', 'maxlength' => 255]) !!}
+                                        <select class="form-control form-control-sm select2" name="salary_model">
+
+                                            {!! App\Helpers\CommonHelper::SalaryModel(@$result['salary_model']) !!}
+                                        </select>
                                     </div>
                                     <div class="col-md-3 form-group">
                                         <label>Rider Reference <span style="color:red;">*</span></label>
@@ -341,11 +344,17 @@
                                     </div> --}}
                                     <div class="col-md-3 form-group">
                                         <label>WPS</label>
-                                        {!! Form::text('wps', null, ['class' => 'form-control form-control-sm', 'maxlength' => 255]) !!}
+                                        <select class="form-control form-control-sm select2" name="wps">
+
+                                            {!! App\Helpers\CommonHelper::WPS(@$result['wps']) !!}
+                                        </select>
                                     </div>
                                     <div class="col-md-3 form-group">
                                         <label>C3 Card</label>
-                                        {!! Form::text('c3_card', null, ['class' => 'form-control form-control-sm', 'maxlength' => 255]) !!}
+                                        <select class="form-control form-control-sm select2" name="c3_card">
+
+                                            {!! App\Helpers\CommonHelper::C3Card(@$result['c3_card']) !!}
+                                        </select>
                                     </div>
 
                                     </div>
