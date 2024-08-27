@@ -66,7 +66,7 @@
                                     <th class="d-none">Project</th>
                                     <th class="d-none">Emirates</th>
                                     <th >Personal No.</th>
-                                    <th class="d-none">Noon No.</th>
+                                    <th class="d-none">Company Contact</th>
                                     <th >Bike Number</th>
                                     <th class="d-none">Joining Date</th>
                                     <th class="d-none">DOB</th>
@@ -83,7 +83,7 @@
                                     <th class="d-none">Fleet Supervisor</th>
                                     <th class="d-none">WPS/Non WPS</th>
                                     <th class="d-none">C3 Card</th>
-                                    <th class="d-none">Company Contact</th>
+
                                 </tr>
                                 </thead>
                                 {{-- <tbody id="get_data"></tbody> --}}
@@ -100,7 +100,7 @@
                                     <td class="d-none">{{@$row->project->name}}</td>
                                     <td class="d-none">{{$row->emirate_hub}}</td>
                                     <td >{{$row->personal_contact}}</td>
-                                    <td class="d-none">{{$row->rider_id}}</td>
+                                    <td class="d-none">{{$row->company_contact}}</td>
                                     <td >{{@$row->bikes->plate}}</td>
                                     <td class="d-none">{{$row->doj}}</td>
                                     <td class="d-none">{{$row->dob}}</td>
@@ -117,7 +117,7 @@
                                     <td class="d-none">{{$row->fleet_supervisor}}</td>
                                     <td class="d-none">{{$row->wps}}</td>
                                     <td class="d-none">{{$row->c3_card}}</td>
-                                    <td class="d-none">{{$row->company_contact}}</td>
+
 
                                 </tr>
                                 @endforeach
