@@ -35,7 +35,7 @@ class RiderController extends Controller
             return DataTables::of($data)
                 ->addIndexColumn()
                 ->addColumn('name', function ($row) {
-                    return '<a href="javascript:void();" data-action="' . route('rider_show', $row->id) . '" data-size="lg" data-title="' . $row->name . ' (' . $row->rider_id . ') " class="show-modal">' . $row->name . '</a>';
+                    return '<a href="' . route('rider_view', $row->id) . '" class="show-modal">' . $row->name . '</a>';
                 })
                 ->addColumn('PID', function ($row) {
                     return $row->project->name ?? '';
@@ -68,6 +68,7 @@ class RiderController extends Controller
                 ->addColumn('action', function ($row) {
                     $btn = '';
                     //$btn = $btn . '<a href="javascript:void();" data-action="' . route('rider_show', $row->id) . '" data-size="lg" data-title="' . $row->name . ' (' . $row->rider_id . ') Contract" class="btn btn-default btn-xs show-modal mr-1"><i class="fas fa-eye"></i> Show</a>';
+                    //$btn = $btn . '<a href="' . route('rider_view', $row->id) . '"  class="btn btn-info btn-xs show-modal mr-1"><i class="fas fa-eye"></i> View</a>';
     
                     if (\Auth::user()->can('riders_document')) {
 
@@ -254,7 +255,9 @@ class RiderController extends Controller
     public function show($id)
     {
         $rider = Rider::find($id);
-        return view('riders.show', compact('rider'));
+        $rider_items = $rider->items;
+        $result = $rider->toArray();
+        return view('riders.view', compact('result', 'rider', 'rider_items'));
     }
 
     /**
