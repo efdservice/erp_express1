@@ -57,7 +57,7 @@
 		   @include('partials.modal')
 
 
-			<footer class="main-footer">
+			<footer class="main-footer no-print">
 				<strong>Copyright &copy; 2021 <a href="#">Express-Fast</a>.</strong>
 				All rights reserved.
 				<div class="float-right d-none d-sm-inline-block">

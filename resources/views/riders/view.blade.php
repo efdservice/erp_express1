@@ -8,6 +8,12 @@
     color: red;
     font-weight: 200;
 }
+@media print{
+    body .content{
+        font-size: 18px !important;
+
+    }
+}
 </style>
 <div class="content-wrapper" style="min-height: 1603.43px;">
     <section class="content-header">
@@ -29,8 +35,8 @@
     <section class="content">
        <div class="container-fluid">
           <div class="row">
-             <div class="col-md-3">
-                <div class="card card-primary card-outline">
+             <div class="col-md-3 col-3 bg-light">
+                <div class="card border">
                    <div class="card-body box-profile">
                     <div class="">
 
@@ -62,16 +68,16 @@
                       <p class="text-muted text-center">@isset($result){{$result['designation']??'not-set'}}@endisset</p>
                       <ul class="list-group list-group-unbordered mb-3">
                          <li class="list-group-item">
-                            <b>Date Of Joining</b> <a class="float-right">@isset($result){{$result['doj']??'not-set'}}@endisset</a>
+                            <b>Date Of Joining</b> <span class="float-right">@isset($result){{$result['doj']??'not-set'}}@endisset</span>
                          </li>
                          <li class="list-group-item">
-                            <b>Status</b> <a class="float-right">@isset($result){{App\Helpers\CommonHelper::RiderStatus($result['status'])??'not-set'}}@endisset</a>
+                            <b>Status</b> <span class="float-right">@isset($result){{App\Helpers\CommonHelper::RiderStatus($result['status'])??'not-set'}}@endisset</span>
                          </li>
                          <li class="list-group-item">
-                            <b>Balance</b> <a class="float-right">@isset($rider->account->id){{App\Helpers\Account::show_bal(App\Helpers\Account::Monthly_ob(date('y-m-d'), $rider->account->id))??'not-set'}}@endisset</a>
+                            <b>Balance</b> <span class="float-right">@isset($rider->account->id){{App\Helpers\Account::show_bal(App\Helpers\Account::Monthly_ob(date('y-m-d'), $rider->account->id))??'not-set'}}@endisset</span>
                          </li>
                       </ul>
-                      {{-- <a href="#" class="btn btn-primary btn-block"><b>Update</b></a> --}}
+                      <a href="javascript:void(0);" class="btn btn-default btn-block no-print" onclick="window.print();"><i class="fa fa-print"></i>&nbsp;<b>Print</b></a>
                    </div>
                 </div>
              {{--    <div class="card card-primary">
@@ -106,9 +112,9 @@
                     font-weight:bold;
                 }
              </style>
-             <div class="col-md-9">
+             <div class="col-md-9 col-9">
                 <div class="card">
-                   <div class="card-header p-2">
+                   <div class="card-header p-2 no-print">
                       <ul class="nav nav-pills">
                          <li class="nav-item"><a class="nav-link active" href="#information" data-toggle="tab">Information</a></li>
 
@@ -119,262 +125,252 @@
                       <div class="tab-content">
                          <div class="active tab-pane" id="information">
 
+                            <div class="card border">
+                                <div class="card-header"><b>Personal Information</b></div>
+                                    <div class="card-body">
+                                            <div class="row">
+                                                <div class="col-md-3 form-group col-3">
 
-                                <div class="row">
-                                    <div class="col-md-3 form-group">
+                                                    <label class="required">Rider ID </label>
+                                                    <p>{{$result['rider_id']}}</p>
+                                                </div>
+                                                <!--col-->
+                                                <div class="col-md-3 form-group col-3">
+                                                    <label>Rider Name </label>
+                                                    <p>{{@$result['name']}}</p>
+                                                </div>
+                                                <!--col-->
+                                                <div class="col-md-3 form-group col-3">
+                                                    <label>Rider Contact</label>
+                                                    <p>{{@$result['personal_contact']}}</p>
+                                                </div>
+                                                <div class="col-md-3 form-group col-3">
+                                                    <label>Vendor </label>
+                                                    <p>{{@$rider->vendor->name}}</p>
 
-                                        <label class="required">Rider ID </label>
-                                        <p>{{$result['rider_id']}}</p>
-                                    </div>
-                                    <!--col-->
-                                    <div class="col-md-3 form-group">
-                                        <label>Rider Name </label>
-                                        <p>{{@$result['name']}}</p>
-                                    </div>
-                                    <!--col-->
-                                    <div class="col-md-3 form-group">
-                                        <label>Rider Contact</label>
-                                        <p>{{@$result['personal_contact']}}</p>
-                                    </div>
-                                    <div class="col-md-3 form-group">
-                                        <label>Vendor </label>
-                                        <p>{{@$rider->vendor->name}}</p>
+                                                </div>
+                                                <!--col-->
+                                                <div class="col-md-3 form-group col-3">
+                                                    <label>Company Contact</label>
+                                                    <p>{{@$result['company_contact']}}</p>
+                                                </div>
+                                                <!--col-->
+                                                <div class="col-md-3 form-group col-3">
+                                                    <label>Personal Gmail ID  </label>
+                                                    <p>{{@$result['personal_email']}}</p>
+                                                </div>
+                                                <!--col-->
+                                                {{-- <div class="col-md-3 form-group">
+                                                    <label>Email</label>
+                                                    <input type="text" class="form-control form-control-sm" name="email" placeholder="Person Email">
+                                                </div> --}}
+                                                <!--col-->
+                                                <div class="col-md-3 form-group col-3">
+                                                    <label>Nationality </label>
+                                                    <p>{{@$rider->country->name}}</p>
 
-                                    </div>
-                                    <!--col-->
-                                    <div class="col-md-3 form-group">
-                                        <label>Company Contact</label>
-                                        <p>{{@$result['company_contact']}}</p>
-                                    </div>
-                                    <!--col-->
-                                    <div class="col-md-3 form-group">
-                                        <label>Personal Gmail ID  </label>
-                                        <p>{{@$result['personal_email']}}</p>
-                                    </div>
-                                    <!--col-->
-                                    {{-- <div class="col-md-3 form-group">
-                                        <label>Email</label>
-                                        <input type="text" class="form-control form-control-sm" name="email" placeholder="Person Email">
-                                    </div> --}}
-                                    <!--col-->
-                                    <div class="col-md-3 form-group">
-                                        <label>Nationality </label>
-                                        <p>{{@$rider->country->name}}</p>
+                                                </div>
+                                                <div class="col-md-3 form-group col-3">
+                                                    <label>Ethnicity</label>
+                                                    <p>{{@$result['ethnicity']}}</p>
 
-                                    </div>
-                                    <div class="col-md-3 form-group">
-                                        <label>Ethnicity</label>
-                                        <p>{{@$result['ethnicity']}}</p>
+                                                </div>
+                                                <!--col-->
+                                                <div class="col-md-3 form-group col-3">
+                                                    <label>DOB </label>
+                                                    <p>{{@$result['dob']}}</p>
+                                                </div>
+                                            </div>
 
-                                    </div>
-                                    <!--col-->
-                                    <div class="col-md-3 form-group">
-                                        <label>DOB </label>
-                                        <p>{{@$result['dob']}}</p>
-                                    </div>
-                                    <div class="col-md-3 form-group">
-                                        <label>Date of Joining </label>
-                                        <p>{{@$result['doj']}}</p>
-                                    </div>
-                                    <div class="col-md-3 form-group">
-                                        <label>Project </label>
-                                        <p>{{@$rider->project->name}}</p>
+                                </div>
+                            </div>
 
-                                    </div>
-                                    <div class="col-md-3 form-group">
-                                        <label>Designation </label>
-                                        <p>{{@$result['designation']}}</p>
+                            <div class="card border">
+                                <div class="card-header"><b>Job Detail</b></div>
+                                <div class="card-body">
+                                    <div class="row">
+                                        <div class="col-md-3 form-group col-3">
+                                            <label>Date of Joining </label>
+                                            <p>{{@$result['doj']}}</p>
+                                        </div>
+                                        <div class="col-md-3 form-group col-3">
+                                            <label>Project </label>
+                                            <p>{{@$rider->project->name}}</p>
+
+                                        </div>
+                                        <div class="col-md-3 form-group col-3">
+                                            <label>Designation </label>
+                                            <p>{{@$result['designation']}}</p>
 
 
-                                    </div>
+                                        </div>
 
-                                    <div class="col-md-3 form-group">
-                                        <label>Visa Sponsor</label>
-                                        <p>{{@$result['visa_sponsor']}}</p>
-                                    </div>
-                                    <div class="col-md-3 form-group">
-                                        <label>Occupation on Visa </label>
-                                        <p>{{@$result['visa_occupation']}}</p>
-                                    </div>
-                                    <div class="col-md-6 form-group">
-                                        <label>Visa Status</label>
-                                        <p>{{@$result['visa_status']}}</p>
 
+                                        <!--col-->
+                                        {{-- <div class="col-md-3 form-group">
+                                            <label>NF DID</label>
+                                            <input type="text" class="form-control form-control-sm" name="NFDID" placeholder="NF DID">
+                                        </div> --}}
+                                        <!--col-->
+                                        <div class="col-md-3 form-group col-3">
+                                            <label>CDM Deposit ID</label>
+                                            <p>{{@$result['cdm_deposit_id']}}</p>
+                                        </div>
+                                        <!--col-->
+
+                                        <!--col-->
+
+                                        <!--col-->
+
+                                        <!--col-->
+
+                                        <!--col-->
+                                        {{-- <div class="col-md-3 form-group">
+                                            <label>Dept</label>
+                                            <input type="text" class="form-control form-control-sm dat" name="DEPT" placeholder="Dept">
+                                        </div> --}}
+                                        <!--col-->
+
+                                        <!--col-->
+                                        <div class="col-md-3 form-group col-3">
+                                            <label>Branded Plate Number</label>
+                                            <p>{{@$result['branded_plate_no']}}</p>
+                                        </div>
+                                        <!--col-->
+                                        <div class="col-md-3 form-group col-3">
+                                            <label>Fleet Supervisor </label>
+                                            <p>{{@$result['fleet_supervisor']}}</p>
+
+                                        </div>
+
+                                        <div class="col-md-3 form-group col-3">
+                                            <label>Status </label>
+                                            <p>{{App\Helpers\CommonHelper::RiderStatus(@$result['status'])}}</p>
+
+                                        </div>
+                                        <div class="col-md-3 form-group col-3">
+                                            <label>Salary Model </label>
+                                            <p>{{@$result['salary_model']}}</p>
+
+                                        </div>
+                                        <div class="col-md-3 form-group col-3">
+                                            <label>Rider Reference </label>
+                                            <p>{{@$result['rider_reference']}}</p>
+                                        </div>
+                                        <div class="col-md-3 form-group col-3">
+                                            <label>WPS</label>
+                                            <p>{{@$result['wps']}}</p>
+
+                                        </div>
+                                        <div class="col-md-3 form-group col-3">
+                                            <label>C3 Card</label>
+                                            <p>{{$result['c3_card']}}</p>
+
+                                        </div>
+                                        <div class="col-md-12 form-group col-12">
+                                            <label>Other Details</label>
+                                            <p>{{@$result['other_details']}}</p>
+                                        </div>
                                     </div>
-                                    <!--col-->
-                                    {{-- <div class="col-md-3 form-group">
-                                        <label>NF DID</label>
-                                        <input type="text" class="form-control form-control-sm" name="NFDID" placeholder="NF DID">
-                                    </div> --}}
-                                    <!--col-->
-                                    <div class="col-md-3 form-group">
-                                        <label>CDM Deposit ID</label>
-                                        <p>{{@$result['cdm_deposit_id']}}</p>
-                                    </div>
-                                    <!--col-->
-                                    <div class="col-md-3 form-group">
-                                        <label>Mashreq ID</label>
-                                        <p>{{@$result['mashreq_id']}}</p>
-                                    </div>
-                                    <!--col-->
-
-                                    <!--col-->
-
-                                    <!--col-->
-
-                                    <!--col-->
-                                    {{-- <div class="col-md-3 form-group">
-                                        <label>Dept</label>
-                                        <input type="text" class="form-control form-control-sm dat" name="DEPT" placeholder="Dept">
-                                    </div> --}}
-                                    <!--col-->
-
-                                    <!--col-->
-                                    <div class="col-md-3 form-group">
-                                        <label>Branded Plate Number</label>
-                                        <p>{{@$result['branded_plate_no']}}</p>
-                                    </div>
-                                    <!--col-->
-                                    <div class="col-md-3 form-group">
-                                        <label>Fleet Supervisor </label>
-                                        <p>{{@$result['fleet_supervisor']}}</p>
-
-                                    </div>
-
-                                    <div class="col-md-3 form-group">
-                                        <label>Status </label>
-                                        <p>{{App\Helpers\CommonHelper::RiderStatus(@$result['status'])}}</p>
-
-                                    </div>
-                                    <div class="col-md-3 form-group">
-                                        <label>Salary Model </label>
-                                        <p>{{@$result['salary_model']}}</p>
-
-                                    </div>
-                                    <div class="col-md-3 form-group">
-                                        <label>Rider Reference </label>
-                                        <p>{{@$result['rider_reference']}}</p>
                                     </div>
                                 </div>
-                                <div class="row  mb-1">
-                                    <div class="col-md-3 form-group">
-                                        <label>Emirate (Hub) </label>
-                                        <p>{{@$result['emirate_hub']}}</p>
+                            </div>
 
-                                    </div>
-                                    <!--col-->
-                                    <div class="col-md-3 form-group">
-                                        <label>Emirate ID </label>
-                                        <p>{{@$result['emirate_id']}}</p>
-                                    </div>
-                                    <div class="col-md-3 form-group">
-                                        <label>EID EXP Date </label>
-                                        <p>{{@$result['emirate_exp']}}</p>
-                                    </div>
-                                    <div class="col-md-3 form-group">
-                                        <label>Licence No </label>
-                                        <p>{{@$result['license_no']}}</p>
-                                    </div>
-                                    <div class="col-md-3 form-group">
-                                        <label>Licence Expiry </label>
-                                        <p>{{@$result['license_expiry']}}</p>
-                                    </div>
-                                    <div class="col-md-3 form-group">
-                                        <label>Passport </label>
-                                        <p>{{@$result['passport']}}</p>
-                                    </div>
-                                    <div class="col-md-3 form-group">
-                                        <label>Passport Expiry </label>
-                                        <p>{{@$result['passport_expiry']}}</p>
-                                    </div>
-                                    <div class="col-md-3 form-group">
-                                        <label>Passport Handover </label>
-                                        <p>{{@$result['passport_handover']}}</p>
+                            <div class="card border">
+                                <div class="card-header"><b>Visa & Registerations</b></div>
+                                <div class="card-body">
+                                    <div class="row">
+                                        <div class="col-md-3 form-group col-3">
+                                            <label>Visa Sponsor</label>
+                                            <p>{{@$result['visa_sponsor']}}</p>
+                                        </div>
+                                        <div class="col-md-3 form-group col-3">
+                                            <label>Occupation on Visa </label>
+                                            <p>{{@$result['visa_occupation']}}</p>
+                                        </div>
+                                        <div class="col-md-6 form-group col-3">
+                                            <label>Visa Status</label>
+                                            <p>{{@$result['visa_status']}}</p>
 
+                                        </div>
+                                            <div class="col-md-3 form-group col-3">
+                                                <label>Emirate (Hub) </label>
+                                                <p>{{@$result['emirate_hub']}}</p>
+
+                                            </div>
+                                            <!--col-->
+                                            <div class="col-md-3 form-group col-3">
+                                                <label>Emirate ID </label>
+                                                <p>{{@$result['emirate_id']}}</p>
+                                            </div>
+                                            <div class="col-md-3 form-group col-3">
+                                                <label>EID EXP Date </label>
+                                                <p>{{@$result['emirate_exp']}}</p>
+                                            </div>
+                                            <div class="col-md-3 form-group col-3">
+                                                <label>Licence No </label>
+                                                <p>{{@$result['license_no']}}</p>
+                                            </div>
+                                            <div class="col-md-3 form-group col-3">
+                                                <label>Licence Expiry </label>
+                                                <p>{{@$result['license_expiry']}}</p>
+                                            </div>
+                                            <div class="col-md-3 form-group col-3">
+                                                <label>Passport </label>
+                                                <p>{{@$result['passport']}}</p>
+                                            </div>
+                                            <div class="col-md-3 form-group col-3">
+                                                <label>Passport Expiry </label>
+                                                <p>{{@$result['passport_expiry']}}</p>
+                                            </div>
+                                            <div class="col-md-3 form-group col-3">
+                                                <label>Passport Handover </label>
+                                                <p>{{@$result['passport_handover']}}</p>
+
+                                            </div>
+                                            {{-- <div class="col-md-3 form-group">
+                                                <label>NOON No. </label>
+                                                <input type="text" class="form-control form-control-sm" name="noon_no" placeholder="Noon No.">
+                                            </div> --}}
+
+                                            <div class="col-md-3 form-group col-3">
+                                                <label>Mashreq ID</label>
+                                                <p>{{@$result['mashreq_id']}}</p>
+                                            </div>
                                     </div>
-                                    {{-- <div class="col-md-3 form-group">
-                                        <label>NOON No. </label>
-                                        <input type="text" class="form-control form-control-sm" name="noon_no" placeholder="Noon No.">
-                                    </div> --}}
-                                    <div class="col-md-3 form-group">
-                                        <label>WPS</label>
-                                        <p>{{@$result['wps']}}</p>
-
-                                    </div>
-                                    <div class="col-md-3 form-group">
-                                        <label>C3 Card</label>
-                                        <p>{{$result['c3_card']}}</p>
-
-                                    </div>
-
-                                    </div>
-
-                                <div class="row">
-
-
-                                    <div class="col-md-12 form-group">
-                                        <label>Other Details</label>
-                                        <p>{{@$result['other_details']}}</p>
-                                    </div>
-                                    <!--col-->
                                 </div>
-                                <h4>Rider Items</h4>
-                                <div class="row pr-5 pl-5" >
-                                    <table  class="table" style="border-radius:10px;">
+                            </div>
+
+                               <div class="card border">
+                                <div class="card-header"><b>Items & Prices</b></div>
+                                <div class="card-body">
+
+
+                                <div class="row border" >
+                                    <table  class="table border" style="border-radius:10px;">
                     <thead>
-                        <tr class=" bg-light">
-                            <td>Items</td>
-                            <td>Price</td>
+                        <tr class="">
+                            <th>Items</th>
+                            <th>Price</th>
                         </tr>
                     </thead>
-                    <tbody>
-
-
-                    </tbody>
 
                 </table>
-                <table id="myTable" class="table order-list2 bg-light">
+                <table id="myTable" class="table order-list2 border">
                     @isset($rider_items)
                         @foreach($rider_items as $item)
                         <tr>
                             <td width="250"><label>{{@$item->item->item_name }}(Price: {{@$item->item->pirce}})</label></td>
                             <td width="240">{{$item->price}}</td>
-{{--                             <td width="130"><input type="number" name="items[{{@$item->item->id}}]" id="item-{{@$item->tem->id}}" value="{{$item->price}}" step="any" class="form-control form-control-sm" /></td>
- --}}
-{{--                             <td width="300"><input type="button" class="ibtnDel btn btn-md btn-xs btn-danger "  value="Delete"></td>
- --}}                        </tr>
+                        </tr>
                         @endforeach
                     @endisset
                 </table>
 
-                                      {{--   @php
-                                            $items = \App\Models\Item::all();
-
-                                        @endphp
-                                        @foreach ($items as $item)
-                                        @php
-                                             /* $rider_item = \App\Models\RiderItemPrice::where('item_id',$item->id)
-                                             ->where('RID',$); */
-                                        @endphp
-
-                                            <div class="col-3 form-group">
-                                                <label>{{$item->item_name}}(Price: {{$item->pirce}})</label>
-                                            <input type="number" name="items[{{$item->id}}]" id="item-{{$item->id}}" step="any" class="form-control form-control-sm" />
-                                            </div>
-                                        @endforeach
-                                        </div> --}}
-
-
-
-{{--                                 <button type="submit" class="btn btn-primary pull-right btn-md">Save Information</button>
- --}}                                {{-- <button class="btn btn-primary btn-sm loader" type="button" disabled style="display: none">
-                                    <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
-                                    Saving...
-                                </button> --}}
-
-                            </form>
 
                          </div>
+                        </div>
+                    </div>
                          </div>
 
                          <div class="tab-pane" id="settings">
