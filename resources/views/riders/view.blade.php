@@ -304,24 +304,24 @@
                                                 <p>{{@$result['emirate_id']}}</p>
                                             </div>
                                             <div class="col-md-3 form-group col-3">
-                                                <label>EID EXP Date </label>
-                                                <p>{{@$result['emirate_exp']}}</p>
+                                                <label @if(strtotime($result['emirate_exp']) <= strtotime(date('Y-m-d'))) style="color:red;" @endif>EID EXP Date </label>
+                                                <p @if(strtotime($result['emirate_exp']) <= strtotime(date('Y-m-d'))) style="color:red;" @endif>{{@$result['emirate_exp']}}</p>
                                             </div>
                                             <div class="col-md-3 form-group col-3">
                                                 <label>Licence No </label>
                                                 <p>{{@$result['license_no']}}</p>
                                             </div>
                                             <div class="col-md-3 form-group col-3">
-                                                <label>Licence Expiry </label>
-                                                <p>{{@$result['license_expiry']}}</p>
+                                                <label @if(strtotime($result['license_expiry']) <= strtotime(date('Y-m-d'))) style="color:red;" @endif>Licence Expiry </label>
+                                                <p @if(strtotime($result['license_expiry']) <= strtotime(date('Y-m-d'))) style="color:red;" @endif>{{@$result['license_expiry']}}</p>
                                             </div>
                                             <div class="col-md-3 form-group col-3">
                                                 <label>Passport </label>
                                                 <p>{{@$result['passport']}}</p>
                                             </div>
                                             <div class="col-md-3 form-group col-3">
-                                                <label>Passport Expiry </label>
-                                                <p>{{@$result['passport_expiry']}}</p>
+                                                <label @if(strtotime($result['passport_expiry']) <= strtotime(date('Y-m-d'))) style="color:red;" @endif>Passport Expiry </label>
+                                                <p @if(strtotime($result['passport_expiry']) <= strtotime(date('Y-m-d'))) style="color:red;" @endif>{{@$result['passport_expiry']}}</p>
                                             </div>
                                             <div class="col-md-3 form-group col-3">
                                                 <label>Passport Handover </label>
