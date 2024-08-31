@@ -367,8 +367,8 @@ class CommonHelper
     public static function WPS($id = 0)
     {
         $array = [
-            'WPS' => 'WPS',
-            'NON/WPS' => 'NON/WPS'
+            'NON/WPS' => 'NON/WPS',
+            'WPS' => 'WPS'
         ];
 
         $list = '';
@@ -381,9 +381,9 @@ class CommonHelper
     public static function C3Card($id = 0)
     {
         $array = [
+            'Cash' => 'Cash',
             'Active' => 'Active',
             'Block' => 'Block',
-            'Cash' => 'Cash',
             'Pending' => 'Pending'
         ];
 
