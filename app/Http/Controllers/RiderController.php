@@ -31,7 +31,11 @@ class RiderController extends Controller
     public function index(Request $request)
     {
         if ($request->ajax()) {
-            $data = Rider::latest()->get();
+            if ($request->status) {
+                $data = Rider::where('status', $request->status)->get();
+            } else {
+                $data = Rider::latest()->get();
+            }
             return DataTables::of($data)
                 ->addIndexColumn()
                 ->addColumn('name', function ($row) {

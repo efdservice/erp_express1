@@ -78,7 +78,7 @@
             processing: true,
             serverSide: true,
             stateSave: true,
-            ajax: "{{ route('rider.index') }}",
+            ajax: "{{ route('rider.index',['status'=>request('status')]) }}",
             columns: [
                 {data: 'rider_id', name: 'rider_id'},
                 {data: 'name', name: 'name'},

@@ -25,14 +25,16 @@
                     <div class="card-body">
 
                         <div class="row">
+
                             @foreach($status_count as $wh)
+
                                 <div class="col-lg-2 col-6">
                                     <!-- small box -->
                                     <div class="small-box bg-light" >
                                         <div class="inner" >
                                             <h4>{{$wh->total}}</h4>
 
-                                            <span>{{App\Helpers\CommonHelper::RiderStatus($wh->status)}}</span>
+                                            <a href="{{url('rider?status='.$wh->status)}}"><span>{{App\Helpers\CommonHelper::RiderStatus($wh->status)}}</span></a>
                                         </div>
                                         <div class="icon">
                                             <i class="fas fa-user-circle fa-xs"></i>
