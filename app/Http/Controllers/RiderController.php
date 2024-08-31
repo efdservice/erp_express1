@@ -37,9 +37,9 @@ class RiderController extends Controller
                 ->addColumn('name', function ($row) {
                     return '<a href="' . route('rider_view', $row->id) . '" class="show-modal">' . $row->name . '</a>';
                 })
-                ->addColumn('PID', function ($row) {
+                /* ->addColumn('PID', function ($row) {
                     return $row->project->name ?? '';
-                })
+                }) */
                 /*  ->addColumn('Balance', function ($row) {
                      $trans_acc_id = $row->account->id ?? 0;
                      if ($trans_acc_id != 0) {
@@ -49,10 +49,10 @@ class RiderController extends Controller
                          return 0;
                      }
                  }) */
-                ->addColumn('id', function ($row) {
-                    return $row->sims->sim_number ?? '';
+                /* ->addColumn('company_contact', function ($row) {
+                    return $row->company_contact ?? '';
 
-                })
+                }) */
                 ->addColumn('license_no', function ($row) {
                     return $row->bikes->plate ?? '';
 
@@ -91,7 +91,8 @@ class RiderController extends Controller
                 ->make(true);
 
         }
-        return view('riders.index');
+        $status_count = Rider::groupBy('status')->selectRaw('status,count(*) as total')->get();
+        return view('riders.index', compact('status_count'));
     }
 
     /**

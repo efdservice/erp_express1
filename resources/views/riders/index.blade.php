@@ -23,6 +23,28 @@
                 <!-- SELECT2 EXAMPLE -->
                 <div class="card card-default rounded-0">
                     <div class="card-body">
+
+                        <div class="row">
+                            @foreach($status_count as $wh)
+                                <div class="col-lg-2 col-6">
+                                    <!-- small box -->
+                                    <div class="small-box bg-light" >
+                                        <div class="inner" >
+                                            <h4>{{$wh->total}}</h4>
+
+                                            <span>{{App\Helpers\CommonHelper::RiderStatus($wh->status)}}</span>
+                                        </div>
+                                        <div class="icon">
+                                            <i class="fas fa-user-circle fa-xs"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                                @endforeach
+
+
+                        </div>
+
+
                         <div class="row">
                             <div class="col-md-12">
                                 @can('riders_create')
@@ -39,10 +61,10 @@
                                         <th>ID</th>
                                         <th>Rider Name</th>
                                        {{--  <th>Vendor</th> --}}
-                                        <th>Sim</th>
+                                        <th>Company Contact</th>
                                         <th>Bike Plate #</th>
                                         <th>Supervisor</th>
-                                        <th>Project</th>
+                                        <th>Emirate</th>
 {{--                                         <th>Balance</th>
  --}}
                                         <th>Status</th>
