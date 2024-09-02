@@ -68,11 +68,12 @@
 		<!-- /.content-header -->
 
 		<!-- Main content -->
-        @if(Auth::user()->getRoleNames()[0]=='Admin')
+      @can('dashboard_view')
 		<section class="content home-main">
 			<div class="container-fluid">
 				<!-- Small boxes (Stat box) -->
 				<div class="row">
+                    @can('vendors_view')
 					<div class="col-lg-2 col-6">
 						<!-- small box -->
 						<div class="small-box bg-info">
@@ -87,7 +88,9 @@
 							<a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
 						</div>
 					</div>
+                    @endcan
 					<!-- ./col -->
+                    @can('riders_view')
 					<div class="col-lg-2 col-6">
 						<!-- small box -->
 						<div class="small-box bg-success">
@@ -102,7 +105,9 @@
 							<a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
 						</div>
 					</div>
+                    @endcan
 					<!-- ./col -->
+                    @can('bikes_view')
 					<div class="col-lg-2 col-6">
 						<!-- small box -->
 						<div class="small-box bg-warning">
@@ -117,7 +122,9 @@
 							<a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
 						</div>
 					</div>
+                    @endcan
 					<!-- ./col -->
+                    @can('sims_view')
 					<div class="col-lg-2 col-6">
 						<!-- small box -->
 						<div class="small-box bg-dark">
@@ -132,7 +139,9 @@
 							<a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
 						</div>
 					</div>
+                    @endcan
 					<!-- ./col -->
+                    @can('projects_view')
 					<div class="col-lg-2 col-6">
 						<!-- small box -->
 						<div class="small-box bg-blue">
@@ -147,7 +156,9 @@
 							<a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
 						</div>
 					</div>
+                    @endcan
 					<!-- ./col -->
+                    @can('items_view')
 					<div class="col-lg-2 col-6">
 						<!-- small box -->
 						<div class="small-box bg-gradient-maroon">
@@ -162,6 +173,7 @@
 							<a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
 						</div>
 					</div>
+                    @endcan
 					<!-- ./col -->
 				</div>
 				<!-- /.row -->
@@ -209,7 +221,7 @@
 				<!-- /.row (main row) -->
 			</div><!-- /.container-fluid -->
 		</section>
-        @endif
+        @endcan
 		<!-- /.content -->
 	</div>
 	<!-- /.content-wrapper -->

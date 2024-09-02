@@ -155,12 +155,12 @@ class Account
         }
         $dr = Transaction::where(['trans_acc_id' => $tid, 'dr_cr' => 1])
             ->where(function ($query) use ($date) {
-                $query->whereDate('billing_month', '<=', $date)/* ->orWhereNull('billing_month') */ ;
+                $query->whereDate('billing_month', '=', $date)/* ->orWhereNull('billing_month') */ ;
             })->sum('amount');
 
         $cr = Transaction::where(['trans_acc_id' => $tid, 'dr_cr' => 2])
             ->where(function ($query) use ($date) {
-                $query->whereDate('billing_month', '<=', $date)/* ->orWhereNull('billing_month') */ ;
+                $query->whereDate('billing_month', '=', $date)/* ->orWhereNull('billing_month') */ ;
             })->sum('amount');
 
 

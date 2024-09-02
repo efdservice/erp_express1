@@ -48,7 +48,7 @@ class HomeController extends Controller
      */
     public function index()
     {
-//        $result=Permission::all();
+        //        $result=Permission::all();
 //        $html='';
 //        foreach ($result as $item){
 //            $html.="Permission::create([
@@ -66,78 +66,89 @@ class HomeController extends Controller
 //        dd();
 //        UmrahVoucherEmailJob::dispatch()->delay(now()->addSeconds(2));
 //        Mail::to('azeemkhalidg3@gmail.com')->send(new UmrahVouhcerEmail());
-        if(Auth::user()->getRoleNames()[0]=='Admin') {
-            $this->middleware('permission:dashboard_view', ['only' => ['index']]);
-            $vendors=Vendor::all()->count();
-            $riders=Rider::all()->count();
-            $bikes=Bike::all()->count();
-            $sims=Sim::all()->count();
-            $items=Item::all()->count();
-            return view('home',compact('vendors','riders','bikes','items','sims'));
-        }else if(Auth::user()->getRoleNames()[0]=='Accountant'){
+        //if(Auth::user()->getRoleNames()[0]=='Admin') {
+        $this->middleware('permission:dashboard_view', ['only' => ['index']]);
+        $vendors = Vendor::all()->count();
+        $riders = Rider::all()->count();
+        $bikes = Bike::all()->count();
+        $sims = Sim::all()->count();
+        $items = Item::all()->count();
+        return view('home', compact('vendors', 'riders', 'bikes', 'items', 'sims'));
+        /* }else if(Auth::user()->getRoleNames()[0]=='Accountant'){
             return view('Accounts.index');
-        }
-        else{
+        } */
+        /* else{
 //            return redirect()->route('lead.index');
             return view('home');
-        }
+        } */
     }
     //all main menu noticfication
-    public function menu_notification(){
+    public function menu_notification()
+    {
         //count umrah group unseen by master
-        $countUmrahGroups=GroupDetail::where('seen',0)->count();
-        $countAgents=Agent::where('seen',0)->count();
-        $countUmrahTrips=DB::table('agent_umrahs')->where('seen',0)->count();
+        $countUmrahGroups = GroupDetail::where('seen', 0)->count();
+        $countAgents = Agent::where('seen', 0)->count();
+        $countUmrahTrips = DB::table('agent_umrahs')->where('seen', 0)->count();
         //wallet
-        $countAgentWallet=DB::table('agent_wallets')->where('seen',0)->count();
-        $total_agents=$countAgents+$countUmrahTrips+$countAgentWallet;
-        return compact('countUmrahGroups','countAgents','total_agents',
-            'countUmrahTrips','countAgentWallet');
+        $countAgentWallet = DB::table('agent_wallets')->where('seen', 0)->count();
+        $total_agents = $countAgents + $countUmrahTrips + $countAgentWallet;
+        return compact(
+            'countUmrahGroups',
+            'countAgents',
+            'total_agents',
+            'countUmrahTrips',
+            'countAgentWallet'
+        );
     }
-    public function seen_notification($tn){
-        return DB::table($tn)->where('seen',0)->update(['seen'=>1]);
+    public function seen_notification($tn)
+    {
+        return DB::table($tn)->where('seen', 0)->update(['seen' => 1]);
     }
 
-    public function expiry_checker(){
+    public function expiry_checker()
+    {
 
         $expired = Files::whereDate('expiry_date', Carbon::parse('+10 days'))->get();
         $user = User::find(1);
-        foreach($expired as $item){
-            $notify = 
-                ['name'=> CommonHelper::file_types($item->type).' expired ',
-                'id'=>$item->id,
-                'type'=>'document',
-                'url'=>url('rider-document/'.$item->type_id)
-            ];
-            
+        foreach ($expired as $item) {
+            $notify =
+                [
+                    'name' => CommonHelper::file_types($item->type) . ' expired ',
+                    'id' => $item->id,
+                    'type' => 'document',
+                    'url' => url('rider-document/' . $item->type_id)
+                ];
+
             $user->notify(new GeneralNotification($notify));
 
         }
     }
 
-    public function redirect_url(){
-        if(request('id')){
+    public function redirect_url()
+    {
+        if (request('id')) {
             $notification = auth()->user()->notifications()->where('id', request('id'))->first();
             if ($notification) {
                 $notification->markAsRead();
-            return redirect(request('url'));
+                return redirect(request('url'));
             }
         }
     }
 
-    public function settings(Request $request){
+    public function settings(Request $request)
+    {
 
-          if($request->post('settings')){
-            
-           foreach($request->post('settings') as $key => $value) {
-            //echo $key.'-'.$value;
-            Settings::updateOrCreate(['name'=>$key],['name'=>$key,'value'=>$value]);
-            session()->flash('success','Settings updated successfully.');
+        if ($request->post('settings')) {
+
+            foreach ($request->post('settings') as $key => $value) {
+                //echo $key.'-'.$value;
+                Settings::updateOrCreate(['name' => $key], ['name' => $key, 'value' => $value]);
+                session()->flash('success', 'Settings updated successfully.');
 
             }
         }
-        $settings = Settings::pluck('value','name');
-        return view('settings',compact('settings'));
+        $settings = Settings::pluck('value', 'name');
+        return view('settings', compact('settings'));
     }
 
 }

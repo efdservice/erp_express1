@@ -32,6 +32,8 @@ class ReportController extends Controller
 
         $data = '';
         $total = 0;
+        $ob_total = 0;
+        $b_total = 0;
 
         if ($request->billing_month) {
             $request->billing_month = $request->billing_month . "-01";
@@ -52,6 +54,7 @@ class ReportController extends Controller
         foreach ($result as $rider) {
 
             if (isset($rider->account->id)) {
+                $opening_balance = Account::Monthly_ob($request->billing_month, $rider->account->id);
                 $balance = Account::BillingMonth_Balance($request->billing_month, $rider->account->id);
             } else {
                 $balance = 0.00;
@@ -64,11 +67,14 @@ class ReportController extends Controller
             $data .= '<td  >' . @$rider->bikes->plate . '</td>';
             $data .= '<td >' . CommonHelper::RiderStatus($rider->status) . '</td>';
 
+            $data .= '<td align="right" >' . number_format($opening_balance, 2) . '</td>';
             $data .= '<td align="right" >' . number_format($balance, 2) . '</td>';
-            $data .= '<td align="right">' . Account::show_bal($balance) . '</td>';
+            $data .= '<td align="right">' . Account::show_bal($opening_balance + $balance) . '</td>';
             $data .= '</tr>';
 
+            $ob_total += $opening_balance;
             $total += $balance;
+            $b_total += $opening_balance + $balance;
 
         }
 
@@ -79,8 +85,9 @@ class ReportController extends Controller
 
         $data .= '<tr>';
         $data .= '<td colspan="6"></td>';
+        $data .= '<th style="text-align: right">' . number_format($ob_total, 2) . '</th>';
         $data .= '<th style="text-align: right">' . number_format($total, 2) . '</th>';
-        $data .= '<th style="text-align: right">' . Account::show_bal($total) . '</th>';
+        $data .= '<th style="text-align: right">' . Account::show_bal($b_total) . '</th>';
         $data .= '</tr>';
 
         return compact('data', 'balance');

@@ -194,6 +194,17 @@ ALTER TABLE `rider_item_prices` ADD CONSTRAINT `rider_item_prices_item_id_foreig
 
 
 ALTER TABLE `rider_item_prices` DROP FOREIGN KEY `rider_item_prices_item_id_foreign`;
+---------------------
+ALTER TABLE `riders`
+ADD COLUMN `image_name`  varchar(255) NULL AFTER `designation`;
+--------------------
+
+ALTER TABLE `riders`
+ADD COLUMN `salary_model`  varchar(100) NULL AFTER `image_name`;
+
+ALTER TABLE `riders`
+ADD COLUMN `rider_reference`  varchar(255) NULL AFTER `salary_model`;
+
 
 
 
