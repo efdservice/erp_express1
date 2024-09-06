@@ -62,7 +62,7 @@
             processing: true,
             serverSide: true,
             stateSave: true,
-            ajax: "{{ route('rider_invoices.index') }}",
+            ajax: "{{ route('getInvoices') }}?rider_id={{request('rider_id')??request()->segment(2)}}",
             columns: [
                 {data: 'inv_no', name: 'inv_no'},
                 {data: 'inv_date', name: 'inv_date'},

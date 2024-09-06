@@ -9,6 +9,7 @@
     font-weight: 200;
 }
 </style>
+
 <div class="content-wrapper" style="min-height: 1603.43px;">
     <section class="content-header">
        <div class="container-fluid">
@@ -118,7 +119,10 @@
                       <ul class="nav nav-pills">
                          <li class="nav-item"><a class="nav-link active" href="#information" data-toggle="tab">Information</a></li>
                          @can('riders_document')
-                         <li class="nav-item"><a class="nav-link" href="#timeline" data-toggle="tab">Documents</a></li>
+                         <li class="nav-item"><a class="nav-link" href="#documents" data-toggle="tab">Documents</a></li>
+                         @endcan
+                         @can('invoices_view')
+                         <li class="nav-item"><a class="nav-link" href="#invoices" data-toggle="tab">Invoices</a></li>
                          @endcan
 {{--                          <li class="nav-item"><a class="nav-link" href="#settings" data-toggle="tab">Settings</a></li>
  --}}                      </ul>
@@ -449,10 +453,33 @@
 
                          </div>
                          </div>
-                         <div class="tab-pane" id="timeline">
+                         <div class="tab-pane" id="documents">
                             @isset($rider)
                             @include('riders.document')
                             @endisset
+                         </div>
+                         <div class="tab-pane" id="invoices">
+
+                            <table class="table table-hover data-table text-nowrap" style="width:100%;">
+                                <thead>
+                                <tr>
+                                    <th>#inv</th>
+                                    <th>Date</th>
+                                    <th>Billing Month</th>
+                                    <th>Rider</th>
+                                    <th>Rider amount</th>
+                                    <th>Total Qty</th>
+                                    <th>Descriptions</th>
+                                    <th>Action</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                </tbody>
+                            </table>
+                            @include('invoices.rider_invoices.moda')
+                            @include('invoices.rider_invoices.import-modal')
+                            @include('invoices.rider_invoices.inc_func')
+
                          </div>
                          <div class="tab-pane" id="settings">
 
@@ -465,8 +492,15 @@
        </div>
     </section>
  </div>
+ <script>
+        $(document).ready(function() {
+    // Get the initial active tab from the URL
+    var activeTab = window.location.hash.replace('#', '');
+    // Activate the initial tab
+    $('.nav-item a[href="#' + activeTab + '"]').tab('show');
+    });
+</script>
 
-
- @include('riders.inc_func')
-
+{{--  @include('riders.inc_func')
+ --}}
 @endsection

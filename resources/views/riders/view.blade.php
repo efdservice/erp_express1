@@ -77,6 +77,8 @@
                             <b>Balance</b> <span class="float-right">@isset($rider->account->id){{App\Helpers\Account::show_bal(App\Helpers\Account::Monthly_ob(date('y-m-d'), $rider->account->id))??'not-set'}}@endisset</span>
                          </li>
                       </ul>
+                      <a href="{{route('rider.edit', $result['id'])}}" class="btn btn-default btn-block"><i class="fa fa-edit"></i>&nbsp;<b>Edit</b></a>
+
                       <a href="javascript:void(0);" class="btn btn-default btn-block no-print" onclick="window.print();"><i class="fa fa-print"></i>&nbsp;<b>Print</b></a>
                    </div>
                 </div>
@@ -117,7 +119,12 @@
                    <div class="card-header p-2 no-print">
                       <ul class="nav nav-pills">
                          <li class="nav-item"><a class="nav-link active" href="#information" data-toggle="tab">Information</a></li>
-
+                         @can('riders_document')
+                         <li class="nav-item"><a class="nav-link" href="{{route('rider.edit', $result['id'])}}#documents">Documents</a></li>
+                         @endcan
+                         @can('invoices_view')
+                         <li class="nav-item"><a class="nav-link" href="{{route('rider.edit', $result['id'])}}#invoices" >Invoices</a></li>
+                         @endcan
 {{--                          <li class="nav-item"><a class="nav-link" href="#settings" data-toggle="tab">Settings</a></li>
  --}}                      </ul>
                    </div>
@@ -126,6 +133,7 @@
                          <div class="active tab-pane" id="information">
 
                             <div class="card border">
+
                                 <div class="card-header"><b>Personal Information</b></div>
                                     <div class="card-body">
                                             <div class="row">

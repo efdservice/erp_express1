@@ -38,8 +38,19 @@ class RiderInvoiceController extends Controller
     }
     public function index(Request $request)
     {
+
+        return view('invoices.rider_invoices.index');
+        //return view('riders.form');
+    }
+
+    public function getInvoices(Request $request)
+    {
         if ($request->ajax()) {
-            $data = RiderInvoice::query()->with(['rider'])->orderBy('id', 'DESC')->get();
+            if ($request->get('rider_id') && is_numeric($request->get('rider_id'))) {
+                $data = RiderInvoice::query()->with(['rider'])->where('RID', $request->get('rider_id'))->orderBy('id', 'DESC')->get();
+            } else {
+                $data = RiderInvoice::query()->with(['rider'])->orderBy('id', 'DESC')->get();
+            }
             return DataTables::of($data)
                 ->addIndexColumn()
                 ->addColumn('action', function ($row) {
@@ -102,7 +113,6 @@ class RiderInvoiceController extends Controller
                 ->make(true);
 
         }
-        return view('invoices.rider_invoices.index');
     }
 
     /**
