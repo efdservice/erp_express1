@@ -1,5 +1,4 @@
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.js"></script>
-<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.25/js/jquery.dataTables.js" defer></script>
+
 <script type="text/javascript">
     function add_new(){
         $("#modal-new").modal({backdrop: 'static', keyboard: false},'show');
@@ -68,33 +67,7 @@
     });
 
 
-    $(function () {
-        $.ajaxSetup({
-            headers: {
-                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-            }
-        });
-        var table = $('.data-table').DataTable({
-            processing: true,
-            serverSide: true,
-            stateSave: true,
-            ajax: "{{ route('rider.index',['status'=>request('status')]) }}",
-            columns: [
-                {data: 'rider_id', name: 'rider_id'},
-                {data: 'name', name: 'name'},
-/*                 {data: 'VID', name: 'VID'},
- */                 {data: 'company_contact', name: 'company_contact'},
-               {data: 'license_no', name: 'license_no'},
-                {data: 'fleet_supervisor', name: 'fleet_supervisor'},
-                {data: 'emirate_hub', name: 'emirate_hub'},
-/*                 {data: 'Balance', name: 'Balance'},
- */                {data: 'status', name: 'status'},
-                {data: 'action', name: 'action',
-                    orderable: false, searchable: false
-                },
-            ]
-        });
-    });
+
 
     //upload excelfile
     $(document).ready(function (e) {

@@ -501,6 +501,6 @@
     });
 </script>
 
-{{--  @include('riders.inc_func')
- --}}
+ @include('riders.inc_func')
+
 @endsection
