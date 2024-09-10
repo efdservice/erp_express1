@@ -214,10 +214,10 @@ class RiderInvoiceController extends Controller
                              'amount' => (CommonHelper::vendorItemPrice($VID,$request['item_id'][$i]))*($request['qty'][$i]),
                              'inv_id' => $id,
                          ]; */
-                        RiderInvoiceItem::insert($arra);
+
                     }
                 }
-
+                RiderInvoiceItem::insert($arra);
                 //VendorInvoiceItem::insert($vArray);
             }
             //accounts entries
