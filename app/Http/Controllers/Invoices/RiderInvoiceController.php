@@ -168,7 +168,7 @@ class RiderInvoiceController extends Controller
                         'item_id' => $request['item_id'][$i],
                         'qty' => $request['qty'][$i],
                         'rate' => $request['rate'][$i],
-                        'discount' => $request['discount'][$i],
+                        'discount' => $request['discount'][$i] ?? 0,
                         'tax' => $request['tax'][$i],
                         'amount' => $request['amount'][$i],
                         'inv_id' => $inv->id,
@@ -197,7 +197,7 @@ class RiderInvoiceController extends Controller
                             'item_id' => $request['item_id'][$i],
                             'qty' => $request['qty'][$i],
                             'rate' => $request['rate'][$i],
-                            'discount' => $request['discount'][$i],
+                            'discount' => $request['discount'][$i] ?? 0,
                             'tax' => $request['tax'][$i],
                             'amount' => $request['amount'][$i],
                             'inv_id' => $id,
@@ -214,9 +214,10 @@ class RiderInvoiceController extends Controller
                              'amount' => (CommonHelper::vendorItemPrice($VID,$request['item_id'][$i]))*($request['qty'][$i]),
                              'inv_id' => $id,
                          ]; */
+                        RiderInvoiceItem::insert($arra);
                     }
                 }
-                RiderInvoiceItem::insert($arra);
+
                 //VendorInvoiceItem::insert($vArray);
             }
             //accounts entries
