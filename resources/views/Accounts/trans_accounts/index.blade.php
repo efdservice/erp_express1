@@ -121,7 +121,7 @@
                         htmlData+='<td>';
                         htmlData += '<a  class="btn btn-primary btn-xs" href="javascript:void(0)" onclick="edit(' + data.data[i].id + ')"><i class="fa fa-edit"></i> </a>';
 
-                        htmlData+=' <a  class="btn btn-danger btn-xs" href="javascript:void(0)" onclick="del_rec(\''+data.data[i].id+'\', \'{{ url('Accounts/trans_accounts/') }}/'+data.data[i].id+'\')"><i class="fa fa-trash"></i> </a>';
+                        //htmlData+=' <a  class="btn btn-danger btn-xs" href="javascript:void(0)" onclick="del_rec(\''+data.data[i].id+'\', \'{{ url('Accounts/trans_accounts/') }}/'+data.data[i].id+'\')"><i class="fa fa-trash"></i> </a>';
                         htmlData+='</td>';
                         htmlData+='</tr>';
                     }
