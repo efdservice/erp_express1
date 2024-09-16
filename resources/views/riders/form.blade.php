@@ -73,10 +73,16 @@
                       <h3 class="profile-username text-center">@isset($result){{$result['name']??'not-set'}}@endisset</h3>
                       <p class="text-muted text-center">@isset($result){{$result['designation']??'not-set'}}@endisset</p>
                       <ul class="list-group list-group-unbordered mb-3">
+                        <li class="list-group-item">
+                            <b>Rider ID</b> <span class="float-right">@isset($result){{$result['rider_id']??'not-set'}}@endisset</span>
+                         </li>
+                         <li class="list-group-item">
+                            <b>Bike Number</b> <span class="float-right">@isset($result){{$rider->bikes->plate??'not-set'}}@endisset</span>
+                         </li>
                          <li class="list-group-item">
                             <b>Date Of Joining</b> <a class="float-right">@isset($result){{$result['doj']??'not-set'}}@endisset</a>
                          </li>
-                         <li class="list-group-item">
+                         <li class="list-group-item @if($result['status'] == 1) text-success @else text-danger @endif" >
                             <b>Status</b> <a class="float-right">@isset($result){{App\Helpers\CommonHelper::RiderStatus($result['status'])??'not-set'}}@endisset</a>
                          </li>
                          <li class="list-group-item">
