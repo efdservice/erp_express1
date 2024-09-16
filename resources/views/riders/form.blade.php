@@ -82,7 +82,7 @@
                          <li class="list-group-item">
                             <b>Date Of Joining</b> <a class="float-right">@isset($result){{$result['doj']??'not-set'}}@endisset</a>
                          </li>
-                         <li class="list-group-item @if($result['status'] == 1) text-success @else text-danger @endif" >
+                         <li class="list-group-item @if(@$result['status'] == 1) text-success @else text-danger @endif" >
                             <b>Status</b> <a class="float-right">@isset($result){{App\Helpers\CommonHelper::RiderStatus($result['status'])??'not-set'}}@endisset</a>
                          </li>
                          <li class="list-group-item">
@@ -172,7 +172,7 @@
                                     <div class="col-md-3 form-group">
                                         <label>Vendor <span style="color:red;">*</span></label>
                                         <select class="form-control form-control-sm select2" name="VID">
-
+                                            <option value="">Select</option>
                                             {!! \App\Models\Vendor::dropdown(@$result['VID']) !!}
                                         </select>
                                     </div>
@@ -195,14 +195,14 @@
                                     <div class="col-md-3 form-group">
                                         <label>Nationality <span style="color:red;">*</span></label>
                                         <select class="form-control form-control-sm select2" name="nationality">
-
+                                            <option value="">Select</option>
                                             {!! \App\Models\Country::dropdown(@$result['nationality']) !!}
                                         </select>
                                     </div>
                                     <div class="col-md-3 form-group">
                                         <label>Ethnicity</label>
                                         <select type="text" class="form-control form-control-sm select2" name="ethnicity">
-
+                                            <option value="">Select</option>
                                             {!! App\Helpers\CommonHelper::get_Ethnicity(@$result['ethnicity']) !!}
 
                                         </select>
@@ -219,13 +219,14 @@
                                     <div class="col-md-3 form-group">
                                         <label>Project <span style="color:red;">*</span></label>
                                         <select class="form-control form-control-sm select2" name="PID">
-
+                                            <option value="">Select</option>
                                             {!! \App\Models\Projects::dropdown(@$result['PID']) !!}
                                         </select>
                                     </div>
                                     <div class="col-md-3 form-group">
                                         <label>Designation <span style="color:red;">*</span></label>
                                         <select class="form-control form-control-sm select2" name="designation">
+                                            <option value="">Select</option>
                                             {!! App\Helpers\CommonHelper::Designations(@$result['designation']) !!}
                                         </select>
 
@@ -242,6 +243,7 @@
                                     <div class="col-md-6 form-group">
                                         <label>Visa Status</label>
                                         <select class="form-control form-control-sm select2" name="visa_status">
+                                            <option value="">Select</option>
                                             {!! App\Helpers\CommonHelper::VisaStatus(@$result['visa_status']) !!}
                                         </select>
                                     </div>
@@ -282,7 +284,7 @@
                                     <div class="col-md-3 form-group">
                                         <label>Fleet Supervisor <span style="color:red;">*</span></label>
                                         <select class="form-control form-control-sm select2" name="fleet_supervisor">
-
+                                            <option value="">Select</option>
                                             {!! App\Helpers\CommonHelper::get_supervisor(@$result['fleet_supervisor']) !!}
                                         </select>
                                     </div>
@@ -290,6 +292,7 @@
                                     <div class="col-md-3 form-group">
                                         <label>Status <span style="color:red;">*</span></label>
                                         <select class="form-control form-control-sm select2" name="status">
+                                            <option value="">Select</option>
                                             @foreach(App\Helpers\CommonHelper::RiderStatus() as $key=>$value)
                                             <option value="{{$key}}"@if(@$result['status']==$key)selected @endif>{{$value}}</option>
                                             @endforeach
@@ -300,7 +303,7 @@
                                     <div class="col-md-3 form-group">
                                         <label>Salary Model <span style="color:red;">*</span></label>
                                         <select class="form-control form-control-sm select2" name="salary_model">
-
+                                            <option value="">Select</option>
                                             {!! App\Helpers\CommonHelper::SalaryModel(@$result['salary_model']) !!}
                                         </select>
                                     </div>
@@ -313,7 +316,7 @@
                                     <div class="col-md-3 form-group">
                                         <label>Emirate (Hub) <span style="color:red;">*</span></label>
                                         <select class="form-control form-control-sm select2" name="emirate_hub">
-
+                                            <option value="">Select</option>
                                             {!! App\Helpers\CommonHelper::EmiratesHub(@$result['emirate_hub']) !!}
                                         </select>
 
@@ -346,7 +349,7 @@
                                     <div class="col-md-3 form-group">
                                         <label>Passport Handover <span style="color:red;">*</span></label>
                                         <select class="form-control form-control-sm select2" name="passport_handover">
-
+                                            <option value="">Select</option>
                                             {!! App\Helpers\CommonHelper::get_passport_handover(@$result['passport_handover']) !!}
                                         </select>
                                     </div>
@@ -357,14 +360,14 @@
                                     <div class="col-md-3 form-group">
                                         <label>WPS</label>
                                         <select class="form-control form-control-sm select2" name="wps">
-
+                                            <option value="">Select</option>
                                             {!! App\Helpers\CommonHelper::WPS(@$result['wps']) !!}
                                         </select>
                                     </div>
                                     <div class="col-md-3 form-group">
                                         <label>C3 Card</label>
                                         <select class="form-control form-control-sm select2" name="c3_card">
-
+                                            <option value="">Select</option>
                                             {!! App\Helpers\CommonHelper::C3Card(@$result['c3_card']) !!}
                                         </select>
                                     </div>
