@@ -2,7 +2,6 @@
 
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\Invoices\RiderInvoiceController;
-use App\Http\Controllers\invoices\TaxInvoiceController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -50,7 +49,7 @@ Route::group(['middleware' => ['auth']], function () {
     Route::prefix('invoices')->group(function () {
         Route::resource('vendor_invoices', Invoices\VendorInvoiceController::class);
         Route::resource('rider_invoices', Invoices\RiderInvoiceController::class);
-        Route::any('tax_invoice', [TaxInvoiceController::class, 'index'])->name('tax_invoice');
+        Route::any('tax_invoice', [RiderInvoiceController::class, 'tax_invoice'])->name('tax_invoice');
         Route::get('getInvoices', [RiderInvoiceController::class, 'getInvoices'])->name('getInvoices');
         Route::get('search_item_price/{RID}/{itemID}', [\App\Http\Controllers\ItemController::class, 'search_item_price']);
         Route::post('import_excel', [\App\Http\Controllers\Invoices\RiderInvoiceController::class, 'import_excel'])->name('invoices.import_excel');
@@ -138,14 +137,14 @@ Route::group(['middleware' => ['auth']], function () {
 Route::get('/artisan-cache', function () {
     Artisan::call('cache:clear');
     return 'cache cleared';
-  });
-  Route::get('/artisan-route', function () {
+});
+Route::get('/artisan-route', function () {
     Artisan::call('route:clear');
     return 'ruote cleared';
-  });
+});
 
-  Route::get('/artisan-optimize', function () {
+Route::get('/artisan-optimize', function () {
     Artisan::call('optimize');
     return 'optimized';
-  })
+});
 
