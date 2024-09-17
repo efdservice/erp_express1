@@ -99,7 +99,7 @@ $reports=['vendor_invoice_report','rider_invoice_report','rider_list','rider_rep
 
                     {{-- </ul>
                 </li> --}}
-                 {{--  <li class="nav-item has-treeview <?php //if(in_array(Request::segment(2), $invoices)) echo 'menu-open';?>">
+                  <li class="nav-item has-treeview <?php //if(in_array(Request::segment(2), $invoices)) echo 'menu-open';?>">
                     <a href="#" class="nav-link">
                         <i class='nav-icon fas fa-users-cog fa-xs'></i>
                         <p>
@@ -107,7 +107,7 @@ $reports=['vendor_invoice_report','rider_invoice_report','rider_list','rider_rep
                             <i class="nav-icon fas fa-angle-left right"></i>
                         </p>
                     </a>
-                    <ul class="nav nav-treeview"> --}}
+                    <ul class="nav nav-treeview">
                         @can('invoices_view')
                         <li class="nav-item">
                             <a href="{{ route('rider_invoices.index') }}" class="nav-link {{ (request()->is('invoices/rider_invoices')) ? 'active' : '' }}">
@@ -116,9 +116,17 @@ $reports=['vendor_invoice_report','rider_invoice_report','rider_list','rider_rep
                             </a>
                         </li>
                         @endcan
+                        @can('invoices_view')
+                        <li class="nav-item">
+                            <a href="javascript:void(0);" class="nav-link show-modal" data-action="{{route('tax_invoice')}}" data-size="lg" data-title="Generate Tax Invoice">
+                                <i class="nav-icon fas fa-file fa-xs"></i>
+                                <p>Tax Invoice</p>
+                            </a>
+                        </li>
+                        @endcan
 
-                  {{--   </ul>
-                </li> --}}
+                    </ul>
+                </li>
                 @can('riders_view')
                  <li class="nav-item">
                             <a href="{{ route('rider.index') }}" class="nav-link {{ (request()->is('rider')) ? 'active' : '' }} {{ (request()->is('rider-document')) ? 'active' : '' }}">

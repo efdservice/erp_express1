@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\Invoices\RiderInvoiceController;
+use App\Http\Controllers\invoices\TaxInvoiceController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -49,6 +50,7 @@ Route::group(['middleware' => ['auth']], function () {
     Route::prefix('invoices')->group(function () {
         Route::resource('vendor_invoices', Invoices\VendorInvoiceController::class);
         Route::resource('rider_invoices', Invoices\RiderInvoiceController::class);
+        Route::any('tax_invoice', [TaxInvoiceController::class, 'index'])->name('tax_invoice');
         Route::get('getInvoices', [RiderInvoiceController::class, 'getInvoices'])->name('getInvoices');
         Route::get('search_item_price/{RID}/{itemID}', [\App\Http\Controllers\ItemController::class, 'search_item_price']);
         Route::post('import_excel', [\App\Http\Controllers\Invoices\RiderInvoiceController::class, 'import_excel'])->name('invoices.import_excel');

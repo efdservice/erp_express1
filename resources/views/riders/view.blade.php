@@ -76,10 +76,10 @@
                          <li class="list-group-item">
                             <b>Date Of Joining</b> <span class="float-right">@isset($result){{$result['doj']??'not-set'}}@endisset</span>
                          </li>
-                         <li class="list-group-item">
+                         <li class="list-group-item @if(@$result['status'] == 1) text-success @else text-danger @endif">
                             <b>Status</b> <span class="float-right">@isset($result){{App\Helpers\CommonHelper::RiderStatus($result['status'])??'not-set'}}@endisset</span>
                          </li>
-                         <li class="list-group-item">
+                         <li class="list-group-item ">
                             <b>Balance</b> <span class="float-right">@isset($rider->account->id){{App\Helpers\Account::show_bal(App\Helpers\Account::Monthly_ob(date('y-m-d'), $rider->account->id))??'not-set'}}@endisset</span>
                          </li>
                       </ul>
