@@ -135,5 +135,17 @@ Route::group(['middleware' => ['auth']], function () {
 
 
 
+Route::get('/artisan-cache', function () {
+    Artisan::call('cache:clear');
+    return 'cache cleared';
+  });
+  Route::get('/artisan-route', function () {
+    Artisan::call('route:clear');
+    return 'ruote cleared';
+  });
 
+  Route::get('/artisan-optimize', function () {
+    Artisan::call('optimize');
+    return 'optimized';
+  })
 
