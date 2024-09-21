@@ -3,7 +3,6 @@
 /public/hot
 /public/storage
 /public/vendor/quill-1.3.6
-/public/uploads
 /storage/*.key
 /vendor
 .env

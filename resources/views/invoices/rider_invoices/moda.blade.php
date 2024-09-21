@@ -78,6 +78,10 @@
                         <label>Descriptions</label>
                         <textarea class="form-control form-control-sm" name="descriptions" placeholder="Descriptions"></textarea>
                     </div>
+                    <div class="col-md-12 form-group">
+                        <label>Notes</label>
+                        <textarea class="form-control form-control-sm" name="notes" placeholder="Notes"></textarea>
+                    </div>
                     <!--col-->
                 </div>
                 <!--row-->

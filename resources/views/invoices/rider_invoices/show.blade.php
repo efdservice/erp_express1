@@ -209,107 +209,116 @@
             <th style="padding: 5px;text-align: right;">Sub Total:</th>
             <th style="padding: 5px;text-align: right;">{{ \App\Helpers\Account::show_bal_format($total) }}</th>
         </tr>
+        </tfoot>
+    </table>
+    <table style="width: 100%; font-family: sans-serif;text-align: center;border: 1px solid #000; border-collapse: collapse;font-size: 10px;border-top:0px;">
+    <tr>
+        <td style="width:55%;text-align: left;padding:5px;">
+            <b>Notes</b>
+            <br />{{$res[0]->notes}}
+        </td>
+        <td>
+            <table style="width: 100%; font-family: sans-serif;text-align: center;border: 1px solid #000; border-collapse: collapse;font-size: 10px;border-top:0px;border-right:0px;">
+                @php
+                $sim =\App\Helpers\Account::getVouchers($res[0]->RID,$res[0]->billing_month,9);
+                @endphp
+                @if($sim!=0)
+                <tr style="border-top: 1px solid #000;">
+                    <th style="padding: 5px;text-align: right;">Bike Rent & Vendor & Sim Charges:</th>
 
-        @php
-        $sim =\App\Helpers\Account::getVouchers($res[0]->RID,$res[0]->billing_month,9);
-        @endphp
-        @if($sim!=0)
-        <tr style="border-top: 1px solid #000;">
-            <td colspan="3" style="padding: 5px;text-align: left;"></td>
-            <th style="padding: 5px;text-align: right;">Bike Rent & Vendor & Sim Charges:</th>
+                    <th style="padding: 5px;text-align: right;">{{ number_format($sim,2)}}</th>
+                </tr>
+                @endif
+                @php
+                        $fuel =\App\Helpers\Account::getVouchers($res[0]->RID,$res[0]->billing_month,11);
+                @endphp
+                @if($fuel!=0)
+                <tr style="border-top: 1px solid #000;">
+                    <th style="padding: 5px;text-align: right;">Fuel Charges:</th>
 
-            <th style="padding: 5px;text-align: right;">{{ number_format($sim,2)}}</th>
-        </tr>
-        @endif
-        @php
-                $fuel =\App\Helpers\Account::getVouchers($res[0]->RID,$res[0]->billing_month,11);
-        @endphp
-        @if($fuel!=0)
-        <tr style="border-top: 1px solid #000;">
-            <td colspan="3" style="padding: 5px;text-align: left;"></td>
-            <th style="padding: 5px;text-align: right;">Fuel Charges:</th>
+                    <th style="padding: 5px;text-align: right;">{{ number_format($fuel,2) }}</th>
+                </tr>
+                @endif
+                @php
+                        $rent =\App\Helpers\Account::getVouchers($res[0]->RID,$res[0]->billing_month,10);
+                @endphp
+                @if($rent!=0)
+                <tr style="border-top: 1px solid #000;">
+                    <th style="padding: 5px;text-align: right;">Bike Rent Charges:</th>
 
-            <th style="padding: 5px;text-align: right;">{{ number_format($fuel,2) }}</th>
-        </tr>
-        @endif
-        @php
-                $rent =\App\Helpers\Account::getVouchers($res[0]->RID,$res[0]->billing_month,10);
-        @endphp
-        @if($rent!=0)
-        <tr style="border-top: 1px solid #000;">
-            <td colspan="3" style="padding: 5px;text-align: left;"></td>
-            <th style="padding: 5px;text-align: right;">Bike Rent Charges:</th>
+                    <th style="padding: 5px;text-align: right;">{{ number_format($rent,2) }}</th>
+                </tr>
+                @endif
+                @php
+                $maintenance =\App\Helpers\Account::getVouchers($res[0]->RID,$res[0]->billing_month,15);
+                @endphp
+                @if($rent!=0)
+                <tr style="border-top: 1px solid #000;">
+                    <th style="padding: 5px;text-align: right;">Bike Maintenenace Charges:</th>
 
-            <th style="padding: 5px;text-align: right;">{{ number_format($rent,2) }}</th>
-        </tr>
-        @endif
-        @php
-        $maintenance =\App\Helpers\Account::getVouchers($res[0]->RID,$res[0]->billing_month,15);
-        @endphp
-        @if($rent!=0)
-        <tr style="border-top: 1px solid #000;">
-            <td colspan="3" style="padding: 5px;text-align: left;"></td>
-            <th style="padding: 5px;text-align: right;">Bike Maintenenace Charges:</th>
+                    <th style="padding: 5px;text-align: right;">{{ number_format($maintenance,2) }}</th>
+                </tr>
+                @endif
+                @php
+                $rta =\App\Helpers\Account::getVouchers($res[0]->RID,$res[0]->billing_month,8);
+                @endphp
+                @if($rta!=0)
+                <tr style="border-top: 1px solid #000;">
+                    <th style="padding: 5px;text-align: right;">RTA Charges:</th>
 
-            <th style="padding: 5px;text-align: right;">{{ number_format($maintenance,2) }}</th>
-        </tr>
-        @endif
-        @php
-        $rta =\App\Helpers\Account::getVouchers($res[0]->RID,$res[0]->billing_month,8);
-        @endphp
-        @if($rta!=0)
-        <tr style="border-top: 1px solid #000;">
-            <td colspan="3" style="padding: 5px;text-align: left;"></td>
-            <th style="padding: 5px;text-align: right;">RTA Charges:</th>
+                    <th style="padding: 5px;text-align: right;">{{ number_format($rta,2)}}</th>
+                </tr>
+                @endif
+                @php
+                /* $repay =\App\Helpers\Account::getVouchers($res[0]->RID,$res[0]->billing_month,13);
+                $loan_balance = \App\Helpers\Account::getVouchers($res[0]->RID,null,12)-\App\Helpers\Account::getVouchersTillMonth($res[0]->RID,$res[0]->billing_month,13); */
 
-            <th style="padding: 5px;text-align: right;">{{ number_format($rta,2)}}</th>
-        </tr>
-        @endif
-        @php
-        /* $repay =\App\Helpers\Account::getVouchers($res[0]->RID,$res[0]->billing_month,13);
-        $loan_balance = \App\Helpers\Account::getVouchers($res[0]->RID,null,12)-\App\Helpers\Account::getVouchersTillMonth($res[0]->RID,$res[0]->billing_month,13); */
+                $loan_advance = \App\Helpers\Account::getVouchers($res[0]->RID,$res[0]->billing_month,12);
+             @endphp
+             @if($loan_advance!=0)
+                <tr style="border-top: 1px solid #000;">
 
-        $loan_advance = \App\Helpers\Account::getVouchers($res[0]->RID,$res[0]->billing_month,12);
-     @endphp
-     @if($loan_advance!=0)
-        <tr style="border-top: 1px solid #000;">
-            <td colspan="3" style="padding: 5px;text-align: left;"></td>
-
-            <th style="padding: 5px;text-align: right;">Advance/Loan:</th>
-            <th style="padding: 5px;text-align: right;">{{number_format($loan_advance,2)}}</th>
-        </tr>
-    @endif
-    @php
-      $cod = \App\Helpers\Account::getVouchers($res[0]->RID,$res[0]->billing_month,16);
-     @endphp
-     @if($cod!=0)
-        <tr style="border-top: 1px solid #000;">
-            <td colspan="3" style="padding: 5px;text-align: left;"></td>
-
-            <th style="padding: 5px;text-align: right;">COD:</th>
-            <th style="padding: 5px;text-align: right;">{{number_format($cod,2)}}</th>
-        </tr>
-    @endif
-        <tr style="border-top: 1px solid #000;">
-            <td colspan="3" style="padding: 5px;text-align: left;"></td>
-            <th style="padding: 5px;text-align: right;">Total:</th>
+                    <th style="padding: 5px;text-align: right;">Advance/Loan:</th>
+                    <th style="padding: 5px;text-align: right;">{{number_format($loan_advance,2)}}</th>
+                </tr>
+            @endif
             @php
-            $credit = $sim+$rent+$rta+$fuel+$loan_advance+$maintenance+$cod;
-            $balance = $total-$credit;
-            @endphp
-            <th style="padding: 5px;text-align: right;">AED {{ \App\Helpers\Account::show_bal_format($balance) }}</th>
-        </tr>
-        <tr style="border-top: 1px solid #000;">
-            <td colspan="3" style="padding: 5px;text-align: left;"></td>
-            <th style="padding: 5px;text-align: right;">Paid Amount:</th>
-            @php
-                $paid = \App\Helpers\Account::getVouchers($res[0]->RID,$res[0]->billing_month,3)+\App\Helpers\Account::getVouchers($res[0]->RID,$res[0]->billing_month,5);
-            @endphp
-            <th style="padding: 5px;text-align: right;">{{ number_format($paid,2)}}</th>
-        </tr>
-        <tr style="border-top: 1px solid #000;">
-            <td colspan="3" style="padding: 5px;text-align: left;"></td>
-            <th style="padding: 5px;text-align: right;">Balance:</th>
-            <th style="padding: 5px;text-align: right;">AED {{ number_format(($balance-$paid),2)}}</th>
-        </tr>
+              $cod = \App\Helpers\Account::getVouchers($res[0]->RID,$res[0]->billing_month,16);
+             @endphp
+             @if($cod!=0)
+                <tr style="border-top: 1px solid #000;">
+
+                    <th style="padding: 5px;text-align: right;">COD:</th>
+                    <th style="padding: 5px;text-align: right;">{{number_format($cod,2)}}</th>
+                </tr>
+            @endif
+                <tr style="border-top: 1px solid #000;">
+                    <th style="padding: 5px;text-align: right;">Total:</th>
+                    @php
+                    $credit = $sim+$rent+$rta+$fuel+$loan_advance+$maintenance+$cod;
+                    $balance = $total-$credit;
+                    @endphp
+                    <th style="padding: 5px;text-align: right;">AED {{ \App\Helpers\Account::show_bal_format($balance) }}</th>
+                </tr>
+                <tr style="border-top: 1px solid #000;">
+                    <th style="padding: 5px;text-align: right;">Paid Amount:</th>
+                    @php
+                        $paid = \App\Helpers\Account::getVouchers($res[0]->RID,$res[0]->billing_month,3)+\App\Helpers\Account::getVouchers($res[0]->RID,$res[0]->billing_month,5);
+                    @endphp
+                    <th style="padding: 5px;text-align: right;">{{ number_format($paid,2)}}</th>
+                </tr>
+                <tr style="border-top: 1px solid #000;">
+                    <th style="padding: 5px;text-align: right;">Balance:</th>
+                    <th style="padding: 5px;text-align: right;">AED {{ number_format(($balance-$paid),2)}}</th>
+                </tr>
+            </table>
+        </td>
+    </tr>
+
+        </tfoot>
+    </table>
+</div>
+</body>
+</html>
+
 

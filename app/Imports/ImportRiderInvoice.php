@@ -100,6 +100,7 @@ class ImportRiderInvoice implements ToCollection
                                 'off' => $row[26],
                                 'descriptions' => $row[29],
                                 'gaurantee' => $row[30],
+                                'notes' => $row[36],
                             ]);
                             $j = 3;
                             foreach ($items as $item) {
