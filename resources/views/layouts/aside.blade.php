@@ -66,6 +66,18 @@ $reports=['vendor_invoice_report','rider_invoice_report','rider_list','rider_rep
                             </a>
                         </li>
                         @endcan
+                        <li class="nav-item">
+                            <a href="#" class="nav-link ">
+                                <i class="nav-icon fas fa-star fa-xs"></i>
+                                <p>Banks</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#" class="nav-link ">
+                                <i class="nav-icon fas fa-star fa-xs"></i>
+                                <p>Customers</p>
+                            </a>
+                        </li>
                         @can('projects_view')
                         <li class="nav-item">
                             <a href="{{ route('projects.index') }}" class="nav-link {{ (request()->is('projects')) ? 'active' : '' }}">
@@ -197,16 +209,23 @@ $reports=['vendor_invoice_report','rider_invoice_report','rider_list','rider_rep
                                 <p>Bike Rent Voucher</p>
                             </a>
                         </li> --}}
-                        <li class="nav-item">
-                            <a href="{{ route('lease_company.index') }}" class="nav-link {{ (request()->is('lease_company')) ? 'active' : '' }}">
-                                <i class="nav-icon fas fa-angle-double-right fa-xs"></i>
-                                <p>Lease Company</p>
-                            </a>
-                        </li>
+
                         @endcan
                     </ul>
                 </li>
+                <li class="nav-item">
+                    <a href="{{ route('lease_company.index') }}" class="nav-link {{ (request()->is('lease_company')) ? 'active' : '' }}">
+                        <i class="nav-icon fas fa-angle-double-right fa-xs"></i>
+                        <p>Lease Company</p>
+                    </a>
+                </li>
                 @endcan
+                <li class="nav-item">
+                    <a href="#" class="nav-link ">
+                        <i class="nav-icon fas fa-star fa-xs"></i>
+                        <p>Customers</p>
+                    </a>
+                </li>
                 @can('sims_view')
                 <li class="nav-item has-treeview <?php if(in_array(Request::segment(1), $sims)) echo 'menu-open';?>">
                     <a href="#" class="nav-link">
