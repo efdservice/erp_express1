@@ -75,6 +75,12 @@ $reports=['vendor_invoice_report','rider_invoice_report','rider_list','rider_rep
                         <li class="nav-item">
                             <a href="#" class="nav-link ">
                                 <i class="nav-icon fas fa-star fa-xs"></i>
+                                <p>Inventory</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#" class="nav-link ">
+                                <i class="nav-icon fas fa-star fa-xs"></i>
                                 <p>Customers</p>
                             </a>
                         </li>
@@ -223,7 +229,7 @@ $reports=['vendor_invoice_report','rider_invoice_report','rider_list','rider_rep
                 <li class="nav-item">
                     <a href="#" class="nav-link ">
                         <i class="nav-icon fas fa-star fa-xs"></i>
-                        <p>Customers</p>
+                        <p>Garage</p>
                     </a>
                 </li>
                 @can('sims_view')
