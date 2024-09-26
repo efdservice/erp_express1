@@ -208,6 +208,10 @@ ADD COLUMN `rider_reference`  varchar(255) NULL AFTER `salary_model`;
 
 ALTER TABLE `rider_invoices`
 ADD COLUMN `notes`  varchar(500) NULL AFTER `gaurantee`;
+---------------
+UPDATE `transaction_accounts` SET `Parent_Type`='5' WHERE (`id`='650');
+UPDATE `transaction_accounts` SET `Parent_Type`='6' WHERE (`id`='1230');
+
 
 
 

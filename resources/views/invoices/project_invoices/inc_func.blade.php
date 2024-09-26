@@ -15,7 +15,7 @@
         e.preventDefault();
         var formData = new FormData(this);
         $.ajax({
-            url:"{{ route('rider_invoices.store') }}",
+            url:"{{ route('project_invoices.store') }}",
             headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
             type:"POST",
             data: formData,
@@ -62,12 +62,12 @@
             processing: true,
             serverSide: true,
             stateSave: true,
-            ajax: "{{ route('getInvoices') }}?rider_id={{request('rider_id')??request()->segment(2)}}",
+            ajax: "{{ route('getProjectInvoices') }}?rider_id={{request('rider_id')??request()->segment(2)}}",
             columns: [
                 {data: 'inv_no', name: 'inv_no'},
                 {data: 'inv_date', name: 'inv_date'},
                 {data: 'billing_month', name: 'billing_month'},
-                {data: 'rider_name', name: 'rider_name'},
+                {data: 'project_name', name: 'project_name'},
                 {data: 'total_amount', name: 'total_amount'},
 /*                 {data: 'vendor_total', name: 'vendor_total'},
  */                {data: 'total_qty', name: 'total_qty'},
@@ -137,20 +137,17 @@
     });
 
    function search_price(g) {
-       RID=$("#RID").val();
+       /* RID=$("#RID").val(); */
        item_id=$(g).val();
        $.ajax({
-           url:"{{ url('invoices/search_item_price/') }}/"+RID+"/"+item_id,
+           url:"{{ url('invoices/get_item_price/') }}/"+item_id,
            headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
            type:"GET",
            dataType:"JSON",
            success:function (data) {
-            if(data.price){
-                $(g).closest(".row").find(".rate").val(data.price);
-            }else{
-                $(g).closest(".row").find(".rate").val(data.pirce);
 
-            }
+
+               $(g).closest(".row").find(".rate").val(data.pirce);
                let qty=$(g).closest('.row').find(".qty").val();
                let rate=$(g).closest('.row').find('.rate').val();
                let discount=$(g).closest('.row').find(".discount").val();

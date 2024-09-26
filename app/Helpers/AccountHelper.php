@@ -89,6 +89,10 @@ class Account
             return 'Expense';
         } elseif ($type == 15) {
             return 'Maintenance';
+        } elseif ($type == 16) {
+            return 'COD';
+        } elseif ($type == 17) {
+            return 'Customer Invoice';
         }
 
     }

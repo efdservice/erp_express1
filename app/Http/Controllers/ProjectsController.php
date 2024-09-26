@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Helpers\Account;
+use App\Models\Accounts\TransactionAccount;
 use App\Models\Projects;
 use Illuminate\Http\Request;
 use DB;
@@ -75,7 +77,17 @@ class ProjectsController extends Controller
         DB::beginTransaction();
         try {
             if ($id == 0 || $id == '') {
+
                 $ret = Projects::create($data);
+                $tData['Parent_Type'] = $ret->id;
+                $code = Account::current_code('P', $ret->id);
+                $tData['Parent_Type'] = $ret->id;
+                $tData['Trans_Acc_Name'] = $ret->name;
+                $tData['code'] = $code;
+                $tData['PID'] = 2;
+                $tData['OB_Type'] = 1;
+                $tData['BID'] = 1;
+                TransactionAccount::create($tData);
             } else {
                 $ret = Projects::where('id', $id)->update($data);
             }

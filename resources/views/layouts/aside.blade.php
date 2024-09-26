@@ -78,17 +78,12 @@ $reports=['vendor_invoice_report','rider_invoice_report','rider_list','rider_rep
                                 <p>Inventory</p>
                             </a>
                         </li>
-                        <li class="nav-item">
-                            <a href="#" class="nav-link ">
-                                <i class="nav-icon fas fa-star fa-xs"></i>
-                                <p>Customers</p>
-                            </a>
-                        </li>
+
                         @can('projects_view')
                         <li class="nav-item">
                             <a href="{{ route('projects.index') }}" class="nav-link {{ (request()->is('projects')) ? 'active' : '' }}">
                                 <i class="nav-icon fas fa-star fa-xs"></i>
-                                <p>Projects</p>
+                                <p>Customers/Projects</p>
                             </a>
                         </li>
                         @endcan
@@ -130,7 +125,15 @@ $reports=['vendor_invoice_report','rider_invoice_report','rider_list','rider_rep
                         <li class="nav-item">
                             <a href="{{ route('rider_invoices.index') }}" class="nav-link {{ (request()->is('invoices/rider_invoices')) ? 'active' : '' }}">
                                 <i class="nav-icon fas fa-file fa-xs"></i>
-                                <p>Invoices</p>
+                                <p>Rider Invoices</p>
+                            </a>
+                        </li>
+                        @endcan
+                        @can('invoices_view')
+                        <li class="nav-item">
+                            <a href="{{ route('project_invoices.index') }}" class="nav-link {{ (request()->is('invoices/project_invoices')) ? 'active' : '' }}">
+                                <i class="nav-icon fas fa-file fa-xs"></i>
+                                <p>Customer/Project Invoices</p>
                             </a>
                         </li>
                         @endcan
