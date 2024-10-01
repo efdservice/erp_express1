@@ -83,7 +83,7 @@ $reports=['vendor_invoice_report','rider_invoice_report','rider_list','rider_rep
                         <li class="nav-item">
                             <a href="{{ route('projects.index') }}" class="nav-link {{ (request()->is('projects')) ? 'active' : '' }}">
                                 <i class="nav-icon fas fa-star fa-xs"></i>
-                                <p>Customers/Projects</p>
+                                <p>Customers</p>
                             </a>
                         </li>
                         @endcan
@@ -133,7 +133,7 @@ $reports=['vendor_invoice_report','rider_invoice_report','rider_list','rider_rep
                         <li class="nav-item">
                             <a href="{{ route('project_invoices.index') }}" class="nav-link {{ (request()->is('invoices/project_invoices')) ? 'active' : '' }}">
                                 <i class="nav-icon fas fa-file fa-xs"></i>
-                                <p>Customer/Project Invoices</p>
+                                <p>Customer Invoices</p>
                             </a>
                         </li>
                         @endcan

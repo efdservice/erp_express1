@@ -37,8 +37,13 @@
                         <label>Tax Number</label>
                         <input type="text" class="form-control form-control-sm" name="tax_number" placeholder="Tax Number">
                     </div>
-                   
-           
+
+                    <div class="col-md-6 form-group">
+                        <label>Tax Percentage %</label>
+                        <input type="text" class="form-control form-control-sm" name="tax_percentage" placeholder="Tax Percentage">
+                    </div>
+
+
                 </div>
             </div>
             <div class="modal-footer">

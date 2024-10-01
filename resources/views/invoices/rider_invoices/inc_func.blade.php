@@ -79,7 +79,7 @@
         });
     });
     // add new line item
-    $(document).on("click",".new_line",function () {
+    $(document).on("click",".new_line_item",function () {
             $(".append-line").append('<div class="row item">\n' +
                 '    <div class="col-md-3 form-group">\n' +
                 '        <select class="form-control form-control-sm select2" name="item_id[]" onchange="search_price(this)">\n' +

@@ -127,7 +127,7 @@
                             <!--col-->
                             <div class="col-md-1 form-group">
                                 <label style="visibility: hidden">Assign Price</label>
-                                <button type="button" class="btn btn-sm btn-primary new_line"><i class="fa fa-plus"></i> </button>
+                                <button type="button" class="btn btn-sm btn-primary new_line_item"><i class="fa fa-plus"></i> </button>
                             </div>
                             <!--col-->
                         </div>

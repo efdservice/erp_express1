@@ -149,6 +149,9 @@
             <th style="border: 1px solid #000; padding: 5px;">Qty</th>
             <th style="border: 1px solid #000; padding: 5px;">Rate</th>
             <th style="border: 1px solid #000; padding: 5px;">Amount</th>
+            <th style="border: 1px solid #000; padding: 5px;">VAT</th>
+            <th style="border: 1px solid #000; padding: 5px;">VAT Amount</th>
+            <th style="border: 1px solid #000; padding: 5px;">Total</th>
         </tr>
         </thead>
         <tbody>
@@ -168,8 +171,11 @@
                     {{ \App\Models\Item::where('id',$val->item_id)->value('item_name') }}
                 </td>
                 <td style="padding: 5px;border:1px solid;text-align: center">{{ $val->qty }}</td>
-                <td style="padding:5px;border:1px solid">{{ $val->rate }}</td>
-                <td style="padding:5px;border:1px solid; text-align: right">{{ $val->amount }}</td>
+                <td style="padding:5px;border:1px solid">{{ number_format($val->rate,2) }}</td>
+                <td style="padding:5px;border:1px solid">{{ number_format($val->qty*$val->rate,2) }}</td>
+                <td style="padding:5px;border:1px solid">5%</td>
+                <td style="padding:5px;border:1px solid">{{ number_format($val->tax,2) }}</td>
+                <td style="padding:5px;border:1px solid; text-align: right">{{ number_format($val->amount,2) }}</td>
             </tr>
         @endforeach
         </tbody>
@@ -179,14 +185,22 @@
             <td colspan="1" style="padding: 5px;text-align: left;"></td>
             <td colspan="1" style="padding: 5px;text-align: right;font-weight:bold;">Total Orders:</td>
             <td colspan="1" style="padding: 5px;text-align: center;font-weight:bold;">{{$total_qty}}</td>
+            <td colspan="3" style="padding: 5px;text-align: left;"></td>
             <th style="padding: 5px;text-align: right;">Sub Total:</th>
+            <th style="padding: 5px;text-align: right;">{{ \App\Helpers\Account::show_bal_format($total) }}</th>
+        </tr>
+        <tr style="border-top: 1px solid #000;">
+            <td colspan="1" style="padding: 5px;text-align: left;">Notes:</td>
+            <td colspan="5" style="padding: 5px;text-align: right;font-weight:bold;">{{$res[0]->notes}}</td>
+
+            <th style="padding: 5px;text-align: right;">Total:</th>
             <th style="padding: 5px;text-align: right;">{{ \App\Helpers\Account::show_bal_format($total) }}</th>
         </tr>
         </tfoot>
     </table>
-    <table style="width: 100%; font-family: sans-serif;text-align: center;border: 1px solid #000; border-collapse: collapse;font-size: 10px;border-top:0px;">
-    <tr>
-        <td style="width:55%;text-align: left;padding:5px;">
+   {{--  <table style="width: 100%; font-family: sans-serif;text-align: center;border: 1px solid #000; border-collapse: collapse;font-size: 10px;border-top:0px;">
+        <tr>
+        <td style="width:60%;text-align: left;padding:5px;">
             <b>Notes</b>
             <br />{{$res[0]->notes}}
         </td>
@@ -198,23 +212,13 @@
 
                     <th style="padding: 5px;text-align: right;">AED {{ \App\Helpers\Account::show_bal_format($total) }}</th>
                 </tr>
-                {{-- <tr style="border-top: 1px solid #000;">
-                    <th style="padding: 5px;text-align: right;">Paid Amount:</th>
-                    @php
-                        $paid = \App\Helpers\Account::getVouchers($res[0]->RID,$res[0]->billing_month,3)+\App\Helpers\Account::getVouchers($res[0]->RID,$res[0]->billing_month,5);
-                    @endphp
-                    <th style="padding: 5px;text-align: right;">{{ number_format($paid,2)}}</th>
-                </tr>
-                <tr style="border-top: 1px solid #000;">
-                    <th style="padding: 5px;text-align: right;">Balance:</th>
-                    <th style="padding: 5px;text-align: right;">AED {{ number_format(($balance-$paid),2)}}</th>
-                </tr> --}}
+
             </table>
         </td>
-    </tr>
+        </tr>
 
         </tfoot>
-    </table>
+    </table> --}}
 </div>
 </body>
 </html>

@@ -79,7 +79,7 @@
         });
     });
     // add new line item
-    $(document).on("click",".new_line",function () {
+    $(document).on("click",".new_line_item",function () {
             $(".append-line").append('<div class="row item">\n' +
                 '    <div class="col-md-3 form-group">\n' +
                 '        <select class="form-control form-control-sm select2" name="item_id[]" onchange="search_price(this)">\n' +
@@ -121,16 +121,18 @@
             let rate=$(this).find(".rate").val();
             let discount=$(this).find(".discount").val();
             let tax=$(this).find(".tax").val();
+
             let amount=Number(qty)*Number(rate)-Number(discount)+Number(tax);
             $(this).find(".amount").val(amount);
             sub_total();
     });
+
     function sub_total() {
         var sum=0;
         $(".amount").each(function () {
             sum += Number($(this).val());
         });
-        $("#sub_total").val(sum);
+        $("#sub_total").val(Number(sum).toFixed(2));
     }
     $(document).on("click",".remove",function () {
             $(this).parents(".row").remove();
@@ -151,9 +153,11 @@
                let qty=$(g).closest('.row').find(".qty").val();
                let rate=$(g).closest('.row').find('.rate').val();
                let discount=$(g).closest('.row').find(".discount").val();
-               let tax=$(g).closest('.row').find(".tax").val();
+               let tax = Number(rate*0.05).toFixed(2);
+               $(g).closest(".row").find(".tax").val(tax);
+               //let tax=$(g).closest('.row').find(".tax").val();
                let amount=Number(qty)*Number(rate)-Number(discount)+Number(tax);
-               $(g).closest('.row').find(".amount").val(amount);
+               $(g).closest('.row').find(".amount").val(Number(amount).toFixed(2));
                sub_total();
            }
        })

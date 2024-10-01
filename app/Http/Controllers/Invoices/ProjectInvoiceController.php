@@ -64,10 +64,10 @@ class ProjectInvoiceController extends Controller
                       </button>';
                     $btn = $btn . '
                       <div class="dropdown-menu">';
-                    /* if (\Auth::user()->can('invoices_edit')) {
+                    if (\Auth::user()->can('invoices_edit')) {
                         $btn = $btn . '
                         <a href="#" data-toggle="tooltip" data-action="' . route('project_invoices.edit', $row->id) . '" class="edit editRiderInvRec dropdown-item" data-modalID="modal-new"><i class="fas fa-edit"></i> Edit</a>';
-                    } */
+                    }
                     if (\Auth::user()->can('invoices_delete')) {
                         $btn = $btn . '
                         <div class="dropdown-divider"></div>
