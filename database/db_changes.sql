@@ -215,7 +215,14 @@ UPDATE `transaction_accounts` SET `Parent_Type`='6' WHERE (`id`='1230');
 
 ALTER TABLE `projects`
 ADD COLUMN `tax_percentage`  decimal(10,2) NULL AFTER `updated_at`;
+----------------
+ALTER TABLE `items`
+ADD COLUMN `tax`  decimal(10,2) NULL DEFAULT 5 AFTER `updated_at`;
+update items set tax = 5;
 
+ALTER TABLE `project_invoice_items`
+ADD COLUMN `tax_amount`  decimal(10,2) NULL AFTER `inv_id`,
+ADD COLUMN `subtotal`  decimal(10,2) NULL AFTER `tax_amount`;
 
 
 

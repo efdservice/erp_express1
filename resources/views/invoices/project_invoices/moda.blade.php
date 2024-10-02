@@ -103,27 +103,35 @@
                             <!--col-->
                             <div class="col-md-1 form-group">
                                 <label>Qty</label>
-                                <input type="text" class="form-control form-control-sm qty" name="qty[]" placeholder="0" value="1">
+                                <input type="text" class="form-control form-control-sm qty" name="qty[]" placeholder="0" value="1" onkeyup="updateCart(this)">
                             </div>
                             <!--col-->
                             <div class="col-md-1 form-group">
                                 <label>Rate</label>
-                                <input type="text" class="form-control form-control-sm rate" name="rate[]" placeholder="0" value="0">
+                                <input type="text" class="form-control form-control-sm rate" name="rate[]" placeholder="0" value="0" onkeyup="updateCart(this)">
                             </div>
                             <!--col-->
                             <div class="col-md-1 form-group">
                                 <label>Discount</label>
-                                <input type="text" class="form-control form-control-sm discount" name="discount[]" placeholder="0" value="0">
+                                <input type="text" class="form-control form-control-sm discount" name="discount[]" placeholder="0" value="0" onkeyup="updateCart(this)">
                             </div>
-                            <!--col-->
-                            <div class="col-md-1 form-group">
-                                <label>Tax</label>
-                                <input type="text" class="form-control form-control-sm tax" name="tax[]" placeholder="0" value="0">
-                            </div>
-                            <!--col-->
                             <div class="col-md-1 form-group">
                                 <label>Amount</label>
-                                <input type="text" class="form-control form-control-sm amount" name="amount[]" placeholder="0" value="0">
+                                <input type="text" class="form-control form-control-sm subtotal" name="subtotal[]" placeholder="0" value="0" readonly>
+                            </div>
+                            <!--col-->
+                            <div class="col-md-1 form-group">
+                                <label>VAT %</label>
+                                <input type="text" class="form-control form-control-sm tax" name="tax[]" placeholder="0" value="0" onkeyup="updateCart(this)">
+                            </div>
+                            <div class="col-md-1 form-group">
+                                <label>VAT Amount</label>
+                                <input type="text" class="form-control form-control-sm tax_amount" name="tax_amount[]" placeholder="0" value="0" readonly>
+                            </div>
+                            <!--col-->
+                            <div class="col-md-1 form-group">
+                                <label>Total</label>
+                                <input type="text" class="form-control form-control-sm amount" name="amount[]" placeholder="0" value="0" readonly>
                             </div>
                             <!--col-->
                             {{-- <div class="col-md-1 form-group">
@@ -139,7 +147,7 @@
                                 <button type="button" class="btn btn-sm btn-primary new_line_item"><i class="fa fa-plus"></i> Add</button>
                             </div>
                         <div class="row">
-                            <div class="col-md-1 offset-6 form-group text-right">
+                            <div class="col-md-1 offset-8 form-group text-right">
                                 <label><strong>Sub Total</strong>:</label>
                             </div>
                             <div class="col-md-1 form-group">

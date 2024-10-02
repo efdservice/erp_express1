@@ -148,6 +148,7 @@
             <th style="border: 1px solid #000; padding: 5px;">Item Description</th>
             <th style="border: 1px solid #000; padding: 5px;">Qty</th>
             <th style="border: 1px solid #000; padding: 5px;">Rate</th>
+            <th style="border: 1px solid #000; padding: 5px;">Discount</th>
             <th style="border: 1px solid #000; padding: 5px;">Amount</th>
             <th style="border: 1px solid #000; padding: 5px;">VAT</th>
             <th style="border: 1px solid #000; padding: 5px;">VAT Amount</th>
@@ -172,9 +173,10 @@
                 </td>
                 <td style="padding: 5px;border:1px solid;text-align: center">{{ $val->qty }}</td>
                 <td style="padding:5px;border:1px solid">{{ number_format($val->rate,2) }}</td>
-                <td style="padding:5px;border:1px solid">{{ number_format($val->qty*$val->rate,2) }}</td>
-                <td style="padding:5px;border:1px solid">5%</td>
-                <td style="padding:5px;border:1px solid">{{ number_format($val->tax,2) }}</td>
+                <td style="padding:5px;border:1px solid">{{ number_format($val->discount,2) }}</td>
+                <td style="padding:5px;border:1px solid">{{ number_format($val->subtotal,2) }}</td>
+                <td style="padding:5px;border:1px solid">{{ $val->tax }}%</td>
+                <td style="padding:5px;border:1px solid">{{ number_format($val->tax_amount,2) }}</td>
                 <td style="padding:5px;border:1px solid; text-align: right">{{ number_format($val->amount,2) }}</td>
             </tr>
         @endforeach
@@ -182,7 +184,7 @@
         <tfoot>
 
         <tr style="border-top: 1px solid #000;">
-            <td colspan="1" style="padding: 5px;text-align: left;"></td>
+            <td colspan="2" style="padding: 5px;text-align: left;"></td>
             <td colspan="1" style="padding: 5px;text-align: right;font-weight:bold;">Total Orders:</td>
             <td colspan="1" style="padding: 5px;text-align: center;font-weight:bold;">{{$total_qty}}</td>
             <td colspan="3" style="padding: 5px;text-align: left;"></td>
@@ -191,7 +193,7 @@
         </tr>
         <tr style="border-top: 1px solid #000;">
             <td colspan="1" style="padding: 5px;text-align: left;">Notes:</td>
-            <td colspan="5" style="padding: 5px;text-align: right;font-weight:bold;">{{$res[0]->notes}}</td>
+            <td colspan="6" style="padding: 5px;text-align: right;font-weight:bold;">{{$res[0]->notes}}</td>
 
             <th style="padding: 5px;text-align: right;">Total:</th>
             <th style="padding: 5px;text-align: right;">{{ \App\Helpers\Account::show_bal_format($total) }}</th>

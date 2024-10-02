@@ -125,14 +125,15 @@
                                 <input type="text" class="form-control form-control-sm amount" name="amount[]" placeholder="0" value="0">
                             </div>
                             <!--col-->
-                            <div class="col-md-1 form-group">
-                                <label style="visibility: hidden">Assign Price</label>
-                                <button type="button" class="btn btn-sm btn-primary new_line_item"><i class="fa fa-plus"></i> </button>
-                            </div>
+
                             <!--col-->
                         </div>
                         <!--row-->
                         <div class="append-line"></div>
+                        <div class="col-md-1 form-group">
+                            <label style="visibility: hidden">Assign Price</label>
+                            <button type="button" class="btn btn-sm btn-primary new_line_item"><i class="fa fa-plus"></i> </button>
+                        </div>
                         <div class="row">
                             <div class="col-md-1 offset-6 form-group text-right">
                                 <label><strong>Sub Total</strong>:</label>

@@ -11,26 +11,30 @@
                 </div>
                 <div class="modal-body">
                     <div class="row">
-                        <div class="col-md-3 form-group">
+                        <div class="col-md-6 form-group">
                             <label>Item Name</label>
                             <input type="text" class="form-control form-control-sm" name="item_name" placeholder="Item Name">
                         </div>
                         <!--col-->
-                        <div class="col-md-3 form-group">
+                        <div class="col-md-4 form-group">
                             <label>Item Unit</label>
                             <select class="form-control form-control-sm" name="item_unit">
                                 <option value="1">Select</option>
                             </select>
                         </div>
                         <!--col-->
-                        <div class="col-md-2 form-group">
+                        <div class="col-md-3 form-group">
                             <label>Sale Price</label>
                             <input type="text" class="form-control form-control-sm" name="sale_price" placeholder="Sale Price">
                         </div>
                         <!--col-->
-                        <div class="col-md-2 form-group">
+                        <div class="col-md-3 form-group">
                             <label>Cost Price</label>
                             <input type="text" class="form-control form-control-sm" name="cost_price" placeholder="Cost Price">
+                        </div>
+                        <div class="col-md-3 form-group">
+                            <label>VAT Percentage %</label>
+                            <input type="text" class="form-control form-control-sm" name="tax" value="5" placeholder="VAT %">
                         </div>
                         <!--col-->
                     </div>

@@ -146,8 +146,9 @@ class ProjectInvoiceController extends Controller
             'total_amount.required' => 'Sub Total Should be greateer than 0',
         ];
         $this->validate($request, $rules, $message);
+
         DB::beginTransaction();
-        $data = $request->except(['_token', 'item_id', 'qty', 'rate', 'discount', 'tax', 'amount', 'month_invoice']);
+        $data = $request->except(['_token', 'item_id', 'qty', 'rate', 'discount', 'tax', 'amount', 'month_invoice', 'tax_amount', 'subtotal']);
         $id = $request->id;
         $count = count($request->qty);
         if ($request->billing_month) {
@@ -170,10 +171,13 @@ class ProjectInvoiceController extends Controller
                         'qty' => $request['qty'][$i],
                         'rate' => $request['rate'][$i],
                         'discount' => $request['discount'][$i] ?? 0,
+                        'subtotal' => $request['subtotal'][$i],
                         'tax' => $request['tax'][$i],
+                        'tax_amount' => $request['tax_amount'][$i],
                         'amount' => $request['amount'][$i],
                         'inv_id' => $inv->id,
                     ];
+
                     /* $vArray[]=[
                         'item_id' => $request['item_id'][$i],
                         'qty' => $request['qty'][$i],
@@ -199,7 +203,9 @@ class ProjectInvoiceController extends Controller
                             'qty' => $request['qty'][$i],
                             'rate' => $request['rate'][$i],
                             'discount' => $request['discount'][$i] ?? 0,
+                            'subtotal' => $request['subtotal'][$i],
                             'tax' => $request['tax'][$i],
+                            'tax_amount' => $request['tax_amount'][$i],
                             'amount' => $request['amount'][$i],
                             'inv_id' => $id,
                         ];
@@ -296,26 +302,34 @@ class ProjectInvoiceController extends Controller
                     <!--col-->';
             $html .= '<div class="col-md-1 form-group">
                                 <label>Qty</label>
-                                <input type="text" class="form-control form-control-sm qty" name="qty[]" placeholder="0" value="' . $item->qty . '">
+                                <input type="text" class="form-control form-control-sm qty" name="qty[]" placeholder="0" value="' . $item->qty . '" onkeyup="updateCart(this)">
                             </div>
                             <!--col-->
                             <div class="col-md-1 form-group">
                                 <label>Rate</label>
-                                <input type="text" class="form-control form-control-sm rate" name="rate[]" placeholder="0" value="' . $item->rate . '">
+                                <input type="text" class="form-control form-control-sm rate" name="rate[]" placeholder="0" value="' . $item->rate . '" onkeyup="updateCart(this)">
                             </div>
                             <!--col-->
                             <div class="col-md-1 form-group">
                                 <label>Discount</label>
-                                <input type="text" class="form-control form-control-sm discount" name="discount[]" placeholder="0" value="' . $item->disount . '">
-                            </div>
-                            <!--col-->
-                            <div class="col-md-1 form-group">
-                                <label>Tax</label>
-                                <input type="text" class="form-control form-control-sm tax" name="tax[]" placeholder="0" value="' . $item->tax . '">
+                                <input type="text" class="form-control form-control-sm discount" name="discount[]" placeholder="0" value="' . $item->discount . '" onkeyup="updateCart(this)">
                             </div>
                             <!--col-->
                             <div class="col-md-1 form-group">
                                 <label>Amount</label>
+                                <input type="text" class="form-control form-control-sm subtotal" name="subtotal[]" placeholder="0" value="' . $item->subtotal . '">
+                            </div>
+                             <div class="col-md-1 form-group">
+                                <label>VAT %</label>
+                                <input type="text" class="form-control form-control-sm tax" name="tax[]" placeholder="0" value="' . $item->tax . '" onkeyup="updateCart(this)">
+                            </div>
+                             <div class="col-md-1 form-group">
+                                <label>VAT Amount</label>
+                                <input type="text" class="form-control form-control-sm tax_amount" name="tax_amount[]" placeholder="0" value="' . $item->tax_amount . '">
+                            </div>
+                            <!--col-->
+                            <div class="col-md-1 form-group">
+                                <label>Total</label>
                                 <input type="text" class="form-control form-control-sm amount" name="amount[]" placeholder="0" value="' . $item->amount . '">
                             </div>
                             <!--col-->

@@ -89,19 +89,25 @@
                 '    </div>\n' +
                 '    <!--col-->\n' +
                 '    <div class="col-md-1 form-group">\n' +
-                '        <input type="text" class="form-control form-control-sm qty" name="qty[]" placeholder="0" value="1">\n' +
+                '        <input type="text" class="form-control form-control-sm qty" name="qty[]" placeholder="0" value="1" onkeyup="updateCart(this)">\n' +
                 '    </div>\n' +
                 '    <!--col-->\n' +
                 '    <div class="col-md-1 form-group">\n' +
-                '        <input type="text" class="form-control form-control-sm rate" name="rate[]" placeholder="0" value="0">\n' +
+                '        <input type="text" class="form-control form-control-sm rate" name="rate[]" placeholder="0" value="0" onkeyup="updateCart(this)">\n' +
                 '    </div>\n' +
                 '    <!--col-->\n' +
                 '    <div class="col-md-1 form-group">\n' +
-                '        <input type="text" class="form-control form-control-sm discount" name="discount[]" placeholder="0" value="0">\n' +
+                '        <input type="text" class="form-control form-control-sm discount" name="discount[]" placeholder="0" value="0" onkeyup="updateCart(this)">\n' +
                 '    </div>\n' +
                 '    <!--col-->\n' +
                 '    <div class="col-md-1 form-group">\n' +
-                '        <input type="text" class="form-control form-control-sm tax" name="tax[]" placeholder="0" value="0">\n' +
+                '        <input type="text" class="form-control form-control-sm subtotal" name="subtotal[]" placeholder="0" value="0" readonly>\n' +
+                '    </div>\n' +
+                '    <div class="col-md-1 form-group">\n' +
+                '        <input type="text" class="form-control form-control-sm tax" name="tax[]" placeholder="0" value="0" onkeyup="updateCart(this)">\n' +
+                '    </div>\n' +
+                '    <div class="col-md-1 form-group">\n' +
+                '       <input type="text" class="form-control form-control-sm tax_amount" name="tax_amount[]" placeholder="0" value="0" readonly>\n' +
                 '    </div>\n' +
                 '    <!--col-->\n' +
                 '    <div class="col-md-1 form-group">\n' +
@@ -117,16 +123,35 @@
             $(".select2").select2();
     });
     $(document).on("change",".item",function () {
-            let qty=$(this).find(".qty").val();
+            /* let qty=$(this).find(".qty").val();
             let rate=$(this).find(".rate").val();
             let discount=$(this).find(".discount").val();
             let tax=$(this).find(".tax").val();
 
             let amount=Number(qty)*Number(rate)-Number(discount)+Number(tax);
             $(this).find(".amount").val(amount);
-            sub_total();
+            sub_total(); */
+            updateCart(this);
     });
 
+    function updateCart(g){
+
+        //$(g).closest(".row").find(".rate").val();
+        let qty=$(g).closest('.row').find(".qty").val();
+        let rate=$(g).closest('.row').find('.rate').val();
+        let discount=$(g).closest('.row').find(".discount").val();
+        let tax=$(g).closest('.row').find(".tax").val();
+        let price = rate-discount;
+        let subtotal_amount = Number(price*qty).toFixed(2);
+        let subtotal=$(g).closest('.row').find('.subtotal').val(subtotal_amount);
+        let tax_amount = Number(subtotal_amount*tax/100).toFixed(2);
+        $(g).closest(".row").find(".tax_amount").val(tax_amount);
+
+        let amount=Number(subtotal_amount)+Number(tax_amount);
+        $(g).closest('.row').find(".amount").val(Number(amount).toFixed(2));
+
+        sub_total();
+    }
     function sub_total() {
         var sum=0;
         $(".amount").each(function () {
@@ -136,6 +161,7 @@
     }
     $(document).on("click",".remove",function () {
             $(this).parents(".row").remove();
+            sub_total();
     });
 
    function search_price(g) {
@@ -153,10 +179,12 @@
                let qty=$(g).closest('.row').find(".qty").val();
                let rate=$(g).closest('.row').find('.rate').val();
                let discount=$(g).closest('.row').find(".discount").val();
-               let tax = Number(rate*0.05).toFixed(2);
-               $(g).closest(".row").find(".tax").val(tax);
-               //let tax=$(g).closest('.row').find(".tax").val();
-               let amount=Number(qty)*Number(rate)-Number(discount)+Number(tax);
+               let tax=$(g).closest('.row').find(".tax").val(Number(data.tax));
+               let subtotal=$(g).closest('.row').find('.subtotal').val(Number(rate*qty).toFixed(2));
+               let tax_amount = Number(rate*data.tax/100).toFixed(2);
+               $(g).closest(".row").find(".tax_amount").val(tax_amount);
+
+               let amount=Number(qty)*Number(rate)-Number(discount)+Number(tax_amount);
                $(g).closest('.row').find(".amount").val(Number(amount).toFixed(2));
                sub_total();
            }
