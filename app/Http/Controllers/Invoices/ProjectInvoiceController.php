@@ -335,7 +335,7 @@ class ProjectInvoiceController extends Controller
                             <!--col-->
                             <div class="col-md-1 form-group">
                                 <label style="visibility: hidden">Assign Price</label>
-                                <button type="button" class="btn btn-sm ' . ($i != 0 ? 'btn-danger remove' : 'btn-primary new_line') . '"><i class="fa fa-plus"></i> </button>
+                                <button type="button" class="btn btn-sm ' . ($i != 0 ? 'btn-danger remove' : 'btn-primary new_line_item') . '"><i class="fa ' . ($i != 0 ? "fa-trash" : "fa-plus") . '"></i> </button>
                             </div>
                             <!--col-->
                             ';
