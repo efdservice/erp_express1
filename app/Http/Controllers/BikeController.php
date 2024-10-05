@@ -237,6 +237,7 @@ class BikeController extends Controller
         try {
             $ret = BikeHistory::create($data);
             Bike::where('id', $request->BID)->update(['RID' => $request->RID, 'warehouse' => $request->warehouse]);
+            Rider::where('id', $request->RID)->update(['status' => 1]);
             DB::commit();
             return $ret;
         } catch (QueryException $e) {
