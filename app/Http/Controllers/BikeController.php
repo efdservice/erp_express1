@@ -238,9 +238,9 @@ class BikeController extends Controller
             $ret = BikeHistory::create($data);
             Bike::where('id', $request->BID)->update(['RID' => $request->RID, 'warehouse' => $request->warehouse]);
             if ($request->warehouse == 'Actve') {
-                Rider::where('id', $request->RID)->update(['active' => 1]);
+                Rider::where('id', $request->RID)->update(['status' => 1]);
             } else {
-                Rider::where('id', $request->RID)->update(['active' => 0]);
+                Rider::where('id', $request->RID)->update(['status' => 3]);
             }
 
             DB::commit();
