@@ -239,6 +239,10 @@ $(document).on('submit', '#formajax2', function (e) {
     success: function (data) {
         $("#loader").hide();
       toastr.success(data);
+      if ($('#reload_page').val() == 1) {
+        location.reload();
+      }
+
     },
     error: function (ajaxcontent) {
         $("#loader").hide();

@@ -18,7 +18,7 @@
                     </div>
                     <!--row-->
                 </div>
-                <div class="modal-footer">
+                <div class="modal-footer1">
                     <button type="submit" class="save_rec btn btn-primary save_rec">Upload</button>
                 </div>
             </form>

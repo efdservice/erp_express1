@@ -223,6 +223,12 @@ update items set tax = 5;
 ALTER TABLE `project_invoice_items`
 ADD COLUMN `tax_amount`  decimal(10,2) NULL AFTER `inv_id`,
 ADD COLUMN `subtotal`  decimal(10,2) NULL AFTER `tax_amount`;
+--------------------
+
+ALTER TABLE `riders`
+ADD COLUMN `job_status`  tinyint(2) NULL DEFAULT 1 AFTER `rider_reference`;
+
+
 
 
 

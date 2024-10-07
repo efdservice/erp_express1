@@ -8,6 +8,7 @@ use App\Models\Accounts\Transaction;
 use App\Models\Accounts\TransactionAccount;
 use App\Models\Files;
 use App\Models\Item;
+use App\Models\JobStatus;
 use App\Models\Rider;
 use App\Models\RiderItemPrice;
 use Form;
@@ -36,6 +37,7 @@ class RiderController extends Controller
             } else {
                 $data = Rider::latest()->get();
             }
+
             return DataTables::of($data)
                 ->addIndexColumn()
                 ->addColumn('name', function ($row) {
@@ -65,15 +67,20 @@ class RiderController extends Controller
 
                     return CommonHelper::RiderStatus($row->status);
                     //return  Form::select('category_id', CommonHelper::RiderStatus(), $row->status, ['class' => 'statuschange','onchange' => 'changeStatus('.$row->id.',this)']);
-
+    
                     //return '<a href="javascript:void(0)" data-toggle="tooltip"  data-action="'.url('rider-status/'.$row->id).'" data-original-title="Action" class="doAction" ><span class="badge badge-primary" >Active</span></a>';
+    
+                })
+                ->addColumn('job_status', function ($row) {
+
+                    return CommonHelper::JobStatus($row->job_status);
 
                 })
                 ->addColumn('action', function ($row) {
                     $btn = '';
                     //$btn = $btn . '<a href="javascript:void();" data-action="' . route('rider_show', $row->id) . '" data-size="lg" data-title="' . $row->name . ' (' . $row->rider_id . ') Contract" class="btn btn-default btn-xs show-modal mr-1"><i class="fas fa-eye"></i> Show</a>';
                     //$btn = $btn . '<a href="' . route('rider_view', $row->id) . '"  class="btn btn-info btn-xs show-modal mr-1"><i class="fas fa-eye"></i> View</a>';
-
+    
                     if (\Auth::user()->can('riders_document')) {
 
                         $btn = $btn . '<a href="javascript:void();" data-action="' . route('rider_contract_upload', $row->id) . '" data-size="md" data-title="' . $row->name . ' (' . $row->rider_id . ') Contract" class="btn btn-warning btn-xs show-modal mr-1"><i class="fas fa-file"></i> Contract</a>';
@@ -91,7 +98,7 @@ class RiderController extends Controller
                     }
                     return $btn;
                 })
-                ->rawColumns(['action', 'status', 'name'])
+                ->rawColumns(['action', 'status', 'name', 'job_status'])
                 ->make(true);
 
         }
@@ -458,5 +465,22 @@ class RiderController extends Controller
 
             return "Picture uploaded successfully";//redirect(url('rider'))->with('success', $rider->name . '( ' . $rider->rider_id . ' ) Profile Picture uploaded.');
         }
+    }
+
+    public function job_status($id, Request $request)
+    {
+        $rider = Rider::find($id);
+
+        if ($request->isMethod('post')) {
+            $input = $request->all();
+            $input['RID'] = $id;
+            $input['status_by'] = auth()->user()->id;
+            JobStatus::create($input);
+            $rider = Rider::find($id);
+            $rider->job_status = $input['job_status'];
+            $rider->save();
+            return "Job Status updated successfully";
+        }
+        return view('riders.job_status-modal', compact('rider'));
     }
 }

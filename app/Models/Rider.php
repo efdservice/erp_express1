@@ -78,6 +78,10 @@ class Rider extends Model
     {
         return $this->hasOne(Bike::class, 'RID', 'id');
     }
+    public function jobstatus()
+    {
+        return $this->hasOne(JobStatus::class, 'RID', 'id')->orderByDesc('id');
+    }
 
     public function sims()
     {

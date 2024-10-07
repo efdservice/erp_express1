@@ -272,7 +272,8 @@ class CommonHelper
             'Bashir Ahmad' => 'Bashir Ahmad',
             'Aysha Madam' => 'Aysha Madam',
             'Rithik Ram Naresh' => 'Rithik Ram Naresh',
-            'Zuhair Iftikhar' => 'Zuhair Iftikhar'
+            'Zuhair Iftikhar' => 'Zuhair Iftikhar',
+            'Ali Ahsan' => 'Ali Ahsan'
         ];
 
         $list = '';
@@ -684,6 +685,20 @@ class CommonHelper
     public static function RiderStatus($status = null)
     {
         $result = [
+            3 => 'Inactive',
+            1 => 'Active'
+        ];
+
+        if ($status != null) {
+            return $result[$status] ?? 'not-set';
+        } else {
+            return $result;
+        }
+    }
+    public static function JobStatus($status = null)
+    {
+        $result = [
+
             1 => 'Active',
             2 => 'Vacation',
             3 => 'Terminate',
@@ -695,7 +710,7 @@ class CommonHelper
         ];
 
         if ($status != null) {
-            return $result[$status];
+            return $result[$status] ?? 'not-set';
         } else {
             return $result;
         }

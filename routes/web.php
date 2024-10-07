@@ -75,6 +75,7 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('vendor/assign_rider/edit/{id}', [\App\Http\Controllers\AssignRiderController::class, 'edit']);
     Route::resource('rider', RiderController::class);
 
+    Route::any('riders/job_status/{id?}', [\App\Http\Controllers\RiderController::class, 'job_status'])->name('rider.job_status');
     Route::get('riders/contract/{id?}', [\App\Http\Controllers\RiderController::class, 'contract'])->name('rider.contract');
     Route::any('riders/contract_upload/{id?}', [\App\Http\Controllers\RiderController::class, 'contract_upload'])->name('rider_contract_upload');
     Route::any('riders/picture_upload/{id?}', [\App\Http\Controllers\RiderController::class, 'picture_upload'])->name('rider_picture_upload');

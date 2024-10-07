@@ -70,6 +70,7 @@
 {{--                                         <th>Balance</th>
  --}}
                                         <th>Status</th>
+                                        <th>Job Status</th>
                                         <th>Action</th>
                                     </tr>
                                     </thead>
@@ -114,6 +115,7 @@
                 {data: 'emirate_hub', name: 'emirate_hub'},
 /*                 {data: 'Balance', name: 'Balance'},
  */                {data: 'status', name: 'status'},
+                    {data: 'job_status', name: 'job_status'},
                 {data: 'action', name: 'action',
                     orderable: false, searchable: false
                 },
