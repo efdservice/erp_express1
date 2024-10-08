@@ -26,7 +26,7 @@
 
                         <div class="row">
 
-                            @foreach($status_count as $wh)
+                            @foreach($job_status_count as $wh)
 
                                 <div class="col-lg-2 col-6">
                                     <!-- small box -->
@@ -34,7 +34,7 @@
                                         <div class="inner" >
                                             <h4>{{$wh->total}}</h4>
 
-                                            <a href="{{url('rider?status='.$wh->status)}}"><span>{{App\Helpers\CommonHelper::RiderStatus($wh->status)}}</span></a>
+                                            <a href="{{url('rider?status='.$wh->job_status)}}"><span>{{App\Helpers\CommonHelper::JobStatus($wh->job_status)}}</span></a>
                                         </div>
                                         <div class="icon">
                                             <i class="fas fa-user-circle fa-xs"></i>

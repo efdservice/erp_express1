@@ -16,6 +16,11 @@ class JobStatus extends Model
         return $this->hasOne(Rider::class, 'id', 'RID');
     }
 
+    public function user()
+    {
+        return $this->hasOne(User::class, 'id', 'status_by');
+    }
+
     public static function dropdown($id = 0)
     {
         $res = self::all();

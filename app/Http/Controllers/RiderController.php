@@ -33,7 +33,7 @@ class RiderController extends Controller
     {
         if ($request->ajax()) {
             if ($request->status) {
-                $data = Rider::where('status', $request->status)->get();
+                $data = Rider::where('job_status', $request->status)->get();
             } else {
                 $data = Rider::latest()->get();
             }
@@ -103,7 +103,8 @@ class RiderController extends Controller
 
         }
         $status_count = Rider::groupBy('status')->selectRaw('status,count(*) as total')->get();
-        return view('riders.index', compact('status_count'));
+        $job_status_count = Rider::groupBy('job_status')->selectRaw('job_status,count(*) as total')->get();
+        return view('riders.index', compact('status_count', 'job_status_count'));
     }
 
     /**
@@ -267,9 +268,11 @@ class RiderController extends Controller
     public function show($id)
     {
         $rider = Rider::find($id);
-        $rider_items = $rider->items;
+        // $rider_items = $rider->items;
         $result = $rider->toArray();
-        return view('riders.view', compact('result', 'rider', 'rider_items'));
+        $job_status = JobStatus::where('RID', $id)->orderByDesc('id')->get();
+
+        return view('riders.view', compact('result', 'rider', 'job_status'));
     }
 
     /**
@@ -300,8 +303,9 @@ class RiderController extends Controller
          } */
         $files = Files::where('type_id', $id)->get();
 
+        $job_status = JobStatus::where('RID', $id)->orderByDesc('id')->get();
 
-        return view('riders.form', compact('result', 'trans_acc_id', 'rider_items', 'rider', 'files'));
+        return view('riders.form', compact('result', 'trans_acc_id', 'rider_items', 'rider', 'files', 'job_status'));
     }
 
     /**
@@ -314,7 +318,8 @@ class RiderController extends Controller
     public function update(Request $request, $id)
     {
         $rider = Rider::find($id);
-        return view('riders.form', compact('rider'));
+        $job_status = JobStatus::where('RID', $id)->orderByDesc('id')->get();
+        return view('riders.form', compact('rider', 'job_status'));
     }
 
     /**
