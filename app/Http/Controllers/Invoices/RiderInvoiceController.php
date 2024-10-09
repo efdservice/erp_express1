@@ -138,12 +138,12 @@ class RiderInvoiceController extends Controller
         $rules = [
             'inv_date' => 'required',
             'RID' => 'required|numeric|min:0|not_in:0',
-            'total_amount' => 'required|numeric|min:0|not_in:0',
+            /* 'total_amount' => 'required|numeric|min:0|not_in:0', */
         ];
         $message = [
             'inv_date.required' => 'Invoice Date Required',
             'RID.required' => 'Please select Rider ',
-            'total_amount.required' => 'Sub Total Should be greateer than 0',
+            /* 'total_amount.required' => 'Sub Total Should be greateer than 0', */
         ];
         $this->validate($request, $rules, $message);
         DB::beginTransaction();
