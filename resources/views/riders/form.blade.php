@@ -90,6 +90,11 @@
                             <b>Job Status</b> <span class="float-right">
                                 @isset($result) <a href="javascript:void(0);" data-action="{{url('riders/job_status/'.$result['id'])}}" data-title="Change Job Status" class="btn btn-default btn-sm show-modal">Change Status</a>
                                 {{App\Helpers\CommonHelper::JobStatus($result['job_status'])??'not-set'}}@endisset</span>
+                                @isset($rider->jobstatus)
+                                <hr/>
+                                <b>Reason:</b>
+                                {{$rider->jobstatus->reason??'not-set'}}
+                                @endisset
                          </li>
                          <li class="list-group-item">
                             <b>Balance</b> <a class="float-right">@isset($trans_acc_id){{App\Helpers\Account::show_bal(App\Helpers\Account::Monthly_ob(date('y-m-d'), $trans_acc_id))??'not-set'}}@endisset</a>
