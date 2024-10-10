@@ -23,40 +23,55 @@
                 <!-- SELECT2 EXAMPLE -->
                 <div class="card card-default rounded-0">
                     <div class="card-body">
-
+                        <h6>Fleet Supervisor</h6>
                         <div class="row">
 
+                            @foreach($fleet_supervisor as $fs)
+
+                            <div class="col-lg-1 col-6">
+                                <!-- small box -->
+                                <div class="small-box bg-default" >
+                                    <div class="inner" >
+                                        <h5>{{$fs->total}}</h5>
+
+                                        <a href="{{url('rider?fleet_supervisor='.$fs->fleet_supervisor)}}"><span>{{$fs->fleet_supervisor??'not-set'}}</span></a>
+                                    </div>
+
+                                </div>
+                            </div>
+
+                            @endforeach
+                        </div>
+                        <h6>Status</h6>
+                        <div class="row">
                             @foreach($status_count as $st)
 
-                                <div class="col-lg-2 col-6">
+                                <div class="col-lg-1 col-6">
                                     <!-- small box -->
                                     <div class="small-box bg-light" >
                                         <div class="inner" >
-                                            <h4>{{$st->total}}</h4>
+                                            <h5>{{$st->total}}</h5>
 
                                             <a href="{{url('rider?job_status='.$st->status)}}"><span>{{App\Helpers\CommonHelper::RiderStatus($st->status)}}</span></a>
                                         </div>
-                                        <div class="icon">
-                                            <i class="fas fa-user-circle fa-xs"></i>
-                                        </div>
+
                                     </div>
                                 </div>
                                 @endforeach
                             @foreach($job_status_count as $wh)
-
-                                <div class="col-lg-2 col-6">
+                            @if($wh->job_status!=1)
+                                <div class="col-lg-1 col-6">
                                     <!-- small box -->
                                     <div class="small-box bg-light" >
                                         <div class="inner" >
-                                            <h4>{{$wh->total}}</h4>
+                                            <h5>{{$wh->total}}</h5>
 
-                                            <a href="{{url('rider?job_status='.$wh->job_status)}}"><span>@if($wh->job_status==1)Job @endif{{App\Helpers\CommonHelper::JobStatus($wh->job_status)}}</span></a>
+                                            <a href="{{url('rider?job_status='.$wh->job_status)}}"><span>{{App\Helpers\CommonHelper::JobStatus($wh->job_status)}}</span></a>
                                         </div>
-                                        <div class="icon">
-                                            <i class="fas fa-user-circle fa-xs"></i>
-                                        </div>
+
                                     </div>
                                 </div>
+                                @endif
                                 @endforeach
 
 
@@ -120,7 +135,7 @@
             processing: true,
             serverSide: true,
             stateSave: true,
-            ajax: "{{ route('rider.index',['status'=>request('status'),'job_status'=>request('job_status')]) }}",
+            ajax: "{{ route('rider.index',['status'=>request('status'),'job_status'=>request('job_status'),'fleet_supervisor'=>request('fleet_supervisor')]) }}",
             columns: [
                 {data: 'rider_id', name: 'rider_id'},
                 {data: 'name', name: 'name'},

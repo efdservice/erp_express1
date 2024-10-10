@@ -265,13 +265,9 @@ class CommonHelper
     public static function get_supervisor($id = 0)
     {
         $array = [
-            'Rusbeel Yousaf' => 'Rusbeel Yousaf',
             'Kaleem' => 'Kaleem',
             'Shakeel' => 'Shakeel',
             'Waqas Mehmood' => 'Waqas Mehmood',
-            'Bashir Ahmad' => 'Bashir Ahmad',
-            'Aysha Madam' => 'Aysha Madam',
-            'Rithik Ram Naresh' => 'Rithik Ram Naresh',
             'Zuhair Iftikhar' => 'Zuhair Iftikhar',
             'Ali Ahsan' => 'Ali Ahsan'
         ];
@@ -281,6 +277,23 @@ class CommonHelper
             $list .= '<option ' . ($id == $key ? 'selected' : '') . ' value="' . $key . '">' . $value . '</option>';
         }
         return $list;
+
+    }
+    public static function get_supervisor_list($status = 0)
+    {
+        $result = [
+            'Kaleem' => 'Kaleem',
+            'Shakeel' => 'Shakeel',
+            'Waqas Mehmood' => 'Waqas Mehmood',
+            'Zuhair Iftikhar' => 'Zuhair Iftikhar',
+            'Ali Ahsan' => 'Ali Ahsan'
+        ];
+
+        if ($status != null) {
+            return $result[$status] ?? 'not-set';
+        } else {
+            return $result;
+        }
 
     }
 

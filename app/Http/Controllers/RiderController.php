@@ -36,6 +36,8 @@ class RiderController extends Controller
                 $data = Rider::where('job_status', $request->job_status)->get();
             } else if ($request->status) {
                 $data = Rider::where('status', $request->status)->get();
+            } else if ($request->fleet_supervisor) {
+                $data = Rider::where('fleet_supervisor', $request->fleet_supervisor)->get();
             } else {
                 $data = Rider::latest()->get();
             }
@@ -106,7 +108,8 @@ class RiderController extends Controller
         }
         $status_count = Rider::groupBy('status')->selectRaw('status,count(*) as total')->whereIn('status', [1, 3])->get();
         $job_status_count = Rider::groupBy('job_status')->selectRaw('job_status,count(*) as total')->get();
-        return view('riders.index', compact('status_count', 'job_status_count'));
+        $fleet_supervisor = Rider::groupBy('fleet_supervisor')->selectRaw('fleet_supervisor,count(*) as total')->get();
+        return view('riders.index', compact('status_count', 'job_status_count', 'fleet_supervisor'));
     }
 
     /**
