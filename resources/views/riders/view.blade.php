@@ -134,11 +134,11 @@
                 <div class="card">
                    <div class="card-header p-2 no-print">
                       <ul class="nav nav-pills">
-                         <li class="nav-item"><a class="nav-link active" href="#timeline" data-toggle="tab">Timeline</a></li>
-                         <li class="nav-item"><a class="nav-link " href="{{route('rider.edit', $result['id'])}}#information">Information</a></li>
+                         <li class="nav-item"><a class="nav-link active" href="#information" data-toggle="tab">Information</a></li>
                          @can('riders_document')
                          <li class="nav-item"><a class="nav-link" href="{{route('rider.edit', $result['id'])}}#documents">Documents</a></li>
                          @endcan
+                         <li class="nav-item"><a class="nav-link" href="{{route('rider.edit', $result['id'])}}#timeline">Timeline</a></li>
                          @can('invoices_view')
                          <li class="nav-item"><a class="nav-link" href="{{route('rider.edit', $result['id'])}}#invoices" >Invoices</a></li>
                          @endcan
@@ -147,13 +147,15 @@
                    </div>
                    <div class="card-body">
                       <div class="tab-content">
-                         <div class="active tab-pane" id="timeline">
+                         <div class="active tab-pane" id="information">
+                            @include('riders.show')
+                         </div>
+
+                         {{-- <div class="tab-pane" id="timeline">
                             @include('riders.timeline')
-                         </div>
+                         </div> --}}
 
-                         <div class="tab-pane" id="settings">
 
-                         </div>
                       </div>
                    </div>
                 </div>
@@ -163,7 +165,14 @@
     </section>
  </div>
 
-
+ <script>
+    $(document).ready(function() {
+// Get the initial active tab from the URL
+var activeTab = window.location.hash.replace('#', '');
+// Activate the initial tab
+$('.nav-item a[href="#' + activeTab + '"]').tab('show');
+});
+</script>
  @include('riders.inc_func')
 
 @endsection

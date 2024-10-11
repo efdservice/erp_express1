@@ -266,7 +266,6 @@ class CommonHelper
     {
         $array = [
             'Kaleem' => 'Kaleem',
-            'Shakeel' => 'Shakeel',
             'Waqas Mehmood' => 'Waqas Mehmood',
             'Zuhair Iftikhar' => 'Zuhair Iftikhar',
             'Ali Ahsan' => 'Ali Ahsan'
@@ -279,23 +278,7 @@ class CommonHelper
         return $list;
 
     }
-    public static function get_supervisor_list($status = 0)
-    {
-        $result = [
-            'Kaleem' => 'Kaleem',
-            'Shakeel' => 'Shakeel',
-            'Waqas Mehmood' => 'Waqas Mehmood',
-            'Zuhair Iftikhar' => 'Zuhair Iftikhar',
-            'Ali Ahsan' => 'Ali Ahsan'
-        ];
 
-        if ($status != null) {
-            return $result[$status] ?? 'not-set';
-        } else {
-            return $result;
-        }
-
-    }
 
     public static function get_passport_handover($id = 0)
     {

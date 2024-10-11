@@ -134,11 +134,12 @@
                 <div class="card">
                    <div class="card-header p-2">
                       <ul class="nav nav-pills">
-                        <li class="nav-item"><a class="nav-link active" href="#timeline" data-toggle="tab">Timeline</a></li>
-                         <li class="nav-item"><a class="nav-link " href="#information" data-toggle="tab">Information</a></li>
+
+                         <li class="nav-item"><a class="nav-link active" href="#information" data-toggle="tab">Information</a></li>
                          @can('riders_document')
                          <li class="nav-item"><a class="nav-link" href="#documents" data-toggle="tab">Documents</a></li>
                          @endcan
+                         <li class="nav-item"><a class="nav-link" href="#timeline" data-toggle="tab">Timeline</a></li>
                          @can('invoices_view')
                          <li class="nav-item"><a class="nav-link" href="#invoices" data-toggle="tab">Invoices</a></li>
                          @endcan
@@ -150,18 +151,19 @@
                    </div>
                    <div class="card-body">
                       <div class="tab-content">
-                        <div class="active tab-pane" id="timeline">
-                            @isset($rider)
-                            @include('riders.timeline')
-                            @endisset
-                         </div>
-                         <div class="tab-pane" id="information">
+
+                         <div class="active tab-pane" id="information">
                             @include('riders.fields')
 
                          </div>
                          <div class="tab-pane" id="documents">
                             @isset($rider)
                             @include('riders.document')
+                            @endisset
+                         </div>
+                         <div class=" tab-pane" id="timeline">
+                            @isset($rider)
+                            @include('riders.timeline')
                             @endisset
                          </div>
                          <div class="tab-pane" id="invoices">
