@@ -27,7 +27,7 @@
                         <div class="row">
 
                             @foreach($fleet_supervisor as $fs)
-
+                            @if($fs->fleet_supervisor)
                             <div class="col-lg-1 col-6">
                                 <!-- small box -->
                                 <div class="small-box bg-default" >
@@ -39,7 +39,7 @@
 
                                 </div>
                             </div>
-
+                            @endif
                             @endforeach
                         </div>
                         <h6>Status</h6>
