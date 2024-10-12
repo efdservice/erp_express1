@@ -236,12 +236,14 @@ class BikeController extends Controller
         DB::beginTransaction();
         try {
             $ret = BikeHistory::create($data);
-            Bike::where('id', $request->BID)->update(['RID' => $request->RID, 'warehouse' => $request->warehouse]);
-            if ($request->warehouse == 'Actve') {
-                Rider::where('id', $request->RID)->update(['status' => 1]);
+            $bike = Bike::where('id', $request->BID)->first();
+
+            if ($request->warehouse == 'Active') {
+                Rider::where('id', $bike->RID)->update(['status' => 1]);
             } else {
-                Rider::where('id', $request->RID)->update(['status' => 3]);
+                Rider::where('id', $bike->RID)->update(['status' => 3]);
             }
+            $bike->update(['RID' => $request->RID, 'warehouse' => $request->warehouse]);
 
             DB::commit();
             return $ret;
