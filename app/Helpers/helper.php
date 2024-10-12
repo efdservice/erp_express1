@@ -701,7 +701,8 @@ class CommonHelper
             4 => 'Theft',
             5 => 'Absconded',
             6 => 'Stop Salary',
-            7 => 'Coming'
+            7 => 'Coming',
+            8 => 'Absent'
 
         ];
 
