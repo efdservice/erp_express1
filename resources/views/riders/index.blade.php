@@ -65,8 +65,9 @@
                                     <div class="small-box bg-light" >
                                         <div class="inner" >
                                             <h5>{{$wh->total}}</h5>
-
+                                            @isset($wh->job_status)
                                             <a href="{{url('rider?job_status='.$wh->job_status)}}"><span>{{App\Helpers\CommonHelper::JobStatus($wh->job_status)}}</span></a>
+                                            @endisset
                                         </div>
 
                                     </div>

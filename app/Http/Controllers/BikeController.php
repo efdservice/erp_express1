@@ -239,7 +239,7 @@ class BikeController extends Controller
             $bike = Bike::where('id', $request->BID)->first();
 
             if ($request->warehouse == 'Active') {
-                Rider::where('id', $bike->RID)->update(['status' => 1]);
+                Rider::where('id', $request->RID)->update(['status' => 1]);
             } else {
                 Rider::where('id', $bike->RID)->update(['status' => 3]);
             }
