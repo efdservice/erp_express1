@@ -15,7 +15,7 @@
     <i class="fas fa-comments bg-warning"></i>
     <div class="timeline-item">
     <span class="time"><i class="far fa-clock"></i> {{$row->created_at->diffForHumans()}}</span>
-    <h3 class="timeline-header"><a href="#">{{$row->user->name}}</a> changed status to <span class="badge badge-warning">{{App\Helpers\CommonHelper::JobStatus($row->job_status)}}</span></h3>
+    <h3 class="timeline-header"><a href="#">{{$row->user->name}}</a> changed status to @isset($row->job_status)<span class="badge badge-warning">{{App\Helpers\CommonHelper::JobStatus($row->job_status)}}</span>@endisset</h3>
     <div class="timeline-body">
    {{$row->reason}}
     </div>
