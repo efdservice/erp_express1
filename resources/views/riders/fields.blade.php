@@ -19,12 +19,14 @@
                                     <div class="col-md-3 form-group">
 
                                         <label class="required">Rider ID <span style="color:red;">*</span></label>
-                                        {!! Form::text('rider_id', null, ['class' => 'form-control form-control-sm', 'maxlength' => 255]) !!}
+
+                                        {!! Form::text('rider_id', null, ['class' => 'form-control form-control-sm', 'maxlength' => 255,'readonly'=>auth()->user()->cannot('rider_id_edit') ? 'readonly' : null]) !!}
+
                                     </div>
                                     <!--col-->
                                     <div class="col-md-3 form-group">
                                         <label>Rider Name <span style="color:red;">*</span></label>
-                                        {!! Form::text('name', null, ['class' => 'form-control form-control-sm', 'maxlength' => 255]) !!}
+                                        {!! Form::text('name', null, ['class' => 'form-control form-control-sm', 'maxlength' => 255,'readonly'=>auth()->user()->cannot('rider_name_edit') ? 'readonly' : null]) !!}
                                     </div>
                                     <!--col-->
                                     <div class="col-md-3 form-group">
@@ -33,7 +35,7 @@
                                     </div>
                                     <div class="col-md-3 form-group">
                                         <label>Vendor <span style="color:red;">*</span></label>
-                                        <select class="form-control form-control-sm select2" name="VID">
+                                        <select class="form-control form-control-sm @can('rider_vendor_edit') select2 @else select-readonly @endcan" name="VID">
                                             <option value="">Select</option>
                                             {!! \App\Models\Vendor::dropdown(@$result['VID']) !!}
                                         </select>
@@ -41,12 +43,12 @@
                                     <!--col-->
                                     <div class="col-md-3 form-group">
                                         <label>Company Contact</label>
-                                        {!! Form::text('company_contact', null, ['class' => 'form-control form-control-sm', 'maxlength' => 255]) !!}
+                                        {!! Form::text('company_contact', null, ['class' => 'form-control form-control-sm', 'maxlength' => 255,'readonly'=>auth()->user()->cannot('rider_company_contact_edit') ? 'readonly' : null]) !!}
                                     </div>
                                     <!--col-->
                                     <div class="col-md-3 form-group">
                                         <label>Personal Gmail ID  <span style="color:red;">*</span></label>
-                                        {!! Form::text('personal_email', null, ['class' => 'form-control form-control-sm', 'maxlength' => 255]) !!}
+                                        {!! Form::text('personal_email', null, ['class' => 'form-control form-control-sm', 'maxlength' => 255,'readonly'=>auth()->user()->cannot('rider_personal_gmail_id_edit') ? 'readonly' : null]) !!}
                                     </div>
                                     <!--col-->
                                     {{-- <div class="col-md-3 form-group">
@@ -76,18 +78,18 @@
                                     </div>
                                     <div class="col-md-3 form-group">
                                         <label>Date of Joining <span style="color:red;">*</span></label>
-                                        {!! Form::date('doj', null, ['class' => 'form-control form-control-sm', 'maxlength' => 255]) !!}
+                                        {!! Form::date('doj', null, ['class' => 'form-control form-control-sm', 'maxlength' => 255,'readonly'=>auth()->user()->cannot('rider_date_of_joining_edit') ? 'readonly' : null]) !!}
                                     </div>
                                     <div class="col-md-3 form-group">
                                         <label>Project <span style="color:red;">*</span></label>
-                                        <select class="form-control form-control-sm select2" name="PID">
+                                        <select class="form-control form-control-sm @can('rider_customer_edit') select2 @else select-readonly @endcan" name="PID">
                                             <option value="">Select</option>
                                             {!! \App\Models\Projects::dropdown(@$result['PID']) !!}
                                         </select>
                                     </div>
                                     <div class="col-md-3 form-group">
                                         <label>Designation <span style="color:red;">*</span></label>
-                                        <select class="form-control form-control-sm select2" name="designation">
+                                        <select class="form-control form-control-sm @can('rider_designation_edit') select2 @else select-readonly @endcan" name="designation">
                                             <option value="">Select</option>
                                             {!! App\Helpers\CommonHelper::Designations(@$result['designation']) !!}
                                         </select>
@@ -96,15 +98,15 @@
 
                                     <div class="col-md-3 form-group">
                                         <label>Visa Sponsor</label>
-                                        {!! Form::text('visa_sponsor', null, ['class' => 'form-control form-control-sm', 'maxlength' => 255]) !!}
+                                        {!! Form::text('visa_sponsor', null, ['class' => 'form-control form-control-sm', 'maxlength' => 255,'readonly'=>auth()->user()->cannot('rider_visa_sponsor_edit') ? 'readonly' : null]) !!}
                                     </div>
                                     <div class="col-md-3 form-group">
                                         <label>Occupation on Visa <span style="color:red;">*</span></label>
-                                        {!! Form::text('visa_occupation', null, ['class' => 'form-control form-control-sm', 'maxlength' => 255]) !!}
+                                        {!! Form::text('visa_occupation', null, ['class' => 'form-control form-control-sm', 'maxlength' => 255,'readonly'=>auth()->user()->cannot('rider_occupation_on_visa_edit') ? 'readonly' : null]) !!}
                                     </div>
                                     <div class="col-md-6 form-group">
                                         <label>Visa Status</label>
-                                        <select class="form-control form-control-sm select2" name="visa_status">
+                                        <select class="form-control form-control-sm @can('rider_visa_status_edit') select2 @else select-readonly @endcan" name="visa_status">
                                             <option value="">Select</option>
                                             {!! App\Helpers\CommonHelper::VisaStatus(@$result['visa_status']) !!}
                                         </select>
@@ -164,7 +166,7 @@
                                     </div>
                                     <div class="col-md-3 form-group">
                                         <label>Salary Model <span style="color:red;">*</span></label>
-                                        <select class="form-control form-control-sm select2" name="salary_model">
+                                        <select class="form-control form-control-sm @can('rider_salary_model_edit') select2 @else select-readonly @endcan" name="salary_model">
                                             <option value="">Select</option>
                                             {!! App\Helpers\CommonHelper::SalaryModel(@$result['salary_model']) !!}
                                         </select>
@@ -177,7 +179,7 @@
                                 <div class="row bg-light mb-1">
                                     <div class="col-md-3 form-group">
                                         <label>Emirate (Hub) <span style="color:red;">*</span></label>
-                                        <select class="form-control form-control-sm select2" name="emirate_hub">
+                                        <select class="form-control form-control-sm @can('rider_emirate_hub_edit') select2 @else select-readonly @endcan" name="emirate_hub">
                                             <option value="">Select</option>
                                             {!! App\Helpers\CommonHelper::EmiratesHub(@$result['emirate_hub']) !!}
                                         </select>
@@ -186,31 +188,31 @@
                                     <!--col-->
                                     <div class="col-md-3 form-group">
                                         <label>Emirate ID <span style="color:red;">*</span></label>
-                                        {!! Form::text('emirate_id', null, ['class' => 'form-control form-control-sm', 'maxlength' => 255]) !!}
+                                        {!! Form::text('emirate_id', null, ['class' => 'form-control form-control-sm', 'maxlength' => 255,'readonly'=>auth()->user()->cannot('rider_emirate_id_edit') ? 'readonly' : null]) !!}
                                     </div>
                                     <div class="col-md-3 form-group">
                                         <label>EID EXP Date <span style="color:red;">*</span></label>
-                                        {!! Form::date('emirate_exp', null, ['class' => 'form-control form-control-sm', 'maxlength' => 255]) !!}
+                                        {!! Form::date('emirate_exp', null, ['class' => 'form-control form-control-sm', 'maxlength' => 255,'readonly'=>auth()->user()->cannot('rider_eid_expiry_date_edit') ? 'readonly' : null]) !!}
                                     </div>
                                     <div class="col-md-3 form-group">
                                         <label>Licence No <span style="color:red;">*</span></label>
-                                        {!! Form::text('license_no', null, ['class' => 'form-control form-control-sm', 'maxlength' => 255]) !!}
+                                        {!! Form::text('license_no', null, ['class' => 'form-control form-control-sm', 'maxlength' => 255,'readonly'=>auth()->user()->cannot('rider_license_no_edit') ? 'readonly' : null]) !!}
                                     </div>
                                     <div class="col-md-3 form-group">
                                         <label>Licence Expiry <span style="color:red;">*</span></label>
-                                        {!! Form::date('license_expiry', null, ['class' => 'form-control form-control-sm', 'maxlength' => 255]) !!}
+                                        {!! Form::date('license_expiry', null, ['class' => 'form-control form-control-sm', 'maxlength' => 255,'readonly'=>auth()->user()->cannot('rider_license_expiry_edit') ? 'readonly' : null]) !!}
                                     </div>
                                     <div class="col-md-3 form-group">
                                         <label>Passport <span style="color:red;">*</span></label>
-                                        {!! Form::text('passport', null, ['class' => 'form-control form-control-sm', 'maxlength' => 255]) !!}
+                                        {!! Form::text('passport', null, ['class' => 'form-control form-control-sm', 'maxlength' => 255,'readonly'=>auth()->user()->cannot('rider_passport_edit') ? 'readonly' : null]) !!}
                                     </div>
                                     <div class="col-md-3 form-group">
                                         <label>Passport Expiry <span style="color:red;">*</span></label>
-                                        {!! Form::date('passport_expiry', null, ['class' => 'form-control form-control-sm', 'maxlength' => 255]) !!}
+                                        {!! Form::date('passport_expiry', null, ['class' => 'form-control form-control-sm', 'maxlength' => 255,'readonly'=>auth()->user()->cannot('rider_passport_expiry_edit') ? 'readonly' : null]) !!}
                                     </div>
                                     <div class="col-md-3 form-group">
                                         <label>Passport Handover <span style="color:red;">*</span></label>
-                                        <select class="form-control form-control-sm select2" name="passport_handover">
+                                        <select class="form-control form-control-sm @can('rider_passport_handover_edit') select2 @else select-readonly @endcan" name="passport_handover">
                                             <option value="">Select</option>
                                             {!! App\Helpers\CommonHelper::get_passport_handover(@$result['passport_handover']) !!}
                                         </select>
@@ -221,14 +223,14 @@
                                     </div> --}}
                                     <div class="col-md-3 form-group">
                                         <label>WPS</label>
-                                        <select class="form-control form-control-sm select2" name="wps">
+                                        <select class="form-control form-control-sm @can('rider_wps_edit') select2 @else select-readonly @endcan" name="wps">
                                             <option value="">Select</option>
                                             {!! App\Helpers\CommonHelper::WPS(@$result['wps']) !!}
                                         </select>
                                     </div>
                                     <div class="col-md-3 form-group">
                                         <label>C3 Card</label>
-                                        <select class="form-control form-control-sm select2" name="c3_card">
+                                        <select class="form-control form-control-sm @can('rider_c3_card_edit') select2 @else select-readonly @endcan" name="c3_card">
                                             <option value="">Select</option>
                                             {!! App\Helpers\CommonHelper::C3Card(@$result['c3_card']) !!}
                                         </select>
@@ -241,12 +243,15 @@
 
                                     <div class="col-md-12 form-group">
                                         <label>Other Details</label>
-                                        {!! Form::textarea('other_details', null, ['class' => 'form-control form-control-sm']) !!}
+                                        {!! Form::textarea('other_details', null, ['class' => 'form-control form-control-sm','readonly'=>auth()->user()->cannot('rider_other_details_edit') ? 'readonly' : null]) !!}
                                     </div>
                                     <!--col-->
                                 </div>
-                                <h3>Assign Price</h3>
+
+
                                 <div class="row pr-5 pl-5" >
+                                    @can('rider_assign_price')
+                                    <h3>Assign Price</h3>
                                     <table  class="table" style="border-radius:10px;">
                     <thead>
                         <tr class=" bg-light">
@@ -294,6 +299,7 @@
                         @endforeach
                     @endisset
                 </table>
+                @endcan
 
                                       {{--   @php
                                             $items = \App\Models\Item::all();

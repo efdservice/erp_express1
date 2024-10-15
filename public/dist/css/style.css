@@ -159,3 +159,9 @@ padding: 5px !important;
   .profile-user-img{
     width: auto !important;
   }
+
+  .select-readonly {
+    background-color: #e9ecef;
+    pointer-events: none;
+    cursor: not-allowed;
+}
