@@ -250,7 +250,7 @@
 
 
                                 <div class="row pr-5 pl-5" >
-                                    @can('rider_assign_price')
+                                    @can('rider_assign_price_edit')
                                     <h3>Assign Price</h3>
                                     <table  class="table" style="border-radius:10px;">
                     <thead>
