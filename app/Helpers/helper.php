@@ -410,7 +410,7 @@ class CommonHelper
     public static function Insurance($id = 0)
     {
         $array = [
-            'Women Compensation' => 'Women Compensation',
+            'Workmen Compensation' => 'Workmen Compensation',
             'Health Insurance' => 'Health Insurance'
         ];
 
