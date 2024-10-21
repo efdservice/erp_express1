@@ -227,6 +227,13 @@ ADD COLUMN `subtotal`  decimal(10,2) NULL AFTER `tax_amount`;
 
 ALTER TABLE `riders`
 ADD COLUMN `job_status`  tinyint(2) NULL DEFAULT 1 AFTER `rider_reference`;
+--------------
+ALTER TABLE `riders`
+ADD COLUMN `person_code`  varchar(50) NULL AFTER `job_status`,
+ADD COLUMN `labor_card_number`  varchar(100) NULL AFTER `person_code`,
+ADD COLUMN `labor_card_expiry`  date NULL AFTER `labor_card_number`,
+ADD COLUMN `insurance`  varchar(100) NULL AFTER `labor_card_expiry`,
+ADD COLUMN `insurance_expiry`  date NULL AFTER `insurance`;
 
 
 

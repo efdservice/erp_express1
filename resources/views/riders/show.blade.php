@@ -163,11 +163,33 @@
                 <label>Occupation on Visa </label>
                 <p>{{@$result['visa_occupation']}}</p>
             </div>
-            <div class="col-md-6 form-group col-3">
+            <div class="col-md-3 form-group col-3">
                 <label>Visa Status</label>
                 <p>{{@$result['visa_status']}}</p>
 
             </div>
+            <div class="col-md-3 form-group col-3">
+                <label>Person Code</label>
+                <p>{{@$result['person_code']}}</p>
+            </div>
+            <div class="col-md-3 form-group col-3">
+                <label>Labor Card Number</label>
+                <p>{{@$result['labor_card_number']}}</p>
+            </div>
+            <div class="col-md-3 form-group col-3">
+                <label @if(strtotime($result['labor_card_expiry']) <= strtotime(date('Y-m-d'))) style="color:red;" @endif>Labor Card Expiry </label>
+                <p @if(strtotime($result['labor_card_expiry']) <= strtotime(date('Y-m-d'))) style="color:red;" @endif>{{@$result['labor_card_expiry']}}</p>
+            </div>
+            <div class="col-md-3 form-group col-3">
+                <label>Insurance</label>
+                <p>{{@$result['insurance']}}</p>
+            </div>
+            <div class="col-md-3 form-group col-3">
+                <label @if(strtotime($result['insurance_expiry']) <= strtotime(date('Y-m-d'))) style="color:red;" @endif>Insurance Expiry</label>
+                <p @if(strtotime($result['insurance_expiry']) <= strtotime(date('Y-m-d'))) style="color:red;" @endif>{{@$result['insurance_expiry']}}</p>
+            </div>
+
+
                 <div class="col-md-3 form-group col-3">
                     <label>Emirate (Hub) </label>
                     <p>{{@$result['emirate_hub']}}</p>

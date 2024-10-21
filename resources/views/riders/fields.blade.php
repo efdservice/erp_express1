@@ -104,12 +104,35 @@
                                         <label>Occupation on Visa <span style="color:red;">*</span></label>
                                         {!! Form::text('visa_occupation', null, ['class' => 'form-control form-control-sm', 'maxlength' => 255,'readonly'=>auth()->user()->cannot('rider_occupation_on_visa_edit') ? 'readonly' : null]) !!}
                                     </div>
-                                    <div class="col-md-6 form-group">
+                                    <div class="col-md-3 form-group">
                                         <label>Visa Status</label>
                                         <select class="form-control form-control-sm @can('rider_visa_status_edit') select2 @else select-readonly @endcan" name="visa_status">
                                             <option value="">Select</option>
                                             {!! App\Helpers\CommonHelper::VisaStatus(@$result['visa_status']) !!}
                                         </select>
+                                    </div>
+                                    <div class="col-md-3 form-group">
+                                        <label>Person Code</label>
+                                        {!! Form::text('person_code', null, ['class' => 'form-control form-control-sm', 'maxlength' => 255,'readonly'=>auth()->user()->cannot('rider_person_code_edit') ? 'readonly' : null]) !!}
+                                    </div>
+                                    <div class="col-md-3 form-group">
+                                        <label>Labor Card Number</label>
+                                        {!! Form::text('labor_card_number', null, ['class' => 'form-control form-control-sm', 'maxlength' => 255,'readonly'=>auth()->user()->cannot('rider_labor_card_number_edit') ? 'readonly' : null]) !!}
+                                    </div>
+                                    <div class="col-md-3 form-group">
+                                        <label>Labor Card Expiry </label>
+                                        {!! Form::date('labor_card_expiry', null, ['class' => 'form-control form-control-sm', 'maxlength' => 255,'readonly'=>auth()->user()->cannot('rider_labor_card_expiry_edit') ? 'readonly' : null]) !!}
+                                    </div>
+                                    <div class="col-md-3 form-group">
+                                        <label>Insurance</label>
+                                        <select class="form-control form-control-sm @can('rider_insurance_edit') select2 @else select-readonly @endcan" name="insurance">
+                                            <option value="">Select</option>
+                                            {!! App\Helpers\CommonHelper::Insurance(@$result['insurance']) !!}
+                                        </select>
+                                    </div>
+                                    <div class="col-md-3 form-group">
+                                        <label>Insurance Expiry</label>
+                                        {!! Form::date('insurance_expiry', null, ['class' => 'form-control form-control-sm', 'maxlength' => 255,'readonly'=>auth()->user()->cannot('rider_insurance_expiry_edit') ? 'readonly' : null]) !!}
                                     </div>
                                     <!--col-->
                                     {{-- <div class="col-md-3 form-group">

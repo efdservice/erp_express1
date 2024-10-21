@@ -407,6 +407,21 @@ class CommonHelper
 
     }
 
+    public static function Insurance($id = 0)
+    {
+        $array = [
+            'Women Compensation' => 'Women Compensation',
+            'Health Insurance' => 'Health Insurance'
+        ];
+
+        $list = '';
+        foreach ($array as $key => $value) {
+            $list .= '<option ' . ($id == $key ? 'selected' : '') . ' value="' . $key . '">' . $value . '</option>';
+        }
+        return $list;
+
+    }
+
     public static function get_PaymentReason($id = 0)
     {
         $array = [
