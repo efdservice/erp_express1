@@ -245,7 +245,7 @@ ADD COLUMN `policy_no`  varchar(100) NULL AFTER `insurance_co`;
 ALTER TABLE `bikes`
 CHANGE COLUMN `code` `bike_code`  varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT '' AFTER `emirates`;
 
-
+---------------
 
 
 

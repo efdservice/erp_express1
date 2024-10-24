@@ -231,7 +231,7 @@ class ProjectInvoiceController extends Controller
             if ($id == 0 || $id == '') {
                 $invID = $inv->id;
             } else {
-                Transaction::where('vt', 4)->where('SID', $id)->delete();
+                Transaction::where('vt', 17)->where('SID', $id)->delete();
                 $invID = $id;
             }
 
@@ -365,7 +365,7 @@ class ProjectInvoiceController extends Controller
      */
     public function destroy($id)
     {
-        Transaction::where('vt', 4)->where('SID', $id)->delete();
+        Transaction::where('vt', 17)->where('SID', $id)->delete();
         return ProjectInvoice::destroy($id);
     }
 
