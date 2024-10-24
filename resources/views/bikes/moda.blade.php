@@ -1,5 +1,5 @@
 <div class="modal fade" id="modal-new">
-    <div class="modal-dialog">
+    <div class="modal-dialog modal-lg">
         <div class="modal-content rounded-0">
             <form id="form">
                 <input type="hidden" name="id" value="0">
@@ -72,6 +72,30 @@
                             <option value=""></option>
                             {!! App\Helpers\CommonHelper::get_supervisor() !!}
                         </select>
+                    </div>
+                    <div class="col-md-4 form-group">
+                        <label>Code</label>
+                        <input type="text" class="form-control form-control-sm" name="bike_code" placeholder="Code">
+                    </div>
+                    <div class="col-md-4 form-group">
+                        <label>Registration Date</label>
+                        <input type="date" class="form-control form-control-sm" name="registration_date" placeholder="Registration Date">
+                    </div>
+                    <div class="col-md-4 form-group">
+                        <label>Expiry Date</label>
+                        <input type="date" class="form-control form-control-sm" name="expiry_date" placeholder="Expiry Date">
+                    </div>
+                    <div class="col-md-4 form-group">
+                        <label>Insurance Expiry</label>
+                        <input type="date" class="form-control form-control-sm" name="insurance_expiry" placeholder="Insurance Expiry">
+                    </div>
+                    <div class="col-md-4 form-group">
+                        <label>Insurance Co.</label>
+                        <input type="text" class="form-control form-control-sm" name="insurance_co" placeholder="Insurance Co.">
+                    </div>
+                    <div class="col-md-4 form-group">
+                        <label>Policy No.</label>
+                        <input type="text" class="form-control form-control-sm" name="policy_no" placeholder="Policy No.">
                     </div>
                     <div class="col-md-4 form-group">&nbsp;</div>
                     <!--col-->

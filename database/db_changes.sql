@@ -234,6 +234,18 @@ ADD COLUMN `labor_card_number`  varchar(100) NULL AFTER `person_code`,
 ADD COLUMN `labor_card_expiry`  date NULL AFTER `labor_card_number`,
 ADD COLUMN `insurance`  varchar(100) NULL AFTER `labor_card_expiry`,
 ADD COLUMN `insurance_expiry`  date NULL AFTER `insurance`;
+--------------
+ALTER TABLE `bikes`
+ADD COLUMN `code`  varchar(100) NULL AFTER `emirates`,
+ADD COLUMN `registration_date`  date NULL AFTER `code`,
+ADD COLUMN `expiry_date`  date NULL AFTER `registration_date`,
+ADD COLUMN `insurance_expiry`  date NULL AFTER `expiry_date`,
+ADD COLUMN `insurance_co`  varchar(255) NULL AFTER `insurance_expiry`,
+ADD COLUMN `policy_no`  varchar(100) NULL AFTER `insurance_co`;
+ALTER TABLE `bikes`
+CHANGE COLUMN `code` `bike_code`  varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT '' AFTER `emirates`;
+
+
 
 
 
