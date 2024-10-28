@@ -6,6 +6,7 @@ use App\Models\Accounts\Transaction;
 use App\Models\Item;
 use App\Models\RiderItemPrice;
 use App\Models\RoomType;
+use App\Models\Supervisors;
 use App\Models\TransactionAccount;
 use App\Models\VendorItemPrice;
 use Carbon\Carbon;
@@ -264,13 +265,13 @@ class CommonHelper
 
     public static function get_supervisor($id = 0)
     {
-        $array = [
+        /* $array = [
             'Kaleem' => 'Kaleem',
             'Waqas Mehmood' => 'Waqas Mehmood',
             'Zuhair Iftikhar' => 'Zuhair Iftikhar',
             'Ali Ahsan' => 'Ali Ahsan'
-        ];
-
+        ]; */
+        $array = Supervisors::all()->pluck('name', 'name');
         $list = '';
         foreach ($array as $key => $value) {
             $list .= '<option ' . ($id == $key ? 'selected' : '') . ' value="' . $key . '">' . $value . '</option>';

@@ -99,6 +99,7 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get("bike/fetch_vendor_comp/{RID}", [\App\Http\Controllers\BikeController::class, 'fetch_vendor_comp'])->name('bike.fetch_vendor_comp');
     Route::resource('sim', SimController::class);
     Route::resource('projects', ProjectsController::class);
+    Route::resource('supervisors', SupervisorsController::class);
     Route::resource('countries', CountryController::class);
     Route::post('get_countries', 'CountryController@get_data');
     //appication setup

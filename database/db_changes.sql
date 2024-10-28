@@ -247,6 +247,14 @@ CHANGE COLUMN `code` `bike_code`  varchar(100) CHARACTER SET utf8mb4 COLLATE utf
 
 ---------------
 
+ALTER TABLE `project_invoice_items`
+MODIFY COLUMN `rate`  double(20,2) NOT NULL DEFAULT 0.00 AFTER `qty`,
+MODIFY COLUMN `discount`  double(20,2) NOT NULL DEFAULT 0.00 AFTER `rate`,
+MODIFY COLUMN `tax`  double(20,2) NOT NULL DEFAULT 0.00 AFTER `discount`,
+MODIFY COLUMN `amount`  double(20,2) NOT NULL AFTER `tax`;
+
+
+
 
 
 

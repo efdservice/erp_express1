@@ -2,7 +2,7 @@
 $user=['users', 'create', 'roles', 'permission'];
 $appication_setup=['categories', 'currencies', 'product_types', 'products', 'regions',
     'currency_api','currency_history','sources','clients', 'continents', 'countries',
-    'division','district', 'cities', 'province', 'areas','mosques'];
+    'division','district', 'cities', 'province', 'areas','mosques','supervisors'];
 $accounts=['root_accounts', 'dashboard', 'head_accounts', 'subhead_accounts',
     'trans_accounts', 'payment_vouchers', 'receipt_vouchers','journal_vouchers','ledger','index',
     'financial_year','agent_wallet','service_providors','rider_pv'];
@@ -531,6 +531,29 @@ $reports=['vendor_invoice_report','rider_invoice_report','rider_list','rider_rep
                             </li> --}}
                         </li>
                         @endcan
+                        <li class="nav-item">
+                            <a href="{{route('supervisors.index')}}" class="nav-link {{ (request()->is('supervisors')) ? 'active' : '' }}">
+                                <i class="nav-icon fas fa-angle-double-right fa-xs"></i>
+                                <p>Supervisors</p>
+                            </a>
+                        </li>
+                        {{-- <li class="nav-item">
+                            <a href="#" class="nav-link">
+                                <i class="nav-icon fas fa-angle-double-right fa-xs"></i>
+                                <p>
+                                    Settings
+                                </p>
+                            </a>
+                            <ul class="nav nav-treeview">
+                                <li class="nav-item">
+                                    <a href="{{route('supervisors.index')}}" class="nav-link {{ (request()->is('supervisors')) ? 'active' : '' }}">
+                                        <i class="nav-icon fas fa-angle-double-right fa-xs"></i>
+                                        <p>Supervisors</p>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li> --}}
+
                         @can('business_setup_view')
                             <li class="nav-item">
                                 <a href="#" class="nav-link">
