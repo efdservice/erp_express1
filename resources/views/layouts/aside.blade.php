@@ -12,9 +12,9 @@ $hr=['designation', 'department', 'employee'];
 $bus_setup=['company_setup', 'branches'];
 $sale=['Sale'];
 $vendor=['vendors'];
-$rider=['rider','assign_rider','assign_price','rider-document'];
+$rider=['rider','assign_rider','assign_price','rider-document','rider_invoices'];
 $item=['item','item_assign_rv','assign_price_edit'];
-$invoices=['vendor_invoices','rider_invoices'];
+$invoices=['vendor_invoices'];
 $bikes=['bike','rta_fine','lease_company','bike_rent'];
 $sims=['sim','sim_charges'];
 $customers=['projects','project_invoices'];
@@ -122,19 +122,12 @@ $reports=['vendor_invoice_report','rider_invoice_report','rider_list','rider_rep
                         </p>
                     </a>
                     <ul class="nav nav-treeview"> --}}
-                        @can('vendors_view')
-                        <li class="nav-item">
-                            <a href="{{ route('vendors.index') }}" class="nav-link {{ (request()->is('vendors')) ? 'active' : '' }}">
-                                <i class="nav-icon fas fa-users-cog fa-xs"></i>
-                                <p>Vendors</p>
-                            </a>
-                        </li>
-                        @endcan
+
 
 
                     {{-- </ul>
                 </li> --}}
-                  <li class="nav-item has-treeview <?php //if(in_array(Request::segment(2), $invoices)) echo 'menu-open';?>">
+                {{--   <li class="nav-item has-treeview <?php //if(in_array(Request::segment(2), $invoices)) echo 'menu-open';?>">
                     <a href="#" class="nav-link">
                         <i class='nav-icon fas fa-users-cog fa-xs'></i>
                         <p>
@@ -143,14 +136,7 @@ $reports=['vendor_invoice_report','rider_invoice_report','rider_list','rider_rep
                         </p>
                     </a>
                     <ul class="nav nav-treeview">
-                        @can('invoices_view')
-                        <li class="nav-item">
-                            <a href="{{ route('rider_invoices.index') }}" class="nav-link {{ (request()->is('invoices/rider_invoices')) ? 'active' : '' }}">
-                                <i class="nav-icon fas fa-file fa-xs"></i>
-                                <p>Rider Invoices</p>
-                            </a>
-                        </li>
-                        @endcan
+
 
                         @can('invoices_view')
                         <li class="nav-item">
@@ -162,7 +148,16 @@ $reports=['vendor_invoice_report','rider_invoice_report','rider_list','rider_rep
                         @endcan
 
                     </ul>
-                </li>
+                </li> --}}
+                <li class="nav-item has-treeview <?php if(in_array(Request::segment(2), $rider)) echo 'menu-open'; if(in_array(Request::segment(1), $rider)) echo 'menu-open';?>">
+                    <a href="#" class="nav-link">
+                        <i class='nav-icon fas fa-users-cog fa-xs'></i>
+                        <p>
+                            Riders
+                            <i class="nav-icon fas fa-angle-left right"></i>
+                        </p>
+                    </a>
+                    <ul class="nav nav-treeview">
                 @can('riders_view')
                  <li class="nav-item">
                             <a href="{{ route('rider.index') }}" class="nav-link {{ (request()->is('rider')) ? 'active' : '' }} {{ (request()->is('rider-document')) ? 'active' : '' }}">
@@ -171,6 +166,16 @@ $reports=['vendor_invoice_report','rider_invoice_report','rider_list','rider_rep
                             </a>
                         </li>
                         @endcan
+                        @can('invoices_view')
+                        <li class="nav-item">
+                            <a href="{{ route('rider_invoices.index') }}" class="nav-link {{ (request()->is('invoices/rider_invoices')) ? 'active' : '' }}">
+                                <i class="nav-icon fas fa-file fa-xs"></i>
+                                <p>Rider Invoices</p>
+                            </a>
+                        </li>
+                        @endcan
+                    </ul>
+                </li>
                 {{-- <li class="nav-item has-treeview <?php //if(in_array(Request::segment(1), $rider)) echo 'menu-open';?>">
                     <a href="#" class="nav-link ">
                         <i class='nav-icon fas fa-user-secret fa-xs'></i>
@@ -237,6 +242,14 @@ $reports=['vendor_invoice_report','rider_invoice_report','rider_list','rider_rep
                         @endcan
                     </ul>
                 </li>
+                @can('vendors_view')
+                <li class="nav-item">
+                    <a href="{{ route('vendors.index') }}" class="nav-link {{ (request()->is('vendors')) ? 'active' : '' }}">
+                        <i class="nav-icon fas fa-users-cog fa-xs"></i>
+                        <p>Vendors</p>
+                    </a>
+                </li>
+                @endcan
                 <li class="nav-item">
                     <a href="{{ route('lease_company.index') }}" class="nav-link {{ (request()->is('lease_company')) ? 'active' : '' }}">
                         <i class="nav-icon fas fa-angle-double-right fa-xs"></i>
