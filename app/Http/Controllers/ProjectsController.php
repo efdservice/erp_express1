@@ -34,7 +34,7 @@ class ProjectsController extends Controller
                 ->addColumn('action', function ($row) {
                     $btn = '';
                     if (\Auth::user()->can('projects_edit')) {
-                        $btn = $btn . '<a href="#" data-toggle="tooltip" data-action="' . route('projects.edit', $row->id) . '" class="edit btn btn-primary btn-xs editRec" data-modalID="modal-new"><i class="fas fa-edit"></i> Edit</a>';
+                        $btn = $btn . '<a href="#" data-toggle="tooltip" data-action="' . route('projects.edit', $row->id) . '" class="edit btn btn-primary btn-xs editRec" data-modalID="modal-new1"><i class="fas fa-edit"></i> Edit</a>';
 
                     }
                     if (\Auth::user()->can('projects_delete')) {

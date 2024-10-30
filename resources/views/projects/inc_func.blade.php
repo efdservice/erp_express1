@@ -2,7 +2,7 @@
 <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.25/js/jquery.dataTables.js" defer></script>
 <script type="text/javascript">
     function add_new(){
-        $("#modal-new").modal({backdrop: 'static', keyboard: false},'show');
+        $("#modal-new1").modal({backdrop: 'static', keyboard: false},'show');
     }
 
     $("#form").submit(function (e) {
@@ -25,7 +25,7 @@
                 $("#"+formID+ " input[name~='id']").val(0);
                 toastr.success('Operation Successfully..');
                 document.getElementById(formID).reset();
-                $("#modal-new").modal('hide');
+                $("#modal-new1").modal('hide');
                 $('.data-table').DataTable().ajax.reload();
             },error:function(ajaxcontent) {
                 if(ajaxcontent.responseJSON.success=='false'){

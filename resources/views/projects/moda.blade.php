@@ -1,4 +1,4 @@
-<div class="modal fade" id="modal-new">
+<div class="modal fade" id="modal-new1">
     <div class="modal-dialog">
         <div class="modal-content rounded-0">
             <form id="form">

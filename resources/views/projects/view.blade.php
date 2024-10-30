@@ -81,7 +81,7 @@
                             <b>Balance</b> <span class="float-right">@isset($project->account->id){{App\Helpers\Account::show_bal(App\Helpers\Account::Monthly_ob(date('y-m-d'), $project->account->id))??'not-set'}}@endisset</span>
                          </li>
                       </ul>
-                      <a href="#" data-toggle="tooltip" data-action="{{route('projects.edit', $project->id)}}" data-modalID="modal-new" class="btn btn-default btn-block no-print editRec" ><i class="fa fa-edit"></i>&nbsp;<b>Edit</b></a>
+                      <a href="#" data-toggle="tooltip" data-action="{{route('projects.edit', $project->id)}}" data-modalID="modal-new1" class="btn btn-default btn-block no-print editRec" ><i class="fa fa-edit"></i>&nbsp;<b>Edit</b></a>
 
                       <a href="javascript:void(0);" class="btn btn-default btn-block no-print" onclick="window.print();"><i class="fa fa-print"></i>&nbsp;<b>Print</b></a>
                    </div>
