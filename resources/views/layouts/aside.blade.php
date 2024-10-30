@@ -17,6 +17,7 @@ $item=['item','item_assign_rv','assign_price_edit'];
 $invoices=['vendor_invoices','rider_invoices'];
 $bikes=['bike','rta_fine','lease_company','bike_rent'];
 $sims=['sim','sim_charges'];
+$customers=['projects','project_invoices'];
 $reports=['vendor_invoice_report','rider_invoice_report','rider_list','rider_report'];
 ?>
 <!-- Main Sidebar Container -->
@@ -79,14 +80,35 @@ $reports=['vendor_invoice_report','rider_invoice_report','rider_list','rider_rep
                             </a>
                         </li>
 
-                        @can('projects_view')
+
+                        <li class="nav-item has-treeview <?php if(in_array(Request::segment(2), $customers)) echo 'menu-open'; if(in_array(Request::segment(1), $customers)) echo 'menu-open';?>">
+                            <a href="#" class="nav-link">
+                                <i class='nav-icon fas fa-users-cog fa-xs'></i>
+                                <p>
+                                    Customers
+                                    <i class="nav-icon fas fa-angle-left right"></i>
+                                </p>
+                            </a>
+                            <ul class="nav nav-treeview">
+                                @can('projects_view')
                         <li class="nav-item">
                             <a href="{{ route('projects.index') }}" class="nav-link {{ (request()->segment(1)=='projects') ? 'active' : '' }}">
                                 <i class="nav-icon fas fa-star fa-xs"></i>
-                                <p>Customers</p>
+                                <p>List</p>
                             </a>
                         </li>
                         @endcan
+                        @can('invoices_view')
+                        <li class="nav-item">
+                            <a href="{{ route('project_invoices.index') }}" class="nav-link {{ (request()->is('invoices/project_invoices')) ? 'active' : '' }}">
+                                <i class="nav-icon fas fa-file fa-xs"></i>
+                                <p>Customer Invoices</p>
+                            </a>
+                        </li>
+                        @endcan
+                            </ul>
+                        </li>
+
                   {{--
                     </ul>
                 </li> --}}
@@ -129,14 +151,7 @@ $reports=['vendor_invoice_report','rider_invoice_report','rider_list','rider_rep
                             </a>
                         </li>
                         @endcan
-                        @can('invoices_view')
-                        <li class="nav-item">
-                            <a href="{{ route('project_invoices.index') }}" class="nav-link {{ (request()->is('invoices/project_invoices')) ? 'active' : '' }}">
-                                <i class="nav-icon fas fa-file fa-xs"></i>
-                                <p>Customer Invoices</p>
-                            </a>
-                        </li>
-                        @endcan
+
                         @can('invoices_view')
                         <li class="nav-item">
                             <a href="javascript:void(0);" class="nav-link show-modal" data-action="{{route('tax_invoice')}}" data-size="lg" data-title="Generate Tax Invoice">
