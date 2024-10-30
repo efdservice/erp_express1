@@ -81,7 +81,7 @@ $reports=['vendor_invoice_report','rider_invoice_report','rider_list','rider_rep
 
                         @can('projects_view')
                         <li class="nav-item">
-                            <a href="{{ route('projects.index') }}" class="nav-link {{ (request()->is('projects')) ? 'active' : '' }}">
+                            <a href="{{ route('projects.index') }}" class="nav-link {{ (request()->segment(1)=='projects') ? 'active' : '' }}">
                                 <i class="nav-icon fas fa-star fa-xs"></i>
                                 <p>Customers</p>
                             </a>

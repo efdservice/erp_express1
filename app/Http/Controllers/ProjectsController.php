@@ -28,6 +28,9 @@ class ProjectsController extends Controller
             $data = Projects::with('riderr')->latest()->get();
             return DataTables::of($data)
                 ->addIndexColumn()
+                ->addColumn('name', function ($row) {
+                    return '<a href="' . route('projects.show', $row->id) . '" class="show-modal">' . $row->name . '</a>';
+                })
                 ->addColumn('action', function ($row) {
                     $btn = '';
                     if (\Auth::user()->can('projects_edit')) {
@@ -39,7 +42,7 @@ class ProjectsController extends Controller
                     }
                     return $btn;
                 })
-                ->rawColumns(['action'])
+                ->rawColumns(['action', 'name'])
                 ->make(true);
         }
         return view('projects.index');
@@ -110,7 +113,8 @@ class ProjectsController extends Controller
      */
     public function show($id)
     {
-        //
+        $project = Projects::find($id);
+        return view('projects.view', compact('project'));
     }
 
     /**

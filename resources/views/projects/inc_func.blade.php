@@ -47,26 +47,5 @@
     });
 
 
-    $(function () {
-        $.ajaxSetup({
-            headers: {
-                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-            }
-        });
-        var table = $('.data-table').DataTable({
-            processing: true,
-            serverSide: true,
-            stateSave: true,
-            ajax: "{{ route('projects.index') }}",
-            columns: [
-                {data: 'id', name: 'id'},
-                {data: 'name', name: 'name'},
-                {data: 'company_name', name: 'company_name'},
-                {data: 'contact_number', name: 'contact_number'},
-                {data: 'action', name: 'action',
-                    orderable: false, searchable: false
-                },
-            ]
-        });
-    });
+
 </script>
