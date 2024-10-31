@@ -176,7 +176,7 @@
                                         </select>
                                     </div>
 
-                                    <div class="col-md-3 form-group">
+                                    {{-- <div class="col-md-3 form-group">
                                         <label>Status <span style="color:red;">*</span></label>
                                         <select class="form-control form-control-sm select2" name="status">
 
@@ -186,7 +186,7 @@
 
 
                                         </select>
-                                    </div>
+                                    </div> --}}
                                     <div class="col-md-3 form-group">
                                         <label>Salary Model <span style="color:red;">*</span></label>
                                         <select class="form-control form-control-sm @can('rider_salary_model_edit') select2 @else select-readonly @endcan" name="salary_model">

@@ -144,7 +144,7 @@ class RiderController extends Controller
             'name' => 'required',
             'personal_email' => 'required',
             'VID' => 'required',
-            'status' => 'required',
+            /* 'status' => 'required', */
             'ethnicity' => 'required',
             'designation' => 'required',
             'visa_occupation' => 'required',
