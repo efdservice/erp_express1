@@ -28,13 +28,15 @@
 
                             @foreach($fleet_supervisor as $fs)
 
-                            <div class="col-lg-1 col-6">
+                            <div class="col-lg-2 col-6">
                                 <!-- small box -->
                                 <div class="small-box bg-default" >
                                     <div class="inner" >
-                                        <h5>{{$fs->total}}</h5>
 
                                         <a href="{{url('rider?fleet_supervisor='.$fs->fleet_supervisor)}}"><span>{{$fs->fleet_supervisor??'not-set'}}</span></a>
+                                        <br/><b>Active: {{$fs->active??0}}</b>&nbsp;&nbsp;
+                                        <b>Inactive: {{$fs->inactive??0}}</b>
+
                                     </div>
 
                                 </div>

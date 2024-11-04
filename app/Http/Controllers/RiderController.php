@@ -108,7 +108,8 @@ class RiderController extends Controller
         }
         $status_count = Rider::groupBy('status')->selectRaw('status,count(*) as total')->whereIn('status', [1, 3])->get();
         $job_status_count = Rider::groupBy('job_status')->selectRaw('job_status,count(*) as total')->get();
-        $fleet_supervisor = Rider::groupBy('fleet_supervisor')->selectRaw('fleet_supervisor,count(*) as total')->get();
+        $fleet_supervisor = Rider::selectRaw('fleet_supervisor,count(*) as total,SUM(if(status=1,1,0)) as active,SUM(if(status=3,1,0)) as inactive')->groupBy('fleet_supervisor')
+            ->get();
         return view('riders.index', compact('status_count', 'job_status_count', 'fleet_supervisor'));
     }
 
