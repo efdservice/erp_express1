@@ -7,7 +7,7 @@
         @foreach($job_status as $row)
     <div class="time-label">
     <span class="bg-lightblue">
-    {{$row->created_at->format('d M Y')}}
+    {{App\Helpers\CommonHelper::DateFormat($row->created_at)}}
     </span>
     </div>
 

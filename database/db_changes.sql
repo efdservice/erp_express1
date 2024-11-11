@@ -253,6 +253,10 @@ MODIFY COLUMN `discount`  double(20,2) NOT NULL DEFAULT 0.00 AFTER `rate`,
 MODIFY COLUMN `tax`  double(20,2) NOT NULL DEFAULT 0.00 AFTER `discount`,
 MODIFY COLUMN `amount`  double(20,2) NOT NULL AFTER `tax`;
 
+------------------
+ALTER TABLE `riders`
+ADD COLUMN `policy_no`  varchar(255) NULL AFTER `insurance_expiry`;
+
 
 
 

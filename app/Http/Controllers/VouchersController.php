@@ -37,6 +37,16 @@ class VouchersController extends Controller
             $data = Vouchers::query()->orderBy('trans_code', 'DESC');
             return DataTables::of($data)
                 ->addIndexColumn()
+                ->addColumn('trans_date', function ($row) {
+                    return CommonHelper::DateFormat($row->trans_date) ?? '';
+                })
+                ->addColumn('billing_month', function ($row) {
+                    if ($row->billing_month) {
+                        return date('M-Y', strtotime($row->billing_month));
+                    } else {
+                        return '';
+                    }
+                })
                 ->addColumn('action', 'vouchers.datatables_actions')
                 ->addColumn('voucher_type', function ($row) {
                     return CommonHelper::VoucherType($row->voucher_type);

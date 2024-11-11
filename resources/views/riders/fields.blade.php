@@ -134,6 +134,10 @@
                                         <label>Insurance Expiry</label>
                                         {!! Form::date('insurance_expiry', null, ['class' => 'form-control form-control-sm', 'maxlength' => 255,'readonly'=>auth()->user()->cannot('rider_insurance_expiry_edit') ? 'readonly' : null]) !!}
                                     </div>
+                                    <div class="col-md-3 form-group">
+                                        <label>Policy No.</label>
+                                        {!! Form::text('policy_no', null, ['class' => 'form-control form-control-sm', 'maxlength' => 255,'readonly'=>auth()->user()->cannot('rider_policy_no_edit') ? 'readonly' : null]) !!}
+                                    </div>
                                     <!--col-->
                                     {{-- <div class="col-md-3 form-group">
                                         <label>NF DID</label>

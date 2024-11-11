@@ -106,7 +106,7 @@ class LedgerController extends Controller
             $cb = $ob + ($tdr - $tcr);
             $data .= '<tr>';
             $data .= '<td></td>';
-            $data .= '<td>' . $item->trans_date . '</td>';
+            $data .= '<td>' . CommonHelper::DateFormat($item->trans_date) . '</td>';
             $data .= '<td>' . $code . $item->trans_acc->Trans_Acc_Name . '</td>';
             $data .= '<td>' . date('M Y', strtotime($item->billing_month)) . '</td>';
             $data .= '<td>' . Account::vt($item->vt) . '</td>';

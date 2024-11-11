@@ -871,4 +871,16 @@ class CommonHelper
             ' million ' . self::numToWordsRec($number % 1000000);
     }
 
+    public static function DateFormat($date)
+    {
+        return date('d M Y', strtotime($date));
+
+    }
+
+    public static function DateTimeFormat($date)
+    {
+        return date('d M Y h:i A', strtotime($date));
+
+    }
+
 }

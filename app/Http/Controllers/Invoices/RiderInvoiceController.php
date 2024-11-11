@@ -54,6 +54,9 @@ class RiderInvoiceController extends Controller
             }
             return DataTables::of($data)
                 ->addIndexColumn()
+                ->addColumn('inv_date', function ($row) {
+                    return CommonHelper::DateFormat($row->inv_date) ?? '';
+                })
                 ->addColumn('action', function ($row) {
                     $btn = '';
                     $btn = $btn . ' ';

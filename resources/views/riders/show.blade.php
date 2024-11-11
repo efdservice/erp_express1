@@ -53,7 +53,7 @@
                     <!--col-->
                     <div class="col-md-3 form-group col-3">
                         <label>DOB </label>
-                        <p>{{@$result['dob']}}</p>
+                        <p>{{@App\Helpers\CommonHelper::DateFormat($result['dob'])}}</p>
                     </div>
                 </div>
 
@@ -66,7 +66,7 @@
         <div class="row">
             <div class="col-md-3 form-group col-3">
                 <label>Date of Joining </label>
-                <p>{{@$result['doj']}}</p>
+                <p>{{@App\Helpers\CommonHelper::DateFormat($result['doj'])}}</p>
             </div>
             <div class="col-md-3 form-group col-3">
                 <label>Project </label>
@@ -178,7 +178,7 @@
             </div>
             <div class="col-md-3 form-group col-3">
                 <label @if(strtotime($result['labor_card_expiry']) <= strtotime(date('Y-m-d'))) style="color:red;" @endif>Labor Card Expiry </label>
-                <p @if(strtotime($result['labor_card_expiry']) <= strtotime(date('Y-m-d'))) style="color:red;" @endif>{{@$result['labor_card_expiry']}}</p>
+                <p @if(strtotime($result['labor_card_expiry']) <= strtotime(date('Y-m-d'))) style="color:red;" @endif>{{@App\Helpers\CommonHelper::DateFormat($result['labor_card_expiry'])}}</p>
             </div>
             <div class="col-md-3 form-group col-3">
                 <label>Insurance</label>
@@ -186,7 +186,7 @@
             </div>
             <div class="col-md-3 form-group col-3">
                 <label @if(strtotime($result['insurance_expiry']) <= strtotime(date('Y-m-d'))) style="color:red;" @endif>Insurance Expiry</label>
-                <p @if(strtotime($result['insurance_expiry']) <= strtotime(date('Y-m-d'))) style="color:red;" @endif>{{@$result['insurance_expiry']}}</p>
+                <p @if(strtotime($result['insurance_expiry']) <= strtotime(date('Y-m-d'))) style="color:red;" @endif>{{@App\Helpers\CommonHelper::DateFormat($result['insurance_expiry'])}}</p>
             </div>
 
 
@@ -202,7 +202,7 @@
                 </div>
                 <div class="col-md-3 form-group col-3">
                     <label @if(strtotime($result['emirate_exp']) <= strtotime(date('Y-m-d'))) style="color:red;" @endif>EID EXP Date </label>
-                    <p @if(strtotime($result['emirate_exp']) <= strtotime(date('Y-m-d'))) style="color:red;" @endif>{{@$result['emirate_exp']}}</p>
+                    <p @if(strtotime($result['emirate_exp']) <= strtotime(date('Y-m-d'))) style="color:red;" @endif>{{@App\Helpers\CommonHelper::DateFormat($result['emirate_exp'])}}</p>
                 </div>
                 <div class="col-md-3 form-group col-3">
                     <label>Licence No </label>
@@ -210,7 +210,7 @@
                 </div>
                 <div class="col-md-3 form-group col-3">
                     <label @if(strtotime($result['license_expiry']) <= strtotime(date('Y-m-d'))) style="color:red;" @endif>Licence Expiry </label>
-                    <p @if(strtotime($result['license_expiry']) <= strtotime(date('Y-m-d'))) style="color:red;" @endif>{{@$result['license_expiry']}}</p>
+                    <p @if(strtotime($result['license_expiry']) <= strtotime(date('Y-m-d'))) style="color:red;" @endif>{{@App\Helpers\CommonHelper::DateFormat($result['license_expiry'])}}</p>
                 </div>
                 <div class="col-md-3 form-group col-3">
                     <label>Passport </label>
@@ -218,7 +218,7 @@
                 </div>
                 <div class="col-md-3 form-group col-3">
                     <label @if(strtotime($result['passport_expiry']) <= strtotime(date('Y-m-d'))) style="color:red;" @endif>Passport Expiry </label>
-                    <p @if(strtotime($result['passport_expiry']) <= strtotime(date('Y-m-d'))) style="color:red;" @endif>{{@$result['passport_expiry']}}</p>
+                    <p @if(strtotime($result['passport_expiry']) <= strtotime(date('Y-m-d'))) style="color:red;" @endif>{{@App\Helpers\CommonHelper::DateFormat($result['passport_expiry'])}}</p>
                 </div>
                 <div class="col-md-3 form-group col-3">
                     <label>Passport Handover </label>
