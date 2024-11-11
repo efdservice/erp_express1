@@ -873,7 +873,7 @@ class CommonHelper
 
     public static function DateFormat($date)
     {
-        return date('d M Y', strtotime($date));
+        return date('d-m-Y', strtotime($date));
 
     }
 
