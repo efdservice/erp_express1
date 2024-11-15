@@ -1,676 +1,528 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html lang="en">
-  <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-    <title>
-      BIKE RIDER CONTRACT
-    </title>
-    <style type="text/css">
-    * {margin:0; padding:0; text-indent:0; }
-    h1 { color: black; font-family:Cambria, serif; font-style: normal; font-weight: bold; text-decoration: underline; font-size: 15pt; }
-    h3 { color: black; font-family:Cambria, serif; font-style: normal; font-weight: bold; text-decoration: none; font-size: 9pt; }
-    .s1 { color: black; font-family:Cambria, serif; font-style: normal; font-weight: normal; text-decoration: none; font-size: 9pt; }
-    .s2 { color: black; font-family:Cambria, serif; font-style: normal; font-weight: normal; text-decoration: none; font-size: 11pt; }
-    .s3 { color: #1154CC; font-family:Calibri, sans-serif; font-style: normal; font-weight: bold; text-decoration: underline; font-size: 9pt; }
-    .s4 { color: black; font-family:Calibri, sans-serif; font-style: normal; font-weight: bold; text-decoration: none; font-size: 9pt; }
-    .s5 { color: black; font-family:Cambria, serif; font-style: normal; font-weight: normal; text-decoration: none; font-size: 11pt; }
-    .s6 { color: #212428; font-family:Calibri, sans-serif; font-style: normal; font-weight: bold; text-decoration: none; font-size: 10pt; }
-    .s7 { color: black; font-family:Cambria, serif; font-style: normal; font-weight: normal; text-decoration: none; font-size: 6pt; vertical-align: 2pt; }
-    .s8 { color: black; font-family:Cambria, serif; font-style: normal; font-weight: bold; text-decoration: none; font-size: 9pt; }
-    .s9 { color: black; font-family:Calibri, sans-serif; font-style: normal; font-weight: normal; text-decoration: none; font-size: 9pt; }
-    .s10 { color: black; font-family:Cambria, serif; font-style: normal; font-weight: normal; text-decoration: none; font-size: 9pt; }
-    .s11 { color: black; font-family:Calibri, sans-serif; font-style: normal; font-weight: normal; text-decoration: none; font-size: 10pt; }
-    h2 { color: black; font-family:Calibri, sans-serif; font-style: normal; font-weight: bold; text-decoration: none; font-size: 10pt; }
-    .p, p { color: black; font-family:Calibri, sans-serif; font-style: normal; font-weight: normal; text-decoration: none; font-size: 10pt; margin:0pt; }
-    li {display: block; }
-    #l1 {padding-left: 0pt;counter-reset: c1 1; }
-    #l1> li>*:first-child:before {counter-increment: c1; content: counter(c1, decimal)" "; color: black; font-family:Calibri, sans-serif; font-style: normal; font-weight: bold; text-decoration: underline; font-size: 10pt; }
-    #l1> li:first-child>*:first-child:before {counter-increment: c1 0;  }
-    #l2 {padding-left: 0pt;counter-reset: c2 1; }
-    #l2> li>*:first-child:before {counter-increment: c2; content: counter(c2, lower-latin)" "; color: black; font-style: normal; font-weight: normal; text-decoration: none; }
-    #l2> li:first-child>*:first-child:before {counter-increment: c2 0;  }
-    #l3 {padding-left: 0pt;counter-reset: c2 1; }
-    #l3> li>*:first-child:before {counter-increment: c2; content: counter(c2, lower-latin)" "; color: black; font-style: normal; font-weight: normal; text-decoration: none; }
-    #l3> li:first-child>*:first-child:before {counter-increment: c2 0;  }
-    #l4 {padding-left: 0pt;counter-reset: d1 2; }
-    #l4> li>*:first-child:before {counter-increment: d1; content: counter(d1, lower-latin)" "; color: black; font-style: normal; font-weight: normal; text-decoration: underline; }
-    #l4> li:first-child>*:first-child:before {counter-increment: d1 0;  }
-    #l5 {padding-left: 0pt;counter-reset: c2 1; }
-    #l5> li>*:first-child:before {counter-increment: c2; content: counter(c2, lower-latin)" "; color: black; font-style: normal; font-weight: normal; text-decoration: none; }
-    #l5> li:first-child>*:first-child:before {counter-increment: c2 0;  }
-    #l6 {padding-left: 0pt;counter-reset: e1 3; }
-    #l6> li>*:first-child:before {counter-increment: e1; content: counter(e1, lower-latin)" "; color: black; font-family:Calibri, sans-serif; font-style: normal; font-weight: bold; text-decoration: underline; font-size: 10pt; }
-    #l6> li:first-child>*:first-child:before {counter-increment: e1 0;  }
-    #l7 {padding-left: 0pt;counter-reset: c2 1; }
-    #l7> li>*:first-child:before {counter-increment: c2; content: counter(c2, lower-latin)" "; color: black; font-style: normal; font-weight: normal; text-decoration: none; }
-    #l7> li:first-child>*:first-child:before {counter-increment: c2 0;  }
-    #l8 {padding-left: 0pt;counter-reset: c2 1; }
-    #l8> li>*:first-child:before {counter-increment: c2; content: counter(c2, lower-latin)" "; color: black; font-style: normal; font-weight: normal; text-decoration: none; }
-    #l8> li:first-child>*:first-child:before {counter-increment: c2 0;  }
-    table, tbody {vertical-align: top; overflow: visible; }
-    </style>
-  </head>
-  <body style="text-align: justify;">
-    <p style="padding-top: 3pt;text-indent: 0pt;text-align: left;">
-      <br>
-    </p>
-    <p style="padding-top: 7pt;text-indent: 0pt;text-align: left;">
-      <br>
-    </p>
-    <p style="text-indent: 0pt;text-align: left;"></p>
-    <p style="text-indent: 0pt;text-align: left;"></p>
-    <h1 style="padding-left: 79pt;text-indent: 0pt;text-align: left;">
-      AGREEMENT FOR DELIVERY RIDER/DRIVER
-    </h1>
-    <h3 style="padding-top: 5pt;padding-left: 26pt;text-indent: 0pt;text-align: right;">
-      Date: {{App\Helpers\CommonHelper::DateFormat($contract->created_at)}}
-    </h3>
-    <p style="text-indent: 0pt;text-align: left;">
-      <br>
-    </p>
-    <h3 style="padding-left: 5pt;text-indent: 0pt;line-height: 112%;text-align: left;">
-      EXPRESS FAST DELIVERY SERVICE<span class="s1">., is a company organized and existing under the laws of the United Arab Emirates, with trade license number</span> 1016724 <span class="s1">and having its place of business at Office # 305, Al Rubaya Building Al Qusais-2, Dubai, U.A.E P. O Box 94750. (Hereinafter referred to as the “First Party” and Rider/Driver”;</span>
-    </h3>
-    <p style="text-indent: 0pt;text-align: left;">
-      <br>
-    </p>
-    <table style="border-collapse:collapse;margin-left:6.01pt" cellspacing="0">
-      <tr style="height:14pt">
-        <td style="width:71pt;border-top-style:solid;border-top-width:1pt;border-left-style:solid;border-left-width:1pt;border-bottom-style:solid;border-bottom-width:1pt;border-right-style:solid;border-right-width:1pt">
-          <p class="s2" style="padding-left: 5pt;text-indent: 0pt;line-height: 12pt;text-align: left;">
-            Name
-          </p>
-        </td>
-        <td style="width:191pt;border-top-style:solid;border-top-width:1pt;border-left-style:solid;border-left-width:1pt;border-bottom-style:solid;border-bottom-width:1pt;border-right-style:solid;border-right-width:1pt">
-          <p class="s2" style="padding-left: 5pt;text-indent: 0pt;line-height: 12pt;text-align: left;">
-            {{@$contract->rider->name}}
-          </p>
-        </td>
-        <td style="width:77pt;border-top-style:solid;border-top-width:1pt;border-left-style:solid;border-left-width:1pt;border-bottom-style:solid;border-bottom-width:1pt;border-right-style:solid;border-right-width:1pt">
-          <p class="s2" style="padding-left: 5pt;text-indent: 0pt;line-height: 12pt;text-align: left;">
-            DA I,D
-          </p>
-        </td>
-        <td style="width:157pt;border-top-style:solid;border-top-width:1pt;border-left-style:solid;border-left-width:1pt;border-bottom-style:solid;border-bottom-width:1pt;border-right-style:solid;border-right-width:1pt">
-          <p class="s2" style="padding-left: 5pt;text-indent: 0pt;line-height: 12pt;text-align: left;">
-            {{@$contract->rider->rider_id}}
-          </p>
-        </td>
-      </tr>
-      <tr style="height:14pt">
-        <td style="width:71pt;border-top-style:solid;border-top-width:1pt;border-left-style:solid;border-left-width:1pt;border-bottom-style:solid;border-bottom-width:1pt;border-right-style:solid;border-right-width:1pt">
-          <p class="s2" style="padding-left: 5pt;text-indent: 0pt;line-height: 12pt;text-align: left;">
-            Emirates ID
-          </p>
-        </td>
-        <td style="width:191pt;border-top-style:solid;border-top-width:1pt;border-left-style:solid;border-left-width:1pt;border-bottom-style:solid;border-bottom-width:1pt;border-right-style:solid;border-right-width:1pt">
-          <p class="s2" style="padding-left: 5pt;text-indent: 0pt;line-height: 12pt;text-align: left;">
-            {{@$contract->rider->emirate_id}}
-          </p>
-        </td>
-        <td style="width:77pt;border-top-style:solid;border-top-width:1pt;border-left-style:solid;border-left-width:1pt;border-bottom-style:solid;border-bottom-width:1pt;border-right-style:solid;border-right-width:1pt">
-          <p class="s2" style="padding-left: 5pt;text-indent: 0pt;line-height: 12pt;text-align: left;">
-            Passport No.
-          </p>
-        </td>
-        <td style="width:157pt;border-top-style:solid;border-top-width:1pt;border-left-style:solid;border-left-width:1pt;border-bottom-style:solid;border-bottom-width:1pt;border-right-style:solid;border-right-width:1pt">
-          <p class="s2" style="padding-left: 5pt;text-indent: 0pt;line-height: 12pt;text-align: left;">
-            {{@$contract->rider->passport}}
-          </p>
-        </td>
-      </tr>
-      <tr style="height:14pt">
-        <td style="width:71pt;border-top-style:solid;border-top-width:1pt;border-left-style:solid;border-left-width:1pt;border-bottom-style:solid;border-bottom-width:1pt;border-right-style:solid;border-right-width:1pt">
-          <p class="s2" style="padding-left: 5pt;text-indent: 0pt;line-height: 12pt;text-align: left;">
-            Bike No.
-          </p>
-        </td>
-        <td style="width:191pt;border-top-style:solid;border-top-width:1pt;border-left-style:solid;border-left-width:1pt;border-bottom-style:solid;border-bottom-width:1pt;border-right-style:solid;border-right-width:1pt">
-          <p class="s2" style="padding-left: 5pt;text-indent: 0pt;line-height: 12pt;text-align: left;">
-            {{@$contract->bike->plate}}
-          </p>
-        </td>
-        <td style="width:77pt;border-top-style:solid;border-top-width:1pt;border-left-style:solid;border-left-width:1pt;border-bottom-style:solid;border-bottom-width:1pt;border-right-style:solid;border-right-width:1pt">
-          <p class="s2" style="padding-left: 5pt;text-indent: 0pt;line-height: 12pt;text-align: left;">
-            License No.
-          </p>
-        </td>
-        <td style="width:157pt;border-top-style:solid;border-top-width:1pt;border-left-style:solid;border-left-width:1pt;border-bottom-style:solid;border-bottom-width:1pt;border-right-style:solid;border-right-width:1pt">
-          <p class="s2" style="padding-left: 5pt;text-indent: 0pt;line-height: 12pt;text-align: left;">
-            {{@$contract->rider->license_no}}
-          </p>
-        </td>
-      </tr>
-      <tr style="height:14pt">
-        <td style="width:71pt;border-top-style:solid;border-top-width:1pt;border-left-style:solid;border-left-width:1pt;border-bottom-style:solid;border-bottom-width:1pt;border-right-style:solid;border-right-width:1pt">
-          <p class="s4" style="padding-left: 5pt;text-indent: 0pt;text-align: left;">
-            <span class="s3">Ref.No</span>.
-          </p>
-        </td>
-        <td style="width:191pt;border-top-style:solid;border-top-width:1pt;border-left-style:solid;border-left-width:1pt;border-bottom-style:solid;border-bottom-width:1pt;border-right-style:solid;border-right-width:1pt">
-          <p class="s2" style="padding-left: 5pt;text-indent: 0pt;line-height: 12pt;text-align: left;">
-
-          </p>
-        </td>
-        <td style="width:77pt;border-top-style:solid;border-top-width:1pt;border-left-style:solid;border-left-width:1pt;border-bottom-style:solid;border-bottom-width:1pt;border-right-style:solid;border-right-width:1pt">
-          <p class="s2" style="padding-left: 5pt;text-indent: 0pt;line-height: 12pt;text-align: left;">
-            Email I’d
-          </p>
-        </td>
-        <td style="width:157pt;border-top-style:solid;border-top-width:1pt;border-left-style:solid;border-left-width:1pt;border-bottom-style:solid;border-bottom-width:1pt;border-right-style:solid;border-right-width:1pt">
-          <p style="padding-left: 5pt;text-indent: 0pt;line-height: 12pt;text-align: left;">
-            <a href="mailto:{{@$contract->rider->personal_email}}" class="s5">{{@$contract->rider->personal_email}}</a>
-          </p>
-        </td>
-      </tr>
-      <tr style="height:14pt">
-        <td style="width:71pt;border-top-style:solid;border-top-width:1pt;border-left-style:solid;border-left-width:1pt;border-bottom-style:solid;border-bottom-width:1pt;border-right-style:solid;border-right-width:1pt">
-          <p class="s2" style="padding-left: 5pt;text-indent: 0pt;line-height: 12pt;text-align: left;">
-            Project
-          </p>
-        </td>
-        <td style="width:191pt;border-top-style:solid;border-top-width:1pt;border-left-style:solid;border-left-width:1pt;border-bottom-style:solid;border-bottom-width:1pt;border-right-style:solid;border-right-width:1pt">
-          <p class="s2" style="padding-left: 5pt;text-indent: 0pt;line-height: 12pt;text-align: left;">
-            {{@$contract->rider->project->name}}
-          </p>
-        </td>
-        <td style="width:77pt;border-top-style:solid;border-top-width:1pt;border-left-style:solid;border-left-width:1pt;border-bottom-style:solid;border-bottom-width:1pt;border-right-style:solid;border-right-width:1pt">
-          <p class="s6" style="padding-left: 5pt;text-indent: 0pt;line-height: 12pt;text-align: left;">
-            Emirate (Hub)
-          </p>
-        </td>
-        <td style="width:157pt;border-top-style:solid;border-top-width:1pt;border-left-style:solid;border-left-width:1pt;border-bottom-style:solid;border-bottom-width:1pt;border-right-style:solid;border-right-width:1pt">
-          <p class="s2" style="padding-left: 5pt;text-indent: 0pt;line-height: 12pt;text-align: left;">
-            {{@$contract->rider->emirate_hub}}
-          </p>
-        </td>
-      </tr>
-    </table>
-    <p style="padding-top: 3pt;text-indent: 0pt;text-align: left;">
-      <br>
-    </p>
-    <p class="s1" style="padding-left: 5pt;text-indent: 0pt;line-height: 112%;text-align: left;">
-      Whereas both 1<span class="s7">st</span> party and 2<span class="s7">nd</span> Party are similarly specialized in the United Arab Emirates By signing this Agreement, the <b>second party</b> confirms it has entered into this Agreement of its own free will and volition and was not coerced to do so, nor under duress at the time of executing this Agreement, and after consultation with, or an opportunity to consult with, counsel, the <b>second party</b> has chosen to enter into this Agreement voluntarily and knowingly and confirms it has carefully and completely read all of the terms and provisions of this Agreement.
-    </p>
-    <h3 style="padding-top: 7pt;padding-left: 5pt;text-indent: 0pt;text-align: left;">
-      Contract Highlights
-    </h3>
-    <p style="text-indent: 0pt;text-align: left;">
-      <br>
-    </p>
-    <table style="border-collapse:collapse;margin-left:6.01pt" cellspacing="0">
-      <tr style="height:20pt">
-        <td style="width:100pt;border-top-style:solid;border-top-width:1pt;border-left-style:solid;border-left-width:1pt;border-bottom-style:solid;border-bottom-width:1pt;border-right-style:solid;border-right-width:1pt">
-          <p class="s8" style="padding-left: 5pt;text-indent: 0pt;text-align: left;">
-            Supply Cities (UAE)
-          </p>
-        </td>
-        <td style="width:406pt;border-top-style:solid;border-top-width:1pt;border-left-style:solid;border-left-width:1pt;border-bottom-style:solid;border-bottom-width:1pt;border-right-style:solid;border-right-width:1pt" colspan="3">
-          <p class="s9" style="padding-left: 5pt;text-indent: 0pt;text-align: left;">
-            Dubai, Abu Dhabi, Sharjah, Al Ain, Ajman, Ras Al Khaimah, Umm Al Quwain
-          </p>
-        </td>
-
-      </tr>
-      <tr style="height:20pt">
-        <td style="width:100pt;border-top-style:solid;border-top-width:1pt;border-left-style:solid;border-left-width:1pt;border-bottom-style:solid;border-bottom-width:1pt;border-right-style:solid;border-right-width:1pt">
-          <p class="s8" style="padding-left: 5pt;text-indent: 0pt;text-align: left;">
-            Contract Period:
-          </p>
-        </td>
-        <td style="width:406pt;border-top-style:solid;border-top-width:1pt;border-left-style:solid;border-left-width:1pt;border-bottom-style:solid;border-bottom-width:1pt;border-right-style:solid;border-right-width:1pt" colspan="3">
-          <p class="s9" style="padding-left: 5pt;text-indent: 0pt;text-align: left;">
-            Minimum <b>12 Months</b> or Express Fast Visa Holder <b>24 Months</b>
-          </p>
-        </td>
-
-      </tr>
-      <tr style="height:20pt">
-        <td style="width:100pt;border-top-style:solid;border-top-width:1pt;border-left-style:solid;border-left-width:1pt;border-bottom-style:solid;border-bottom-width:1pt;border-right-style:solid;border-right-width:1pt">
-          <p class="s8" style="padding-left: 5pt;text-indent: 0pt;text-align: left;">
-            Contract Start Date
-          </p>
-        </td>
-        <td style="width:406pt;border-top-style:solid;border-top-width:1pt;border-left-style:solid;border-left-width:1pt;border-bottom-style:solid;border-bottom-width:1pt;border-right-style:solid;border-right-width:1pt" colspan="3">
-          <p class="s9" style="padding-left: 5pt;text-indent: 0pt;text-align: left;">
-            Date of signing the contract by the second Party (The contract is Renewable annually on <b>January 1st</b>)
-          </p>
-        </td>
-
-      </tr>
-      <tr style="height:13pt">
-        <td style="width:100pt;border-top-style:solid;border-top-width:1pt;border-left-style:solid;border-left-width:1pt;border-right-style:solid;border-right-width:1pt" rowspan="3">
-          <p style="padding-top: 8pt;text-indent: 0pt;text-align: left;">
-            <br>
-          </p>
-          <p class="s8" style="padding-left: 5pt;text-indent: 0pt;text-align: left;">
-            Services Included
-          </p>
-        </td>
-        <td style="width:5pt;border-top-style:solid;border-top-width:1pt;border-left-style:solid;border-left-width:1pt;border-bottom-style:solid;border-bottom-width:3pt;border-right-style:solid;border-right-width:1pt" rowspan="3">
-          <p style="text-indent: 0pt;text-align: left;">
-            <br>
-          </p>
-        </td>
-        <td style="width:110pt;border-top-style:solid;border-top-width:1pt;border-left-style:solid;border-left-width:1pt;border-bottom-style:solid;border-bottom-width:1pt;border-right-style:solid;border-right-width:1pt">
-          <p class="s8" style="padding-top: 2pt;padding-left: 5pt;text-indent: 0pt;line-height: 8pt;text-align: left;">
-            Items
-          </p>
-        </td>
-        <td style="width:291pt;border-top-style:solid;border-top-width:1pt;border-left-style:solid;border-left-width:1pt;border-bottom-style:solid;border-bottom-width:1pt;border-right-style:solid;border-right-width:1pt">
-          <p class="s8" style="padding-left: 5pt;text-indent: 0pt;text-align: left;">
-            Description
-          </p>
-        </td>
-
-      </tr>
-      <tr style="height:20pt">
-        <td style="width:110pt;border-top-style:solid;border-top-width:1pt;border-left-style:solid;border-left-width:1pt;border-bottom-style:solid;border-bottom-width:1pt;border-right-style:solid;border-right-width:1pt">
-          <p class="s10" style="padding-left: 5pt;text-indent: 0pt;line-height: 10pt;text-align: left;">
-            Vehicle Delivery
-          </p>
-          <p class="s10" style="padding-left: 5pt;text-indent: 0pt;line-height: 8pt;text-align: left;">
-            Bike/Car
-          </p>
-        </td>
-        <td style="width:291pt;border-top-style:solid;border-top-width:1pt;border-left-style:solid;border-left-width:1pt;border-bottom-style:solid;border-bottom-width:1pt;border-right-style:solid;border-right-width:1pt">
-          <p class="s10" style="padding-left: 5pt;text-indent: 0pt;line-height: 10pt;text-align: left;">
-            Bajaj Pulsar 150CC, or Bajaj Pulsar 180 CC, Honda Unicorn 160 CC, Car
-          </p>
-        </td>
-
-      </tr>
-      <tr style="height:10pt">
-        <td style="width:110pt;border-top-style:solid;border-top-width:1pt;border-left-style:solid;border-left-width:1pt;border-bottom-style:solid;border-bottom-width:5pt;border-right-style:solid;border-right-width:1pt">
-          <p class="s10" style="padding-left: 5pt;text-indent: 0pt;line-height: 9pt;text-align: left;">
-            Riders/ Drivers
-          </p>
-        </td>
-        <td style="width:291pt;border-top-style:solid;border-top-width:1pt;border-left-style:solid;border-left-width:1pt;border-bottom-style:solid;border-bottom-width:5pt;border-right-style:solid;border-right-width:1pt">
-          <p class="s10" style="padding-left: 5pt;text-indent: 0pt;line-height: 9pt;text-align: left;">
-            Compensation for riders/drivers would be covered by the first party
-          </p>
-        </td>
-
-      </tr>
-      <tr style="height:19pt">
-        <td style="width:58pt;border-top-style:solid;border-top-width:1pt;border-left-style:solid;border-left-width:1pt;border-bottom-style:solid;border-bottom-width:1pt;border-right-style:solid;border-right-width:1pt" bgcolor="#CCBFD8">
-          <p class="s8" style="padding-left: 4pt;text-indent: 0pt;line-height: 10pt;text-align: left;">
-            SI No.
-          </p>
-        </td>
-        <td style="width:88pt;border-top-style:solid;border-top-width:1pt;border-left-style:solid;border-left-width:1pt;border-bottom-style:solid;border-bottom-width:1pt;border-right-style:solid;border-right-width:1pt" colspan="2" bgcolor="#CCBFD8">
-          <p class="s8" style="padding-left: 5pt;text-indent: 0pt;line-height: 10pt;text-align: left;">
-            Paid Directly to:
-          </p>
-        </td>
-        <td style="width:360pt;border-top-style:solid;border-top-width:1pt;border-left-style:solid;border-left-width:1pt;border-bottom-style:solid;border-bottom-width:1pt;border-right-style:solid;border-right-width:1pt" bgcolor="#CCBFD8">
-          <p class="s8" style="padding-left: 7pt;text-indent: 0pt;line-height: 10pt;text-align: left;">
-            Description of Fee Schedule
-          </p>
-        </td>
-
-      </tr>
-      <tr style="height:22pt">
-        <td style="width:58pt;border-top-style:solid;border-top-width:1pt;border-left-style:solid;border-left-width:1pt;border-bottom-style:solid;border-bottom-width:1pt;border-right-style:solid;border-right-width:1pt">
-          <p class="s10" style="padding-top: 2pt;padding-left: 4pt;text-indent: 0pt;text-align: left;">
-            1
-          </p>
-        </td>
-        <td style="width:88pt;border-top-style:solid;border-top-width:1pt;border-left-style:solid;border-left-width:1pt;border-bottom-style:solid;border-bottom-width:1pt;border-right-style:solid;border-right-width:1pt" colspan="2">
-          <p class="s10" style="padding-top: 2pt;padding-left: 5pt;text-indent: 0pt;text-align: left;">
-            The Operator
-          </p>
-        </td>
-        <td style="width:360pt;border-top-style:solid;border-top-width:1pt;border-left-style:solid;border-left-width:1pt;border-bottom-style:solid;border-bottom-width:1pt;border-right-style:solid;border-right-width:1pt">
-          <p class="s10" style="padding-top: 2pt;padding-left: 5pt;text-indent: 0pt;text-align: left;">
-            Per the completed delivery order by each assigned Operator
-          </p>
-        </td>
-        <td style="width:5pt;border-left-style:solid;border-left-width:1pt">
-          <p style="text-indent: 0pt;text-align: left;">
-            <br>
-          </p>
-        </td>
-      </tr>
-      <tr style="height:14pt">
-        <td style="border-top-style:solid;border-top-width:1pt;border-left-style:solid;border-left-width:1pt;border-bottom-style:solid;border-bottom-width:1pt;border-right-style:solid;border-right-width:1pt" colspan="2" bgcolor="#FFBF00">
-          <p class="s10" style="padding-top: 1pt;padding-left: 34pt;text-indent: 0pt;text-align: left;">
-            Delivery KM Range
-          </p>
-        </td>
-        <td style="width:248pt;border-top-style:solid;border-top-width:1pt;border-left-style:solid;border-left-width:1pt;border-bottom-style:solid;border-bottom-width:1pt;border-right-style:solid;border-right-width:1pt" bgcolor="#FFBF00">
-          <p class="s11" style="text-indent: 0pt;line-height: 12pt;text-align: center;">
-            Description
-          </p>
-        </td>
-        <td style="border-top-style:solid;border-top-width:1pt;border-left-style:solid;border-left-width:1pt;border-bottom-style:solid;border-bottom-width:1pt;border-right-style:solid;border-right-width:1pt" bgcolor="#FFBF00">
-          <p class="s11" style="text-indent: 0pt;line-height: 12pt;text-align: center;">
-            Rate
-          </p>
-        </td>
-
-      </tr>
-      <tr style="height:14pt">
-        2<td style="border-top-style:solid;border-top-width:1pt;border-left-style:solid;border-left-width:1pt;border-bottom-style:solid;border-bottom-width:1pt;border-right-style:solid;border-right-width:1pt" colspan="2">
-          <p class="s11" style="text-indent: 0pt;line-height: 11pt;text-align: center;">
-            Per Order
-          </p>
-        </td>
-        <td style="border-top-style:solid;border-top-width:1pt;border-left-style:solid;border-left-width:1pt;border-bottom-style:solid;border-bottom-width:1pt;border-right-style:solid;border-right-width:1pt">
-          <p class="s11" style="padding-left: 77pt;text-indent: 0pt;line-height: 11pt;text-align: left;">
-            Per Order Delivery Rate
-          </p>
-        </td>
-        <td style="border-top-style:solid;border-top-width:1pt;border-left-style:solid;border-left-width:1pt;border-bottom-style:solid;border-bottom-width:1pt;border-right-style:solid;border-right-width:1pt">
-          <p class="s10" style="padding-top: 2pt;text-indent: 0pt;line-height: 10pt;text-align: center;">
-            27
-          </p>
-        </td>
-
-      </tr>
-      <tr style="height:26pt">
-        <td style="border-top-style:solid;border-top-width:1pt;border-left-style:solid;border-left-width:1pt;border-bottom-style:solid;border-bottom-width:1pt;border-right-style:solid;border-right-width:1pt" colspan="2">
-          <p style="padding-top: 1pt;text-indent: 0pt;text-align: left;">
-            <br>
-          </p>
-          <p class="s11" style="padding-left: 32pt;text-indent: 0pt;line-height: 11pt;text-align: left;">
-            Penalty for Absents
-          </p>
-        </td>
-        <td style="border-top-style:solid;border-top-width:1pt;border-left-style:solid;border-left-width:1pt;border-bottom-style:solid;border-bottom-width:1pt;border-right-style:solid;border-right-width:1pt">
-          <p class="s11" style="text-indent: 0pt;text-align: center;">
-            Perfect attendance requires <b>26</b> days of work, 11 hours
-          </p>
-          <p class="s11" style="text-indent: 0pt;line-height: 11pt;text-align: center;">
-            each day
-          </p>
-        </td>
-        <td style="border-top-style:solid;border-top-width:1pt;border-left-style:solid;border-left-width:1pt;border-bottom-style:solid;border-bottom-width:1pt;border-right-style:solid;border-right-width:1pt">
-          <p style="padding-top: 4pt;text-indent: 0pt;text-align: left;">
-            <br>
-          </p>
-          <p class="s10" style="text-indent: 0pt;line-height: 10pt;text-align: center;">
-            50
-          </p>
-        </td>
-
-      </tr>
-      <tr style="height:14pt">
-        <td style="border-top-style:solid;border-top-width:1pt;border-left-style:solid;border-left-width:1pt;border-bottom-style:solid;border-bottom-width:1pt;border-right-style:solid;border-right-width:1pt" colspan="2">
-          <p class="s10" style="padding-top: 2pt;padding-left: 23pt;text-indent: 0pt;line-height: 10pt;text-align: left;">
-            Minimum Order Require
-          </p>
-        </td>
-        <td style="border-top-style:solid;border-top-width:1pt;border-left-style:solid;border-left-width:1pt;border-bottom-style:solid;border-bottom-width:1pt;border-right-style:solid;border-right-width:1pt">
-          <p class="s10" style="padding-top: 1pt;padding-left: 26pt;text-indent: 0pt;text-align: left;">
-            Minimum Orders Required in <b>26</b> days <b>200</b> Orders
-          </p>
-        </td>
-        <td style="border-top-style:solid;border-top-width:1pt;border-left-style:solid;border-left-width:1pt;border-bottom-style:solid;border-bottom-width:1pt;border-right-style:solid;border-right-width:1pt">
-          <p class="s10" style="padding-top: 2pt;text-indent: 0pt;line-height: 10pt;text-align: center;">
-            200
-          </p>
-        </td>
-
-      </tr>
-    </table>
-    <ol id="l1">
-      <li data-list-text="1">
-        <h2 style="padding-top: 2pt;padding-left: 11pt;text-indent: -5pt;text-align: left;">
-          <u>)</u> - Minimum Guarantee:
-        </h2>
-        <p style="padding-top: 9pt;padding-left: 5pt;text-indent: 0pt;line-height: 110%;text-align: left;">
-          The minimum guarantee will be calculated based on the number of days the rider/driver has rendered service each month, provided the following terms are met:
-        </p>
-        <ol id="l2">
-          <li data-list-text="a">
-            <p style="padding-top: 7pt;padding-left: 39pt;text-indent: -33pt;text-align: left;">
-              Login Requirement:
-            </p>
-            <p style="padding-top: 8pt;padding-left: 5pt;text-indent: 0pt;line-height: 112%;text-align: left;">
-              A Delivery Associate (DA) must log in for at least <b>10 hours</b> each day and work exactly as scheduled by the employer for <b>26 days</b> a month.
-            </p>
-          </li>
-          <li data-list-text="b">
-            <h2 style="padding-top: 7pt;padding-left: 39pt;text-indent: -33pt;text-align: left;">
-              Rejection Limit:
-            </h2>
-            <p style="padding-top: 9pt;padding-left: 5pt;text-indent: 2pt;line-height: 112%;text-align: left;">
-              A Delivery Associate (DA) can have only one rejection per day. If there are more than one, the DA will not receive the minimum guaranteed pay for that day.
-            </p>
-          </li>
-          <li data-list-text="c">
-            <h2 style="padding-top: 7pt;padding-left: 39pt;text-indent: -33pt;text-align: left;">
-              Attendance Requirement:
-            </h2>
-            <p style="padding-top: 8pt;padding-left: 5pt;text-indent: 0pt;text-align: left;">
-              If a DA is present for fewer than <b>26 days</b> in a month, no minimum guarantee will apply.
-            </p>
-          </li>
-          <li data-list-text="d">
-            <h2 style="padding-top: 8pt;padding-left: 39pt;text-indent: -33pt;text-align: left;">
-              Prorated Payments:
-            </h2>
-            <p style="padding-top: 8pt;padding-left: 5pt;text-indent: 0pt;line-height: 112%;text-align: left;">
-              If a DA joins or leaves during the month, DA will not be entitled for Minimum Guarantee amount but he will get paid for the delivered orders only.
-            </p>
-          </li>
-        </ol>
-      </li>
-      <li data-list-text="2">
-        <h2 style="padding-top: 7pt;padding-left: 11pt;text-indent: -5pt;text-align: left;">
-          <u>)</u> - PERFORMANCE PENALTIES
-        </h2>
-        <ol id="l3">
-          <li data-list-text="a">
-            <p style="padding-top: 8pt;padding-left: 39pt;text-indent: -33pt;text-align: left;">
-              If a rider/driver works fewer than <b>26 days</b>, works less than <b>11 hours</b> a day, has an on-time delivery rate below
-            </p>
-            <h2 style="padding-top: 1pt;padding-left: 5pt;text-indent: 0pt;text-align: left;">
-              90%<span class="p">, or completes fewer than</span> 200 orders <span class="p">in a month, they will be charged a fine of</span> AED 50 <span class="p">for each day they fall short.</span>
-            </h2>
-          </li>
-        </ol>
-      </li>
-      <li data-list-text="3">
-        <h2 style="padding-top: 8pt;padding-left: 11pt;text-indent: -5pt;text-align: left;">
-          <u>)</u> - BENEFITS AND LEAVE
-        </h2>
-        <ol id="l4">
-          <li data-list-text="b">
-            <h2 style="padding-top: 8pt;padding-left: 39pt;text-indent: -33pt;text-align: left;">
-              End of Service Benefits:
-            </h2>
-            <p style="padding-top: 8pt;padding-left: 5pt;text-indent: 0pt;line-height: 112%;text-align: left;">
-              You shall be eligible for end-of-service benefits as per UAE Labor Law. This amount is already included in the commission rate and salary.
-            </p>
-          </li>
-          <li data-list-text="c">
-            <h2 style="padding-top: 7pt;padding-left: 39pt;text-indent: -33pt;text-align: left;">
-              Annual Leave:
-            </h2>
-            <p style="padding-top: 8pt;padding-left: 5pt;text-indent: 0pt;line-height: 111%;text-align: left;">
-              You are entitled to annual leave as per UAE Labor Law after completing <b>24 months</b>, with this amount already factored into the commission-based rate and net salary.
-            </p>
-            <p style="padding-top: 7pt;padding-left: 5pt;text-indent: 0pt;text-align: left;">
-              TERMINATION AND CONTRACT TERMS
-            </p>
-          </li>
-          <li data-list-text="d">
-            <h2 style="padding-top: 8pt;padding-left: 39pt;text-indent: -33pt;text-align: left;">
-              Termination of Agreement:
-            </h2>
-            <p style="padding-top: 8pt;padding-left: 5pt;text-indent: 2pt;line-height: 111%;text-align: left;">
-              The Company may terminate this Agreement without warning and without paying terminal/severance benefits if you are found guilty of any violations as stated in UAE Labor Law.
-            </p>
-          </li>
-          <li data-list-text="e">
-            <h2 style="padding-top: 7pt;padding-left: 39pt;text-indent: -33pt;text-align: left;">
-              Contract Term:
-            </h2>
-            <p style="padding-top: 8pt;padding-left: 5pt;text-indent: 2pt;line-height: 111%;text-align: left;">
-              The term of this contract shall be <b>12 months</b>, or <b>24 months</b> for Express Fast delivery service Visa holders, commencing from the date of signing.
-            </p>
-            <p style="text-indent: 0pt;text-align: left;">
-              <br>
-            </p>
-            <p style="text-indent: 0pt;text-align: left;"></p>
-          </li>
-          <li data-list-text="f">
-            <h2 style="padding-left: 39pt;text-indent: -33pt;text-align: left;">
-              Early Termination Penalty:
-            </h2>
-          </li>
-        </ol>
-        <p style="padding-top: 8pt;padding-left: 5pt;text-indent: 0pt;line-height: 111%;text-align: left;">
-          Any rider/driver who leaves or is terminated from the job will be liable to pay an early termination penalty of <b>AED 1,000</b>.
-        </p>
-      </li>
-      <li data-list-text="4">
-        <h2 style="padding-top: 7pt;padding-left: 11pt;text-indent: -5pt;text-align: left;">
-          <u>)</u> - FINAL SETTLEMENT AND EVALUATION
-        </h2>
-        <ol id="l5">
-          <li data-list-text="a">
-            <h2 style="padding-top: 9pt;padding-left: 39pt;text-indent: -33pt;text-align: left;">
-              Final Settlement<span class="p">:</span>
-            </h2>
-            <p style="padding-top: 8pt;padding-left: 5pt;text-indent: 0pt;line-height: 111%;text-align: left;">
-              Before the final settlement of salary, it is necessary to clear any cash on delivery (<b>COD</b>) amounts and return all assets to Express Fast and the vehicle (Bike/Car) leasing company. Salary will be released only after this clearance.
-            </p>
-          </li>
-          <li data-list-text="b">
-            <h2 style="padding-top: 7pt;padding-left: 39pt;text-indent: -33pt;text-align: left;">
-              Monthly Evaluation<span class="p">:</span>
-            </h2>
-            <p style="padding-top: 9pt;padding-left: 5pt;text-indent: 0pt;line-height: 111%;text-align: justify;">
-              Upon completing a working month (<b>approximately 30 days</b>), a monthly evaluation will be conducted. The employer will receive a report assessing your performance and any RTA fines for that month. Salary will be calculated and released <b>15 days</b> after the month’s closure, following the invoice raised.
-            </p>
-          </li>
-        </ol>
-      </li>
-      <li data-list-text="5">
-        <h2 style="padding-top: 7pt;padding-left: 11pt;text-indent: -5pt;text-align: justify;">
-          <u>)</u> - PRODUCT AND BEHAVIOR STANDARDS
-        </h2>
-        <ol id="l6">
-          <li data-list-text="c">
-            <h2 style="padding-top: 8pt;padding-left: 39pt;text-indent: -33pt;text-align: left;">
-              Product Damage<span class="p">:</span>
-            </h2>
-            <p style="padding-top: 9pt;padding-left: 5pt;text-indent: 0pt;line-height: 110%;text-align: left;">
-              If compromised packaging or a lack of packaging is discovered, a further examination for visible product damage will be conducted. If visible damage is found, the cost of the damaged item(s) will be charged to the company.
-            </p>
-          </li>
-          <li data-list-text="d">
-            <h2 style="padding-top: 7pt;padding-left: 39pt;text-indent: -33pt;text-align: left;">
-              Uniform and Behavior:
-            </h2>
-            <p style="padding-top: 8pt;padding-left: 5pt;text-indent: 0pt;line-height: 112%;text-align: justify;">
-              The company shall ensure that pickup and delivery associates are always in clean and tidy uniforms and must display good behavior toward customers and all stores. Unacceptable behavior, such as intoxication during working hours or fighting, will result in immediate termination and a penalty of <b>AED 1,000</b>.
-            </p>
-          </li>
-          <li data-list-text="e">
-            <h2 style="padding-top: 7pt;padding-left: 39pt;text-indent: -33pt;text-align: justify;">
-              Timeliness:
-            </h2>
-          </li>
-        </ol>
-        <p style="padding-top: 8pt;padding-left: 5pt;text-indent: 0pt;line-height: 112%;text-align: justify;">
-          The company ensures that pickup and delivery meet the scheduled times assigned by the supervisor. Any delays must be reported. If reported late without prior notification, a deduction of <b>AED 50</b> will be made for delays over 30 minutes; any delays exceeding <b>30 minutes</b> will be treated as no pay.
-        </p>
-      </li>
-      <li data-list-text="6">
-        <h2 style="padding-top: 7pt;padding-left: 11pt;text-indent: -5pt;text-align: justify;">
-          <u>)</u> - VEHICLE AND MAINTENANCE:
-        </h2>
-        <ol id="l7">
-          <li data-list-text="a">
-            <h2 style="padding-top: 9pt;padding-left: 39pt;text-indent: -33pt;text-align: left;">
-              Vehicle Maintenance:
-            </h2>
-            <p style="padding-top: 8pt;padding-left: 5pt;text-indent: 0pt;line-height: 112%;text-align: justify;">
-              All vehicles (Bike/Car) must be maintained in working, clean, hygienic, and good condition. Drivers/riders must adhere to all safety regulations as per UAE authorities. Complaints against riders/drivers exceeding three times within three months will require them to undergo training at their own expense.
-            </p>
-          </li>
-          <li data-list-text="b">
-            <h2 style="padding-top: 7pt;padding-left: 39pt;text-indent: -33pt;text-align: justify;">
-              Branding:
-            </h2>
-            <p style="padding-top: 9pt;padding-left: 5pt;text-indent: 0pt;line-height: 110%;text-align: left;">
-              All vehicles, helmets, and boxes must be branded by the registered vendor assigned by the company. If new vehicles are added or replaced for maintenance, they must remain unbranded.
-            </p>
-          </li>
-          <li data-list-text="c">
-            <h2 style="padding-top: 6pt;padding-left: 39pt;text-indent: -33pt;text-align: left;">
-              Vehicle Replacement:
-            </h2>
-            <p style="padding-top: 9pt;padding-left: 5pt;text-indent: 0pt;line-height: 111%;text-align: left;">
-              The company will ensure vehicle replacement within one hour for reasons including, but not limited to, vehicle breakdown.
-            </p>
-          </li>
-        </ol>
-      </li>
-      <li data-list-text="7">
-        <h2 style="padding-top: 7pt;padding-left: 11pt;text-indent: -5pt;text-align: left;">
-          <u>)</u> - ADDITIONAL TERMS
-        </h2>
-        <ol id="l8">
-          <li data-list-text="a">
-            <h2 style="padding-top: 8pt;padding-left: 39pt;text-indent: -33pt;text-align: left;">
-              Unauthorized Use of Vehicles:
-            </h2>
-            <p style="padding-top: 9pt;padding-left: 5pt;text-indent: 0pt;line-height: 111%;text-align: left;">
-              Vehicles (Bike/Car) that are branded and used for personal services or by unauthorized persons will be considered a breach of this contract. A penalty of <b>AED 1,000</b> will be charged, and the contract will be terminated.
-            </p>
-          </li>
-          <li data-list-text="b">
-            <h2 style="padding-top: 7pt;padding-left: 39pt;text-indent: -33pt;text-align: left;">
-              Rate Changes:
-            </h2>
-          </li>
-        </ol>
-      </li>
-    </ol>
-    <p style="padding-top: 8pt;padding-left: 5pt;text-indent: 2pt;line-height: 112%;text-align: left;">
-      If there are any changes in rates from the employer, the rider/driver will continue to work under the same compensation previously offered.
-    </p>
-    <p style="text-indent: 0pt;text-align: left;">
-      <br>
-    </p>
-    <h3 style="padding-left: 7pt;text-indent: 0pt;text-align: left;">
-      IN WITNESS WHEREOF<span class="s1">,</span>
-    </h3>
-    <p class="s1" style="padding-top: 8pt;padding-left: 39pt;text-indent: 2pt;line-height: 112%;text-align: left;">
-      the Parties by their duly authorized representatives have executed this Contract as of the date first indicated above.
-    </p>
-    <p style="text-indent: 0pt;text-align: left;">
-      <br>
-    </p>
-    <table>
+<!DOCTYPE  html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+      <title>Rider# {{$contract->rider->rider_id}} Bike Handing Over</title>
+      <style type="text/css"> * {margin:0; padding:0; text-indent:0; }
+         .s1 { color: black; font-family:Calibri, sans-serif; font-style: normal; font-weight: bold; text-decoration: none; font-size: 18pt; }
+         .s2 { color: black; font-family:Calibri, sans-serif; font-style: normal; font-weight: bold; text-decoration: none; font-size: 11pt; }
+         h4 { color: black; font-family:Calibri, sans-serif; font-style: normal; font-weight: bold; text-decoration: none; font-size: 10pt; }
+         .s3 { color: black; font-family:Calibri, sans-serif; font-style: normal; font-weight: bold; text-decoration: none; font-size: 10pt; }
+         .s4 { color: black; font-family:Calibri, sans-serif; font-style: normal; font-weight: normal; text-decoration: none; font-size: 10pt; }
+         .s5 { color: black; font-family:Calibri, sans-serif; font-style: normal; font-weight: normal; text-decoration: none; font-size: 10pt; }
+         .s6 { color: black; font-family:"Times New Roman", serif; font-style: normal; font-weight: normal; text-decoration: none; font-size: 10pt; }
+         .s7 { color: #15C; font-family:Calibri, sans-serif; font-style: normal; font-weight: bold; text-decoration: underline; font-size: 10pt; }
+         .s8 { color: #1F1F1F; font-family:Calibri, sans-serif; font-style: normal; font-weight: normal; text-decoration: none; font-size: 10pt; }
+         .s9 { color: black; font-family:Cambria, serif; font-style: normal; font-weight: normal; text-decoration: none; font-size: 10pt; }
+         .s10 { color: black; font-family:Cambria, serif; font-style: normal; font-weight: bold; text-decoration: none; font-size: 10pt; }
+         p { color: black; font-family:Cambria, serif; font-style: normal; font-weight: normal; text-decoration: none; font-size: 11pt; margin:0pt; }
+         h3 { color: black; font-family:Cambria, serif; font-style: normal; font-weight: bold; text-decoration: none; font-size: 11pt; }
+         h1 { color: black; font-family:Calibri, sans-serif; font-style: normal; font-weight: bold; text-decoration: none; font-size: 13pt; }
+         .s11 { color: black; font-family:Calibri, sans-serif; font-style: normal; font-weight: normal; text-decoration: none; font-size: 11.5pt; }
+         .s13 { color: black; font-family:Calibri, sans-serif; font-style: normal; font-weight: bold; text-decoration: none; font-size: 11.5pt; }
+         .s14 { color: #15C; font-family:Calibri, sans-serif; font-style: normal; font-weight: bold; text-decoration: underline; font-size: 11.5pt; }
+         .s15 { color: black; font-family:Calibri, sans-serif; font-style: normal; font-weight: normal; text-decoration: none; font-size: 11.5pt; }
+         .s16 { color: black; font-family:Cambria, serif; font-style: normal; font-weight: normal; text-decoration: none; font-size: 13pt; }
+         h2 { color: black; font-family:Cambria, serif; font-style: normal; font-weight: bold; text-decoration: none; font-size: 11.5pt; }
+         .s18 { color: black; font-family:Cambria, serif; font-style: normal; font-weight: normal; text-decoration: none; font-size: 11.5pt; }
+         table, tbody {vertical-align: top; overflow: visible; }
+      </style>
+   </head>
+   <body style="padding:5px;" >
+    <table width="100%" style="font-family: sans-serif;">
         <tr>
-            <td><b>Express Fast Delivery Service</b></td>
-            <td style="width: 200px;"></td>
-            <td><b>Name and Signature of Rider</b></td>
+            <td width="33.33%">&nbsp;<img src="/public/dist/img/print-logo.png" width="100" /> </td>
+            <td width="33.33%" style="text-align: center;"><h4 style="margin-bottom: 10px;margin-top: 5px;font-size: 12px;">Express Fast Delivery Service</h4>
+                <p style="margin-bottom: 5px;font-size: 12px;margin-top: 5px;">Office No. 305, Al Rubaya Building Damascus Street Al Qusais 2 Dubai U.A.E</p>
+                <p style="margin-bottom: 5px;font-size: 12px;margin-top: 5px;"> TRN 1005392707000003</p></td>
+            <td width="33.33%" style="text-align: right;"></td>
         </tr>
-        <tr>
-            <td></td>
-            <td style="width: 200px;"></td>
-            <td>{{@$contract->rider->name}}</td>
+        <tr style="text-align: center;">
+            <td colspan="3"><h4 style="margin-bottom: 0px;margin-top: 5px;font-size: 12px;border-bottom: 1px solid #000;border-top: 1px solid #000;padding: 3px 0px;">Bike Handing Over</h4></td>
         </tr>
     </table>
-    <br/>
-    <br/>
-    <br/>
-    <br/>
-    <br/>
-    <br/>
-    <br/>
-    <script type="text/javascript">
+
+
+      <p style="padding-left: 165pt;text-indent: 0pt;text-align: left;"></p>
+      <p class="s2" style="padding-left: 8pt;text-indent: 0pt;text-align: left;">&quot;Rider&quot; Data</p>
+      <table style="border-collapse:collapse;width:100%;" >
+        <tr>
+            <th style="padding:5px;">Rider Status:</th>
+            <td style="padding:5px;">{{App\Helpers\CommonHelper::RiderStatus(@$contract->rider->status)}}</td>
+            <th style="padding:5px 5px 5px 50px;">Supervisor:</th>
+            <td style="padding:5px;">{{@$contract->rider->fleet_supervisor}}</td>
+            <th style="padding:5px 5px 5px 150px;">Date:</th>
+            <td style="padding:5px 5px 5px 5px;">{{@$contract->note_date}}</td>
+        </tr>
+      </table>
+      <p style="text-indent: 0pt;text-align: left;"><br/></p>
+      <table style="border-collapse:collapse;width:100%;" cellspacing="0">
+         <tr style="height:16pt">
+            <td style="width:81pt;border:1px solid #000000;">
+               <p class="s3" style="padding-top: 1pt;padding-left: 1pt;text-indent: 0pt;text-align: left;">Name</p>
+            </td>
+            <td style="width:238pt;border:1px solid #000000;">
+               <p class="s4" style="padding-top: 1pt;text-indent: 0pt;text-align: center;">{{@$contract->rider->name}}</p>
+            </td>
+            <td style="width:73pt;border:1px solid #000000;">
+               <p class="s3" style="padding-top: 1pt;padding-left: 1pt;text-indent: 0pt;text-align: left;">RIDER I,D.</p>
+            </td>
+            <td style="width:161pt;border:1px solid #000000;">
+               <p class="s4" style="padding-top: 1pt;text-indent: 0pt;text-align: center;">{{@$contract->rider->rider_id}}</p>
+            </td>
+         </tr>
+         <tr style="height:16pt">
+            <td style="width:81pt;border:1px solid #000000;">
+               <p class="s3" style="padding-top: 1pt;padding-left: 1pt;text-indent: 0pt;text-align: left;">Emirates ID.</p>
+            </td>
+            <td style="width:238pt;border:1px solid #000000;">
+               <p class="s4" style="padding-top: 1pt;text-indent: 0pt;text-align: center;">{{@$contract->rider->emirate_id}}</p>
+            </td>
+            <td style="width:73pt;border:1px solid #000000;">
+               <p class="s3" style="padding-top: 1pt;padding-left: 1pt;text-indent: 0pt;text-align: left;">Passport No.</p>
+            </td>
+            <td style="width:161pt;border:1px solid #000000;">
+               <p class="s4" style="padding-top: 1pt;text-indent: 0pt;text-align: center;">{{@$contract->rider->passport}}</p>
+            </td>
+         </tr>
+         <tr style="height:16pt">
+            <td style="width:81pt;border:1px solid #000000;">
+               <p class="s3" style="padding-top: 1pt;padding-left: 1pt;text-indent: 0pt;text-align: left;">Phone No.</p>
+            </td>
+            <td style="width:238pt;border:1px solid #000000;">
+               <p class="s4" style="padding-top: 1pt;text-indent: 0pt;text-align: center;">{{@$contract->rider->personal_contact}}</p>
+            </td>
+            <td style="width:73pt;border:1px solid #000000;">
+               <p class="s3" style="padding-top: 1pt;padding-left: 1pt;text-indent: 0pt;text-align: left;">License No.</p>
+            </td>
+            <td style="width:161pt;border:1px solid #000000;">
+               <p class="s4" style="padding-top: 1pt;text-indent: 0pt;text-align: center;">{{@$contract->rider->license_no}}</p>
+            </td>
+         </tr>
+         <tr style="height:16pt">
+            <td style="width:81pt;border:1px solid #000000;">
+               <p class="s3" style="padding-top: 1pt;padding-left: 1pt;text-indent: 0pt;text-align: left;">Email I,d.</p>
+            </td>
+            <td style="width:238pt;border:1px solid #000000;">
+               <p style="padding-top: 1pt;text-indent: 0pt;text-align: center;">{{@$contract->rider->personal_email}}</p>
+            </td>
+            <td style="width:73pt;border:1px solid #000000;">
+               <p class="s3" style="padding-top: 1pt;padding-left: 1pt;text-indent: 0pt;text-align: left;">Emirate.</p>
+            </td>
+            <td style="width:161pt;border:1px solid #000000;">
+               <p class="s4" style="padding-top: 1pt;text-indent: 0pt;text-align: center;">{{@$contract->rider->emirate_hub}}</p>
+            </td>
+         </tr>
+         <tr style="height:16pt">
+            <td style="width:81pt;border:1px solid #000000;">
+               <p class="s3" style="padding-top: 1pt;padding-left: 1pt;text-indent: 0pt;text-align: left;">Vendor.</p>
+            </td>
+            <td style="width:238pt;border:1px solid #000000;">
+               <p class="s4" style="padding-top: 1pt;text-indent: 0pt;text-align: center;">{{@$contract->rider->vendor->name}}</p>
+            </td>
+            <td style="width:73pt;border:1px solid #000000;">
+               <p class="s3" style="padding-top: 1pt;padding-left: 1pt;text-indent: 0pt;text-align: left;">Salary Model.</p>
+            </td>
+            <td style="width:161pt;border:1px solid #000000;">
+               <p class="s4" style="padding-top: 1pt;text-indent: 0pt;text-align: center;">Commission</p>
+            </td>
+         </tr>
+         <tr style="height:16pt">
+            <td style="width:81pt;border:1px solid #000000;">
+               <p class="s3" style="padding-top: 1pt;padding-left: 1pt;text-indent: 0pt;text-align: left;">Refrence No.</p>
+            </td>
+            <td style="width:472pt;border:1px solid #000000;" colspan="3">
+               <p style="text-indent: 0pt;text-align: left;"><br/></p>
+            </td>
+         </tr>
+      </table>
+      <h4 style="padding-top: 1pt;padding-bottom: 1pt;padding-left: 8pt;text-indent: 0pt;text-align: left;">Mobile Sim Detail :</h4>
+      <table style="border-collapse:collapse;width:100%;" cellspacing="0">
+         <tr style="height:16pt">
+            <td style="width:159pt;border:1px solid #000000;">
+               <p class="s6" style="padding-top: 1pt;padding-left: 20pt;text-indent: 0pt;line-height: 13pt;text-align: left;">
+                 <span class="s3"><input type="checkbox" style="margin:5px;" /> Company Sim Number.</span></p>
+            </td>
+            <td style="width:160pt;border:1px solid #000000;">
+               <p style="text-indent: 0pt;text-align: left;">{{@$contract->rider->sims->sim_number}}</p>
+            </td>
+            <td style="width:73pt;border:1px solid #000000;">
+               <p class="s3" style="padding-top: 1pt;padding-left: 8pt;text-indent: 0pt;text-align: left;">EMI Number.</p>
+            </td>
+            <td style="width:161pt;border:1px solid #000000;">
+               <p style="text-indent: 0pt;text-align: left;">{{@$contract->rider->sims->sim_emi}}</p>
+            </td>
+         </tr>
+      </table>
+      <h4 style="padding-top: 1pt;padding-bottom: 1pt;padding-left: 8pt;text-indent: 0pt;text-align: left;">Details of Bike:</h4>
+      <table style="border-collapse:collapse;" cellspacing="0">
+         <tr style="height:16pt">
+            <td style="width:81pt;border:1px solid #000000;">
+               <p class="s3" style="padding-top: 1pt;padding-left: 2pt;text-indent: 0pt;text-align: left;"><span class="s7">T.C.No</span>.</p>
+            </td>
+            <td style="width:175pt;border:1px solid #000000;" colspan="2">
+               <p class="s4" style="padding-top: 1pt;text-indent: 0pt;text-align: center;">{{@$contract->bike->traffic_file_number}}</p>
+            </td>
+            <td style="width:92pt;border:1px solid #000000;">
+               <p class="s3" style="padding-top: 1pt;padding-left: 1pt;text-indent: 0pt;text-align: left;">Bike Plate No.</p>
+            </td>
+            <td style="width:205pt;border:1px solid #000000;" colspan="2">
+               <p style="text-indent: 0pt;text-align: left;"></p>
+               <p class="s3" style="padding-top: 1pt;text-indent: 0pt;text-align: center;">{{@$contract->bike->plate}}</p>
+            </td>
+         </tr>
+         <tr style="height:16pt">
+            <td style="width:81pt;border:1px solid #000000;">
+               <p class="s3" style="padding-top: 1pt;padding-left: 2pt;text-indent: 0pt;text-align: left;">Model No.</p>
+            </td>
+            <td style="width:175pt;border:1px solid #000000;" colspan="2">
+               <p class="s8" style="padding-top: 1pt;text-indent: 0pt;text-align: center;">{{@$contract->bike->model}}</p>
+            </td>
+            <td style="width:92pt;border:1px solid #000000;">
+               <p class="s3" style="padding-top: 1pt;padding-left: 1pt;text-indent: 0pt;text-align: left;">Bike</p>
+            </td>
+            <td style="width:205pt;border:1px solid #000000;" colspan="2">
+               <p class="s4" style="padding-top: 1pt;text-indent: 0pt;text-align: center;">{{@$contract->bike->model_type}}</p>
+            </td>
+         </tr>
+         <tr style="height:16pt">
+            <td style="width:81pt;border:1px solid #000000;">
+               <p class="s3" style="padding-top: 1pt;padding-left: 2pt;text-indent: 0pt;text-align: left;">Engine No.</p>
+            </td>
+            <td style="width:175pt;border:1px solid #000000;" colspan="2">
+               <p style="text-indent: 0pt;text-align: left;"/>
+               <p class="s4" style="padding-top: 1pt;padding-left: 55pt;text-indent: 0pt;text-align: left;">{{@$contract->bike->engine}}</p>
+            </td>
+            <td style="width:92pt;border:1px solid #000000;">
+               <p class="s3" style="padding-top: 1pt;padding-left: 1pt;text-indent: 0pt;text-align: left;">Chassis No.</p>
+            </td>
+            <td style="width:205pt;border:1px solid #000000;" colspan="2">
+               <p class="s4" style="padding-top: 1pt;padding-left: 52pt;text-indent: 0pt;text-align: left;">{{@$contract->bike->chassis_number}}</p>
+            </td>
+         </tr>
+         <tr style="height:14pt">
+            <td style="width:553pt;border:1px solid #000000;" colspan="6">
+               <p style="text-indent: 0pt;text-align: left;"></p>
+               <p class="s3" style="padding-left: 56pt;text-indent: 0pt;line-height: 12pt;text-align: center;">
+                  Motorcycle
+                  <span><input type="checkbox" style="margin:5px;" />
+               </span></p>
+            </td>
+         </tr>
+         <tr style="height:13pt">
+            <td style="width:546pt;border-top-style:solid;border-top-width:1pt;border:1px solid #000000;;border-right-color:#FFFFFF" colspan="5">
+               <p style="text-indent: 0pt;text-align: left;"><br/></p>
+            </td>
+            <td style="width:7pt;border-top-style:solid;border-top-width:1pt;border-left-style:solid;border-left-width:1pt;border-left-color:#FFFFFF;border-right-style:solid;border-right-width:1pt">
+               <p style="text-indent: 0pt;text-align: left;"><br/></p>
+            </td>
+         </tr>
+         <tr>
+            <td colspan="6">
+                <table style="border-collapse:collapse;margin-top:5px;width:100%;">
+                    <tr style="height:13pt">
+                        <td style="width:160pt;border:1px solid #000000;">
+                           <p class="s3" style="padding-left: 2pt;text-indent: 0pt;line-height: 11pt;text-align: left;">Dent</p>
+                        </td>
+                        <td style="width:7pt;border:1px solid #000000;">
+                           <p style="text-indent: 0pt;text-align: left;"><input type="checkbox" style="margin:5px;" /></p>
+                        </td>
+                        <td style="width:154pt;border:1px solid #000000;">
+                           <p class="s3" style="padding-left: 2pt;text-indent: 0pt;line-height: 11pt;text-align: left;">Mobile Holder</p>
+                        </td>
+                        <td style="width:7pt;border:1px solid #000000;">
+                            <p style="text-indent: 0pt;text-align: left;"><input type="checkbox" style="margin:5px;" /></p>
+                         </td>
+                        <td style="width:153pt;border:1px solid #000000;">
+                           <p class="s3" style="padding-left: 2pt;text-indent: 0pt;line-height: 11pt;text-align: left;">Crash Gurad</p>
+                        </td>
+                        <td style="width:7pt;border:1px solid #000000;">
+                            <p style="text-indent: 0pt;text-align: left;"><input type="checkbox" style="margin:5px;" /></p>
+                         </td>
+                     </tr>
+                     <tr style="height:13pt">
+                        <td style="width:160pt;border:1px solid #000000;">
+                           <p class="s3" style="padding-left: 2pt;text-indent: 0pt;line-height: 12pt;text-align: left;">Scratch</p>
+                        </td>
+                        <td style="width:7pt;border:1px solid #000000;">
+                            <p style="text-indent: 0pt;text-align: left;"><input type="checkbox" style="margin:5px;" /></p>
+                         </td>
+                        <td style="width:154pt;border:1px solid #000000;">
+                           <p class="s3" style="padding-left: 2pt;text-indent: 0pt;line-height: 12pt;text-align: left;">Tool Kit</p>
+                        </td>
+                        <td style="width:7pt;border:1px solid #000000;">
+                            <p style="text-indent: 0pt;text-align: left;"><input type="checkbox" style="margin:5px;" /></p>
+                         </td>
+                        <td style="width:153pt;border:1px solid #000000;">
+                           <p class="s3" style="padding-left: 2pt;text-indent: 0pt;line-height: 12pt;text-align: left;">Helmet</p>
+                        </td>
+                        <td style="width:7pt;border:1px solid #000000;">
+                            <p style="text-indent: 0pt;text-align: left;"><input type="checkbox" style="margin:5px;" /></p>
+                         </td>
+                     </tr>
+                     <tr style="height:13pt">
+                        <td style="width:160pt;border:1px solid #000000;">
+                           <p class="s3" style="padding-left: 2pt;text-indent: 0pt;line-height: 12pt;text-align: left;">Major Damage</p>
+                        </td>
+                        <td style="width:7pt;border:1px solid #000000;">
+                            <p style="text-indent: 0pt;text-align: left;"><input type="checkbox" style="margin:5px;" /></p>
+                         </td>
+                        <td style="width:154pt;border:1px solid #000000;">
+                           <p class="s3" style="padding-left: 2pt;text-indent: 0pt;line-height: 12pt;text-align: left;">Reflecting Sticher</p>
+                        </td>
+                        <td style="width:7pt;border:1px solid #000000;">
+                            <p style="text-indent: 0pt;text-align: left;"><input type="checkbox" style="margin:5px;" /></p>
+                         </td>
+                        <td style="width:153pt;border:1px solid #000000;">
+                           <p class="s3" style="padding-left: 2pt;text-indent: 0pt;line-height: 12pt;text-align: left;">Stand</p>
+                        </td>
+                        <td style="width:7pt;border:1px solid #000000;">
+                            <p style="text-indent: 0pt;text-align: left;"><input type="checkbox" style="margin:5px;" /></p>
+                         </td>
+                     </tr>
+                     <tr style="height:13pt">
+                        <td style="width:160pt;border:1px solid #000000;">
+                           <p class="s3" style="padding-left: 2pt;text-indent: 0pt;line-height: 12pt;text-align: left;">Delivery Box</p>
+                        </td>
+                        <td style="width:7pt;border:1px solid #000000;">
+                            <p style="text-indent: 0pt;text-align: left;"><input type="checkbox" style="margin:5px;" /></p>
+                         </td>
+                        <td style="width:154pt;border:1px solid #000000;">
+                           <p class="s3" style="padding-left: 2pt;text-indent: 0pt;line-height: 12pt;text-align: left;">Motorcycle Seat</p>
+                        </td>
+                        <td style="width:7pt;border:1px solid #000000;">
+                            <p style="text-indent: 0pt;text-align: left;"><input type="checkbox" style="margin:5px;" /></p>
+                         </td>
+                        <td style="width:153pt;border:1px solid #000000;">
+                           <p class="s3" style="padding-left: 2pt;text-indent: 0pt;line-height: 12pt;text-align: left;">RTA Fine</p>
+                        </td>
+                        <td style="width:7pt;border:1px solid #000000;">
+                            <p style="text-indent: 0pt;text-align: left;"><input type="checkbox" style="margin:5px;" /></p>
+                         </td>
+                     </tr>
+                     <tr style="height:13pt">
+                        <td style="width:160pt;border:1px solid #000000;">
+                           <p style="text-indent: 0pt;text-align: left;"><br/></p>
+                        </td>
+                        <td style="width:7pt;border:1px solid #000000;">
+                            <p style="text-indent: 0pt;text-align: left;"><input type="checkbox" style="margin:5px;" /></p>
+                         </td>
+                        <td style="width:154pt;border:1px solid #000000;">
+                           <p class="s3" style="padding-left: 2pt;text-indent: 0pt;line-height: 11pt;text-align: left;">Fuel Card</p>
+                        </td>
+                        <td style="width:7pt;border:1px solid #000000;">
+                            <p style="text-indent: 0pt;text-align: left;"><input type="checkbox" style="margin:5px;" /></p>
+                         </td>
+                        <td style="width:153pt;border:1px solid #000000;">
+                           <p class="s3" style="padding-left: 2pt;text-indent: 0pt;line-height: 11pt;text-align: left;">Salik</p>
+                        </td>
+                        <td style="width:7pt;border:1px solid #000000;">
+                            <p style="text-indent: 0pt;text-align: left;"><input type="checkbox" style="margin:5px;" /></p>
+                         </td>
+                     </tr>
+                     <tr style="height:13pt">
+                        <td style="width:160pt;border:1px solid #000000;">
+                           <p style="text-indent: 0pt;text-align: left;"><br/></p>
+                        </td>
+                        <td style="width:7pt;border:1px solid #000000;">
+                            <p style="text-indent: 0pt;text-align: left;"><input type="checkbox" style="margin:5px;" /></p>
+                         </td>
+                        <td style="width:154pt;border:1px solid #000000;">
+                           <p class="s3" style="padding-left: 2pt;text-indent: 0pt;line-height: 11pt;text-align: left;"></p>
+                        </td>
+                        <td style="width:7pt;border:1px solid #000000;">
+                            <p style="text-indent: 0pt;text-align: left;"><input type="checkbox" style="margin:5px;" /></p>
+                         </td>
+                        <td style="width:153pt;border:1px solid #000000;">
+                           <p class="s3" style="padding-left: 2pt;text-indent: 0pt;line-height: 11pt;text-align: left;"></p>
+                        </td>
+                        <td style="width:7pt;border:1px solid #000000;">
+                            <p style="text-indent: 0pt;text-align: left;"><input type="checkbox" style="margin:5px;" /></p>
+                         </td>
+                     </tr>
+
+                </table>
+            </td>
+         </tr>
+         <tr>
+            <td colspan="6">      <p class="s10" style="padding-left: 16pt;text-indent: 0pt;text-align: center;">Remarks</p>
+            </td>
+         </tr>
+         <tr>
+            <td colspan="6">
+                <table style="border:1px solid #000000;width:100%;margin-top:1px;">
+                    <tr>
+                        <td>&nbsp;</td>
+                        <td>
+                            <table style="border:1px solid #000000;width:100%;">
+                                <tr >
+                                    <td  style="border-bottom:1px solid #000000;">&nbsp;</td>
+                                </tr>
+                                <tr>
+                                    <td style="border-bottom:1px solid #000000;">&nbsp;</td>
+                                </tr>
+                                <tr>
+                                    <td style="border-bottom:1px solid #000000;">&nbsp;</td>
+                                </tr>
+                                <tr>
+                                    <td style="border-bottom:1px solid #000000;">&nbsp;</td>
+                                </tr>
+                                <tr>
+                                    <td style="border-bottom:1px solid #000000;">&nbsp;</td>
+                                </tr>
+                                <tr>
+                                    <td>&nbsp;</td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+
+                 </table>
+            </td>
+         </tr>
+         <tr>
+            <td colspan="6">
+                <p style="padding-left: 17pt;padding-top:10px;text-indent: 0pt;text-align: center;">I have thoroughly Checked and understood the present condition and damage on the motorcycle. I will be responsible for any new damagesand shall bear all expenses for repair of the motorcycle, I will be responsible for any new damages as per the terms and condition mentioned on the handing over Document.</p>
+
+            </td>
+         </tr>
+         <tr>
+            <td colspan="6" >
+                <p style="text-indent: 0pt;text-align: left;"><br/></p>
+                <p style="text-indent: 0pt;text-align: left;"><br/></p>
+                <p style="text-indent: 0pt;text-align: left;"><br/></p>
+                <p style="text-indent: 0pt;text-align: left;"><br/></p>
+                <table style="width: 100%;text-align:center;">
+                    <tr>
+                        <td>
+                            <p><b>Motor Mechanic</b><br/>
+                                Muhammad Sufyan Akbar Ali</p>
+                        </td>
+                        <td>
+                            <p><b>Rider Signature</b><br/>
+                            {{@$contract->rider->name}}</p>
+                        </td>
+                        <td>
+                            <p><b>Supervisor Signature</b><br/>
+                                {{@$contract->rider->fleet_supervisor}}</p>
+                        </td>
+                    </tr>
+                </table>
+
+
+      <p style="text-indent: 0pt;text-align: left;page-break-after: always;"><br/></p>
+      <table width="100%" style="font-family: sans-serif;">
+        <tr>
+            <td width="33.33%">&nbsp;<img src="/public/dist/img/print-logo.png" width="100" /> </td>
+            <td width="33.33%" style="text-align: center;"><h4 style="margin-bottom: 10px;margin-top: 5px;font-size: 12px;">Express Fast Delivery Service</h4>
+                <p style="margin-bottom: 5px;font-size: 12px;margin-top: 5px;">Office No. 305, Al Rubaya Building Damascus Street Al Qusais 2 Dubai U.A.E</p>
+                <p style="margin-bottom: 5px;font-size: 12px;margin-top: 5px;"> TRN 1005392707000003</p></td>
+            <td width="33.33%" style="text-align: right;"></td>
+        </tr>
+
+    </table>
+      <h1 style="padding-left: 8pt;text-indent: 0pt;text-align: left;">Declaration:                                     Date: {{@$contract->note_date}}</h1>
+      <p class="s11" style="padding-top: 9pt;padding-left: 8pt;text-indent: 0pt;text-align: left;">Confirmation of receipt of a motorcycle “<b>Bike</b>”: I hereby certify, I am the</p>
+      <p style="text-indent: 0pt;text-align: left;"><br/></p>
+            </td>
+         </tr>
+
+      </table>
+
+
+      <table style="border-collapse:collapse;width:100%;" cellspacing="0">
+         <tr style="height:22pt">
+            <td style="width:81pt;border:1px solid #000000;">
+               <p class="s13" style="padding-top: 3pt;padding-left: 1pt;text-indent: 0pt;text-align: left;">Name</p>
+            </td>
+            <td style="width:238pt;border:1px solid #000000;">
+               <p class="s13" style="padding-top: 3pt;padding-left: 39pt;text-indent: 0pt;text-align: left;">{{@$contract->rider->name}}</p>
+            </td>
+            <td style="width:73pt;border:1px solid #000000;">
+               <p class="s13" style="padding-top: 3pt;padding-left: 1pt;text-indent: 0pt;text-align: left;">Emirates I,D</p>
+            </td>
+            <td style="width:168pt;border:1px solid #000000;">
+               <p class="s13" style="padding-top: 3pt;padding-left: 34pt;text-indent: 0pt;text-align: left;">{{@$contract->rider->emirate_id}}</p>
+            </td>
+         </tr>
+      </table>
+      <p class="s11" style="padding-top: 3pt;padding-left: 8pt;text-indent: 0pt;text-align: left;">I have received the bike number <b>details of bike:</b></p>
+      <p style="text-indent: 0pt;text-align: left;"><br/></p>
+      <table style="border-collapse:collapse;width:100%;" cellspacing="0">
+         <tr style="height:22pt">
+            <td style="width:81pt;border:1px solid #000000;">
+               <p class="s13" style="padding-top: 3pt;padding-left: 1pt;text-indent: 0pt;text-align: left;"><span class="s14">T.C.No</span>.</p>
+            </td>
+            <td style="width:238pt;border:1px solid #000000;">
+               <p class="s15" style="padding-top: 3pt;text-indent: 0pt;text-align: center;">{{@$contract->bike->traffic_file_number}}</p>
+            </td>
+            <td style="width:73pt;border:1px solid #000000;">
+               <p class="s13" style="padding-top: 3pt;padding-left: 1pt;text-indent: 0pt;text-align: left;">Bike Plate No.</p>
+            </td>
+            <td style="width:168pt;border:1px solid #000000;">
+               <p class="s15" style="padding-top: 3pt;text-indent: 0pt;text-align: center;">{{@$contract->bike->plate}}</p>
+            </td>
+         </tr>
+         <tr style="height:22pt">
+            <td style="width:81pt;border:1px solid #000000;">
+               <p class="s13" style="padding-top: 3pt;padding-left: 1pt;text-indent: 0pt;text-align: left;">Model No.</p>
+            </td>
+            <td style="width:238pt;border:1px solid #000000;">
+               <p class="s15" style="padding-top: 3pt;text-indent: 0pt;text-align: center;">{{@$contract->bike->model}}</p>
+            </td>
+            <td style="width:73pt;border:1px solid #000000;">
+               <p class="s13" style="padding-top: 3pt;padding-left: 1pt;text-indent: 0pt;text-align: left;">Bike</p>
+            </td>
+            <td style="width:168pt;border:1px solid #000000;">
+               <p class="s15" style="padding-top: 3pt;text-indent: 0pt;text-align: center;">{{@$contract->bike->model_type}}</p>
+            </td>
+         </tr>
+         <tr style="height:22pt">
+            <td style="width:81pt;border:1px solid #000000;">
+               <p class="s13" style="padding-top: 3pt;padding-left: 1pt;text-indent: 0pt;text-align: left;">Engine No.</p>
+            </td>
+            <td style="width:238pt;border:1px solid #000000;">
+               <p class="s15" style="padding-top: 3pt;text-indent: 0pt;text-align: center;">{{@$contract->bike->engine}}</p>
+            </td>
+            <td style="width:73pt;border:1px solid #000000;">
+               <p class="s13" style="padding-top: 3pt;padding-left: 1pt;text-indent: 0pt;text-align: left;">Chassis No.</p>
+            </td>
+            <td style="width:168pt;border:1px solid #000000;">
+               <p class="s15" style="padding-top: 3pt;text-indent: 0pt;text-align: center;">{{@$contract->bike->chassis_number}}</p>
+            </td>
+         </tr>
+         <tr style="height:165pt">
+            <td style="width:560pt;border:1px solid #000000;" colspan="4">
+               <p class="s16" style="padding-top: 11pt;padding-left: 1pt;padding-right: 11pt;text-indent: 0pt;text-align: left;">I undertake to preserve and use the bike for the purpose for which I received it and acknowledge that I am fully responsible for its maintenance and care. I commit to return the bike to the company upon its request or at the end of the contract, in the same condition as I received it.</p>
+               <p class="s16" style="padding-top: 14pt;padding-left: 1pt;padding-right: 11pt;text-indent: 0pt;text-align: left;">In the event of non-return, I agree to pay an amount of <b>AED 8,000 </b>for the bike and <b>AED 2,000 </b>for Noon Assets (Delivery Bag &amp; Noon Uniform with accessories), totaling <b>AED 10,000</b>.</p>
+               <p class="s16" style="padding-top: 8pt;padding-left: 1pt;padding-right: 18pt;text-indent: 0pt;text-align: justify;">I acknowledge that it is my responsibility to return the bike to the company upon termination of employment. Should I fail to do so, I shall be liable to pay the monthly rent of <b>AED 600</b>, any RTA fines, Salik charges, and any damages to the bike until it is returned in good working condition.</p>
+            </td>
+         </tr>
+      </table>
+      <p style="padding-top: 5pt;text-indent: 0pt;text-align: left;"><br/></p>
+      <h2 style="padding-left: 8pt;text-indent: 0pt;text-align: left;">IN WITNESS WHEREOF</h2>
+      <p class="s18" style="padding-left: 13pt;text-indent: 0pt;text-align: left;">the Parties have executed this Contract as of the date first indicated above</p>
+      <p style="text-indent: 0pt;text-align: left;"><br/></p>
+      <table style="border-collapse: collapse;width: 100%;text-align:center;">
+        <tr>
+            <td><b>Express Fast Delivery Service Name & Signature</b><br/></td>
+            <td>
+                <p>
+                    <b>Fingerprint</b><br/>
+                    (Thumbprint of the right hand)<br/>
+                    <br/><br/><br/><br/>
+                    <br/><br/><br/><br/>
+                    <b>Name & Signature</b><br/>
+                    <b>{{@$contract->rider->name}}</b>
+
+                </p>
+            </td>
+        </tr>
+
+      </table>
+      <script type="text/javascript">
         window.print();
         //window.onfocus=function(){ window.close();}
         </script>
-  </body>
+   </body>
 </html>
