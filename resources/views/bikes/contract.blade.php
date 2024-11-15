@@ -668,6 +668,9 @@
     <br/>
     <br/>
     <br/>
-
+    <script type="text/javascript">
+        window.print();
+        //window.onfocus=function(){ window.close();}
+        </script>
   </body>
 </html>

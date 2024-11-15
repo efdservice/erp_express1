@@ -521,7 +521,7 @@
 
       </table>
       <script type="text/javascript">
-        //window.print();
+        window.print();
         //window.onfocus=function(){ window.close();}
         </script>
    </body>
