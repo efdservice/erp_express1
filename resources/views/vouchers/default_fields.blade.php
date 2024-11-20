@@ -24,13 +24,13 @@
             <div class="row">
                 <div class="form-group col-md-4">
                     <br>
-                    @if($entry->trans_acc->riderDetail)
-                        <input type="hidden" name="id[]" value="{{$entry->trans_acc->riderDetail->id}}">
+                    @isset($entry->trans_acc->riderDetail)
+                        <input type="hidden" name="id[]" value="{{@$entry->trans_acc->riderDetail->id}}">
                        {{ @$entry->trans_acc->riderDetail->name.' ('.@$entry->trans_acc->riderDetail->rider_id.')'}}
                     @else
                     <input type="hidden" name="id[]" value="{{$entry->trans_acc->id}}">
                     {{@$entry->trans_acc->Trans_Acc_Name}}
-                    @endif
+                    @endisset
 
                     @if(in_array($entry->vt,[8,10,11,15]))
                     @if($entry->SID)
