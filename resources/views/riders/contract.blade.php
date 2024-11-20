@@ -307,7 +307,7 @@
       <p style="padding-top: 10pt;padding-left: 7pt;text-indent: 0pt;text-align: left;">Payment of fees will be settled in United Arab Emirates Dirhams (<b>AED</b>).</p>
 
       <p style="text-indent: 0pt;text-align: left;page-break-after: always;"></p>
-      <div style="height: 110px;">&nbsp;</div>
+      <div style="height: 150px;">&nbsp;</div>
       {{-- <table width="100%" style="font-family: sans-serif;">
         <tr>
             <td width="33.33%">&nbsp;<img src="/public/dist/img/print-logo.png" width="100" /> </td>
@@ -556,8 +556,7 @@
           <p style="padding-top: 8pt;padding-left: 5pt;text-indent: 0pt;line-height: 111%;text-align: left;">
             Any rider/driver who leaves or is terminated from the job will be liable to pay an early termination penalty of <b>AED 1,000</b>.
           </p>
-          <p style="text-indent: 0pt;text-align: left;page-break-after: always;"></p>
-          <div style="height: 110px;">&nbsp;</div>
+
         <li data-list-text="4">
           <h2 style="padding-top: 7pt;padding-left: 11pt;text-indent: -5pt;text-align: left;">
             <u></u> - FINAL SETTLEMENT AND EVALUATION
@@ -570,7 +569,8 @@
               <p style="padding-top: 8pt;padding-left: 5pt;text-indent: 0pt;line-height: 111%;text-align: left;">
                 Before the final settlement of salary, it is necessary to clear any cash on delivery (<b>COD</b>) amounts and return all assets to Express Fast and the vehicle (Bike/Car) leasing company. Salary will be released only after this clearance.
               </p>
-
+              <p style="text-indent: 0pt;text-align: left;page-break-after: always;"></p>
+              <div style="height: 150px;">&nbsp;</div>
               <h2 style="padding-top: 7pt;padding-left: 39pt;text-indent: -33pt;text-align: left;">
                 <span style="font-weight:bold;text-decoration: underline;padding-right:30px;">b.</span> Monthly Evaluation<span class="p">:</span>
               </h2>
@@ -580,6 +580,7 @@
             </li>
           </ol>
         </li>
+
         <li data-list-text="5">
           <h2 style="padding-top: 7pt;padding-left: 11pt;text-indent: -5pt;text-align: justify;">
             <u></u> - PRODUCT AND BEHAVIOR STANDARDS
@@ -661,8 +662,7 @@
           </ol>
         </li>
       </ol>
-      <p style="text-indent: 0pt;text-align: left;page-break-after: always;"></p>
-      <div style="height: 110px;">&nbsp;</div>
+
       <p style="padding-top: 1pt;text-indent: 0pt;text-align: left;"><br/></p>
       <h2 style="padding-left: 7pt;text-indent: 0pt;text-align: left;">IN WITNESS WHEREOF</h2>
       <p style="padding-left: 12pt;text-indent: 0pt;text-align: left;">the Parties have executed this Contract as of the date first indicated above</p>
@@ -673,7 +673,7 @@
             <td style="padding-left: 50px;"><b>Express Fast Delivery Service</b></td>
             <td style="text-align: right;padding-right:100px;">
                 <b> Name &amp; Signature</b><br/>
-                <b>{{@$rider->name}}</b><br/><br/><br/><br/><br/><br/>
+                <b>{{@$rider->name}}</b><br/><br/><br/>
 
                 (Thumbprint of the right hand)
             </td>
