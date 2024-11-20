@@ -28,7 +28,7 @@
                         <input type="hidden" name="id[]" value="{{@$entry->trans_acc->riderDetail->id}}">
                        {{ @$entry->trans_acc->riderDetail->name.' ('.@$entry->trans_acc->riderDetail->rider_id.')'}}
                     @else
-                    <input type="hidden" name="id[]" value="{{$entry->trans_acc->id}}">
+                    <input type="hidden" name="id[]" value="{{@$entry->trans_acc->id}}">
                     {{@$entry->trans_acc->Trans_Acc_Name}}
                     @endisset
 
