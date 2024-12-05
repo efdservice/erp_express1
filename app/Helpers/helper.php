@@ -337,7 +337,8 @@ class CommonHelper
             'Staff' => 'Staff',
             'Driver' => 'Driver',
             'Mechanic' => 'Mechanic',
-            'Learning License' => 'Learning License'
+            'Learning License' => 'Learning License',
+            'Outside UAE' => 'Outside UAE'
         ];
 
         $list = '';
